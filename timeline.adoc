@@ -1,4 +1,4 @@
-= 中国历史纪要
+= 中国历史纪要 (v3.0)
 // vim:set ft=asciidoc syntax=ON tw=80:
 :toc: right
 :toclevels: 3
