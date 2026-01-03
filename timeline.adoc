@@ -1,6 +1,7 @@
 = 中国历史纪要
 // vim:set ft=asciidoc syntax=ON tw=80:
 :toc: right
+:toclevels: 3
 //:toc-placement: preamble
 :source-highlighter: pygments
 :source-highlighter: coderay
