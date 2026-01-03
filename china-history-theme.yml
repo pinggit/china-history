@@ -2,10 +2,10 @@ extends: default
 font:
   catalog:
     Songti:
-      normal: Songti.ttc
-      bold: Songti.ttc
-      italic: Songti.ttc
-      bold_italic: Songti.ttc
+      normal: /System/Library/Fonts/Supplemental/Songti.ttc
+      bold: /System/Library/Fonts/Supplemental/Songti.ttc
+      italic: /System/Library/Fonts/Supplemental/Songti.ttc
+      bold_italic: /System/Library/Fonts/Supplemental/Songti.ttc
 page:
   margin: [0.5in, 0.5in, 0.5in, 0.5in]
   size: A4
