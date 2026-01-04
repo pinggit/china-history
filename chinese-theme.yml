@@ -1,0 +1,15 @@
+extends: default-with-font-fallbacks
+font:
+  catalog:
+    merge: true
+    STHeiti:
+      normal: /System/Library/Fonts/STHeiti Medium.ttc
+      bold: /System/Library/Fonts/STHeiti Medium.ttc
+      italic: /System/Library/Fonts/STHeiti Light.ttc
+      bold_italic: /System/Library/Fonts/STHeiti Medium.ttc
+  fallbacks:
+    - STHeiti
+base:
+  font-family: STHeiti
+heading:
+  font-family: STHeiti
