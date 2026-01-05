@@ -17,6 +17,100 @@
 
 依据：《史记·五帝本纪》
 
+==== 五帝世系关系图
+
+[graphviz]
+....
+digraph wudi {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC"];
+    edge [fontname="Heiti SC"];
+
+    // 三皇五帝
+    subgraph cluster_huangdi {
+        label="黄帝世系";
+        style=filled;
+        fillcolor="#fff8dc";
+        少典 [label="少典"];
+        黄帝 [label="黄帝\n(公孙轩辕)", fillcolor="#f0e68c", style="rounded,filled,bold"];
+        嫘祖 [label="嫘祖\n(西陵氏)"];
+        玄嚣 [label="玄嚣\n(青阳)"];
+        昌意 [label="昌意"];
+        蟜极 [label="蟜极"];
+        颛顼 [label="颛顼\n(高阳)", fillcolor="#f0e68c", style="rounded,filled,bold"];
+        帝喾 [label="帝喾\n(高辛)", fillcolor="#f0e68c", style="rounded,filled,bold"];
+    }
+
+    // 尧舜
+    subgraph cluster_yaoshun {
+        label="尧舜禹";
+        style=filled;
+        fillcolor="#e6e6fa";
+        挚 [label="挚"];
+        尧 [label="尧\n(放勋)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        舜 [label="舜\n(虞舜/重华)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        禹 [label="禹\n(夏后氏)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        娥皇 [label="娥皇"];
+        女英 [label="女英"];
+    }
+
+    // 其他重要人物
+    subgraph cluster_others {
+        label="上古人物";
+        style=filled;
+        fillcolor="#ffe4e1";
+        炎帝 [label="炎帝\n(神农氏)"];
+        蚩尤 [label="蚩尤"];
+        鲧 [label="鲧"];
+    }
+
+    // 黄帝世系
+    少典 -> 黄帝 [label="子"];
+    黄帝 -> 嫘祖 [label="妻", style=dotted];
+    黄帝 -> 玄嚣 [label="子"];
+    黄帝 -> 昌意 [label="子"];
+    昌意 -> 颛顼 [label="子"];
+    玄嚣 -> 蟜极 [label="子"];
+    蟜极 -> 帝喾 [label="子"];
+
+    // 帝喾子嗣
+    帝喾 -> 挚 [label="子"];
+    帝喾 -> 尧 [label="子"];
+    挚 -> 尧 [label="不善\n弟代立", style=dashed];
+
+    // 舜的世系（颛顼后裔）
+    颛顼 -> 舜 [label="七世孙", style=dashed];
+
+    // 禅让
+    尧 -> 舜 [label="禅让", color=blue, style=bold];
+    舜 -> 禹 [label="禅让", color=blue, style=bold];
+
+    // 尧嫁女于舜
+    尧 -> 娥皇 [label="女"];
+    尧 -> 女英 [label="女"];
+    娥皇 -> 舜 [label="妻", style=dotted];
+    女英 -> 舜 [label="妻", style=dotted];
+
+    // 鲧禹
+    鲧 -> 禹 [label="子"];
+    舜 -> 鲧 [label="殛于羽山", color=red];
+    舜 -> 禹 [label="举用", style=dashed];
+
+    // 战争关系
+    黄帝 -> 炎帝 [label="阪泉之战", color=red, style=bold];
+    黄帝 -> 蚩尤 [label="涿鹿之战\n禽杀", color=red, style=bold];
+}
+....
+
+**图例说明**：
+
+* **实线箭头**：血缘关系
+* **虚线箭头**：非直系血缘或政治关系
+* **点线箭头**：婚姻关系
+* **蓝色箭头**：禅让
+* **红色箭头**：战争或诛杀
+
+
 ==== 黄帝（公孙轩辕）
 
 姓公孙，名轩辕，少典之子。
@@ -302,6 +396,98 @@ ____
                                         └─皋
                                            └─发
                                               └─桀（亡国）
+....
+
+
+=== 夏朝人物关系图
+
+[graphviz]
+....
+digraph xia {
+    graph [fontname="Heiti SC", rankdir=TB, bgcolor=transparent, splines=ortho]
+    node [fontname="Heiti SC", shape=box, style="rounded,filled"]
+    edge [fontname="Heiti SC"]
+
+    // 夏帝世系
+    subgraph cluster_xia {
+        label="夏帝世系"
+        style="rounded,dashed"
+        bgcolor="#f0f8ff"
+
+        鲧 [fillcolor="#ffe4c4"]
+        禹 [fillcolor="#ffd700", style="rounded,filled,bold", label="禹\n（治水建国）"]
+        启 [fillcolor="#ffd700", style="rounded,filled,bold", label="启\n（家天下始）"]
+        太康 [fillcolor="#ffb6c1", label="太康\n（失国）"]
+        仲康 [fillcolor="#d3d3d3"]
+        相 [fillcolor="#ffb6c1", label="相\n（被杀）"]
+        少康 [fillcolor="#90ee90", style="rounded,filled,bold", label="少康\n（中兴）"]
+        杼 [fillcolor="#d3d3d3"]
+        孔甲 [fillcolor="#ffb6c1", label="孔甲\n（夏衰）"]
+        桀 [fillcolor="#ff6347", style="rounded,filled,bold", label="桀\n（亡国暴君）"]
+    }
+
+    // 禅让与辅臣
+    subgraph cluster_shanrang {
+        label="禅让与辅臣"
+        style="rounded,dashed"
+        bgcolor="#f5f5dc"
+
+        舜 [fillcolor="#dda0dd"]
+        益 [fillcolor="#87ceeb", label="益\n（禹让位）"]
+        后稷 [fillcolor="#87ceeb"]
+    }
+
+    // 太康失国
+    subgraph cluster_taikang {
+        label="太康失国"
+        style="rounded,dashed"
+        bgcolor="#ffe4e1"
+
+        后羿 [fillcolor="#ff8c00", style="rounded,filled,bold", label="后羿\n（代夏）"]
+        寒浞 [fillcolor="#dc143c", style="rounded,filled,bold", label="寒浞\n（篡位）"]
+        浇 [fillcolor="#ff6347", label="浇\n（寒浞子）"]
+        后缗 [fillcolor="#dda0dd", label="后缗\n（相妻）"]
+    }
+
+    // 商汤灭夏
+    subgraph cluster_shang {
+        label="商"
+        style="rounded,dashed"
+        bgcolor="#e6e6fa"
+
+        汤 [fillcolor="#ffd700", style="rounded,filled,bold", label="汤\n（灭夏建商）"]
+    }
+
+    // 世系关系
+    鲧 -> 禹 [label="父子", color="#8b4513"]
+    舜 -> 禹 [label="禅让", style=bold, color="#4169e1"]
+    禹 -> 启 [label="父子", color="#8b4513"]
+    启 -> 太康 [color="#8b4513"]
+    太康 -> 仲康 [label="兄弟", style=dashed, color="#8b4513"]
+    仲康 -> 相 [color="#8b4513"]
+    相 -> 少康 [color="#8b4513"]
+    少康 -> 杼 [color="#8b4513"]
+    杼 -> 孔甲 [label="数代后", style=dotted]
+    孔甲 -> 桀 [label="数代后", style=dotted]
+
+    // 禅让未遂
+    禹 -> 益 [label="授政", style=dashed, color="#4169e1"]
+    益 -> 启 [label="让位", style=dashed, color="#4169e1"]
+
+    // 太康失国
+    后羿 -> 太康 [label="代夏", color="#ff0000", style=bold]
+    寒浞 -> 后羿 [label="杀", color="#ff0000", style=bold]
+    寒浞 -> 浇 [label="父子", color="#8b4513"]
+    浇 -> 相 [label="杀", color="#ff0000", style=bold]
+    相 -> 后缗 [label="夫妻", style=dotted, color="#ff69b4"]
+    后缗 -> 少康 [label="母子", color="#8b4513"]
+
+    // 少康中兴
+    少康 -> 寒浞 [label="灭", color="#228b22", style=bold]
+
+    // 商汤灭夏
+    汤 -> 桀 [label="伐", color="#ff0000", style=bold]
+}
 ....
 
 
@@ -655,6 +841,120 @@ _说明：─横向连接为父子相继，└─换行亦为传承延续，├�
  │                 └─武乙─文丁─帝乙
  │                    └─帝辛（纣，亡国）
  └─外丙─仲壬
+....
+
+
+=== 商朝人物关系图
+
+[graphviz]
+....
+digraph shang {
+    graph [fontname="Heiti SC", rankdir=TB, bgcolor=transparent, splines=ortho]
+    node [fontname="Heiti SC", shape=box, style="rounded,filled"]
+    edge [fontname="Heiti SC"]
+
+    // 商先公
+    subgraph cluster_xiangong {
+        label="商先公"
+        style="rounded,dashed"
+        bgcolor="#f5f5dc"
+
+        帝喾 [fillcolor="#dda0dd"]
+        简狄 [fillcolor="#ffb6c1", label="简狄\n（契母）"]
+        契 [fillcolor="#87ceeb", style="rounded,filled,bold", label="契\n（商始祖）"]
+    }
+
+    // 商帝世系
+    subgraph cluster_shangdi {
+        label="商帝世系"
+        style="rounded,dashed"
+        bgcolor="#f0f8ff"
+
+        成汤 [fillcolor="#ffd700", style="rounded,filled,bold", label="成汤\n（灭夏建商）"]
+        太甲 [fillcolor="#90ee90", label="太甲\n（悔过复政）"]
+        盘庚 [fillcolor="#90ee90", style="rounded,filled,bold", label="盘庚\n（迁殷）"]
+        武丁 [fillcolor="#90ee90", style="rounded,filled,bold", label="武丁\n（中兴）"]
+        帝乙 [fillcolor="#d3d3d3"]
+        帝辛 [fillcolor="#ff6347", style="rounded,filled,bold", label="帝辛（纣）\n（亡国暴君）"]
+    }
+
+    // 贤相名臣
+    subgraph cluster_xianchen {
+        label="贤相名臣"
+        style="rounded,dashed"
+        bgcolor="#e0ffe0"
+
+        伊尹 [fillcolor="#32cd32", style="rounded,filled,bold", label="伊尹\n（辅汤灭夏）"]
+        傅说 [fillcolor="#32cd32", style="rounded,filled,bold", label="傅说\n（武丁相）"]
+    }
+
+    // 殷末三仁
+    subgraph cluster_sanren {
+        label="殷末三仁"
+        style="rounded,dashed"
+        bgcolor="#fffacd"
+
+        比干 [fillcolor="#ff8c00", style="rounded,filled,bold", label="比干\n（剖心）"]
+        箕子 [fillcolor="#ff8c00", label="箕子\n（被囚）"]
+        微子 [fillcolor="#87ceeb", label="微子\n（出走）"]
+    }
+
+    // 纣之佞臣与妃
+    subgraph cluster_ningchen {
+        label="纣王近臣"
+        style="rounded,dashed"
+        bgcolor="#ffe4e1"
+
+        妲己 [fillcolor="#ff69b4", style="rounded,filled,bold", label="妲己\n（宠妃）"]
+        费中 [fillcolor="#ff6347", label="费中\n（佞臣）"]
+        恶来 [fillcolor="#ff6347", label="恶来\n（佞臣）"]
+    }
+
+    // 周
+    subgraph cluster_zhou {
+        label="周"
+        style="rounded,dashed"
+        bgcolor="#e6e6fa"
+
+        西伯昌 [fillcolor="#ffd700", label="西伯昌\n（周文王）"]
+        周武王 [fillcolor="#ffd700", style="rounded,filled,bold", label="周武王\n（灭商建周）"]
+    }
+
+    // 夏
+    夏桀 [fillcolor="#ff6347", label="夏桀\n（亡国）"]
+
+    // 世系关系
+    帝喾 -> 简狄 [label="妃", style=dotted, color="#ff69b4"]
+    简狄 -> 契 [label="母子", color="#8b4513"]
+    契 -> 成汤 [label="14世后", style=dotted]
+    成汤 -> 太甲 [label="祖孙", color="#8b4513"]
+    太甲 -> 盘庚 [label="数代后", style=dotted]
+    盘庚 -> 武丁 [label="数代后", style=dotted]
+    武丁 -> 帝乙 [label="数代后", style=dotted]
+    帝乙 -> 帝辛 [color="#8b4513"]
+
+    // 君臣关系
+    伊尹 -> 成汤 [label="辅佐", style=dashed, color="#228b22"]
+    伊尹 -> 太甲 [label="放桐宫", color="#ff8c00"]
+    傅说 -> 武丁 [label="辅佐", style=dashed, color="#228b22"]
+
+    // 三仁与纣
+    比干 -> 帝辛 [label="叔", color="#8b4513"]
+    箕子 -> 帝辛 [label="叔", color="#8b4513"]
+    微子 -> 帝辛 [label="兄", style=dashed, color="#8b4513"]
+    帝辛 -> 比干 [label="剖心", color="#ff0000", style=bold]
+    帝辛 -> 箕子 [label="囚", color="#ff0000"]
+
+    // 纣之近臣
+    妲己 -> 帝辛 [label="宠", style=dotted, color="#ff69b4"]
+    费中 -> 帝辛 [label="佞", style=dashed, color="#808080"]
+    恶来 -> 帝辛 [label="佞", style=dashed, color="#808080"]
+
+    // 灭夏灭商
+    成汤 -> 夏桀 [label="灭", color="#228b22", style=bold]
+    周武王 -> 帝辛 [label="伐", color="#ff0000", style=bold]
+    西伯昌 -> 周武王 [label="父子", color="#8b4513"]
+}
 ....
 
 
@@ -1117,6 +1417,449 @@ ____
 * 前781年 幽王即位
 * 前771年 犬戎破镐京，杀幽王，西周亡
 
+
+=== 人物关系图
+
+==== 西周王室与重臣
+
+[graphviz]
+----
+digraph 西周人物关系 {
+    rankdir=TB
+    node [shape=box, fontname="Heiti SC", fontsize=12]
+    edge [fontname="Heiti SC", fontsize=10]
+
+    // 定义节点样式
+    node [style=filled]
+
+    // 先公世系（浅蓝）
+    subgraph cluster_ancestors {
+        label="先公世系"
+        style=dashed
+        node [fillcolor=lightblue]
+        后稷 [label="后稷（弃）\n周始祖"]
+        古公亶父 [label="古公亶父\n（太王）"]
+        太伯 [label="太伯\n让位奔吴"]
+        虞仲 [label="虞仲\n让位奔吴"]
+        季历 [label="季历\n（王季）"]
+    }
+
+    // 西周王室（浅黄）
+    subgraph cluster_kings {
+        label="西周王室"
+        node [fillcolor=lightyellow]
+        文王 [label="文王\n（姬昌）"]
+        武王 [label="武王\n（姬发）\n灭商建周"]
+        周公旦 [label="周公旦\n摄政制礼"]
+        管叔 [label="管叔\n叛乱被诛"]
+        蔡叔 [label="蔡叔\n叛乱被放"]
+        成王 [label="成王\n（姬诵）"]
+        康王 [label="康王\n（姬钊）\n成康之治"]
+        厉王 [label="厉王\n（姬胡）\n国人暴动"]
+        宣王 [label="宣王\n（姬静）\n宣王中兴"]
+        幽王 [label="幽王\n（姬宫湦）\n烽火戏诸侯"]
+        平王 [label="平王\n（姬宜臼）\n东迁洛邑"]
+    }
+
+    // 后妃（浅粉）
+    subgraph cluster_consorts {
+        label="后妃"
+        node [fillcolor=mistyrose]
+        姜原 [label="姜原\n帝喾元妃"]
+        太姜 [label="太姜"]
+        太任 [label="太任"]
+        褒姒 [label="褒姒\n幽王宠妃"]
+        申后 [label="申后\n被废"]
+    }
+
+    // 重臣（浅绿）
+    subgraph cluster_ministers {
+        label="重臣"
+        node [fillcolor=lightgreen]
+        太公望 [label="太公望\n（姜子牙）\n封于齐"]
+        召公奭 [label="召公奭\n封于燕"]
+    }
+
+    // 敌对/外部（浅灰）
+    subgraph cluster_external {
+        label="外部势力"
+        node [fillcolor=lightgray]
+        纣王 [label="纣王\n商末帝"]
+        武庚 [label="武庚\n纣王之子"]
+        申侯 [label="申侯\n申后之父"]
+        犬戎 [label="犬戎"]
+    }
+
+    // 关系连线
+    // 世系传承（实线）
+    姜原 -> 后稷 [label="母子"]
+    后稷 -> 古公亶父 [label="十二世孙", style=dashed]
+    太姜 -> 古公亶父 [label="妻", dir=none, style=dotted]
+    古公亶父 -> 太伯 [label="长子"]
+    古公亶父 -> 虞仲 [label="次子"]
+    古公亶父 -> 季历 [label="少子"]
+    太任 -> 季历 [label="妻", dir=none, style=dotted]
+    季历 -> 文王 [label="父子"]
+
+    文王 -> 武王 [label="嫡子"]
+    文王 -> 周公旦 [label="子"]
+    文王 -> 管叔 [label="子"]
+    文王 -> 蔡叔 [label="子"]
+
+    武王 -> 成王 [label="父子"]
+    成王 -> 康王 [label="父子"]
+    康王 -> 厉王 [label="数世后", style=dashed]
+    厉王 -> 宣王 [label="父子"]
+    宣王 -> 幽王 [label="父子"]
+    幽王 -> 平王 [label="太子"]
+
+    // 后妃关系（点线）
+    褒姒 -> 幽王 [label="宠妃", dir=none, style=dotted]
+    申后 -> 幽王 [label="王后（废）", dir=none, style=dotted]
+    申后 -> 平王 [label="母子"]
+    申侯 -> 申后 [label="父女"]
+
+    // 君臣关系（虚线）
+    太公望 -> 武王 [label="师", style=dashed]
+    召公奭 -> 武王 [label="臣", style=dashed]
+    周公旦 -> 成王 [label="摄政", style=dashed]
+    召公奭 -> 成王 [label="辅政", style=dashed]
+
+    // 敌对关系（红色）
+    武王 -> 纣王 [label="灭", color=red]
+    武庚 -> 纣王 [label="子"]
+    管叔 -> 武庚 [label="拥立叛乱", color=red]
+    蔡叔 -> 武庚 [label="拥立叛乱", color=red]
+    周公旦 -> 管叔 [label="诛", color=red]
+    周公旦 -> 武庚 [label="杀", color=red]
+
+    申侯 -> 犬戎 [label="联合", color=red]
+    犬戎 -> 幽王 [label="杀", color=red]
+    申侯 -> 平王 [label="拥立"]
+}
+----
+
+**图例说明**：
+
+* **实线箭头**：血缘传承（父子、母子）
+* **虚线箭头**：君臣关系
+* **点线**：婚姻关系
+* **红色线**：敌对/冲突关系
+
+
+==== 春秋五霸与名臣
+
+[graphviz]
+----
+digraph 春秋人物关系 {
+    rankdir=TB
+    node [shape=box, fontname="Heiti SC", fontsize=11]
+    edge [fontname="Heiti SC", fontsize=9]
+    node [style=filled]
+
+    // 齐国（浅蓝）
+    subgraph cluster_qi {
+        label="齐国"
+        style=dashed
+        node [fillcolor=lightblue]
+        齐桓公 [label="齐桓公\n（姜小白）\n首霸"]
+        管仲 [label="管仲\n九合诸侯之谋"]
+        鲍叔牙 [label="鲍叔牙\n荐管仲"]
+    }
+
+    // 晋国（浅黄）
+    subgraph cluster_jin {
+        label="晋国"
+        style=dashed
+        node [fillcolor=lightyellow]
+        晋献公 [label="晋献公"]
+        骊姬 [label="骊姬\n谮太子"]
+        太子申生 [label="太子申生\n自缢"]
+        晋文公 [label="晋文公\n（姬重耳）\n城濮称霸"]
+        夷吾 [label="夷吾\n（晋惠公）"]
+        狐偃 [label="狐偃\n（子犯）"]
+        赵衰 [label="赵衰"]
+        介之推 [label="介之推\n割股啖君"]
+    }
+
+    // 秦国（浅橙）
+    subgraph cluster_qin {
+        label="秦国"
+        style=dashed
+        node [fillcolor=moccasin]
+        秦穆公 [label="秦穆公\n（嬴任好）\n霸西戎"]
+        百里奚 [label="百里奚\n五羖大夫"]
+        蹇叔 [label="蹇叔"]
+        孟明视 [label="孟明视"]
+    }
+
+    // 楚国（浅绿）
+    subgraph cluster_chu {
+        label="楚国"
+        style=dashed
+        node [fillcolor=lightgreen]
+        楚成王 [label="楚成王"]
+        楚庄王 [label="楚庄王\n（芈旅）\n问鼎中原"]
+        伍举 [label="伍举\n一鸣惊人"]
+        子玉 [label="子玉\n城濮兵败"]
+        楚平王 [label="楚平王"]
+        伍奢 [label="伍奢\n被杀"]
+    }
+
+    // 吴国（浅紫）
+    subgraph cluster_wu {
+        label="吴国"
+        style=dashed
+        node [fillcolor=lavender]
+        吴王阖闾 [label="吴王阖闾\n破楚入郢"]
+        夫差 [label="夫差\n亡于越"]
+        伍子胥 [label="伍子胥\n鞭尸复仇"]
+        孙武 [label="孙武\n《孙子兵法》"]
+        专诸 [label="专诸\n刺王僚"]
+    }
+
+    // 越国（浅粉）
+    subgraph cluster_yue {
+        label="越国"
+        style=dashed
+        node [fillcolor=mistyrose]
+        勾践 [label="越王勾践\n卧薪尝胆"]
+        范蠡 [label="范蠡\n功成身退"]
+        文种 [label="文种\n被赐死"]
+        西施 [label="西施"]
+    }
+
+    // 郑国
+    subgraph cluster_zheng {
+        label="郑国"
+        node [fillcolor=wheat]
+        子产 [label="子产\n铸刑于鼎"]
+    }
+
+    // 齐国关系
+    鲍叔牙 -> 管仲 [label="荐", style=dashed]
+    管仲 -> 齐桓公 [label="相", style=dashed]
+    鲍叔牙 -> 齐桓公 [label="臣", style=dashed]
+
+    // 晋国关系
+    晋献公 -> 太子申生 [label="嫡子"]
+    晋献公 -> 晋文公 [label="子"]
+    晋献公 -> 夷吾 [label="子"]
+    骊姬 -> 晋献公 [label="宠妃", dir=none, style=dotted]
+    骊姬 -> 太子申生 [label="谮杀", color=red]
+    狐偃 -> 晋文公 [label="从亡", style=dashed]
+    赵衰 -> 晋文公 [label="从亡", style=dashed]
+    介之推 -> 晋文公 [label="从亡", style=dashed]
+
+    // 秦国关系
+    百里奚 -> 秦穆公 [label="相", style=dashed]
+    蹇叔 -> 秦穆公 [label="上大夫", style=dashed]
+    百里奚 -> 蹇叔 [label="荐", style=dashed]
+    孟明视 -> 秦穆公 [label="将", style=dashed]
+
+    // 楚国关系
+    伍举 -> 楚庄王 [label="谏", style=dashed]
+    子玉 -> 楚成王 [label="将", style=dashed]
+    楚平王 -> 伍奢 [label="杀", color=red]
+    伍奢 -> 伍子胥 [label="父子"]
+
+    // 吴国关系
+    专诸 -> 吴王阖闾 [label="刺客", style=dashed]
+    伍子胥 -> 吴王阖闾 [label="行人", style=dashed]
+    孙武 -> 吴王阖闾 [label="将", style=dashed]
+    吴王阖闾 -> 夫差 [label="父子"]
+    伍子胥 -> 夫差 [label="谏", style=dashed]
+    夫差 -> 伍子胥 [label="赐死", color=red]
+
+    // 越国关系
+    范蠡 -> 勾践 [label="谋臣", style=dashed]
+    文种 -> 勾践 [label="谋臣", style=dashed]
+    勾践 -> 文种 [label="赐死", color=red]
+    西施 -> 夫差 [label="献", color=red, style=dashed]
+    范蠡 -> 西施 [label="携归", style=dotted]
+
+    // 跨国关系
+    秦穆公 -> 晋文公 [label="送归晋", color=blue]
+    楚成王 -> 晋文公 [label="礼遇", color=blue]
+    晋文公 -> 子玉 [label="城濮败", color=red]
+    楚庄王 -> 晋文公 [label="邲之战胜晋", color=red, style=dashed]
+    伍子胥 -> 楚平王 [label="掘墓鞭尸", color=red]
+    吴王阖闾 -> 楚成王 [label="破郢", color=red, style=dashed]
+    勾践 -> 吴王阖闾 [label="槜李败吴", color=red]
+    夫差 -> 勾践 [label="会稽败越", color=red]
+    勾践 -> 夫差 [label="灭吴", color=red]
+}
+----
+
+**五霸争雄脉络**：
+
+* **齐桓公**：管仲相齐，尊王攘夷，九合诸侯
+* **晋文公**：流亡十九年，城濮退避三舍，败楚称霸
+* **秦穆公**：五羖大夫百里奚，崤山之败，霸于西戎
+* **楚庄王**：三年不鸣，问鼎中原，邲之战大败晋军
+* **吴王阖闾**：伍子胥、孙武为将，五战入郢
+* **越王勾践**：会稽之耻，卧薪尝胆，终灭吴霸
+
+
+==== 战国七雄与名士
+
+[graphviz]
+----
+digraph 战国人物关系 {
+    rankdir=TB
+    node [shape=box, fontname="Heiti SC", fontsize=10]
+    edge [fontname="Heiti SC", fontsize=9]
+    node [style=filled]
+
+    // 秦国（浅红）
+    subgraph cluster_qin {
+        label="秦国"
+        style=dashed
+        node [fillcolor=lightsalmon]
+        秦孝公 [label="秦孝公"]
+        商鞅 [label="商鞅\n变法强秦"]
+        秦惠王 [label="秦惠王"]
+        秦昭王 [label="秦昭王"]
+        白起 [label="白起\n武安君\n长平坑卒"]
+        范雎 [label="范雎\n远交近攻"]
+        吕不韦 [label="吕不韦\n奇货可居"]
+        秦王政 [label="秦王政\n（嬴政）"]
+        李斯 [label="李斯"]
+    }
+
+    // 赵国（浅黄）
+    subgraph cluster_zhao {
+        label="赵国"
+        style=dashed
+        node [fillcolor=lightyellow]
+        赵武灵王 [label="赵武灵王\n胡服骑射"]
+        廉颇 [label="廉颇\n负荆请罪"]
+        蔺相如 [label="蔺相如\n完璧归赵"]
+        赵括 [label="赵括\n纸上谈兵"]
+        赵奢 [label="赵奢\n（马服君）"]
+    }
+
+    // 魏国（浅蓝）
+    subgraph cluster_wei {
+        label="魏国"
+        style=dashed
+        node [fillcolor=lightblue]
+        魏惠王 [label="魏惠王"]
+        庞涓 [label="庞涓\n马陵自刎"]
+        信陵君 [label="信陵君\n窃符救赵"]
+    }
+
+    // 齐国（浅绿）
+    subgraph cluster_qi2 {
+        label="齐国"
+        style=dashed
+        node [fillcolor=lightgreen]
+        齐威王 [label="齐威王"]
+        田忌 [label="田忌"]
+        孙膑 [label="孙膑\n围魏救赵"]
+        田单 [label="田单\n火牛复齐"]
+    }
+
+    // 楚国（浅紫）
+    subgraph cluster_chu2 {
+        label="楚国"
+        style=dashed
+        node [fillcolor=plum]
+        楚怀王 [label="楚怀王\n客死于秦"]
+        屈原 [label="屈原\n《离骚》"]
+    }
+
+    // 燕国（浅灰）
+    subgraph cluster_yan {
+        label="燕国"
+        style=dashed
+        node [fillcolor=lightgray]
+        燕昭王 [label="燕昭王\n千金买马骨"]
+        乐毅 [label="乐毅\n连下七十城"]
+        燕太子丹 [label="燕太子丹"]
+        荆轲 [label="荆轲\n刺秦"]
+        高渐离 [label="高渐离\n易水击筑"]
+    }
+
+    // 韩国
+    subgraph cluster_han {
+        label="韩国"
+        node [fillcolor=wheat]
+        韩非 [label="韩非\n法家集大成"]
+    }
+
+    // 纵横家（橙色）
+    subgraph cluster_strategist {
+        label="纵横家"
+        style=dashed
+        node [fillcolor=moccasin]
+        鬼谷子 [label="鬼谷子\n纵横家祖师"]
+        苏秦 [label="苏秦\n合纵抗秦\n佩六国相印"]
+        张仪 [label="张仪\n连横事秦"]
+    }
+
+    // 秦国关系
+    商鞅 -> 秦孝公 [label="变法", style=dashed]
+    秦孝公 -> 秦惠王 [label="父子"]
+    秦惠王 -> 商鞅 [label="车裂", color=red]
+    秦惠王 -> 秦昭王 [label="父子"]
+    范雎 -> 秦昭王 [label="相", style=dashed]
+    白起 -> 秦昭王 [label="将", style=dashed]
+    秦昭王 -> 白起 [label="赐死", color=red]
+    秦昭王 -> 秦王政 [label="曾孙"]
+    吕不韦 -> 秦王政 [label="相父", style=dashed]
+    李斯 -> 秦王政 [label="丞相", style=dashed]
+    韩非 -> 李斯 [label="同门"]
+    李斯 -> 韩非 [label="谮杀", color=red]
+
+    // 赵国关系
+    赵奢 -> 赵括 [label="父子"]
+    廉颇 -> 蔺相如 [label="将相和", color=blue]
+    白起 -> 赵括 [label="长平杀", color=red]
+
+    // 魏国关系
+    庞涓 -> 魏惠王 [label="将", style=dashed]
+    信陵君 -> 魏惠王 [label="弟"]
+
+    // 齐国关系
+    田忌 -> 齐威王 [label="将", style=dashed]
+    孙膑 -> 齐威王 [label="军师", style=dashed]
+    孙膑 -> 田忌 [label="佐", style=dashed]
+
+    // 楚国关系
+    屈原 -> 楚怀王 [label="左徒", style=dashed]
+    楚怀王 -> 屈原 [label="放逐", color=red]
+
+    // 燕国关系
+    乐毅 -> 燕昭王 [label="上将军", style=dashed]
+    荆轲 -> 燕太子丹 [label="刺客", style=dashed]
+    高渐离 -> 荆轲 [label="友"]
+    荆轲 -> 秦王政 [label="刺（未遂）", color=red]
+
+    // 纵横家关系
+    鬼谷子 -> 苏秦 [label="师"]
+    鬼谷子 -> 张仪 [label="师"]
+    鬼谷子 -> 孙膑 [label="师"]
+    鬼谷子 -> 庞涓 [label="师"]
+    苏秦 -> 张仪 [label="同门"]
+    张仪 -> 秦惠王 [label="相", style=dashed]
+    张仪 -> 楚怀王 [label="欺骗", color=red]
+
+    // 跨国冲突
+    孙膑 -> 庞涓 [label="马陵射杀", color=red]
+    乐毅 -> 田单 [label="燕齐攻守", color=red, dir=both]
+    信陵君 -> 秦昭王 [label="窃符救赵", color=red]
+}
+----
+
+**战国格局**：
+
+* **三家分晋**（前453）：韩、赵、魏瓜分晋国，战国开端
+* **商鞅变法**（前359）：秦国由弱变强之关键
+* **合纵连横**：苏秦合纵抗秦，张仪连横破之
+* **围魏救赵**（前354）：孙膑桂陵、马陵两败魏军
+* **长平之战**（前260）：白起坑杀赵卒四十万
+* **荆轲刺秦**（前227）：图穷匕见，功败垂成
 
 
 === 西周（前1046-前771）
@@ -4171,6 +4914,108 @@ ____
 * 前207年 赵高杀二世，子婴降刘邦，秦亡
 
 
+=== 人物关系图
+
+[graphviz]
+----
+digraph 秦朝人物关系 {
+    rankdir=TB
+    node [shape=box, fontname="Heiti SC", fontsize=11]
+    edge [fontname="Heiti SC", fontsize=9]
+    node [style=filled]
+
+    // 秦王室（浅黄）
+    subgraph cluster_royal {
+        label="秦王室"
+        node [fillcolor=lightyellow]
+        秦孝公 [label="秦孝公\n变法图强"]
+        秦惠王 [label="秦惠王"]
+        秦昭王 [label="秦昭王\n长平之战"]
+        秦庄襄王 [label="秦庄襄王\n（异人）"]
+        始皇帝 [label="始皇帝\n（嬴政）\n统一六国"]
+        扶苏 [label="扶苏\n（长子）\n被赐死"]
+        胡亥 [label="二世胡亥"]
+        子婴 [label="子婴\n秦亡"]
+    }
+
+    // 功臣名将（浅蓝）
+    subgraph cluster_generals {
+        label="功臣名将"
+        node [fillcolor=lightblue]
+        商鞅 [label="商鞅\n变法强秦"]
+        白起 [label="白起\n武安君"]
+        王翦 [label="王翦\n灭楚燕"]
+        王贲 [label="王贲\n灭魏齐"]
+        蒙恬 [label="蒙恬\n筑长城"]
+        蒙毅 [label="蒙毅"]
+    }
+
+    // 文臣谋士（浅绿）
+    subgraph cluster_ministers {
+        label="文臣谋士"
+        node [fillcolor=lightgreen]
+        张仪 [label="张仪\n连横破纵"]
+        范雎 [label="范雎\n远交近攻"]
+        吕不韦 [label="吕不韦\n奇货可居"]
+        李斯 [label="李斯\n丞相"]
+        尉缭 [label="尉缭"]
+    }
+
+    // 宦官奸臣（浅灰）
+    subgraph cluster_evil {
+        label="权臣"
+        node [fillcolor=lightgray]
+        赵高 [label="赵高\n指鹿为马"]
+    }
+
+    // 王室世系
+    秦孝公 -> 秦惠王 [label="父子"]
+    秦惠王 -> 秦昭王 [label="父子"]
+    秦昭王 -> 秦庄襄王 [label="孙"]
+    秦庄襄王 -> 始皇帝 [label="父子"]
+    始皇帝 -> 扶苏 [label="长子"]
+    始皇帝 -> 胡亥 [label="少子"]
+    胡亥 -> 子婴 [label="侄"]
+
+    // 君臣关系
+    商鞅 -> 秦孝公 [label="变法", style=dashed]
+    秦惠王 -> 商鞅 [label="车裂", color=red]
+    张仪 -> 秦惠王 [label="相", style=dashed]
+    范雎 -> 秦昭王 [label="相", style=dashed]
+    白起 -> 秦昭王 [label="将", style=dashed]
+    秦昭王 -> 白起 [label="赐死", color=red]
+    吕不韦 -> 秦庄襄王 [label="奇货", style=dashed]
+    吕不韦 -> 始皇帝 [label="相父", style=dashed]
+    始皇帝 -> 吕不韦 [label="罢相", color=red]
+    李斯 -> 始皇帝 [label="丞相", style=dashed]
+    尉缭 -> 始皇帝 [label="谋", style=dashed]
+    王翦 -> 始皇帝 [label="大将", style=dashed]
+    王贲 -> 始皇帝 [label="将", style=dashed]
+    王翦 -> 王贲 [label="父子"]
+    蒙恬 -> 始皇帝 [label="将", style=dashed]
+    蒙毅 -> 始皇帝 [label="内臣", style=dashed]
+    蒙恬 -> 蒙毅 [label="兄弟"]
+
+    // 沙丘之变
+    赵高 -> 胡亥 [label="拥立", style=dashed]
+    赵高 -> 李斯 [label="合谋"]
+    赵高 -> 扶苏 [label="矫诏杀", color=red]
+    赵高 -> 蒙恬 [label="矫诏杀", color=red]
+    赵高 -> 蒙毅 [label="杀", color=red]
+    赵高 -> 李斯 [label="诛", color=red]
+    赵高 -> 胡亥 [label="杀", color=red]
+    子婴 -> 赵高 [label="诛杀", color=red]
+}
+----
+
+**秦朝兴亡**：
+
+* **商鞅变法**：奠定秦国强盛根基
+* **六世余烈**：孝公→惠王→昭王→庄襄王→始皇，积累统一实力
+* **始皇统一**：十年灭六国，建立大一统帝国
+* **沙丘之变**：赵高矫诏，扶苏被杀，胡亥即位
+* **二世亡国**：赵高乱政，陈胜吴广起义，子婴降汉
+
 
 === 重要事件
 
@@ -4612,6 +5457,111 @@ ____
 * 前202年 垓下之战，项羽乌江自刎
 * 前202年 刘邦即皇帝位，汉朝始
 
+
+=== 人物关系图
+
+[graphviz]
+----
+digraph 楚汉之际人物关系 {
+    rankdir=TB
+    node [shape=box, fontname="Heiti SC", fontsize=11]
+    edge [fontname="Heiti SC", fontsize=9]
+
+    // 起义领袖
+    subgraph cluster_qiyi {
+        label="起义领袖"
+        style=filled
+        fillcolor=lightyellow
+        陈胜 [label="陈胜\n（张楚王）"]
+        吴广
+    }
+
+    // 楚军阵营
+    subgraph cluster_chu {
+        label="楚军阵营"
+        style=filled
+        fillcolor=mistyrose
+        项梁 [label="项梁\n（起兵江东）"]
+        项羽 [label="项羽\n（西楚霸王）", style=bold]
+        项伯 [label="项伯\n（护沛公）"]
+        范增 [label="范增\n（亚父）"]
+        龙且 [label="龙且\n（楚将）"]
+        钟离昧 [label="钟离昧\n（楚将）"]
+        虞姬 [label="虞姬"]
+        楚怀王心 [label="楚怀王心\n（义帝）"]
+    }
+
+    // 汉军阵营
+    subgraph cluster_han {
+        label="汉军阵营"
+        style=filled
+        fillcolor=lightblue
+        刘邦 [label="刘邦\n（汉王→高祖）", style=bold]
+        吕雉 [label="吕雉\n（皇后）"]
+        张良 [label="张良\n（谋士）"]
+        萧何 [label="萧何\n（丞相）"]
+        韩信 [label="韩信\n（大将军）"]
+        陈平 [label="陈平\n（谋士）"]
+        樊哙 [label="樊哙\n（勇将）"]
+        彭越 [label="彭越\n（将领）"]
+        灌婴 [label="灌婴\n（骑将）"]
+        纪信 [label="纪信\n（替死）"]
+    }
+
+    // 秦末人物
+    subgraph cluster_qin {
+        label="秦末人物"
+        style=filled
+        fillcolor=lightgray
+        子婴 [label="子婴\n（秦末代王）"]
+        章邯 [label="章邯\n（秦将→雍王）"]
+    }
+
+    // 楚军血缘关系
+    项梁 -> 项羽 [label="叔侄", style=solid]
+    项梁 -> 项伯 [label="兄弟", style=solid]
+    项羽 -> 虞姬 [label="夫妻", style=dotted, color=pink]
+
+    // 楚军君臣关系
+    项羽 -> 范增 [label="亚父", style=dashed]
+    项羽 -> 龙且 [label="君臣", style=dashed]
+    项羽 -> 钟离昧 [label="君臣", style=dashed]
+    项梁 -> 楚怀王心 [label="拥立", style=dashed]
+
+    // 汉军关系
+    刘邦 -> 吕雉 [label="夫妻", style=dotted, color=pink]
+    刘邦 -> 张良 [label="君臣", style=dashed]
+    刘邦 -> 萧何 [label="君臣", style=dashed]
+    刘邦 -> 韩信 [label="君臣", style=dashed]
+    刘邦 -> 陈平 [label="君臣", style=dashed]
+    刘邦 -> 樊哙 [label="连襟", style=solid]
+    刘邦 -> 彭越 [label="君臣", style=dashed]
+    刘邦 -> 灌婴 [label="君臣", style=dashed]
+    纪信 -> 刘邦 [label="替死", color=red]
+
+    // 起义关系
+    陈胜 -> 吴广 [label="共举义", style=solid]
+    陈胜 -> 项梁 [label="首义响应", style=dashed]
+    陈胜 -> 刘邦 [label="首义响应", style=dashed]
+
+    // 敌对关系
+    项羽 -> 刘邦 [label="争天下", color=red, style=bold, dir=both]
+    项羽 -> 子婴 [label="杀", color=red]
+    项羽 -> 楚怀王心 [label="弑", color=red]
+    韩信 -> 龙且 [label="潍水斩杀", color=red]
+
+    // 反间与背叛
+    陈平 -> 范增 [label="反间计", color=orange, style=dashed]
+    项伯 -> 张良 [label="旧交", color=green]
+    项伯 -> 刘邦 [label="鸿门护救", color=green]
+
+    // 秦末
+    刘邦 -> 子婴 [label="受降", style=dashed]
+    项羽 -> 章邯 [label="受降封王", style=dashed]
+    章邯 -> 韩信 [label="陈仓败亡", color=red]
+
+}
+----
 
 
 === 重要事件
@@ -5150,6 +6100,172 @@ ____
 * 前33年 王昭君出塞
 * 8年 王莽篡汉，西汉亡
 
+
+=== 人物关系图
+
+[graphviz]
+----
+digraph 西汉人物关系 {
+    rankdir=TB
+    node [shape=box, fontname="Heiti SC", fontsize=11]
+    edge [fontname="Heiti SC", fontsize=9]
+
+    // 前期皇帝
+    subgraph cluster_emperor1 {
+        label="前期帝系"
+        style=filled
+        fillcolor=lightyellow
+        高祖 [label="高祖刘邦", style=bold]
+        惠帝 [label="惠帝刘盈"]
+        文帝 [label="文帝刘恒", style=bold]
+        景帝 [label="景帝刘启"]
+        武帝 [label="武帝刘彻", style=bold]
+    }
+
+    // 后期皇帝
+    subgraph cluster_emperor2 {
+        label="后期帝系"
+        style=filled
+        fillcolor=lemonchiffon
+        昭帝 [label="昭帝刘弗陵"]
+        宣帝 [label="宣帝刘询", style=bold]
+        元帝 [label="元帝刘奭"]
+        成帝 [label="成帝刘骜"]
+        哀帝 [label="哀帝刘欣"]
+        平帝 [label="平帝刘衎"]
+        孺子婴 [label="孺子婴"]
+    }
+
+    // 后妃太后
+    subgraph cluster_empress {
+        label="后妃太后"
+        style=filled
+        fillcolor=pink
+        吕后 [label="吕后\n（高祖后）"]
+        窦太后 [label="窦太后\n（文帝后）"]
+        王政君 [label="王政君\n（元帝后）"]
+        王昭君 [label="王昭君\n（和亲）"]
+        赵飞燕 [label="赵飞燕\n（成帝后）"]
+    }
+
+    // 开国功臣
+    subgraph cluster_founding {
+        label="开国功臣"
+        style=filled
+        fillcolor=lightblue
+        萧何 [label="萧何\n（丞相）"]
+        曹参 [label="曹参\n（继萧相）"]
+        周勃 [label="周勃\n（诛诸吕）"]
+        陈平 [label="陈平\n（谋士）"]
+    }
+
+    // 武帝名臣
+    subgraph cluster_wudi {
+        label="武帝名臣"
+        style=filled
+        fillcolor=lightgreen
+        卫青 [label="卫青\n（大将军）"]
+        霍去病 [label="霍去病\n（骠骑将军）"]
+        李广 [label="李广\n（飞将军）"]
+        张骞 [label="张骞\n（通西域）"]
+        董仲舒 [label="董仲舒\n（独尊儒术）"]
+        司马迁 [label="司马迁\n（史记）"]
+        主父偃 [label="主父偃\n（推恩令）"]
+    }
+
+    // 辅政与外戚
+    subgraph cluster_regent {
+        label="辅政与外戚"
+        style=filled
+        fillcolor=lavender
+        霍光 [label="霍光\n（辅政）"]
+        王凤 [label="王凤\n（外戚）"]
+        王莽 [label="王莽\n（篡汉）", style=bold, color=red]
+    }
+
+    // 其他重要人物
+    subgraph cluster_other {
+        label="其他人物"
+        style=filled
+        fillcolor=lightgray
+        晁错 [label="晁错\n（削藩）"]
+        周亚夫 [label="周亚夫\n（平七国）"]
+        苏武 [label="苏武\n（牧羊）"]
+        缇萦 [label="缇萦\n（救父）"]
+        吕禄 [label="吕禄"]
+        吕产 [label="吕产"]
+    }
+
+    // 皇帝世系
+    高祖 -> 惠帝 [label="父子"]
+    高祖 -> 文帝 [label="父子"]
+    文帝 -> 景帝 [label="父子"]
+    景帝 -> 武帝 [label="父子"]
+    武帝 -> 昭帝 [label="父子"]
+    宣帝 -> 元帝 [label="父子"]
+    元帝 -> 成帝 [label="父子"]
+    成帝 -> 哀帝 [label="继嗣", style=dashed]
+    哀帝 -> 平帝 [label="继嗣", style=dashed]
+    平帝 -> 孺子婴 [label="继嗣", style=dashed]
+
+    // 后妃关系
+    高祖 -> 吕后 [label="夫妻", style=dotted, color=pink]
+    文帝 -> 窦太后 [label="夫妻", style=dotted, color=pink]
+    元帝 -> 王政君 [label="夫妻", style=dotted, color=pink]
+    成帝 -> 赵飞燕 [label="夫妻", style=dotted, color=pink]
+
+    // 吕后专权
+    吕后 -> 惠帝 [label="母子"]
+    吕后 -> 吕禄 [label="侄", style=dashed]
+    吕后 -> 吕产 [label="侄", style=dashed]
+    周勃 -> 吕禄 [label="诛杀", color=red]
+    周勃 -> 吕产 [label="诛杀", color=red]
+    周勃 -> 文帝 [label="拥立", color=green]
+
+    // 君臣关系
+    高祖 -> 萧何 [label="君臣", style=dashed]
+    高祖 -> 曹参 [label="君臣", style=dashed]
+    高祖 -> 周勃 [label="君臣", style=dashed]
+    高祖 -> 陈平 [label="君臣", style=dashed]
+    萧何 -> 曹参 [label="继任", style=dashed]
+
+    // 武帝君臣
+    武帝 -> 卫青 [label="君臣", style=dashed]
+    武帝 -> 霍去病 [label="君臣", style=dashed]
+    武帝 -> 李广 [label="君臣", style=dashed]
+    武帝 -> 张骞 [label="君臣", style=dashed]
+    武帝 -> 董仲舒 [label="君臣", style=dashed]
+    武帝 -> 司马迁 [label="君臣", style=dashed]
+    武帝 -> 主父偃 [label="君臣", style=dashed]
+    卫青 -> 霍去病 [label="甥舅"]
+
+    // 景帝七国之乱
+    景帝 -> 晁错 [label="君臣", style=dashed]
+    景帝 -> 周亚夫 [label="君臣", style=dashed]
+    晁错 -> 周亚夫 [label="诛晁后平乱", style=dashed]
+    周勃 -> 周亚夫 [label="父子"]
+
+    // 辅政关系
+    霍去病 -> 霍光 [label="兄弟"]
+    昭帝 -> 霍光 [label="辅政", style=dashed]
+    宣帝 -> 霍光 [label="辅政", style=dashed]
+
+    // 外戚专权
+    王政君 -> 王凤 [label="兄妹"]
+    王政君 -> 王莽 [label="姑侄"]
+    王莽 -> 孺子婴 [label="篡位", color=red, style=bold]
+    王莽 -> 平帝 [label="毒杀", color=red]
+
+    // 和亲
+    元帝 -> 王昭君 [label="赐婚出塞", style=dashed]
+
+    // 缇萦救父
+    缇萦 -> 文帝 [label="上书救父", color=green]
+
+    // 苏武
+    武帝 -> 苏武 [label="出使", style=dashed]
+}
+----
 
 
 === 重要事件
@@ -6783,6 +7899,161 @@ ____
 * 220年 曹丕篡汉，东汉亡
 
 
+=== 人物关系图
+
+[graphviz]
+----
+digraph 东汉人物关系 {
+    rankdir=TB
+    node [shape=box, fontname="Heiti SC", fontsize=11]
+    edge [fontname="Heiti SC", fontsize=9]
+
+    // 前期皇帝
+    subgraph cluster_emperor1 {
+        label="前期帝系"
+        style=filled
+        fillcolor=lightyellow
+        光武帝 [label="光武帝刘秀", style=bold]
+        明帝 [label="明帝刘庄"]
+        章帝 [label="章帝刘炟"]
+        和帝 [label="和帝刘肇"]
+    }
+
+    // 后期皇帝
+    subgraph cluster_emperor2 {
+        label="后期帝系"
+        style=filled
+        fillcolor=lemonchiffon
+        安帝 [label="安帝刘祜"]
+        顺帝 [label="顺帝刘保"]
+        质帝 [label="质帝刘缵"]
+        桓帝 [label="桓帝刘志"]
+        灵帝 [label="灵帝刘宏"]
+        少帝 [label="少帝刘辩"]
+        献帝 [label="献帝刘协"]
+    }
+
+    // 云台二十八将
+    subgraph cluster_generals {
+        label="云台功臣"
+        style=filled
+        fillcolor=lightblue
+        邓禹 [label="邓禹\n（云台首功）"]
+        吴汉 [label="吴汉\n（大司马）"]
+        耿弇 [label="耿弇\n（大将军）"]
+        冯异 [label="冯异\n（大树将军）"]
+    }
+
+    // 外戚
+    subgraph cluster_consort {
+        label="外戚"
+        style=filled
+        fillcolor=mistyrose
+        窦宪 [label="窦宪\n（燕然勒石）"]
+        邓骘 [label="邓骘\n（邓太后兄）"]
+        梁冀 [label="梁冀\n（跋扈将军）"]
+        何进 [label="何进\n（大将军）"]
+    }
+
+    // 宦官
+    subgraph cluster_eunuch {
+        label="宦官"
+        style=filled
+        fillcolor=lavender
+        郑众 [label="郑众\n（诛窦宪）"]
+        孙程 [label="孙程\n（迎顺帝）"]
+        单超 [label="单超\n（诛梁冀）"]
+        张让 [label="张让\n（十常侍）"]
+    }
+
+    // 名士名臣
+    subgraph cluster_scholars {
+        label="名士名臣"
+        style=filled
+        fillcolor=lightgreen
+        班超 [label="班超\n（定西域）"]
+        蔡伦 [label="蔡伦\n（造纸术）"]
+        张衡 [label="张衡\n（地动仪）"]
+        陈蕃 [label="陈蕃\n（太傅）"]
+        李膺 [label="李膺\n（登龙门）"]
+        窦武 [label="窦武\n（大将军）"]
+    }
+
+    // 汉末群雄
+    subgraph cluster_warlords {
+        label="汉末群雄"
+        style=filled
+        fillcolor=lightgray
+        董卓 [label="董卓\n（专权）"]
+        吕布 [label="吕布\n（猛将）"]
+        王允 [label="王允\n（司徒）"]
+        曹操 [label="曹操\n（魏王）", style=bold]
+        袁绍 [label="袁绍\n（四世三公）"]
+        曹丕 [label="曹丕\n（篡汉）"]
+    }
+
+    // 皇帝世系
+    光武帝 -> 明帝 [label="父子"]
+    明帝 -> 章帝 [label="父子"]
+    章帝 -> 和帝 [label="父子"]
+    章帝 -> 安帝 [label="旁系", style=dashed]
+    安帝 -> 顺帝 [label="父子"]
+    章帝 -> 质帝 [label="玄孙", style=dashed]
+    章帝 -> 桓帝 [label="曾孙", style=dashed]
+    章帝 -> 灵帝 [label="玄孙", style=dashed]
+    灵帝 -> 少帝 [label="父子"]
+    灵帝 -> 献帝 [label="父子"]
+
+    // 云台功臣
+    光武帝 -> 邓禹 [label="君臣", style=dashed]
+    光武帝 -> 吴汉 [label="君臣", style=dashed]
+    光武帝 -> 耿弇 [label="君臣", style=dashed]
+    光武帝 -> 冯异 [label="君臣", style=dashed]
+
+    // 明章名臣
+    明帝 -> 班超 [label="出使", style=dashed]
+    和帝 -> 蔡伦 [label="君臣", style=dashed]
+    安帝 -> 张衡 [label="君臣", style=dashed]
+
+    // 外戚专权
+    和帝 -> 窦宪 [label="诛杀", color=red]
+    和帝 -> 郑众 [label="定策", style=dashed]
+    郑众 -> 窦宪 [label="诛", color=red]
+    安帝 -> 邓骘 [label="外戚", style=dashed]
+    顺帝 -> 孙程 [label="拥立", color=green]
+    桓帝 -> 梁冀 [label="诛杀", color=red]
+    梁冀 -> 质帝 [label="毒杀", color=red]
+    桓帝 -> 单超 [label="定策", style=dashed]
+    单超 -> 梁冀 [label="诛", color=red]
+
+    // 党锢之祸
+    桓帝 -> 李膺 [label="党锢", color=red]
+    灵帝 -> 陈蕃 [label="杀", color=red]
+    灵帝 -> 窦武 [label="杀", color=red]
+    张让 -> 陈蕃 [label="害", color=red]
+    张让 -> 窦武 [label="害", color=red]
+    陈蕃 -> 李膺 [label="同党"]
+
+    // 汉末动乱
+    少帝 -> 何进 [label="外戚", style=dashed]
+    何进 -> 董卓 [label="召入", style=dashed]
+    张让 -> 何进 [label="杀", color=red]
+    袁绍 -> 张让 [label="诛杀", color=red]
+    董卓 -> 少帝 [label="废", color=red]
+    董卓 -> 献帝 [label="立", style=dashed]
+    王允 -> 董卓 [label="诛杀", color=red]
+    吕布 -> 董卓 [label="刺杀", color=red]
+    王允 -> 吕布 [label="连环计"]
+    曹操 -> 献帝 [label="挟持", style=dashed]
+    曹操 -> 袁绍 [label="官渡破", color=red]
+    曹操 -> 曹丕 [label="父子"]
+    曹丕 -> 献帝 [label="篡位", color=red, style=bold]
+
+    // 燕然勒石
+    窦宪 -> 和帝 [label="专权前", style=dashed]
+}
+----
+
 
 === 重要事件
 
@@ -7341,6 +8612,160 @@ ____
 * 265年 司马炎受禅，晋代魏
 * 280年 晋灭吴，三国归晋
 
+
+=== 人物关系图
+
+[graphviz]
+----
+digraph 三国人物关系 {
+    rankdir=TB
+    node [shape=box, fontname="Heiti SC", fontsize=10]
+    edge [fontname="Heiti SC", fontsize=9]
+
+    // 曹魏
+    subgraph cluster_wei {
+        label="曹魏"
+        style=filled
+        fillcolor=lightblue
+        曹操 [label="曹操\n（魏武王）", style=bold]
+        曹丕 [label="曹丕\n（魏文帝）"]
+        曹叡 [label="曹叡\n（明帝）"]
+        曹芳 [label="曹芳"]
+        曹髦 [label="曹髦\n（高贵乡公）"]
+        曹奂 [label="曹奂\n（禅晋）"]
+        荀彧 [label="荀彧\n（王佐）"]
+        郭嘉 [label="郭嘉\n（奇谋）"]
+        夏侯惇 [label="夏侯惇"]
+        夏侯渊 [label="夏侯渊"]
+        张辽 [label="张辽\n（威震逍遥津）"]
+        许褚 [label="许褚"]
+        典韦 [label="典韦"]
+        司马懿 [label="司马懿\n（鹰视狼顾）", style=bold]
+    }
+
+    // 蜀汉
+    subgraph cluster_shu {
+        label="蜀汉"
+        style=filled
+        fillcolor=lightgreen
+        刘备 [label="刘备\n（昭烈帝）", style=bold]
+        刘禅 [label="刘禅\n（后主）"]
+        关羽 [label="关羽\n（武圣）", style=bold]
+        张飞 [label="张飞\n（万人敌）"]
+        诸葛亮 [label="诸葛亮\n（武侯）", style=bold]
+        赵云 [label="赵云\n（常胜将军）"]
+        黄忠 [label="黄忠"]
+        马超 [label="马超"]
+        魏延 [label="魏延"]
+        姜维 [label="姜维\n（九伐中原）"]
+        庞统 [label="庞统\n（凤雏）"]
+        法正 [label="法正"]
+    }
+
+    // 东吴
+    subgraph cluster_wu {
+        label="东吴"
+        style=filled
+        fillcolor=lightyellow
+        孙坚 [label="孙坚\n（破虏将军）"]
+        孙策 [label="孙策\n（小霸王）"]
+        孙权 [label="孙权\n（吴大帝）", style=bold]
+        孙皓 [label="孙皓\n（降晋）"]
+        周瑜 [label="周瑜\n（大都督）", style=bold]
+        鲁肃 [label="鲁肃\n（榻上策）"]
+        吕蒙 [label="吕蒙\n（白衣渡江）"]
+        陆逊 [label="陆逊\n（火烧连营）"]
+    }
+
+    // 司马氏
+    subgraph cluster_sima {
+        label="司马氏"
+        style=filled
+        fillcolor=lavender
+        司马师 [label="司马师"]
+        司马昭 [label="司马昭\n（之心）"]
+        司马炎 [label="司马炎\n（晋武帝）"]
+    }
+
+    // 曹魏世系
+    曹操 -> 曹丕 [label="父子"]
+    曹丕 -> 曹叡 [label="父子"]
+    曹叡 -> 曹芳 [label="继嗣", style=dashed]
+    曹芳 -> 曹髦 [label="废立", style=dashed]
+    曹髦 -> 曹奂 [label="废立", style=dashed]
+
+    // 曹操君臣
+    曹操 -> 荀彧 [label="谋主", style=dashed]
+    曹操 -> 郭嘉 [label="谋士", style=dashed]
+    曹操 -> 夏侯惇 [label="宗亲", style=dashed]
+    曹操 -> 夏侯渊 [label="宗亲", style=dashed]
+    曹操 -> 张辽 [label="大将", style=dashed]
+    曹操 -> 许褚 [label="虎卫", style=dashed]
+    曹操 -> 典韦 [label="虎卫", style=dashed]
+    曹操 -> 司马懿 [label="托孤", style=dashed]
+    夏侯惇 -> 夏侯渊 [label="兄弟"]
+
+    // 蜀汉世系
+    刘备 -> 刘禅 [label="父子"]
+
+    // 桃园结义
+    刘备 -> 关羽 [label="义兄弟", color=green]
+    刘备 -> 张飞 [label="义兄弟", color=green]
+    关羽 -> 张飞 [label="义兄弟", color=green]
+
+    // 刘备君臣
+    刘备 -> 诸葛亮 [label="三顾茅庐", style=dashed]
+    刘备 -> 赵云 [label="君臣", style=dashed]
+    刘备 -> 黄忠 [label="君臣", style=dashed]
+    刘备 -> 马超 [label="君臣", style=dashed]
+    刘备 -> 魏延 [label="君臣", style=dashed]
+    刘备 -> 庞统 [label="军师", style=dashed]
+    刘备 -> 法正 [label="谋士", style=dashed]
+    诸葛亮 -> 姜维 [label="传衣钵", style=dashed]
+    诸葛亮 -> 刘禅 [label="托孤辅政", style=dashed]
+
+    // 东吴世系
+    孙坚 -> 孙策 [label="父子"]
+    孙坚 -> 孙权 [label="父子"]
+    孙策 -> 孙权 [label="兄弟"]
+    孙权 -> 孙皓 [label="孙", style=dashed]
+
+    // 东吴君臣
+    孙策 -> 周瑜 [label="义兄弟", color=green]
+    孙权 -> 周瑜 [label="大都督", style=dashed]
+    孙权 -> 鲁肃 [label="君臣", style=dashed]
+    孙权 -> 吕蒙 [label="君臣", style=dashed]
+    孙权 -> 陆逊 [label="君臣", style=dashed]
+    周瑜 -> 鲁肃 [label="继任", style=dashed]
+    鲁肃 -> 吕蒙 [label="继任", style=dashed]
+    吕蒙 -> 陆逊 [label="继任", style=dashed]
+
+    // 司马氏篡魏
+    司马懿 -> 司马师 [label="父子"]
+    司马懿 -> 司马昭 [label="父子"]
+    司马师 -> 司马昭 [label="兄弟"]
+    司马昭 -> 司马炎 [label="父子"]
+    司马懿 -> 曹芳 [label="辅政", style=dashed]
+    司马昭 -> 曹髦 [label="弑君", color=red]
+    司马炎 -> 曹奂 [label="受禅", color=red]
+    司马炎 -> 孙皓 [label="灭吴", color=red]
+
+    // 跨国冲突
+    曹操 -> 刘备 [label="争天下", color=red, dir=both]
+    曹操 -> 孙权 [label="赤壁败", color=red]
+    周瑜 -> 曹操 [label="火攻", color=red]
+    吕蒙 -> 关羽 [label="白衣渡江擒杀", color=red]
+    陆逊 -> 刘备 [label="夷陵大败", color=red]
+    司马懿 -> 诸葛亮 [label="对峙", color=red, dir=both]
+
+    // 诸葛亮北伐
+    诸葛亮 -> 司马懿 [label="五丈原", style=dashed]
+    姜维 -> 司马昭 [label="九伐", color=red]
+
+    // 魏灭蜀
+    司马昭 -> 刘禅 [label="灭蜀", color=red]
+}
+----
 
 
 === 重要事件
@@ -8465,6 +9890,141 @@ ____
 * 407年 冯跋杀慕容熙，立慕容云，建北燕
 * 409年 冯跋杀慕容云，自立为帝
 * 436年 北燕为北魏所灭
+
+
+=== 人物关系图
+
+[graphviz]
+----
+digraph 两晋人物关系 {
+    rankdir=TB
+    node [shape=box, fontname="Heiti SC", fontsize=10]
+    edge [fontname="Heiti SC", fontsize=9]
+
+    // 西晋皇室
+    subgraph cluster_xijin {
+        label="西晋"
+        style=filled
+        fillcolor=lightyellow
+        司马懿 [label="司马懿\n（高祖）"]
+        司马昭 [label="司马昭\n（之心）"]
+        司马炎 [label="司马炎\n（武帝）", style=bold]
+        司马衷 [label="司马衷\n（惠帝·愚）"]
+        贾南风 [label="贾南风\n（贾后）"]
+        司马伦 [label="赵王伦\n（篡位）"]
+        司马冏 [label="齐王冏"]
+        司马颖 [label="成都王颖"]
+        司马越 [label="东海王越"]
+    }
+
+    // 东晋皇室与名臣
+    subgraph cluster_dongjin {
+        label="东晋"
+        style=filled
+        fillcolor=lightblue
+        司马睿 [label="司马睿\n（元帝）", style=bold]
+        王导 [label="王导\n（丞相）", style=bold]
+        王敦 [label="王敦\n（叛乱）"]
+        谢安 [label="谢安\n（淝水之战）", style=bold]
+        谢玄 [label="谢玄\n（北府兵）"]
+        桓温 [label="桓温\n（三伐）"]
+        桓玄 [label="桓玄\n（篡位）"]
+        祖逖 [label="祖逖\n（闻鸡起舞）"]
+        刘裕 [label="刘裕\n（建宋）", style=bold]
+    }
+
+    // 匈奴汉赵/前赵
+    subgraph cluster_hanzhao {
+        label="汉赵/前赵"
+        style=filled
+        fillcolor=mistyrose
+        刘渊 [label="刘渊\n（建汉）"]
+        刘聪 [label="刘聪\n（永嘉之乱）"]
+        刘曜 [label="刘曜\n（灭西晋）"]
+    }
+
+    // 后赵
+    subgraph cluster_houzhao {
+        label="后赵"
+        style=filled
+        fillcolor=wheat
+        石勒 [label="石勒\n（羯族）"]
+        石虎 [label="石虎\n（暴虐）"]
+        冉闵 [label="冉闵\n（杀胡令）"]
+    }
+
+    // 前秦
+    subgraph cluster_qianqin {
+        label="前秦"
+        style=filled
+        fillcolor=lightgray
+        苻坚 [label="苻坚\n（统一北方）", style=bold]
+        王猛 [label="王猛\n（功比诸葛）"]
+    }
+
+    // 前燕
+    subgraph cluster_qianyan {
+        label="前燕"
+        style=filled
+        fillcolor=plum
+        慕容皝 [label="慕容皝\n（建前燕）"]
+        慕容儁 [label="慕容儁"]
+        慕容垂 [label="慕容垂\n（复国）"]
+    }
+
+    // 西晋世系
+    司马懿 -> 司马昭 [label="父子"]
+    司马昭 -> 司马炎 [label="父子"]
+    司马炎 -> 司马衷 [label="父子"]
+    司马衷 -> 贾南风 [label="夫妻", style=dotted, color=pink]
+
+    // 八王之乱
+    贾南风 -> 司马伦 [label="诛贾后", color=red]
+    司马伦 -> 司马衷 [label="篡位", color=red]
+    司马冏 -> 司马伦 [label="诛", color=red]
+    司马颖 -> 司马冏 [label="攻杀", color=red]
+    司马越 -> 司马颖 [label="败", color=red]
+
+    // 东晋关系
+    司马睿 -> 王导 [label="共天下"]
+    王导 -> 王敦 [label="堂兄弟"]
+    王敦 -> 司马睿 [label="叛乱", color=red]
+    谢安 -> 谢玄 [label="叔侄"]
+    桓温 -> 桓玄 [label="父子"]
+    桓玄 -> 司马睿 [label="篡位后代", style=dashed, color=red]
+    刘裕 -> 桓玄 [label="灭", color=red]
+    刘裕 -> 司马睿 [label="受禅代晋", style=dashed]
+
+    // 汉赵世系
+    刘渊 -> 刘聪 [label="父子"]
+    刘聪 -> 刘曜 [label="族弟"]
+
+    // 后赵世系
+    石勒 -> 石虎 [label="叔侄"]
+    石虎 -> 冉闵 [label="养子", style=dashed]
+    冉闵 -> 石虎 [label="灭后赵", color=red]
+
+    // 前秦关系
+    苻坚 -> 王猛 [label="君臣", style=dashed]
+
+    // 前燕世系
+    慕容皝 -> 慕容儁 [label="父子"]
+    慕容皝 -> 慕容垂 [label="父子"]
+
+    // 灭国关系
+    刘聪 -> 司马衷 [label="永嘉之乱\n俘怀帝", color=red]
+    刘曜 -> 司马衷 [label="灭西晋\n俘愍帝", style=dashed, color=red]
+    石勒 -> 刘曜 [label="灭前赵", color=red]
+    苻坚 -> 慕容儁 [label="灭前燕", color=red]
+    谢玄 -> 苻坚 [label="淝水大败", color=red]
+    慕容垂 -> 苻坚 [label="叛后复国", color=red]
+    刘裕 -> 慕容垂 [label="灭南燕", style=dashed, color=red]
+
+    // 北伐
+    祖逖 -> 刘聪 [label="北伐", color=red]
+    桓温 -> 苻坚 [label="北伐三次", color=red]
+}
+----
 
 
 === 重要事件
@@ -9633,6 +11193,136 @@ ____
 * 581年 杨坚代北周建隋
 
 
+=== 人物关系图
+
+[graphviz]
+----
+digraph 南北朝人物关系 {
+    rankdir=TB
+    node [shape=box, fontname="Heiti SC", fontsize=10]
+    edge [fontname="Heiti SC", fontsize=9]
+
+    // 南朝宋
+    subgraph cluster_song {
+        label="刘宋"
+        style=filled
+        fillcolor=lightblue
+        刘裕 [label="刘裕\n（宋武帝）", style=bold]
+        刘义隆 [label="刘义隆\n（文帝）"]
+        刘劭 [label="刘劭\n（弑父）"]
+        刘骏 [label="刘骏\n（孝武帝）"]
+    }
+
+    // 南朝齐
+    subgraph cluster_qi {
+        label="南齐"
+        style=filled
+        fillcolor=lightgreen
+        萧道成 [label="萧道成\n（齐高帝）"]
+        萧赜 [label="萧赜\n（武帝）"]
+        萧衍前 [label="萧鸾\n（明帝）"]
+    }
+
+    // 南朝梁
+    subgraph cluster_liang {
+        label="萧梁"
+        style=filled
+        fillcolor=lightyellow
+        萧衍 [label="萧衍\n（梁武帝）", style=bold]
+        萧绎 [label="萧绎\n（元帝）"]
+        侯景 [label="侯景\n（叛乱）"]
+    }
+
+    // 南朝陈
+    subgraph cluster_chen {
+        label="南陈"
+        style=filled
+        fillcolor=mistyrose
+        陈霸先 [label="陈霸先\n（武帝）"]
+        陈叔宝 [label="陈叔宝\n（后主）"]
+    }
+
+    // 北魏
+    subgraph cluster_beiwei {
+        label="北魏"
+        style=filled
+        fillcolor=wheat
+        拓跋焘 [label="拓跋焘\n（太武帝）"]
+        拓跋宏 [label="拓跋宏\n（孝文帝）", style=bold]
+        冯太后 [label="冯太后"]
+        尔朱荣 [label="尔朱荣\n（河阴之变）"]
+    }
+
+    // 东魏/北齐
+    subgraph cluster_dongwei {
+        label="东魏→北齐"
+        style=filled
+        fillcolor=lavender
+        高欢 [label="高欢\n（权臣）", style=bold]
+        高洋 [label="高洋\n（齐文宣帝）"]
+        高纬 [label="高纬\n（后主亡国）"]
+    }
+
+    // 西魏/北周
+    subgraph cluster_xiwei {
+        label="西魏→北周"
+        style=filled
+        fillcolor=lightgray
+        宇文泰 [label="宇文泰\n（权臣）", style=bold]
+        宇文护 [label="宇文护\n（权臣）"]
+        宇文邕 [label="宇文邕\n（周武帝）", style=bold]
+        杨坚 [label="杨坚\n（代周建隋）", style=bold]
+    }
+
+    // 南朝宋世系
+    刘裕 -> 刘义隆 [label="父子"]
+    刘义隆 -> 刘劭 [label="父子"]
+    刘劭 -> 刘义隆 [label="弑父", color=red]
+    刘骏 -> 刘劭 [label="诛杀", color=red]
+
+    // 南朝禅代
+    萧道成 -> 刘裕 [label="代宋", style=dashed, color=red]
+    萧衍 -> 萧道成 [label="代齐", style=dashed, color=red]
+    陈霸先 -> 萧衍 [label="代梁", style=dashed, color=red]
+
+    // 萧齐世系
+    萧道成 -> 萧赜 [label="父子"]
+
+    // 萧梁
+    萧衍 -> 萧绎 [label="父子"]
+    侯景 -> 萧衍 [label="围台城\n饿死", color=red]
+    陈霸先 -> 侯景 [label="平乱", color=red]
+
+    // 南陈
+    陈霸先 -> 陈叔宝 [label="后代", style=dashed]
+
+    // 北魏世系
+    冯太后 -> 拓跋宏 [label="抚养"]
+    尔朱荣 -> 冯太后 [label="河阴沉杀", style=dashed, color=red]
+
+    // 东西分裂
+    高欢 -> 尔朱荣 [label="灭", color=red]
+    宇文泰 -> 尔朱荣 [label="部将"]
+    高欢 -> 宇文泰 [label="分裂对峙", color=red, dir=both]
+
+    // 东魏北齐
+    高欢 -> 高洋 [label="父子"]
+    高洋 -> 高纬 [label="后代", style=dashed]
+
+    // 西魏北周
+    宇文泰 -> 宇文护 [label="侄"]
+    宇文护 -> 宇文邕 [label="立帝", style=dashed]
+    宇文邕 -> 宇文护 [label="诛杀", color=red]
+    宇文邕 -> 高纬 [label="灭北齐", color=red]
+    杨坚 -> 宇文邕 [label="代周", style=dashed, color=red]
+
+    // 南北对峙
+    刘裕 -> 拓跋焘 [label="南北对峙", style=dashed]
+    刘义隆 -> 拓跋焘 [label="元嘉北伐", color=red]
+    杨坚 -> 陈叔宝 [label="灭陈统一", color=red]
+}
+----
+
 
 === 重要事件
 
@@ -10236,6 +11926,103 @@ ____
 * 618年 宇文化及弑帝于江都，隋亡
 
 
+=== 人物关系图
+
+[graphviz]
+----
+digraph 隋朝人物关系 {
+    rankdir=TB
+    node [shape=box, fontname="Heiti SC", fontsize=11]
+    edge [fontname="Heiti SC", fontsize=9]
+
+    // 隋皇室
+    subgraph cluster_sui {
+        label="隋皇室"
+        style=filled
+        fillcolor=lightyellow
+        杨坚 [label="杨坚\n（文帝）", style=bold]
+        独孤后 [label="独孤皇后"]
+        杨广 [label="杨广\n（炀帝）", style=bold]
+        杨勇 [label="杨勇\n（废太子）"]
+        杨秀 [label="杨秀"]
+        杨侑 [label="杨侑\n（恭帝）"]
+    }
+
+    // 功臣名将
+    subgraph cluster_generals {
+        label="功臣名将"
+        style=filled
+        fillcolor=lightblue
+        高颎 [label="高颎\n（名相）"]
+        杨素 [label="杨素\n（灭陈主将）"]
+        贺若弼 [label="贺若弼\n（攻建康）"]
+        韩擒虎 [label="韩擒虎\n（擒陈后主）"]
+        长孙晟 [label="长孙晟\n（分化突厥）"]
+    }
+
+    // 亡国之臣
+    subgraph cluster_end {
+        label="亡国之臣"
+        style=filled
+        fillcolor=mistyrose
+        宇文化及 [label="宇文化及\n（弑帝）"]
+        杨玄感 [label="杨玄感\n（起兵）"]
+        裴蕴 [label="裴蕴"]
+        虞世基 [label="虞世基"]
+    }
+
+    // 群雄
+    subgraph cluster_warlords {
+        label="隋末群雄"
+        style=filled
+        fillcolor=lightgray
+        李渊 [label="李渊\n（唐高祖）", style=bold]
+        李世民 [label="李世民\n（唐太宗）"]
+        窦建德 [label="窦建德"]
+        王世充 [label="王世充"]
+    }
+
+    // 陈朝
+    subgraph cluster_chen {
+        label="南陈"
+        style=filled
+        fillcolor=lavender
+        陈叔宝 [label="陈叔宝\n（后主）"]
+    }
+
+    // 皇室关系
+    杨坚 -> 独孤后 [label="夫妻", style=dotted, color=pink]
+    杨坚 -> 杨广 [label="父子"]
+    杨坚 -> 杨勇 [label="父子"]
+    杨坚 -> 杨秀 [label="父子"]
+    杨广 -> 杨勇 [label="陷害废黜", color=red]
+    杨广 -> 杨坚 [label="弑父", color=red]
+
+    // 君臣关系
+    杨坚 -> 高颎 [label="名相", style=dashed]
+    杨坚 -> 杨素 [label="君臣", style=dashed]
+    杨广 -> 高颎 [label="杀", color=red]
+    杨广 -> 杨素 [label="君臣", style=dashed]
+
+    // 灭陈
+    杨广 -> 贺若弼 [label="灭陈", style=dashed]
+    杨广 -> 韩擒虎 [label="灭陈", style=dashed]
+    韩擒虎 -> 陈叔宝 [label="擒于井中", color=red]
+
+    // 亡国
+    宇文化及 -> 杨广 [label="弑于江都", color=red]
+    杨玄感 -> 杨广 [label="起兵反", color=red]
+    杨素 -> 杨玄感 [label="父子"]
+
+    // 群雄并起
+    李渊 -> 杨侑 [label="立→代", style=dashed]
+    李渊 -> 李世民 [label="父子"]
+    李世民 -> 窦建德 [label="虎牢擒", color=red]
+    李世民 -> 王世充 [label="败降", color=red]
+}
+----
+
+
 === 重要事件
 
 ==== 开皇之治（581-604年）
@@ -10595,6 +12382,140 @@ ____
 * 875年 黄巢起义
 * 907年 朱温篡唐，唐亡
 
+
+=== 人物关系图
+
+[graphviz]
+----
+digraph 唐朝人物关系 {
+    rankdir=TB
+    node [shape=box, fontname="Heiti SC", fontsize=10]
+    edge [fontname="Heiti SC", fontsize=9]
+
+    // 初唐皇帝
+    subgraph cluster_early {
+        label="初唐皇室"
+        style=filled
+        fillcolor=lightyellow
+        李渊 [label="李渊\n（高祖）"]
+        李建成 [label="李建成\n（太子）"]
+        李世民 [label="李世民\n（太宗）", style=bold]
+        李元吉 [label="李元吉\n（齐王）"]
+        李治 [label="李治\n（高宗）"]
+        武则天 [label="武则天\n（女皇）", style=bold]
+    }
+
+    // 盛唐皇帝
+    subgraph cluster_mid {
+        label="盛唐皇室"
+        style=filled
+        fillcolor=lemonchiffon
+        李隆基 [label="李隆基\n（玄宗）", style=bold]
+        杨贵妃 [label="杨贵妃"]
+        李亨 [label="李亨\n（肃宗）"]
+    }
+
+    // 中晚唐皇帝
+    subgraph cluster_late {
+        label="中晚唐皇室"
+        style=filled
+        fillcolor=wheat
+        李纯 [label="李纯\n（宪宗）"]
+        李晔 [label="李晔\n（昭宗）"]
+        李柷 [label="李柷\n（哀帝）"]
+    }
+
+    // 贞观名臣
+    subgraph cluster_zhenguan {
+        label="贞观名臣"
+        style=filled
+        fillcolor=lightblue
+        魏征 [label="魏征\n（谏臣）"]
+        房玄龄 [label="房玄龄"]
+        杜如晦 [label="杜如晦"]
+        长孙无忌 [label="长孙无忌"]
+        李靖 [label="李靖\n（军神）"]
+    }
+
+    // 开元名相
+    subgraph cluster_kaiyuan {
+        label="开元名相"
+        style=filled
+        fillcolor=lightgreen
+        姚崇 [label="姚崇"]
+        宋璟 [label="宋璟"]
+        李林甫 [label="李林甫\n（口蜜腹剑）"]
+        杨国忠 [label="杨国忠"]
+    }
+
+    // 安史之乱
+    subgraph cluster_anshi {
+        label="安史之乱"
+        style=filled
+        fillcolor=mistyrose
+        安禄山 [label="安禄山\n（叛乱）"]
+        史思明 [label="史思明"]
+        郭子仪 [label="郭子仪\n（平乱）"]
+        李光弼 [label="李光弼"]
+    }
+
+    // 晚唐
+    subgraph cluster_end {
+        label="晚唐"
+        style=filled
+        fillcolor=lightgray
+        黄巢 [label="黄巢\n（起义）"]
+        朱温 [label="朱温\n（篡唐）", style=bold]
+    }
+
+    // 初唐世系
+    李渊 -> 李建成 [label="父子"]
+    李渊 -> 李世民 [label="父子"]
+    李渊 -> 李元吉 [label="父子"]
+    李世民 -> 李建成 [label="玄武门杀", color=red]
+    李世民 -> 李元吉 [label="玄武门杀", color=red]
+    李世民 -> 李治 [label="父子"]
+    李治 -> 武则天 [label="夫妻", style=dotted, color=pink]
+    武则天 -> 李治 [label="称帝代唐", color=red, style=dashed]
+
+    // 盛唐
+    武则天 -> 李隆基 [label="祖孙", style=dashed]
+    李隆基 -> 杨贵妃 [label="宠妃", style=dotted, color=pink]
+    李隆基 -> 李亨 [label="父子"]
+
+    // 贞观君臣
+    李世民 -> 魏征 [label="以人为镜", style=dashed]
+    李世民 -> 房玄龄 [label="房谋", style=dashed]
+    李世民 -> 杜如晦 [label="杜断", style=dashed]
+    李世民 -> 长孙无忌 [label="君臣", style=dashed]
+    李世民 -> 李靖 [label="灭突厥", style=dashed]
+
+    // 开元君臣
+    李隆基 -> 姚崇 [label="君臣", style=dashed]
+    李隆基 -> 宋璟 [label="君臣", style=dashed]
+    李隆基 -> 李林甫 [label="后期宰相", style=dashed]
+    李隆基 -> 杨国忠 [label="外戚用事", style=dashed]
+    杨贵妃 -> 杨国忠 [label="族兄"]
+
+    // 安史之乱
+    安禄山 -> 李隆基 [label="叛乱", color=red]
+    安禄山 -> 杨国忠 [label="为名诛", color=red]
+    史思明 -> 安禄山 [label="同叛"]
+    郭子仪 -> 安禄山 [label="平乱", color=red]
+    李光弼 -> 史思明 [label="平乱", color=red]
+    李亨 -> 郭子仪 [label="君臣", style=dashed]
+
+    // 马嵬驿
+    杨贵妃 -> 李隆基 [label="马嵬缢死", color=red]
+    杨国忠 -> 李隆基 [label="马嵬被杀", color=red]
+
+    // 晚唐
+    黄巢 -> 李晔 [label="攻长安", color=red]
+    朱温 -> 黄巢 [label="叛降", style=dashed]
+    朱温 -> 李晔 [label="弑", color=red]
+    朱温 -> 李柷 [label="篡唐", color=red, style=bold]
+}
+----
 
 
 === 重要事件
@@ -12701,6 +14622,173 @@ ____
 * 979年 宋灭北汉，十国终
 
 
+=== 五代十国人物关系图
+
+[graphviz]
+....
+digraph wudai_shiguo {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC"];
+    edge [fontname="Heiti SC"];
+
+    // 后梁
+    subgraph cluster_houliang {
+        label="后梁";
+        style=filled;
+        fillcolor="#ffe4e1";
+        朱温 [label="朱温\n(梁太祖)", fillcolor="#ffb6c1", style="rounded,filled,bold"];
+        朱友珪 [label="朱友珪"];
+        朱友贞 [label="朱友贞\n(末帝)"];
+    }
+
+    // 后唐
+    subgraph cluster_houtang {
+        label="后唐";
+        style=filled;
+        fillcolor="#e6e6fa";
+        李克用 [label="李克用\n(晋王)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        李存勖 [label="李存勖\n(庄宗)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        李嗣源 [label="李嗣源\n(明宗)"];
+        李从厚 [label="李从厚"];
+        李从珂 [label="李从珂\n(末帝)"];
+    }
+
+    // 后晋
+    subgraph cluster_houjin {
+        label="后晋";
+        style=filled;
+        fillcolor="#f0fff0";
+        石敬瑭 [label="石敬瑭\n(儿皇帝)", fillcolor="#98fb98", style="rounded,filled,bold"];
+        石重贵 [label="石重贵\n(出帝)"];
+    }
+
+    // 后汉
+    subgraph cluster_houhan {
+        label="后汉";
+        style=filled;
+        fillcolor="#fff8dc";
+        刘知远 [label="刘知远\n(高祖)"];
+        刘承祐 [label="刘承祐\n(隐帝)"];
+    }
+
+    // 后周
+    subgraph cluster_houzhou {
+        label="后周";
+        style=filled;
+        fillcolor="#e0ffff";
+        郭威 [label="郭威\n(太祖)", fillcolor="#87ceeb", style="rounded,filled,bold"];
+        柴荣 [label="柴荣\n(世宗)", fillcolor="#87ceeb", style="rounded,filled,bold"];
+        柴宗训 [label="柴宗训\n(恭帝)"];
+        赵匡胤 [label="赵匡胤", fillcolor="#ffd700", style="rounded,filled,bold"];
+    }
+
+    // 契丹/辽
+    subgraph cluster_qidan {
+        label="契丹";
+        style=filled;
+        fillcolor="#d3d3d3";
+        耶律德光 [label="耶律德光\n(辽太宗)", fillcolor="#c0c0c0", style="rounded,filled,bold"];
+    }
+
+    // 南唐
+    subgraph cluster_nantang {
+        label="南唐";
+        style=filled;
+        fillcolor="#ffefd5";
+        李昪 [label="李昪\n(烈祖)", fillcolor="#ffdab9", style="rounded,filled,bold"];
+        李璟 [label="李璟\n(元宗)"];
+        李煜 [label="李煜\n(后主)", fillcolor="#ffdab9", style="rounded,filled,bold"];
+    }
+
+    // 吴越
+    subgraph cluster_wuyue {
+        label="吴越";
+        style=filled;
+        fillcolor="#f5fffa";
+        钱镠 [label="钱镠\n(武肃王)", fillcolor="#90ee90", style="rounded,filled,bold"];
+        钱俶 [label="钱俶\n(忠懿王)"];
+    }
+
+    // 前蜀后蜀
+    subgraph cluster_shu {
+        label="蜀";
+        style=filled;
+        fillcolor="#fffacd";
+        王建 [label="王建\n(前蜀高祖)"];
+        孟知祥 [label="孟知祥\n(后蜀高祖)"];
+    }
+
+    // 北汉
+    subgraph cluster_beihan {
+        label="北汉";
+        style=filled;
+        fillcolor="#ffe4b5";
+        刘崇 [label="刘崇\n(世祖)"];
+    }
+
+    // 后梁世系
+    朱温 -> 朱友珪 [label="子", style=dashed];
+    朱友珪 -> 朱温 [label="弑", color=red, style=bold];
+    朱温 -> 朱友贞 [label="子"];
+    朱友贞 -> 朱友珪 [label="杀", color=red];
+
+    // 后唐世系
+    李克用 -> 李存勖 [label="子"];
+    李存勖 -> 李嗣源 [label="养兄弟", style=dashed];
+    李嗣源 -> 李从厚 [label="子"];
+    李嗣源 -> 李从珂 [label="养子", style=dashed];
+    李从珂 -> 李从厚 [label="废", color=red];
+
+    // 后晋世系
+    石敬瑭 -> 石重贵 [label="侄"];
+
+    // 后汉世系
+    刘知远 -> 刘承祐 [label="子"];
+    刘知远 -> 刘崇 [label="弟"];
+
+    // 后周世系
+    郭威 -> 柴荣 [label="养子", style=dashed];
+    柴荣 -> 柴宗训 [label="子"];
+    柴宗训 -> 赵匡胤 [label="禅让", style=dashed, color=blue];
+
+    // 五代更迭
+    李存勖 -> 朱友贞 [label="灭梁", color=red, style=bold];
+    石敬瑭 -> 李从珂 [label="灭唐", color=red, style=bold];
+    耶律德光 -> 石重贵 [label="灭晋", color=red, style=bold];
+    郭威 -> 刘承祐 [label="灭汉", color=red, style=bold];
+
+    // 契丹关系
+    石敬瑭 -> 耶律德光 [label="称儿皇帝\n割燕云", style=dashed, color=purple];
+    耶律德光 -> 石敬瑭 [label="助灭后唐", style=dashed];
+    刘崇 -> 耶律德光 [label="依附", style=dashed];
+
+    // 南唐世系
+    李昪 -> 李璟 [label="子"];
+    李璟 -> 李煜 [label="子"];
+
+    // 吴越世系
+    钱镠 -> 钱俶 [label="后裔"];
+
+    // 宋灭十国
+    赵匡胤 -> 李煜 [label="灭南唐", color=red, style=dashed];
+    赵匡胤 -> 钱俶 [label="纳土", style=dashed, color=blue];
+    赵匡胤 -> 孟知祥 [label="灭后蜀", color=red, style=dashed];
+    赵匡胤 -> 刘崇 [label="灭北汉", color=red, style=dashed];
+
+    // 后唐灭前蜀
+    李存勖 -> 王建 [label="灭前蜀", color=red, style=dashed];
+}
+....
+
+**图例说明**：
+
+* **实线箭头**：血缘关系（父子、兄弟）
+* **虚线箭头**：非血缘关系（养子、禅让、称臣）
+* **红色箭头**：灭国或杀害关系
+* **紫色箭头**：割地称臣（燕云十六州）
+* **蓝色箭头**：禅让或纳土
+* **粗体人名**：各政权核心人物
+
 
 === 重要事件
 
@@ -13249,6 +15337,106 @@ ____
 * 1125年 天祚帝被俘，辽亡
 
 
+=== 辽朝人物关系图
+
+[graphviz]
+....
+digraph liao {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC"];
+    edge [fontname="Heiti SC"];
+
+    // 辽帝系
+    subgraph cluster_emperor {
+        label="辽帝世系";
+        style=filled;
+        fillcolor="#e6e6fa";
+        阿保机 [label="耶律阿保机\n(太祖)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        耶律德光 [label="耶律德光\n(太宗)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        耶律倍 [label="耶律倍\n(东丹王)"];
+        耶律阮 [label="耶律阮\n(世宗)"];
+        耶律璟 [label="耶律璟\n(穆宗)"];
+        耶律贤 [label="耶律贤\n(景宗)"];
+        耶律隆绪 [label="耶律隆绪\n(圣宗)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        耶律洪基 [label="耶律洪基\n(道宗)"];
+        耶律延禧 [label="耶律延禧\n(天祚帝)"];
+    }
+
+    // 后妃太后
+    subgraph cluster_empress {
+        label="后妃太后";
+        style=filled;
+        fillcolor="#ffe4e1";
+        述律平 [label="述律平\n(太祖皇后)"];
+        萧绰 [label="萧绰\n(承天太后)", fillcolor="#ffb6c1", style="rounded,filled,bold"];
+    }
+
+    // 名臣名将
+    subgraph cluster_officials {
+        label="名臣名将";
+        style=filled;
+        fillcolor="#f0fff0";
+        韩德让 [label="韩德让\n(大丞相)", fillcolor="#98fb98", style="rounded,filled,bold"];
+        耶律休哥 [label="耶律休哥\n(于越)", fillcolor="#98fb98", style="rounded,filled,bold"];
+        室昉 [label="室昉"];
+        耶律斜轸 [label="耶律斜轸"];
+    }
+
+    // 西辽
+    subgraph cluster_xiliao {
+        label="西辽";
+        style=filled;
+        fillcolor="#e0ffff";
+        耶律大石 [label="耶律大石\n(德宗)", fillcolor="#87ceeb", style="rounded,filled,bold"];
+    }
+
+    // 外族
+    subgraph cluster_foreign {
+        label="外族";
+        style=filled;
+        fillcolor="#d3d3d3";
+        石敬瑭 [label="石敬瑭\n(后晋高祖)"];
+        完颜阿骨打 [label="完颜阿骨打\n(金太祖)", fillcolor="#c0c0c0", style="rounded,filled,bold"];
+    }
+
+    // 帝系
+    阿保机 -> 耶律德光 [label="次子"];
+    阿保机 -> 耶律倍 [label="长子"];
+    耶律倍 -> 耶律阮 [label="子"];
+    耶律德光 -> 耶律璟 [label="子"];
+    耶律阮 -> 耶律贤 [label="子"];
+    耶律贤 -> 耶律隆绪 [label="子"];
+    耶律隆绪 -> 耶律洪基 [label="孙"];
+    耶律洪基 -> 耶律延禧 [label="孙"];
+
+    // 后妃关系
+    阿保机 -> 述律平 [label="皇后", style=dotted];
+    耶律贤 -> 萧绰 [label="皇后", style=dotted];
+    萧绰 -> 耶律隆绪 [label="摄政", style=dashed];
+
+    // 君臣关系
+    萧绰 -> 韩德让 [label="重用", style=dashed];
+    萧绰 -> 耶律休哥 [label="重用", style=dashed];
+    萧绰 -> 室昉 [label="重用", style=dashed];
+    萧绰 -> 耶律斜轸 [label="重用", style=dashed];
+
+    // 外交关系
+    石敬瑭 -> 耶律德光 [label="割燕云\n称儿皇帝", style=dashed, color=purple];
+    完颜阿骨打 -> 耶律延禧 [label="灭辽", color=red, style=bold];
+
+    // 西辽
+    耶律大石 -> 耶律延禧 [label="宗室", style=dashed];
+}
+....
+
+**图例说明**：
+
+* **实线箭头**：血缘关系（父子、兄孙）
+* **虚线箭头**：君臣或摄政关系
+* **点线箭头**：婚姻关系
+* **紫色箭头**：割地称臣
+* **红色箭头**：敌对灭国
+
 
 === 重要事件
 
@@ -13527,6 +15715,90 @@ ____
 * 1234年 蔡州破，金亡
 
 
+=== 金朝人物关系图
+
+[graphviz]
+....
+digraph jin {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC"];
+    edge [fontname="Heiti SC"];
+
+    // 金帝系
+    subgraph cluster_emperor {
+        label="金帝世系";
+        style=filled;
+        fillcolor="#ffefd5";
+        完颜阿骨打 [label="完颜阿骨打\n(太祖)", fillcolor="#ffdab9", style="rounded,filled,bold"];
+        完颜晟 [label="完颜晟\n(太宗)", fillcolor="#ffdab9", style="rounded,filled,bold"];
+        完颜亶 [label="完颜亶\n(熙宗)"];
+        完颜亮 [label="完颜亮\n(海陵王)", fillcolor="#ffdab9", style="rounded,filled,bold"];
+        完颜雍 [label="完颜雍\n(世宗)", fillcolor="#ffdab9", style="rounded,filled,bold"];
+        完颜璟 [label="完颜璟\n(章宗)"];
+        完颜珣 [label="完颜珣\n(宣宗)"];
+        完颜守绪 [label="完颜守绪\n(哀宗)"];
+    }
+
+    // 名将
+    subgraph cluster_general {
+        label="名将";
+        style=filled;
+        fillcolor="#e0ffff";
+        完颜宗弼 [label="完颜宗弼\n(兀术)", fillcolor="#87ceeb", style="rounded,filled,bold"];
+        完颜宗翰 [label="完颜宗翰\n(粘罕)"];
+        完颜宗望 [label="完颜宗望\n(斡离不)"];
+    }
+
+    // 宋朝
+    subgraph cluster_song {
+        label="北宋";
+        style=filled;
+        fillcolor="#ffe4e1";
+        宋徽宗 [label="赵佶\n(宋徽宗)"];
+        宋钦宗 [label="赵桓\n(宋钦宗)"];
+        岳飞 [label="岳飞", fillcolor="#ffb6c1", style="rounded,filled,bold"];
+    }
+
+    // 蒙古
+    subgraph cluster_mongol {
+        label="蒙古";
+        style=filled;
+        fillcolor="#d3d3d3";
+        成吉思汗 [label="成吉思汗", fillcolor="#c0c0c0", style="rounded,filled,bold"];
+    }
+
+    // 帝系
+    完颜阿骨打 -> 完颜晟 [label="弟"];
+    完颜晟 -> 完颜亶 [label="侄"];
+    完颜亶 -> 完颜亮 [label="弑", color=red];
+    完颜亮 -> 完颜雍 [label="叛代", color=red];
+    完颜雍 -> 完颜璟 [label="孙"];
+    完颜璟 -> 完颜珣 [label="叔"];
+    完颜珣 -> 完颜守绪 [label="子"];
+
+    // 宗室名将
+    完颜阿骨打 -> 完颜宗弼 [label="子"];
+    完颜阿骨打 -> 完颜宗翰 [label="族侄", style=dashed];
+    完颜阿骨打 -> 完颜宗望 [label="子"];
+
+    // 灭宋
+    完颜宗翰 -> 宋徽宗 [label="俘", color=red, style=bold];
+    完颜宗望 -> 宋钦宗 [label="俘", color=red, style=bold];
+
+    // 岳飞抗金
+    岳飞 -> 完颜宗弼 [label="大败", color=blue, style=bold];
+
+    // 蒙古灭金
+    成吉思汗 -> 完颜守绪 [label="灭金", color=red, style=bold];
+}
+....
+
+**图例说明**：
+
+* **实线箭头**：血缘或继承关系
+* **红色箭头**：敌对、弑杀或俘虏关系
+* **蓝色箭头**：战败关系
+
 
 === 重要事件
 
@@ -13783,6 +16055,95 @@ ____
 * 1206年 成吉思汗首征西夏
 * 1227年 蒙古灭西夏
 
+
+=== 西夏人物关系图
+
+[graphviz]
+....
+digraph xixia {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC"];
+    edge [fontname="Heiti SC"];
+
+    // 西夏帝系
+    subgraph cluster_emperor {
+        label="西夏帝系";
+        style=filled;
+        fillcolor="#fffacd";
+        李继迁 [label="李继迁\n(太祖)", fillcolor="#f0e68c", style="rounded,filled,bold"];
+        李德明 [label="李德明\n(太宗)"];
+        李元昊 [label="李元昊\n(景宗)", fillcolor="#f0e68c", style="rounded,filled,bold"];
+        李谅祚 [label="李谅祚\n(毅宗)"];
+        李秉常 [label="李秉常\n(惠宗)"];
+        李乾顺 [label="李乾顺\n(崇宗)", fillcolor="#f0e68c", style="rounded,filled,bold"];
+        李仁孝 [label="李仁孝\n(仁宗)"];
+        李睍 [label="李睍\n(末帝)"];
+    }
+
+    // 后妃权臣
+    subgraph cluster_power {
+        label="后妃权臣";
+        style=filled;
+        fillcolor="#ffe4e1";
+        没藏氏 [label="没藏氏\n(太后)"];
+        梁氏 [label="梁氏\n(太后)"];
+        野利仁荣 [label="野利仁荣\n(创制文字)", fillcolor="#ffb6c1", style="rounded,filled,bold"];
+    }
+
+    // 宋朝名将
+    subgraph cluster_song {
+        label="宋朝";
+        style=filled;
+        fillcolor="#e0ffff";
+        范仲淹 [label="范仲淹", fillcolor="#87ceeb", style="rounded,filled,bold"];
+        韩琦 [label="韩琦", fillcolor="#87ceeb", style="rounded,filled,bold"];
+        任福 [label="任福"];
+        葛怀敏 [label="葛怀敏"];
+    }
+
+    // 蒙古
+    subgraph cluster_mongol {
+        label="蒙古";
+        style=filled;
+        fillcolor="#d3d3d3";
+        成吉思汗蒙 [label="成吉思汗", fillcolor="#c0c0c0", style="rounded,filled,bold"];
+    }
+
+    // 帝系
+    李继迁 -> 李德明 [label="子"];
+    李德明 -> 李元昊 [label="子"];
+    李元昊 -> 李谅祚 [label="子"];
+    李谅祚 -> 李秉常 [label="子"];
+    李秉常 -> 李乾顺 [label="子"];
+    李乾顺 -> 李仁孝 [label="子"];
+    李仁孝 -> 李睍 [label="后裔"];
+
+    // 弑父
+    李谅祚 -> 李元昊 [label="太子弑", color=red, style=dashed];
+
+    // 后妃专权
+    没藏氏 -> 李谅祚 [label="摄政", style=dashed];
+    梁氏 -> 李秉常 [label="摄政", style=dashed];
+
+    // 创制文字
+    李元昊 -> 野利仁荣 [label="命创文字", style=dashed];
+
+    // 宋夏战争
+    李元昊 -> 任福 [label="好水川\n杀", color=red, style=bold];
+    李元昊 -> 葛怀敏 [label="定川寨\n杀", color=red, style=bold];
+    范仲淹 -> 李元昊 [label="对峙", style=dashed];
+    韩琦 -> 李元昊 [label="对峙", style=dashed];
+
+    // 蒙古灭西夏
+    成吉思汗蒙 -> 李睍 [label="灭西夏", color=red, style=bold];
+}
+....
+
+**图例说明**：
+
+* **实线箭头**：血缘或继承关系
+* **虚线箭头**：君臣、摄政或对峙关系
+* **红色箭头**：敌对或杀害关系
 
 
 === 重要事件
@@ -14093,6 +16454,106 @@ ____
 * 1276年 元军入临安，恭帝降
 * 1279年 崖山之战，陆秀夫负帝投海，南宋亡
 
+
+=== 宋朝人物关系图
+
+[graphviz]
+....
+digraph song {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC"];
+    edge [fontname="Heiti SC"];
+
+    // 北宋帝系
+    subgraph cluster_beisong {
+        label="北宋帝系";
+        style=filled;
+        fillcolor="#e6e6fa";
+        赵匡胤 [label="赵匡胤\n(太祖)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        赵光义 [label="赵光义\n(太宗)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        赵恒 [label="赵恒\n(真宗)"];
+        赵祯 [label="赵祯\n(仁宗)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        赵顼 [label="赵顼\n(神宗)"];
+        赵佶 [label="赵佶\n(徽宗)"];
+        赵桓 [label="赵桓\n(钦宗)"];
+    }
+
+    // 南宋帝系
+    subgraph cluster_nansong {
+        label="南宋帝系";
+        style=filled;
+        fillcolor="#ffefd5";
+        赵构 [label="赵构\n(高宗)", fillcolor="#ffdab9", style="rounded,filled,bold"];
+        赵昚 [label="赵昚\n(孝宗)"];
+        赵昺 [label="赵昺\n(帝昺)"];
+    }
+
+    // 北宋名臣
+    subgraph cluster_beisong_officials {
+        label="北宋名臣";
+        style=filled;
+        fillcolor="#f0fff0";
+        赵普 [label="赵普", fillcolor="#98fb98", style="rounded,filled,bold"];
+        寇准 [label="寇准", fillcolor="#98fb98", style="rounded,filled,bold"];
+        范仲淹宋 [label="范仲淹", fillcolor="#98fb98", style="rounded,filled,bold"];
+        王安石 [label="王安石", fillcolor="#98fb98", style="rounded,filled,bold"];
+        司马光 [label="司马光", fillcolor="#98fb98", style="rounded,filled,bold"];
+        蔡京 [label="蔡京\n(奸臣)", fillcolor="#ff6b6b"];
+    }
+
+    // 南宋名将忠臣
+    subgraph cluster_nansong_heroes {
+        label="南宋名将忠臣";
+        style=filled;
+        fillcolor="#e0ffff";
+        岳飞宋 [label="岳飞", fillcolor="#87ceeb", style="rounded,filled,bold"];
+        韩世忠 [label="韩世忠", fillcolor="#87ceeb", style="rounded,filled,bold"];
+        虞允文 [label="虞允文"];
+        文天祥 [label="文天祥", fillcolor="#87ceeb", style="rounded,filled,bold"];
+        陆秀夫 [label="陆秀夫", fillcolor="#87ceeb", style="rounded,filled,bold"];
+        秦桧 [label="秦桧\n(奸臣)", fillcolor="#ff6b6b", style="rounded,filled,bold"];
+    }
+
+    // 北宋帝系
+    赵匡胤 -> 赵光义 [label="弟"];
+    赵光义 -> 赵恒 [label="子"];
+    赵恒 -> 赵祯 [label="子"];
+    赵祯 -> 赵顼 [label="侄孙"];
+    赵顼 -> 赵佶 [label="子"];
+    赵佶 -> 赵桓 [label="子"];
+
+    // 南宋帝系
+    赵佶 -> 赵构 [label="子"];
+    赵构 -> 赵昚 [label="养子", style=dashed];
+    赵昚 -> 赵昺 [label="后裔"];
+
+    // 北宋君臣
+    赵匡胤 -> 赵普 [label="谋臣", style=dashed];
+    赵恒 -> 寇准 [label="澶渊之盟", style=dashed];
+    赵祯 -> 范仲淹宋 [label="庆历新政", style=dashed];
+    赵顼 -> 王安石 [label="变法", style=dashed];
+    赵顼 -> 司马光 [label="对立", color=orange];
+    王安石 -> 司马光 [label="党争", color=orange, style=bold];
+    赵佶 -> 蔡京 [label="重用", style=dashed, color=red];
+
+    // 南宋君臣
+    赵构 -> 岳飞宋 [label="北伐", style=dashed];
+    赵构 -> 韩世忠 [label="抗金", style=dashed];
+    赵构 -> 秦桧 [label="主和", style=dashed, color=red];
+    秦桧 -> 岳飞宋 [label="害", color=red, style=bold];
+    赵昚 -> 虞允文 [label="采石大捷", style=dashed];
+    赵昺 -> 陆秀夫 [label="殉国", style=dashed];
+    赵昺 -> 文天祥 [label="殉国", style=dashed];
+}
+....
+
+**图例说明**：
+
+* **实线箭头**：血缘或继承关系
+* **虚线箭头**：君臣关系
+* **橙色箭头**：政治对立（党争）
+* **红色箭头**：奸臣或陷害关系
+* **红色背景**：奸臣
 
 
 === 重要事件
@@ -16044,6 +18505,113 @@ ____
 * 1368年 朱元璋建立明朝，元顺帝北逃，元亡
 
 
+=== 元朝人物关系图
+
+[graphviz]
+....
+digraph yuan {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC"];
+    edge [fontname="Heiti SC"];
+
+    // 蒙古大汗
+    subgraph cluster_khan {
+        label="蒙古大汗/元帝";
+        style=filled;
+        fillcolor="#e6e6fa";
+        成吉思汗 [label="铁木真\n(成吉思汗)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        窝阔台 [label="窝阔台\n(太宗)"];
+        贵由 [label="贵由\n(定宗)"];
+        蒙哥 [label="蒙哥\n(宪宗)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        忽必烈 [label="忽必烈\n(世祖)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        元顺帝 [label="妥懽帖睦尔\n(顺帝)"];
+    }
+
+    // 四大汗国创建者
+    subgraph cluster_khanates {
+        label="四大汗国";
+        style=filled;
+        fillcolor="#ffefd5";
+        拔都 [label="拔都\n(钦察汗国)", fillcolor="#ffdab9", style="rounded,filled,bold"];
+        察合台 [label="察合台\n(察合台汗国)"];
+        旭烈兀 [label="旭烈兀\n(伊利汗国)"];
+        术赤 [label="术赤"];
+        拖雷 [label="拖雷\n(监国)"];
+    }
+
+    // 名臣名将
+    subgraph cluster_officials {
+        label="名臣名将";
+        style=filled;
+        fillcolor="#f0fff0";
+        耶律楚材 [label="耶律楚材\n(中书令)", fillcolor="#98fb98", style="rounded,filled,bold"];
+        刘秉忠 [label="刘秉忠\n(建大都)"];
+        伯颜 [label="伯颜\n(灭宋)", fillcolor="#98fb98", style="rounded,filled,bold"];
+        脱脱 [label="脱脱\n(丞相)"];
+    }
+
+    // 西方来客
+    subgraph cluster_foreign {
+        label="西方来客";
+        style=filled;
+        fillcolor="#e0ffff";
+        马可波罗 [label="马可·波罗"];
+    }
+
+    // 南宋亡臣
+    subgraph cluster_song_end {
+        label="南宋末";
+        style=filled;
+        fillcolor="#ffe4e1";
+        文天祥元 [label="文天祥\n(殉国)", fillcolor="#ffb6c1", style="rounded,filled,bold"];
+        陆秀夫元 [label="陆秀夫\n(负帝投海)"];
+    }
+
+    // 明太祖
+    subgraph cluster_ming {
+        label="明";
+        style=filled;
+        fillcolor="#fff8dc";
+        朱元璋 [label="朱元璋\n(明太祖)", fillcolor="#f0e68c", style="rounded,filled,bold"];
+        徐达 [label="徐达\n(灭元)"];
+    }
+
+    // 帝系
+    成吉思汗 -> 术赤 [label="长子"];
+    成吉思汗 -> 察合台 [label="次子"];
+    成吉思汗 -> 窝阔台 [label="三子"];
+    成吉思汗 -> 拖雷 [label="四子"];
+    术赤 -> 拔都 [label="子"];
+    拖雷 -> 蒙哥 [label="子"];
+    拖雷 -> 忽必烈 [label="子"];
+    拖雷 -> 旭烈兀 [label="子"];
+    窝阔台 -> 贵由 [label="子"];
+    忽必烈 -> 元顺帝 [label="后裔"];
+
+    // 君臣
+    成吉思汗 -> 耶律楚材 [label="重用", style=dashed];
+    忽必烈 -> 刘秉忠 [label="重用", style=dashed];
+    忽必烈 -> 伯颜 [label="命灭宋", style=dashed];
+    忽必烈 -> 马可波罗 [label="接见", style=dashed];
+    元顺帝 -> 脱脱 [label="任相", style=dashed];
+
+    // 灭宋
+    伯颜 -> 文天祥元 [label="俘", color=red];
+    伯颜 -> 陆秀夫元 [label="逼亡", color=red, style=dashed];
+
+    // 灭元
+    朱元璋 -> 徐达 [label="命北伐", style=dashed];
+    徐达 -> 元顺帝 [label="攻破大都", color=red, style=bold];
+}
+....
+
+**图例说明**：
+
+* **实线箭头**：血缘或继承关系
+* **虚线箭头**：君臣或政治关系
+* **红色箭头**：敌对或征服关系
+
+
 === 重要事件
 
 ==== 蒙古灭西夏（1205-1227年）
@@ -16527,6 +19095,142 @@ ____
 * 1636年 皇太极改国号为清
 * 1644年 李自成攻入北京，崇祯帝自缢，明亡
 
+
+=== 明朝人物关系图
+
+[graphviz]
+....
+digraph ming {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC"];
+    edge [fontname="Heiti SC"];
+
+    // 明帝系
+    subgraph cluster_emperor {
+        label="明帝世系";
+        style=filled;
+        fillcolor="#e6e6fa";
+        朱元璋明 [label="朱元璋\n(太祖)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        朱标 [label="朱标\n(懿文太子)"];
+        朱允炆 [label="朱允炆\n(建文帝)"];
+        朱棣 [label="朱棣\n(成祖)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        朱高炽 [label="朱高炽\n(仁宗)"];
+        朱瞻基 [label="朱瞻基\n(宣宗)"];
+        朱祁镇 [label="朱祁镇\n(英宗)"];
+        朱祁钰 [label="朱祁钰\n(代宗)"];
+        朱厚熜 [label="朱厚熜\n(世宗)"];
+        朱翊钧 [label="朱翊钧\n(神宗)"];
+        朱由检 [label="朱由检\n(思宗)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+    }
+
+    // 开国功臣
+    subgraph cluster_founders {
+        label="开国功臣";
+        style=filled;
+        fillcolor="#f0fff0";
+        徐达明 [label="徐达\n(大将军)", fillcolor="#98fb98", style="rounded,filled,bold"];
+        常遇春 [label="常遇春\n(副将军)"];
+        刘伯温 [label="刘基\n(刘伯温)", fillcolor="#98fb98", style="rounded,filled,bold"];
+        李善长 [label="李善长\n(丞相)"];
+        胡惟庸 [label="胡惟庸\n(丞相)"];
+    }
+
+    // 永乐名臣
+    subgraph cluster_yongle {
+        label="永乐时期";
+        style=filled;
+        fillcolor="#e0ffff";
+        郑和 [label="郑和\n(七下西洋)", fillcolor="#87ceeb", style="rounded,filled,bold"];
+        姚广孝 [label="姚广孝\n(黑衣宰相)"];
+    }
+
+    // 中后期名臣
+    subgraph cluster_late {
+        label="中后期名臣";
+        style=filled;
+        fillcolor="#ffefd5";
+        于谦 [label="于谦\n(北京保卫战)", fillcolor="#ffdab9", style="rounded,filled,bold"];
+        王阳明 [label="王阳明\n(心学)", fillcolor="#ffdab9", style="rounded,filled,bold"];
+        张居正 [label="张居正\n(改革)", fillcolor="#ffdab9", style="rounded,filled,bold"];
+        戚继光 [label="戚继光\n(抗倭)"];
+        袁崇焕 [label="袁崇焕\n(抗清)"];
+    }
+
+    // 宦官权臣
+    subgraph cluster_eunuch {
+        label="宦官权臣";
+        style=filled;
+        fillcolor="#ffe4e1";
+        王振 [label="王振\n(土木之变)", fillcolor="#ff6b6b"];
+        刘瑾 [label="刘瑾\n(八虎)", fillcolor="#ff6b6b"];
+        严嵩 [label="严嵩\n(奸相)", fillcolor="#ff6b6b"];
+        魏忠贤 [label="魏忠贤\n(九千岁)", fillcolor="#ff6b6b", style="rounded,filled,bold"];
+    }
+
+    // 敌对势力
+    subgraph cluster_enemy {
+        label="敌对势力";
+        style=filled;
+        fillcolor="#d3d3d3";
+        陈友谅 [label="陈友谅"];
+        努尔哈赤 [label="努尔哈赤\n(后金)", fillcolor="#c0c0c0", style="rounded,filled,bold"];
+        李自成 [label="李自成\n(闯王)", fillcolor="#c0c0c0", style="rounded,filled,bold"];
+    }
+
+    // 帝系
+    朱元璋明 -> 朱标 [label="太子"];
+    朱元璋明 -> 朱棣 [label="四子"];
+    朱标 -> 朱允炆 [label="子"];
+    朱棣 -> 朱高炽 [label="子"];
+    朱高炽 -> 朱瞻基 [label="子"];
+    朱瞻基 -> 朱祁镇 [label="子"];
+    朱瞻基 -> 朱祁钰 [label="子"];
+    朱祁镇 -> 朱厚熜 [label="后裔", style=dashed];
+    朱厚熜 -> 朱翊钧 [label="孙"];
+    朱翊钧 -> 朱由检 [label="孙"];
+
+    // 靖难
+    朱棣 -> 朱允炆 [label="靖难夺位", color=red, style=bold];
+    朱棣 -> 姚广孝 [label="谋主", style=dashed];
+
+    // 开国君臣
+    朱元璋明 -> 徐达明 [label="北伐", style=dashed];
+    朱元璋明 -> 常遇春 [label="北伐", style=dashed];
+    朱元璋明 -> 刘伯温 [label="谋士", style=dashed];
+    朱元璋明 -> 李善长 [label="丞相", style=dashed];
+    李善长 -> 胡惟庸 [label="荐", style=dashed];
+    朱元璋明 -> 胡惟庸 [label="诛杀", color=red];
+    朱元璋明 -> 陈友谅 [label="鄱阳湖大战", color=red, style=bold];
+
+    // 永乐
+    朱棣 -> 郑和 [label="下西洋", style=dashed];
+
+    // 土木之变
+    朱祁镇 -> 王振 [label="宠信", style=dashed, color=orange];
+    朱祁钰 -> 于谦 [label="守北京", style=dashed];
+    朱祁镇 -> 于谦 [label="复辟杀", color=red];
+
+    // 中后期
+    朱厚熜 -> 严嵩 [label="宠信", style=dashed, color=orange];
+    朱翊钧 -> 张居正 [label="改革", style=dashed];
+    朱翊钧 -> 戚继光 [label="抗倭", style=dashed];
+    朱由检 -> 魏忠贤 [label="诛", color=red];
+    朱由检 -> 袁崇焕 [label="误杀", color=red];
+
+    // 亡国
+    努尔哈赤 -> 袁崇焕 [label="宁远之战", color=blue];
+    李自成 -> 朱由检 [label="攻北京", color=red, style=bold];
+}
+....
+
+**图例说明**：
+
+* **实线箭头**：血缘或继承关系
+* **虚线箭头**：君臣关系
+* **橙色箭头**：宠信宦官/奸臣
+* **红色箭头**：敌对、诛杀或夺位
+* **蓝色箭头**：战胜
+* **红色背景**：奸臣宦官
 
 
 === 重要事件
@@ -18366,6 +21070,141 @@ ____
 * 1911年 武昌起义
 * 1912年 宣统帝退位，清朝灭亡
 
+
+=== 清朝人物关系图
+
+[graphviz]
+....
+digraph qing {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC"];
+    edge [fontname="Heiti SC"];
+
+    // 清帝系
+    subgraph cluster_emperor {
+        label="清帝世系";
+        style=filled;
+        fillcolor="#e6e6fa";
+        努尔哈赤清 [label="努尔哈赤\n(太祖)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        皇太极 [label="皇太极\n(太宗)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        顺治 [label="福临\n(顺治)"];
+        康熙 [label="玄烨\n(康熙)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        雍正 [label="胤禛\n(雍正)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        乾隆 [label="弘历\n(乾隆)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        嘉庆 [label="颙琰\n(嘉庆)"];
+        道光 [label="旻宁\n(道光)"];
+        咸丰 [label="奕詝\n(咸丰)"];
+        同治 [label="载淳\n(同治)"];
+        光绪 [label="载湉\n(光绪)"];
+        宣统 [label="溥仪\n(宣统)"];
+    }
+
+    // 后妃
+    subgraph cluster_empress {
+        label="后妃";
+        style=filled;
+        fillcolor="#ffe4e1";
+        孝庄 [label="孝庄太后", fillcolor="#ffb6c1", style="rounded,filled,bold"];
+        慈禧 [label="慈禧太后", fillcolor="#ffb6c1", style="rounded,filled,bold"];
+    }
+
+    // 名臣名将
+    subgraph cluster_officials {
+        label="名臣名将";
+        style=filled;
+        fillcolor="#f0fff0";
+        多尔衮 [label="多尔衮\n(摄政王)", fillcolor="#98fb98", style="rounded,filled,bold"];
+        鳌拜 [label="鳌拜\n(辅臣)"];
+        年羹尧 [label="年羹尧\n(大将军)"];
+        和珅 [label="和珅\n(权臣)", fillcolor="#ff6b6b"];
+        曾国藩 [label="曾国藩\n(湘军)", fillcolor="#98fb98", style="rounded,filled,bold"];
+        李鸿章 [label="李鸿章\n(淮军)", fillcolor="#98fb98", style="rounded,filled,bold"];
+        左宗棠 [label="左宗棠\n(收复新疆)"];
+        林则徐 [label="林则徐\n(虎门销烟)", fillcolor="#98fb98", style="rounded,filled,bold"];
+    }
+
+    // 变法人物
+    subgraph cluster_reform {
+        label="变法维新";
+        style=filled;
+        fillcolor="#e0ffff";
+        康有为 [label="康有为"];
+        梁启超 [label="梁启超"];
+        谭嗣同 [label="谭嗣同\n(戊戌六君子)"];
+    }
+
+    // 敌对势力
+    subgraph cluster_enemy {
+        label="敌对势力";
+        style=filled;
+        fillcolor="#d3d3d3";
+        吴三桂 [label="吴三桂\n(三藩)"];
+        洪秀全 [label="洪秀全\n(太平天国)", fillcolor="#c0c0c0", style="rounded,filled,bold"];
+        孙中山 [label="孙中山\n(辛亥革命)", fillcolor="#c0c0c0", style="rounded,filled,bold"];
+    }
+
+    // 帝系
+    努尔哈赤清 -> 皇太极 [label="子"];
+    皇太极 -> 顺治 [label="子"];
+    顺治 -> 康熙 [label="子"];
+    康熙 -> 雍正 [label="四子"];
+    雍正 -> 乾隆 [label="子"];
+    乾隆 -> 嘉庆 [label="子"];
+    嘉庆 -> 道光 [label="子"];
+    道光 -> 咸丰 [label="子"];
+    咸丰 -> 同治 [label="子"];
+    同治 -> 光绪 [label="堂弟", style=dashed];
+    光绪 -> 宣统 [label="侄", style=dashed];
+
+    // 后妃
+    皇太极 -> 孝庄 [label="妃", style=dotted];
+    孝庄 -> 顺治 [label="母"];
+    孝庄 -> 康熙 [label="祖母"];
+    咸丰 -> 慈禧 [label="妃", style=dotted];
+    慈禧 -> 同治 [label="母"];
+    慈禧 -> 光绪 [label="垂帘", style=dashed, color=purple];
+    慈禧 -> 宣统 [label="立", style=dashed];
+
+    // 摄政入关
+    努尔哈赤清 -> 多尔衮 [label="子"];
+    多尔衮 -> 顺治 [label="摄政", style=dashed];
+
+    // 君臣关系
+    康熙 -> 鳌拜 [label="擒", color=red];
+    雍正 -> 年羹尧 [label="赐死", color=red];
+    乾隆 -> 和珅 [label="宠信", style=dashed, color=orange];
+    嘉庆 -> 和珅 [label="赐死", color=red];
+    咸丰 -> 曾国藩 [label="命平太平军", style=dashed];
+    道光 -> 林则徐 [label="命销烟", style=dashed];
+
+    // 三藩
+    康熙 -> 吴三桂 [label="平三藩", color=red, style=bold];
+
+    // 太平天国
+    曾国藩 -> 洪秀全 [label="平太平军", color=red, style=bold];
+    李鸿章 -> 洪秀全 [label="平太平军", color=red];
+
+    // 变法
+    光绪 -> 康有为 [label="戊戌变法", style=dashed];
+    康有为 -> 梁启超 [label="师徒", style=dashed];
+    康有为 -> 谭嗣同 [label="同志", style=dashed];
+    慈禧 -> 谭嗣同 [label="杀", color=red];
+    慈禧 -> 光绪 [label="囚", color=red];
+
+    // 辛亥革命
+    孙中山 -> 宣统 [label="辛亥革命", color=red, style=bold];
+}
+....
+
+**图例说明**：
+
+* **实线箭头**：血缘或继承关系
+* **虚线箭头**：君臣或政治关系
+* **点线箭头**：婚姻关系
+* **紫色箭头**：垂帘听政
+* **橙色箭头**：宠信
+* **红色箭头**：敌对、诛杀或推翻
+* **红色背景**：权臣/奸臣
 
 
 === 重要事件
