@@ -23,6 +23,8 @@
 ....
 digraph wudi {
     rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC"];
     edge [fontname="Heiti SC"];
 
@@ -404,7 +406,7 @@ ____
 [graphviz]
 ....
 digraph xia {
-    graph [fontname="Heiti SC", rankdir=TB, bgcolor=transparent, splines=ortho]
+    graph [fontname="Heiti SC", rankdir=TB, bgcolor=transparent, splines=ortho, ranksep=0.8, nodesep=0.5]
     node [fontname="Heiti SC", shape=box, style="rounded,filled"]
     edge [fontname="Heiti SC"]
 
@@ -479,7 +481,7 @@ digraph xia {
     寒浞 -> 后羿 [label="杀", color="#ff0000", style=bold]
     寒浞 -> 浇 [label="父子", color="#8b4513"]
     浇 -> 相 [label="杀", color="#ff0000", style=bold]
-    相 -> 后缗 [label="夫妻", style=dotted, color="#ff69b4"]
+    相 -> 后缗 [label="夫妻", style=dotted, color="#c71585"]
     后缗 -> 少康 [label="母子", color="#8b4513"]
 
     // 少康中兴
@@ -849,7 +851,7 @@ _说明：─横向连接为父子相继，└─换行亦为传承延续，├�
 [graphviz]
 ....
 digraph shang {
-    graph [fontname="Heiti SC", rankdir=TB, bgcolor=transparent, splines=ortho]
+    graph [fontname="Heiti SC", rankdir=TB, bgcolor=transparent, splines=ortho, ranksep=0.8, nodesep=0.5]
     node [fontname="Heiti SC", shape=box, style="rounded,filled"]
     edge [fontname="Heiti SC"]
 
@@ -905,7 +907,7 @@ digraph shang {
         style="rounded,dashed"
         bgcolor="#ffe4e1"
 
-        妲己 [fillcolor="#ff69b4", style="rounded,filled,bold", label="妲己\n（宠妃）"]
+        妲己 [fillcolor="#c71585", style="rounded,filled,bold", label="妲己\n（宠妃）"]
         费中 [fillcolor="#ff6347", label="费中\n（佞臣）"]
         恶来 [fillcolor="#ff6347", label="恶来\n（佞臣）"]
     }
@@ -924,7 +926,7 @@ digraph shang {
     夏桀 [fillcolor="#ff6347", label="夏桀\n（亡国）"]
 
     // 世系关系
-    帝喾 -> 简狄 [label="妃", style=dotted, color="#ff69b4"]
+    帝喾 -> 简狄 [label="妃", style=dotted, color="#c71585"]
     简狄 -> 契 [label="母子", color="#8b4513"]
     契 -> 成汤 [label="14世后", style=dotted]
     成汤 -> 太甲 [label="祖孙", color="#8b4513"]
@@ -946,7 +948,7 @@ digraph shang {
     帝辛 -> 箕子 [label="囚", color="#ff0000"]
 
     // 纣之近臣
-    妲己 -> 帝辛 [label="宠", style=dotted, color="#ff69b4"]
+    妲己 -> 帝辛 [label="宠", style=dotted, color="#c71585"]
     费中 -> 帝辛 [label="佞", style=dashed, color="#808080"]
     恶来 -> 帝辛 [label="佞", style=dashed, color="#808080"]
 
@@ -1426,6 +1428,8 @@ ____
 ----
 digraph 西周人物关系 {
     rankdir=TB
+    ranksep=0.8
+    nodesep=0.5
     node [shape=box, fontname="Heiti SC", fontsize=12]
     edge [fontname="Heiti SC", fontsize=10]
 
@@ -1553,6 +1557,8 @@ digraph 西周人物关系 {
 ----
 digraph 春秋人物关系 {
     rankdir=TB
+    ranksep=0.8
+    nodesep=0.5
     node [shape=box, fontname="Heiti SC", fontsize=11]
     edge [fontname="Heiti SC", fontsize=9]
     node [style=filled]
@@ -1707,6 +1713,8 @@ digraph 春秋人物关系 {
 ----
 digraph 战国人物关系 {
     rankdir=TB
+    ranksep=0.8
+    nodesep=0.5
     node [shape=box, fontname="Heiti SC", fontsize=10]
     edge [fontname="Heiti SC", fontsize=9]
     node [style=filled]
@@ -4920,6 +4928,8 @@ ____
 ----
 digraph 秦朝人物关系 {
     rankdir=TB
+    ranksep=0.8
+    nodesep=0.5
     node [shape=box, fontname="Heiti SC", fontsize=11]
     edge [fontname="Heiti SC", fontsize=9]
     node [style=filled]
@@ -5464,6 +5474,8 @@ ____
 ----
 digraph 楚汉之际人物关系 {
     rankdir=TB
+    ranksep=0.8
+    nodesep=0.5
     node [shape=box, fontname="Heiti SC", fontsize=11]
     edge [fontname="Heiti SC", fontsize=9]
 
@@ -6107,6 +6119,8 @@ ____
 ----
 digraph 西汉人物关系 {
     rankdir=TB
+    ranksep=0.8
+    nodesep=0.5
     node [shape=box, fontname="Heiti SC", fontsize=11]
     edge [fontname="Heiti SC", fontsize=9]
 
@@ -7905,6 +7919,8 @@ ____
 ----
 digraph 东汉人物关系 {
     rankdir=TB
+    ranksep=0.8
+    nodesep=0.5
     node [shape=box, fontname="Heiti SC", fontsize=11]
     edge [fontname="Heiti SC", fontsize=9]
 
@@ -8619,6 +8635,8 @@ ____
 ----
 digraph 三国人物关系 {
     rankdir=TB
+    ranksep=0.8
+    nodesep=0.5
     node [shape=box, fontname="Heiti SC", fontsize=10]
     edge [fontname="Heiti SC", fontsize=9]
 
@@ -9898,6 +9916,8 @@ ____
 ----
 digraph 两晋人物关系 {
     rankdir=TB
+    ranksep=0.8
+    nodesep=0.5
     node [shape=box, fontname="Heiti SC", fontsize=10]
     edge [fontname="Heiti SC", fontsize=9]
 
@@ -11199,6 +11219,8 @@ ____
 ----
 digraph 南北朝人物关系 {
     rankdir=TB
+    ranksep=0.8
+    nodesep=0.5
     node [shape=box, fontname="Heiti SC", fontsize=10]
     edge [fontname="Heiti SC", fontsize=9]
 
@@ -11932,6 +11954,8 @@ ____
 ----
 digraph 隋朝人物关系 {
     rankdir=TB
+    ranksep=0.8
+    nodesep=0.5
     node [shape=box, fontname="Heiti SC", fontsize=11]
     edge [fontname="Heiti SC", fontsize=9]
 
@@ -12389,6 +12413,8 @@ ____
 ----
 digraph 唐朝人物关系 {
     rankdir=TB
+    ranksep=0.8
+    nodesep=0.5
     node [shape=box, fontname="Heiti SC", fontsize=10]
     edge [fontname="Heiti SC", fontsize=9]
 
@@ -14628,6 +14654,8 @@ ____
 ....
 digraph wudai_shiguo {
     rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC"];
     edge [fontname="Heiti SC"];
 
@@ -15343,6 +15371,8 @@ ____
 ....
 digraph liao {
     rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC"];
     edge [fontname="Heiti SC"];
 
@@ -15721,6 +15751,8 @@ ____
 ....
 digraph jin {
     rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC"];
     edge [fontname="Heiti SC"];
 
@@ -16062,6 +16094,8 @@ ____
 ....
 digraph xixia {
     rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC"];
     edge [fontname="Heiti SC"];
 
@@ -16461,6 +16495,8 @@ ____
 ....
 digraph song {
     rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC"];
     edge [fontname="Heiti SC"];
 
@@ -18511,6 +18547,8 @@ ____
 ....
 digraph yuan {
     rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC"];
     edge [fontname="Heiti SC"];
 
@@ -19102,6 +19140,8 @@ ____
 ....
 digraph ming {
     rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC"];
     edge [fontname="Heiti SC"];
 
@@ -21077,6 +21117,8 @@ ____
 ....
 digraph qing {
     rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC"];
     edge [fontname="Heiti SC"];
 
