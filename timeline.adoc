@@ -482,19 +482,87 @@ digraph huangdi_kaiguo {
         赧王_z [label="赧王\n周亡", fillcolor="#d3d3d3"];
     }
 
-    // ===== 秦朝 =====
-    subgraph cluster_qin {
-        label="秦朝（颛（zhuān）顼（xū）→大费之后）";
+    // ===== 秦赵（嬴姓） =====
+    subgraph cluster_qinzhao {
+        label="秦赵（颛（zhuān）顼（xū）→大费，嬴姓）";
         style="rounded,filled";
         fillcolor="#fff0f5";
 
         女脩（xiū） [label="女脩（xiū）\n吞玄鸟卵", fillcolor="#ffb6c1"];
         大业 [fillcolor="#dda0dd"];
         大费 [label="大费（柏翳）\n佐禹治水\n舜赐嬴姓\n秦赵共祖", fillcolor="#dda0dd", style="rounded,filled,bold"];
+
+        // 秦支
         非子 [label="非子\n善养马\n周孝王封秦", fillcolor="#da70d6"];
         秦穆公 [label="秦穆公\n霸西戎", fillcolor="#da70d6"];
-        秦孝公 [label="秦孝公\n用商鞅变法", fillcolor="#ba55d3"];
-        秦始皇 [label="秦始皇\n(嬴政)\n灭六国\n统一天下", fillcolor="#9370db", style="rounded,filled,bold"];
+        秦孝公 [label="秦孝公\n用商鞅", fillcolor="#ba55d3"];
+        秦始皇 [label="秦始皇\n灭六国统一", fillcolor="#9370db", style="rounded,filled,bold"];
+
+        // 赵支
+        造父 [label="造父\n善御\n封于赵城", fillcolor="#da70d6"];
+        赵衰 [label="赵衰\n辅晋文公", fillcolor="#da70d6"];
+        赵武灵王 [label="赵武灵王\n胡服骑射", fillcolor="#ba55d3"];
+    }
+
+    // ===== 姬姓诸侯（周室宗亲） =====
+    subgraph cluster_jixing {
+        label="姬姓诸侯（周室宗亲）";
+        style="rounded,filled";
+        fillcolor="#e0f0ff";
+
+        周公旦 [label="周公旦\n制礼作乐", fillcolor="#87ceeb", style="rounded,filled,bold"];
+        召公奭 [label="召公奭", fillcolor="#87ceeb"];
+        唐叔虞 [label="唐叔虞\n成王弟", fillcolor="#add8e6"];
+        康叔 [label="康叔\n武王弟", fillcolor="#add8e6"];
+
+        鲁国 [label="鲁\n(伯禽)\n周公之后", fillcolor="#b0c4de"];
+        燕国 [label="燕\n召公之后", fillcolor="#b0c4de"];
+        晋国 [label="晋\n唐叔虞之后", fillcolor="#b0c4de"];
+        卫国 [label="卫\n康叔之后", fillcolor="#b0c4de"];
+
+        韩国 [label="韩\n(三晋之一)\n晋公族", fillcolor="#778899"];
+        魏国 [label="魏\n(三晋之一)\n毕公高后", fillcolor="#778899"];
+    }
+
+    // ===== 子姓（商后裔） =====
+    subgraph cluster_zixing {
+        label="子姓（商汤后裔）";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+
+        微子 [label="微子启\n纣庶兄\n殷末三仁", fillcolor="#90ee90"];
+        宋国 [label="宋\n微子之后\n公爵", fillcolor="#98fb98"];
+    }
+
+    // ===== 妫姓（舜后裔） =====
+    subgraph cluster_guixing {
+        label="妫（guī）姓（舜之后裔）";
+        style="rounded,filled";
+        fillcolor="#fffacd";
+
+        舜后 [label="舜之后裔", fillcolor="#f0e68c"];
+        陈国 [label="陈\n(胡公满)\n舜后封陈", fillcolor="#f0e68c"];
+        田齐 [label="田齐\n陈公子完奔齐\n田氏代齐", fillcolor="#ffd700"];
+    }
+
+    // ===== 芈姓（颛顼后裔） =====
+    subgraph cluster_mixing {
+        label="芈（mǐ）姓（颛顼后裔）";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+
+        季连 [label="季连\n颛（zhuān）顼（xū）后裔\n芈姓始祖", fillcolor="#f08080"];
+        楚国 [label="楚\n熊绎封楚\n问鼎中原", fillcolor="#cd5c5c", style="rounded,filled,bold"];
+    }
+
+    // ===== 姜姓（炎帝后裔） =====
+    subgraph cluster_jiangxing {
+        label="姜姓（炎帝后裔）";
+        style="rounded,filled";
+        fillcolor="#ffe4b5";
+
+        太公望 [label="太公望\n(姜尚)\n渭水遇文王", fillcolor="#deb887", style="rounded,filled,bold"];
+        姜齐 [label="姜齐\n太公封齐\n桓公首霸", fillcolor="#f5deb3"];
     }
 
     // ===== 关系连接 =====
@@ -563,15 +631,50 @@ digraph huangdi_kaiguo {
     武王 -> 幽王_z [label="后裔", style=dashed, color="#8b4513"];
     幽王_z -> 赧王_z [label="后裔", style=dashed, color="#8b4513"];
 
-    // 秦朝（颛顼之后）
+    // 秦赵（颛顼→大费之后，嬴姓）
     颛（zhuān）顼（xū） -> 女脩（xiū） [label="苗裔", color="#8b4513", style=dashed];
     女脩（xiū） -> 大业 [label="生", color="#8b4513"];
     大业 -> 大费 [label="子", color="#8b4513"];
+    // 秦支
     大费 -> 非子 [label="后裔", style=dashed, color="#8b4513"];
     非子 -> 秦穆公 [label="后裔", style=dashed, color="#8b4513"];
     秦穆公 -> 秦孝公 [label="后裔", style=dashed, color="#8b4513"];
     秦孝公 -> 秦始皇 [label="后裔", style=dashed, color="#8b4513"];
     秦始皇 -> 赧王_z [label="灭周", color="#ff0000", style=bold, penwidth=2];
+    // 赵支
+    大费 -> 造父 [label="后裔", style=dashed, color="#8b4513"];
+    造父 -> 赵衰 [label="后裔", style=dashed, color="#8b4513"];
+    赵衰 -> 赵武灵王 [label="后裔", style=dashed, color="#8b4513"];
+
+    // 姬姓诸侯（周室宗亲）
+    武王 -> 周公旦 [label="弟", style=dashed, color="#8b4513"];
+    武王 -> 召公奭 [label="弟", style=dashed, color="#8b4513"];
+    武王 -> 康叔 [label="弟", style=dashed, color="#8b4513"];
+    武王 -> 唐叔虞 [label="子/成王弟", style=dashed, color="#8b4513"];
+    周公旦 -> 鲁国 [label="封鲁", color="#4169e1"];
+    召公奭 -> 燕国 [label="封燕", color="#4169e1"];
+    唐叔虞 -> 晋国 [label="封唐→晋", color="#4169e1"];
+    康叔 -> 卫国 [label="封卫", color="#4169e1"];
+    晋国 -> 韩国 [label="三家分晋", style=dashed, color="#808080"];
+    晋国 -> 魏国 [label="三家分晋", style=dashed, color="#808080"];
+
+    // 子姓（商后裔）
+    纣 -> 微子 [label="庶兄", style=dashed, color="#8b4513"];
+    微子 -> 宋国 [label="封宋", color="#4169e1"];
+
+    // 妫姓（舜后裔）
+    舜 -> 舜后 [label="后裔", style=dashed, color="#8b4513"];
+    舜后 -> 陈国 [label="封陈", color="#4169e1"];
+    陈国 -> 田齐 [label="公子完奔齐\n田氏代齐", style=dashed, color="#808080"];
+
+    // 芈姓（颛顼后裔→楚）
+    颛（zhuān）顼（xū） -> 季连 [label="后裔", style=dashed, color="#8b4513"];
+    季连 -> 楚国 [label="后裔封楚", color="#4169e1"];
+
+    // 姜姓（炎帝后裔）
+    神农 -> 太公望 [label="后裔", style=dashed, color="#8b4513"];
+    太公望 -> 姜齐 [label="封齐", color="#4169e1"];
+    田齐 -> 姜齐 [label="田氏代齐", color="#ff0000", style=bold];
 }
 ....
 
