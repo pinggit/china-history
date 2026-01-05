@@ -13,6 +13,49 @@
 
 == 传疑时代（无确切纪年）
 
+=== 三皇
+
+三皇为中国上古神话中最早的三位帝王，说法不一：
+
+* **《尚书大传》**：燧人、伏羲、神农
+* **《白虎通义》**：伏羲、神农、祝融
+* **《风俗通义》**：伏羲、女娲、神农
+* **《史记·秦始皇本纪》引议**：天皇、地皇、泰皇
+
+本书采用较通行的**伏羲、女娲、神农**之说。
+
+==== 伏羲（太昊）
+
+传说中人文始祖，风姓。
+
+* 作八卦，以通神明之德，以类万物之情
+* 结网罟（gǔ），教民渔猎
+* 制嫁娶之礼
+* 造琴瑟
+* 都于陈（今河南淮阳）
+
+==== 女娲
+
+一说伏羲之妹。
+
+* 抟（tuán）黄土作人
+* 炼五色石补天
+* 断鳌足立四极
+* 制笙簧
+
+==== 神农（炎帝）
+
+姜姓，以火德王，故称炎帝。
+
+* 始教民耕稼，尝百草
+* 作耒耜（lěi sì），教民农作
+* 日中为市，互通有无
+* 削木为弓，以威天下
+* 传八世至榆罔，衰于黄帝
+
+三皇之后为五帝，黄帝战胜炎帝、蚩尤，开启五帝时代。
+
+
 === 五帝
 
 依据：《史记·五帝本纪》
@@ -35,12 +78,12 @@ digraph wudi {
         fillcolor="#fff8dc";
         少典 [label="少典"];
         黄帝 [label="黄帝\n(公孙轩辕)", fillcolor="#f0e68c", style="rounded,filled,bold"];
-        嫘祖 [label="嫘祖\n(西陵氏)"];
+        嫘（léi）祖 [label="嫘（léi）祖\n(西陵氏)"];
         玄嚣 [label="玄嚣\n(青阳)"];
         昌意 [label="昌意"];
-        蟜极 [label="蟜极"];
-        颛顼 [label="颛顼\n(高阳)", fillcolor="#f0e68c", style="rounded,filled,bold"];
-        帝喾 [label="帝喾\n(高辛)", fillcolor="#f0e68c", style="rounded,filled,bold"];
+        蟜（jiǎo）极 [label="蟜（jiǎo）极"];
+        颛（zhuān）顼（xū） [label="颛（zhuān）顼（xū）\n(高阳)", fillcolor="#f0e68c", style="rounded,filled,bold"];
+        帝喾（kù） [label="帝喾（kù）\n(高辛)", fillcolor="#f0e68c", style="rounded,filled,bold"];
     }
 
     // 尧舜
@@ -68,20 +111,20 @@ digraph wudi {
 
     // 黄帝世系
     少典 -> 黄帝 [label="子"];
-    黄帝 -> 嫘祖 [label="妻", style=dotted];
+    黄帝 -> 嫘（léi）祖 [label="妻", style=dotted];
     黄帝 -> 玄嚣 [label="子"];
     黄帝 -> 昌意 [label="子"];
-    昌意 -> 颛顼 [label="子"];
-    玄嚣 -> 蟜极 [label="子"];
-    蟜极 -> 帝喾 [label="子"];
+    昌意 -> 颛（zhuān）顼（xū） [label="子"];
+    玄嚣 -> 蟜（jiǎo）极 [label="子"];
+    蟜（jiǎo）极 -> 帝喾（kù） [label="子"];
 
-    // 帝喾子嗣
-    帝喾 -> 挚 [label="子"];
-    帝喾 -> 尧 [label="子"];
+    // 帝喾（kù）子嗣
+    帝喾（kù） -> 挚 [label="子"];
+    帝喾（kù） -> 尧 [label="子"];
     挚 -> 尧 [label="不善\n弟代立", style=dashed];
 
-    // 舜的世系（颛顼后裔）
-    颛顼 -> 舜 [label="七世孙", style=dashed];
+    // 舜的世系（颛（zhuān）顼（xū）后裔）
+    颛（zhuān）顼（xū） -> 舜 [label="七世孙", style=dashed];
 
     // 禅让
     尧 -> 舜 [label="禅让", color=blue, style=bold];
@@ -95,7 +138,7 @@ digraph wudi {
 
     // 鲧禹
     鲧 -> 禹 [label="子"];
-    舜 -> 鲧 [label="殛于羽山", color=red];
+    舜 -> 鲧 [label="殛（jí）于羽山", color=red];
     舜 -> 禹 [label="举用", style=dashed];
 
     // 战争关系
@@ -134,20 +177,20 @@ digraph wudi_benji {
 
         少典 [fillcolor="#ffe4b5"];
         黄帝 [label="黄帝\n(轩辕)", fillcolor="#ffd700", style="rounded,filled,bold"];
-        嫘祖 [label="嫘祖\n(西陵之女)", fillcolor="#ffb6c1"];
+        嫘（léi）祖 [label="嫘（léi）祖\n(西陵之女)", fillcolor="#ffb6c1"];
         玄嚣 [label="玄嚣\n(青阳)\n降居江水", fillcolor="#f0e68c"];
         昌意 [label="昌意\n降居若水", fillcolor="#f0e68c"];
         昌仆 [label="昌仆\n(蜀山氏女)", fillcolor="#ffb6c1"];
-        蟜极 [fillcolor="#f0e68c"];
+        蟜（jiǎo）极 [fillcolor="#f0e68c"];
     }
 
-    // 颛顼
+    // 颛（zhuān）顼（xū）
     subgraph cluster_zhuanxu {
-        label="颛顼系";
+        label="颛（zhuān）顼（xū）系";
         style="rounded,filled";
         fillcolor="#e6e6fa";
 
-        颛顼 [label="颛顼\n(高阳)\n黄帝孙", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        颛（zhuān）顼（xū） [label="颛（zhuān）顼（xū）\n(高阳)\n黄帝孙", fillcolor="#dda0dd", style="rounded,filled,bold"];
         穷蝉 [fillcolor="#d8bfd8"];
         敬康 [fillcolor="#d8bfd8"];
         句望 [fillcolor="#d8bfd8"];
@@ -155,17 +198,17 @@ digraph wudi_benji {
         瞽叟 [label="瞽叟\n(盲)", fillcolor="#d8bfd8"];
     }
 
-    // 帝喾
+    // 帝喾（kù）
     subgraph cluster_diku {
-        label="帝喾系";
+        label="帝喾（kù）系";
         style="rounded,filled";
         fillcolor="#f0fff0";
 
-        帝喾 [label="帝喾\n(高辛)", fillcolor="#98fb98", style="rounded,filled,bold"];
+        帝喾（kù） [label="帝喾（kù）\n(高辛)", fillcolor="#98fb98", style="rounded,filled,bold"];
         姜嫄 [label="姜嫄\n(元妃)", fillcolor="#ffb6c1"];
         简狄 [label="简狄\n(有娀氏)", fillcolor="#ffb6c1"];
         庆都 [label="庆都\n(陈锋氏)", fillcolor="#ffb6c1"];
-        常仪 [label="常仪\n(娵訾氏)", fillcolor="#ffb6c1"];
+        常仪 [label="常仪\n(娵（jū）訾（zī）氏)", fillcolor="#ffb6c1"];
         挚 [label="挚\n(不善)", fillcolor="#d3d3d3"];
         弃 [label="弃\n(后稷)", fillcolor="#98fb98"];
         契 [label="契\n(商祖)", fillcolor="#98fb98"];
@@ -212,9 +255,9 @@ digraph wudi_benji {
         fillcolor="#f0f8ff";
 
         四岳 [label="四岳", fillcolor="#87cefa"];
-        皋陶 [label="皋陶\n(大理/刑法)", fillcolor="#87cefa"];
+        皋（gāo）陶 [label="皋（gāo）陶\n(大理/刑法)", fillcolor="#87cefa"];
         伯益 [label="伯益\n(虞/山泽)", fillcolor="#87cefa"];
-        夔 [label="夔\n(典乐)", fillcolor="#87cefa"];
+        夔（kuí） [label="夔（kuí）\n(典乐)", fillcolor="#87cefa"];
         龙 [label="龙\n(纳言)", fillcolor="#87cefa"];
         倕 [label="倕\n(共工)", fillcolor="#87cefa"];
         彭祖 [fillcolor="#87cefa"];
@@ -227,7 +270,7 @@ digraph wudi_benji {
         fillcolor="#ffe4e1";
 
         共工 [label="共工\n(流幽陵)", fillcolor="#ff6347"];
-        驩兜 [label="驩兜\n(放崇山)", fillcolor="#ff6347"];
+        驩（huān）兜（dōu） [label="驩（huān）兜（dōu）\n(放崇山)", fillcolor="#ff6347"];
         三苗 [label="三苗\n(窜三危)", fillcolor="#ff6347"];
     }
 
@@ -245,16 +288,16 @@ digraph wudi_benji {
 
     // 黄帝世系
     少典 -> 黄帝 [label="子", color="#8b4513"];
-    黄帝 -> 嫘祖 [label="娶", style=dotted, color="#c71585"];
-    嫘祖 -> 玄嚣 [label="生", color="#8b4513"];
-    嫘祖 -> 昌意 [label="生", color="#8b4513"];
+    黄帝 -> 嫘（léi）祖 [label="娶", style=dotted, color="#c71585"];
+    嫘（léi）祖 -> 玄嚣 [label="生", color="#8b4513"];
+    嫘（léi）祖 -> 昌意 [label="生", color="#8b4513"];
     昌意 -> 昌仆 [label="娶", style=dotted, color="#c71585"];
-    昌仆 -> 颛顼 [label="生", color="#8b4513"];
-    玄嚣 -> 蟜极 [label="子", color="#8b4513"];
-    蟜极 -> 帝喾 [label="子", color="#8b4513"];
+    昌仆 -> 颛（zhuān）顼（xū） [label="生", color="#8b4513"];
+    玄嚣 -> 蟜（jiǎo）极 [label="子", color="#8b4513"];
+    蟜（jiǎo）极 -> 帝喾（kù） [label="子", color="#8b4513"];
 
-    // 颛顼至舜（七世）
-    颛顼 -> 穷蝉 [label="子", color="#8b4513"];
+    // 颛（zhuān）顼（xū）至舜（七世）
+    颛（zhuān）顼（xū） -> 穷蝉 [label="子", color="#8b4513"];
     穷蝉 -> 敬康 [color="#8b4513"];
     敬康 -> 句望 [color="#8b4513"];
     句望 -> 桥牛 [color="#8b4513"];
@@ -263,11 +306,11 @@ digraph wudi_benji {
     瞽叟 -> 后母 [label="继娶", style=dotted, color="#c71585"];
     后母 -> 象 [label="生", color="#8b4513"];
 
-    // 帝喾四妃
-    帝喾 -> 姜嫄 [label="元妃", style=dotted, color="#c71585"];
-    帝喾 -> 简狄 [label="次妃", style=dotted, color="#c71585"];
-    帝喾 -> 庆都 [label="妃", style=dotted, color="#c71585"];
-    帝喾 -> 常仪 [label="妃", style=dotted, color="#c71585"];
+    // 帝喾（kù）四妃
+    帝喾（kù） -> 姜嫄 [label="元妃", style=dotted, color="#c71585"];
+    帝喾（kù） -> 简狄 [label="次妃", style=dotted, color="#c71585"];
+    帝喾（kù） -> 庆都 [label="妃", style=dotted, color="#c71585"];
+    帝喾（kù） -> 常仪 [label="妃", style=dotted, color="#c71585"];
     姜嫄 -> 弃 [label="履大人迹生", color="#8b4513"];
     简狄 -> 契 [label="吞玄鸟卵生", color="#8b4513"];
     庆都 -> 尧 [label="生", color="#8b4513"];
@@ -288,26 +331,247 @@ digraph wudi_benji {
 
     // 鲧禹
     鲧 -> 禹 [label="子", color="#8b4513"];
-    舜 -> 鲧 [label="殛于羽山", color="#ff0000", style=bold];
+    舜 -> 鲧 [label="殛（jí）于羽山", color="#ff0000", style=bold];
     四岳 -> 鲧 [label="举", style=dashed];
     四岳 -> 禹 [label="举", style=dashed];
 
     // 舜用臣
-    舜 -> 皋陶 [label="命作士", style=dashed, color="#228b22"];
+    舜 -> 皋（gāo）陶 [label="命作士", style=dashed, color="#228b22"];
     舜 -> 伯益 [label="命为虞", style=dashed, color="#228b22"];
     舜 -> 弃 [label="命为后稷", style=dashed, color="#228b22"];
     舜 -> 契 [label="命为司徒", style=dashed, color="#228b22"];
-    舜 -> 夔 [label="命典乐", style=dashed, color="#228b22"];
+    舜 -> 夔（kuí） [label="命典乐", style=dashed, color="#228b22"];
     舜 -> 龙 [label="命为纳言", style=dashed, color="#228b22"];
 
     // 四凶
     舜 -> 共工 [label="流", color="#ff0000"];
-    舜 -> 驩兜 [label="放", color="#ff0000"];
+    舜 -> 驩（huān）兜（dōu） [label="放", color="#ff0000"];
     舜 -> 三苗 [label="窜", color="#ff0000"];
 
     // 黄帝征伐
     黄帝 -> 炎帝 [label="阪泉三战", color="#ff0000", style=bold];
     黄帝 -> 蚩尤 [label="涿鹿禽杀", color="#ff0000", style=bold];
+}
+....
+
+
+==== 黄帝后裔开国总图
+
+_三皇五帝、夏、商、周、秦世系总览：从神话到正史的完整脉络_
+
+[graphviz]
+....
+digraph huangdi_kaiguo {
+    rankdir=TB;
+    ranksep=1.2;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // ===== 三皇（神话时代） =====
+    subgraph cluster_sanhuang {
+        label="三皇（神话时代）";
+        style="rounded,filled";
+        fillcolor="#f5f5f5";
+
+        伏羲 [label="伏羲（太昊）\n作八卦\n结网罟", fillcolor="#d3d3d3", style="rounded,filled,bold"];
+        女娲 [label="女娲\n抟土造人\n炼石补天", fillcolor="#d3d3d3", style="rounded,filled,bold"];
+        神农 [label="神农（炎帝）\n尝百草\n教农耕", fillcolor="#d3d3d3", style="rounded,filled,bold"];
+    }
+
+    // ===== 黄帝 =====
+    subgraph cluster_huangdi {
+        label="五帝之首";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+
+        少典 [fillcolor="#ffe4b5"];
+        黄帝 [label="黄帝\n(轩辕)\n战炎帝蚩尤\n统一华夏", fillcolor="#ffd700", style="rounded,filled,bold"];
+        嫘（léi）祖 [label="嫘（léi）祖\n(西陵氏)", fillcolor="#ffb6c1"];
+    }
+
+    // ===== 玄嚣系 → 帝喾（kù） → 商、周 =====
+    subgraph cluster_xuanxiao {
+        label="玄嚣系（商周之祖）";
+        style="rounded,filled";
+        fillcolor="#e6ffe6";
+
+        玄嚣 [label="玄嚣\n(青阳)", fillcolor="#98fb98"];
+        蟜（jiǎo）极 [fillcolor="#98fb98"];
+        帝喾（kù） [label="帝喾（kù）\n(高辛)", fillcolor="#90ee90", style="rounded,filled,bold"];
+        姜嫄 [label="姜嫄\n(元妃)", fillcolor="#ffb6c1"];
+        简狄 [label="简狄\n(次妃)", fillcolor="#ffb6c1"];
+        庆都 [label="庆都\n(陈锋氏)", fillcolor="#ffb6c1"];
+    }
+
+    // ===== 尧 =====
+    subgraph cluster_yao {
+        label="帝尧";
+        style="rounded,filled";
+        fillcolor="#e0ffff";
+
+        尧 [label="尧\n(放勋)\n禅让于舜", fillcolor="#87ceeb", style="rounded,filled,bold"];
+    }
+
+    // ===== 昌意系 → 颛（zhuān）顼（xū） → 舜、夏、秦 =====
+    subgraph cluster_changyi {
+        label="昌意系（舜夏秦之祖）";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+
+        昌意 [fillcolor="#d8bfd8"];
+        昌仆 [label="昌仆\n(蜀山氏)", fillcolor="#ffb6c1"];
+        颛（zhuān）顼（xū） [label="颛（zhuān）顼（xū）\n(高阳)", fillcolor="#dda0dd", style="rounded,filled,bold"];
+    }
+
+    // ===== 舜系 =====
+    subgraph cluster_shun {
+        label="帝舜（颛（zhuān）顼（xū）七世孙）";
+        style="rounded,filled";
+        fillcolor="#fffacd";
+
+        穷蝉 [fillcolor="#f0e68c"];
+        敬康 [fillcolor="#f0e68c"];
+        句望 [fillcolor="#f0e68c"];
+        桥牛 [fillcolor="#f0e68c"];
+        瞽（gǔ）叟 [label="瞽（gǔ）叟", fillcolor="#f0e68c"];
+        舜 [label="舜\n(重华)\n禅让于禹", fillcolor="#f0e68c", style="rounded,filled,bold"];
+    }
+
+    // ===== 夏朝 =====
+    subgraph cluster_xia {
+        label="夏朝（颛（zhuān）顼（xū）之后）";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+
+        鲧 [label="鲧\n治水失败\n殛（jí）于羽山", fillcolor="#ffa07a"];
+        禹 [label="禹\n(文命)\n治水成功\n建夏朝", fillcolor="#ff6347", style="rounded,filled,bold"];
+        启 [label="启\n家天下始", fillcolor="#ff6347"];
+        桀 [label="桀\n夏亡", fillcolor="#cd5c5c"];
+    }
+
+    // ===== 商朝 =====
+    subgraph cluster_shang {
+        label="商朝（帝喾（kù）→契之后）";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+
+        契 [label="契\n封于商\n商之始祖", fillcolor="#98fb98", style="rounded,filled,bold"];
+        相土_s [label="相土", fillcolor="#90ee90"];
+        冥_s [label="冥", fillcolor="#90ee90"];
+        主癸_s [label="主癸", fillcolor="#90ee90"];
+        成汤 [label="成汤\n灭夏桀\n建商朝", fillcolor="#32cd32", style="rounded,filled,bold"];
+        盘庚 [label="盘庚\n迁殷", fillcolor="#32cd32"];
+        纣 [label="纣\n商亡", fillcolor="#228b22"];
+    }
+
+    // ===== 周朝 =====
+    subgraph cluster_zhou {
+        label="周朝（帝喾（kù）→后稷之后）";
+        style="rounded,filled";
+        fillcolor="#e6f3ff";
+
+        后稷 [label="后稷（弃）\n好耕农\n周之始祖", fillcolor="#87ceeb", style="rounded,filled,bold"];
+        不窋_z [label="不窋\n失官奔戎狄", fillcolor="#add8e6"];
+        公刘_z [label="公刘\n复修后稷业", fillcolor="#add8e6"];
+        古公亶（dǎn）父 [label="古公亶（dǎn）父\n（太王）\n迁岐", fillcolor="#87ceeb", style="rounded,filled,bold"];
+        季历_z [label="季历", fillcolor="#add8e6"];
+        文王 [label="文王\n(姬昌)\n三分天下有其二", fillcolor="#6495ed", style="rounded,filled,bold"];
+        武王 [label="武王\n(姬发)\n灭纣\n建周朝", fillcolor="#87cefa", style="rounded,filled,bold"];
+        幽王_z [label="幽王\n西周亡", fillcolor="#b0c4de"];
+        赧王_z [label="赧王\n周亡", fillcolor="#d3d3d3"];
+    }
+
+    // ===== 秦朝 =====
+    subgraph cluster_qin {
+        label="秦朝（颛（zhuān）顼（xū）→大费之后）";
+        style="rounded,filled";
+        fillcolor="#fff0f5";
+
+        女脩（xiū） [label="女脩（xiū）\n吞玄鸟卵", fillcolor="#ffb6c1"];
+        大业 [fillcolor="#dda0dd"];
+        大费 [label="大费（柏翳）\n佐禹治水\n舜赐嬴姓\n秦赵共祖", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        非子 [label="非子\n善养马\n周孝王封秦", fillcolor="#da70d6"];
+        秦穆公 [label="秦穆公\n霸西戎", fillcolor="#da70d6"];
+        秦孝公 [label="秦孝公\n用商鞅变法", fillcolor="#ba55d3"];
+        秦始皇 [label="秦始皇\n(嬴政)\n灭六国\n统一天下", fillcolor="#9370db", style="rounded,filled,bold"];
+    }
+
+    // ===== 关系连接 =====
+
+    // 三皇
+    伏羲 -> 女娲 [label="兄妹（一说）", style=dotted, color="#808080"];
+    神农 -> 黄帝 [label="阪泉败\n炎黄合", color="#ff0000", style=bold];
+
+    // 黄帝
+    少典 -> 黄帝 [label="子", color="#8b4513"];
+    黄帝 -> 嫘（léi）祖 [label="娶", style=dotted, color="#c71585"];
+    嫘（léi）祖 -> 玄嚣 [label="生", color="#8b4513"];
+    嫘（léi）祖 -> 昌意 [label="生", color="#8b4513"];
+
+    // 玄嚣系
+    玄嚣 -> 蟜（jiǎo）极 [label="子", color="#8b4513"];
+    蟜（jiǎo）极 -> 帝喾（kù） [label="子", color="#8b4513"];
+    帝喾（kù） -> 姜嫄 [label="元妃", style=dotted, color="#c71585"];
+    帝喾（kù） -> 简狄 [label="次妃", style=dotted, color="#c71585"];
+    帝喾（kù） -> 庆都 [label="妃", style=dotted, color="#c71585"];
+    姜嫄 -> 后稷 [label="履迹生", color="#228b22", style=bold];
+    简狄 -> 契 [label="吞卵生", color="#228b22", style=bold];
+    庆都 -> 尧 [label="生", color="#8b4513"];
+
+    // 昌意系
+    昌意 -> 昌仆 [label="娶", style=dotted, color="#c71585"];
+    昌仆 -> 颛（zhuān）顼（xū） [label="生", color="#8b4513"];
+
+    // 颛（zhuān）顼（xū）两支
+    颛（zhuān）顼（xū） -> 穷蝉 [label="子", color="#8b4513"];
+    颛（zhuān）顼（xū） -> 鲧 [label="后裔", color="#8b4513", style=dashed];
+
+    // 舜系（七世）
+    穷蝉 -> 敬康 [color="#8b4513"];
+    敬康 -> 句望 [color="#8b4513"];
+    句望 -> 桥牛 [color="#8b4513"];
+    桥牛 -> 瞽（gǔ）叟 [color="#8b4513"];
+    瞽（gǔ）叟 -> 舜 [label="子", color="#8b4513"];
+
+    // 禅让
+    尧 -> 舜 [label="禅让", color="#4169e1", style=bold, penwidth=2];
+    舜 -> 禹 [label="禅让", color="#4169e1", style=bold, penwidth=2];
+
+    // 夏朝
+    鲧 -> 禹 [label="子", color="#8b4513"];
+    禹 -> 启 [label="子", color="#8b4513"];
+    启 -> 桀 [label="后裔", style=dashed, color="#8b4513"];
+
+    // 商朝
+    契 -> 相土_s [label="后裔", style=dashed, color="#8b4513"];
+    相土_s -> 冥_s [label="后裔", style=dashed, color="#8b4513"];
+    冥_s -> 主癸_s [label="后裔", style=dashed, color="#8b4513"];
+    主癸_s -> 成汤 [label="子", color="#8b4513"];
+    成汤 -> 桀 [label="灭夏", color="#ff0000", style=bold, penwidth=2];
+    成汤 -> 盘庚 [label="后裔", style=dashed, color="#8b4513"];
+    盘庚 -> 纣 [label="后裔", style=dashed, color="#8b4513"];
+
+    // 周朝
+    后稷 -> 不窋_z [label="后裔", style=dashed, color="#8b4513"];
+    不窋_z -> 公刘_z [label="后裔", style=dashed, color="#8b4513"];
+    公刘_z -> 古公亶（dǎn）父 [label="后裔", style=dashed, color="#8b4513"];
+    古公亶（dǎn）父 -> 季历_z [label="子", color="#8b4513"];
+    季历_z -> 文王 [label="子", color="#8b4513"];
+    文王 -> 武王 [label="子", color="#8b4513"];
+    武王 -> 纣 [label="灭商", color="#ff0000", style=bold, penwidth=2];
+    武王 -> 幽王_z [label="后裔", style=dashed, color="#8b4513"];
+    幽王_z -> 赧王_z [label="后裔", style=dashed, color="#8b4513"];
+
+    // 秦朝（颛顼之后）
+    颛（zhuān）顼（xū） -> 女脩（xiū） [label="苗裔", color="#8b4513", style=dashed];
+    女脩（xiū） -> 大业 [label="生", color="#8b4513"];
+    大业 -> 大费 [label="子", color="#8b4513"];
+    大费 -> 非子 [label="后裔", style=dashed, color="#8b4513"];
+    非子 -> 秦穆公 [label="后裔", style=dashed, color="#8b4513"];
+    秦穆公 -> 秦孝公 [label="后裔", style=dashed, color="#8b4513"];
+    秦孝公 -> 秦始皇 [label="后裔", style=dashed, color="#8b4513"];
+    秦始皇 -> 赧王_z [label="灭周", color="#ff0000", style=bold, penwidth=2];
 }
 ....
 
@@ -331,7 +595,7 @@ digraph wudi_benji {
 * 旁罗日月星辰水波土石金玉，劳勤心力耳目，节用水火材物
 * 东至于海，登丸山及岱宗；西至于空桐，登鸡头
 * 南至于江，登熊湘；北逐荤粥（xūn yù，匈奴），合符釜山
-* 娶西陵之女嫘祖为正妃，生二子：玄嚣（青阳）、昌意
+* 娶西陵之女嫘（léi）祖为正妃，生二子：玄嚣（青阳）、昌意
 * 黄帝崩，葬桥山
 
 .原文
@@ -357,7 +621,7 @@ ____
 天下有不顺者，黄帝从而征之，平者去之，披山通道，未尝宁居。
 ____
 
-==== 颛顼（zhuān xū／高阳）
+==== 颛（zhuān）顼（zhuān xū／高阳）
 
 黄帝之孙，昌意之子，名高阳。
 
@@ -366,12 +630,12 @@ ____
 * 依鬼神以制义，治气以教化，絜诚以祭祀
 * 北至于幽陵，南至于交趾，西至于流沙，东至于蟠木
 * 动静之物，大小之神，日月所照，莫不砥属（顺服）
-* 颛顼崩，玄嚣之孙高辛立
+* 颛（zhuān）顼（xū）崩，玄嚣之孙高辛立
 
 .原文
 [quote]
 ____
-帝颛顼高阳者，黄帝之孙而昌意之子也。静渊（沉静深远）以有谋，疏通
+帝颛（zhuān）顼（xū）高阳者，黄帝之孙而昌意之子也。静渊（沉静深远）以有谋，疏通
 而知事；养材以任地，载时以象天，依鬼神以制义，治气以教化，絜
 （jié，同"洁"）诚以祭祀。
 ____
@@ -384,7 +648,7 @@ ____
 
 ==== 帝喾（kù／高辛氏）
 
-黄帝之曾孙，高辛氏。高辛父曰蟜极，蟜极父曰玄嚣，玄嚣父曰黄帝。
+黄帝之曾孙，高辛氏。高辛父曰蟜（jiǎo）极，蟜（jiǎo）极父曰玄嚣，玄嚣父曰黄帝。
 
 * 生而神灵，自言其名
 * 普施利物，不於其身
@@ -395,14 +659,14 @@ ____
 * 历日月而迎送之，明鬼神而敬事之
 * 日月所照，风雨所至，莫不从服
 * 娶陈锋氏女，生放勋（尧）
-* 娶娵訾氏女，生挚
-* 帝喾崩，挚代立；帝挚不善，弟放勋立
+* 娶娵（jū）訾（zī）氏女，生挚
+* 帝喾（kù）崩，挚代立；帝挚不善，弟放勋立
 
 .原文
 [quote]
 ____
-帝喾高辛者，黄帝之曾孙也。高辛父曰蟜（jiǎo）极，蟜极父曰玄嚣，
-玄嚣父曰黄帝。自玄嚣与蟜极皆不得在位，至高辛即帝位。高辛於颛顼
+帝喾（kù）高辛者，黄帝之曾孙也。高辛父曰蟜（jiǎo）极，蟜（jiǎo）极父曰玄嚣，
+玄嚣父曰黄帝。自玄嚣与蟜（jiǎo）极皆不得在位，至高辛即帝位。高辛於颛（zhuān）顼（xū）
 为族子。高辛生而神灵，自言其名。普施利物，不於其身。聪以知远，
 明以察微。顺天之义，知民之急。仁而威，惠而信，修身而天下服。
 ____
@@ -411,13 +675,13 @@ ____
 ____
 取地之财而节用之，抚教万民而利诲（huì，教导）之，历日月而迎送之，
 明鬼神而敬事之。其色郁郁（深沉），其德嶷嶷（yí，庄重）。其动也时，
-其服也士（适当）。帝喾溉（gài，普及）执中而遍天下，日月所照，风雨
+其服也士（适当）。帝喾（kù）溉（gài，普及）执中而遍天下，日月所照，风雨
 所至，莫不从服。
 ____
 
 ==== 尧（放勋）
 
-帝喾之子，名放勋。
+帝喾（kù）之子，名放勋。
 
 * 其仁如天，其知如神
 * 就之如日，望之如云；富而不骄，贵而不舒
@@ -495,7 +759,7 @@ ____
 * 举禹治水，禹乃遂与益、后稷（jì）奉帝命
 * 禹治水十三年，三过家门而不入
 * 命契为司徒，敬敷五教
-* 命皋陶作士（狱官），五刑有服
+* 命皋（gāo）陶作士（狱官），五刑有服
 * 年五十八尧崩，年六十一代尧践帝位
 * 践帝位三十九年，南巡狩，崩于苍梧之野
 * 葬于江南九疑，是为零陵
@@ -505,7 +769,7 @@ ____
 [quote]
 ____
 虞舜者，名曰重华。重华父曰瞽叟，瞽叟父曰桥牛，桥牛父曰句望，
-句望父曰敬康，敬康父曰穷蝉，穷蝉父曰帝颛顼，颛顼父曰昌意：
+句望父曰敬康，敬康父曰穷蝉，穷蝉父曰帝颛（zhuān）顼（xū），颛（zhuān）顼（xū）父曰昌意：
 以至舜七世矣。自从穷蝉以至帝舜，皆微为庶人。
 ____
 
@@ -548,7 +812,7 @@ ____
 
 [quote]
 ____
-流共工于幽陵，以变北狄；放驩兜（huān dōu）于崇山，以变南蛮；迁
+流共工于幽陵，以变北狄；放驩（huān）兜（huān dōu）于崇山，以变南蛮；迁
 三苗于三危，以变西戎；殛（jí，诛）鲧于羽山，以变东夷：四罪而天下
 咸服。
 ____
@@ -594,7 +858,7 @@ ____
                                └─扃
                                   └─廑
                                      └─孔甲
-                                        └─皋
+                                        └─皋（gāo）
                                            └─发
                                               └─桀（亡国）
 ....
@@ -713,8 +977,8 @@ digraph xia_benji {
 
         黄帝 [fillcolor="#ffd700", style="rounded,filled,bold"];
         昌意 [fillcolor="#f0e68c"];
-        颛顼 [label="颛顼\n(高阳)", fillcolor="#f0e68c"];
-        鲧 [label="鲧\n治水九年\n殛于羽山", fillcolor="#deb887"];
+        颛（zhuān）顼（xū） [label="颛（zhuān）顼（xū）\n(高阳)", fillcolor="#f0e68c"];
+        鲧 [label="鲧\n治水九年\n殛（jí）于羽山", fillcolor="#deb887"];
     }
 
     // 夏初
@@ -727,7 +991,7 @@ digraph xia_benji {
         涂山氏 [label="涂山氏\n(禹妻)", fillcolor="#ffb6c1"];
         启 [label="启\n(夏后帝启)\n家天下始", fillcolor="#dda0dd", style="rounded,filled,bold"];
         益 [label="益\n禹授政", fillcolor="#87ceeb"];
-        皋陶 [label="皋陶\n禹荐之\n皋陶卒", fillcolor="#87ceeb"];
+        皋（gāo）陶 [label="皋（gāo）陶\n禹荐之\n皋（gāo）陶卒", fillcolor="#87ceeb"];
     }
 
     // 夏帝世系
@@ -748,7 +1012,7 @@ digraph xia_benji {
         扃 [fillcolor="#d3d3d3"];
         廑 [fillcolor="#d3d3d3"];
         孔甲 [label="孔甲\n好方鬼神\n诸侯多叛", fillcolor="#ffa07a"];
-        皋_xia [label="皋", fillcolor="#d3d3d3"];
+        皋（gāo）_xia [label="皋（gāo）", fillcolor="#d3d3d3"];
         发 [fillcolor="#d3d3d3"];
         桀 [label="桀\n(履癸)\n不务德\n武伤百姓", fillcolor="#ff6347", style="rounded,filled,bold"];
     }
@@ -796,7 +1060,7 @@ digraph xia_benji {
         后稷 [label="后稷\n(弃)\n播时百谷", fillcolor="#f0e68c"];
         契_xia [label="契\n敬敷五教", fillcolor="#f0e68c"];
         伯夷 [label="伯夷\n典三礼", fillcolor="#f0e68c"];
-        夔_xia [label="夔\n典乐", fillcolor="#f0e68c"];
+        夔（kuí）_xia [label="夔（kuí）\n典乐", fillcolor="#f0e68c"];
         龙_xia [label="龙\n纳言", fillcolor="#f0e68c"];
         倕_xia [label="倕\n共工", fillcolor="#f0e68c"];
     }
@@ -815,14 +1079,14 @@ digraph xia_benji {
 
     // 禹之先世
     黄帝 -> 昌意 [label="子", color="#8b4513"];
-    昌意 -> 颛顼 [label="子", color="#8b4513"];
-    颛顼 -> 鲧 [label="子", color="#8b4513"];
+    昌意 -> 颛（zhuān）顼（xū） [label="子", color="#8b4513"];
+    颛（zhuān）顼（xū） -> 鲧 [label="子", color="#8b4513"];
     鲧 -> 禹 [label="子", color="#8b4513"];
 
     // 禹的婚姻与继承
     禹 -> 涂山氏 [label="娶", style=dotted, color="#c71585"];
     涂山氏 -> 启 [label="生", color="#8b4513"];
-    禹 -> 皋陶 [label="举荐", style=dashed, color="#228b22"];
+    禹 -> 皋（gāo）陶 [label="举荐", style=dashed, color="#228b22"];
     禹 -> 益 [label="授政", style=dashed, color="#4169e1"];
     益 -> 启 [label="让位", style=dashed, color="#4169e1"];
 
@@ -839,8 +1103,8 @@ digraph xia_benji {
     不降 -> 扃 [label="弟", style=dashed, color="#8b4513"];
     扃 -> 廑 [color="#8b4513"];
     廑 -> 孔甲 [label="不降子", style=dashed, color="#8b4513"];
-    孔甲 -> 皋_xia [color="#8b4513"];
-    皋_xia -> 发 [color="#8b4513"];
+    孔甲 -> 皋（gāo）_xia [color="#8b4513"];
+    皋（gāo）_xia -> 发 [color="#8b4513"];
     发 -> 桀 [color="#8b4513"];
 
     // 太康失国
@@ -867,7 +1131,7 @@ digraph xia_benji {
     禹 -> 后稷 [label="命播百谷", style=dashed, color="#228b22"];
     禹 -> 契_xia [label="命敷五教", style=dashed, color="#228b22"];
     禹 -> 伯夷 [label="命典礼", style=dashed, color="#228b22"];
-    禹 -> 夔_xia [label="命典乐", style=dashed, color="#228b22"];
+    禹 -> 夔（kuí）_xia [label="命典乐", style=dashed, color="#228b22"];
 
     // 征伐
     启 -> 有扈氏 [label="伐于甘\n灭之", color="#ff0000", style=bold];
@@ -895,7 +1159,7 @@ digraph xia_benji {
 禹承父业治水，十三年三过家门不入，疏九川，定九州，功成受禅，开创夏朝。
 
 **鲧治水败**：尧舜之时，洪水滔天。尧命鲧治水，鲧用息壤障洪水，九年不成。
-舜即位，殛鲧于羽山。
+舜即位，殛（jí）鲧于羽山。
 
 **禹继父业**：舜举鲧子禹，使续鲧之业。禹伤先人父鲧功之不成受诛，乃
 劳身焦思，居外十三年，过家门不敢入。
@@ -1004,9 +1268,9 @@ ____
 
 ==== 禹（姒文命／大禹）
 
-鲧之子。禹之父鲧，鲧之父帝颛顼，颛顼之父昌意，昌意之父黄帝。
+鲧之子。禹之父鲧，鲧之父帝颛（zhuān）顼（xū），颛（zhuān）顼（xū）之父昌意，昌意之父黄帝。
 
-* 鲧治水九年，功用不成，舜殛鲧于羽山
+* 鲧治水九年，功用不成，舜殛（jí）鲧于羽山
 * 舜举鲧子禹，使续鲧之业
 * 禹伤先人父鲧功之不成受诛，乃劳身焦思
 * 居外十三年，过家门不敢入
@@ -1055,8 +1319,8 @@ ____
 
 禹之子。
 
-* 帝禹立而举皋陶荐之，且授政焉，而皋陶卒
-* 禹封皋陶之后于英、六
+* 帝禹立而举皋（gāo）陶荐之，且授政焉，而皋（gāo）陶卒
+* 禹封皋（gāo）陶之后于英、六
 * 禹举益，任之政
 * 禹崩，以天下授益
 * 三年之丧毕，益让帝禹之子启
@@ -1201,7 +1465,7 @@ ____
 渡河南治亳，行汤之政，百姓由宁，殷道复兴。
 
 **武丁中兴**：武丁即位，思复兴殷而未得其佐，三年不言。以梦得傅说于傅险，
-举以为相，殷国大治。武丁修政行德，天下咸驩，殷道复兴。
+举以为相，殷国大治。武丁修政行德，天下咸驩（huān），殷道复兴。
 
 **纣之暴政与商亡**：纣资辨捷疾，材力过人，然知足以距谏，言足以饰非。好酒
 淫乐，爱妲己，以酒为池，县肉为林。重刑辟，有炮烙之法。剖比干观其心，
@@ -1247,7 +1511,7 @@ digraph shang {
         style="rounded,dashed"
         bgcolor="#f5f5dc"
 
-        帝喾 [fillcolor="#dda0dd"]
+        帝喾（kù） [fillcolor="#dda0dd"]
         简狄 [fillcolor="#ffb6c1", label="简狄\n（契母）"]
         契 [fillcolor="#87ceeb", style="rounded,filled,bold", label="契\n（商始祖）"]
     }
@@ -1312,7 +1576,7 @@ digraph shang {
     夏桀 [fillcolor="#ff6347", label="夏桀\n（亡国）"]
 
     // 世系关系
-    帝喾 -> 简狄 [label="妃", style=dotted, color="#c71585"]
+    帝喾（kù） -> 简狄 [label="妃", style=dotted, color="#c71585"]
     简狄 -> 契 [label="母子", color="#8b4513"]
     契 -> 成汤 [label="14世后", style=dotted]
     成汤 -> 太甲 [label="祖孙", color="#8b4513"]
@@ -1364,7 +1628,7 @@ digraph yin_benji {
         label="商先公（契至汤）";
         style="rounded,filled";
         fillcolor="#fff8dc";
-        帝喾_yin [label="帝喾", fillcolor="#ffe4b5"];
+        帝喾（kù）_yin [label="帝喾（kù）", fillcolor="#ffe4b5"];
         简狄_yin [label="简狄", fillcolor="#ffb6c1"];
         契_yin [label="契\n封于商", fillcolor="#f0e68c", style="rounded,filled,bold"];
         相土 [label="相土", fillcolor="#f0e68c"];
@@ -1372,7 +1636,7 @@ digraph yin_benji {
         主癸 [fillcolor="#ffe4b5"];
     }
 
-    帝喾_yin -> 简狄_yin [label="次妃", style=dotted, color="#c71585"];
+    帝喾（kù）_yin -> 简狄_yin [label="次妃", style=dotted, color="#c71585"];
     简狄_yin -> 契_yin [label="生", color="#8b4513"];
     契_yin -> 相土 [label="后裔", color="#8b4513"];
     相土 -> 冥 [label="后裔", color="#8b4513"];
@@ -1540,7 +1804,7 @@ digraph yin_benji {
 成汤顺应天命，伐暴救民，十一征而无敌于天下，灭夏桀于鸣条，建立商朝。
 
 **夏桀无道**：夏桀荒淫暴虐，诸侯叛离。有昆吾氏为乱，民皆怨恨。汤曰：
-"有夏多罪，天命殛之。予畏上帝，不敢不正。"
+"有夏多罪，天命殛（jí）之。予畏上帝，不敢不正。"
 
 **伊尹辅汤**：伊尹以贤能佐汤，负鼎俎以滋味说汤，致于王道。汤举任以
 国政，征伐四方。汤十一征而无敌于天下，诸侯咸归。
@@ -1555,7 +1819,7 @@ digraph yin_benji {
 [quote]
 ____
 汤曰："格女众庶，来，女悉听朕言。匪台小子敢行称乱，有夏多罪，
-天命殛之。……夏王率遏众力，率割夏邑。有众率怠弗协，曰：'时日曷丧，
+天命殛（jí）之。……夏王率遏众力，率割夏邑。有众率怠弗协，曰：'时日曷丧，
 予及汝皆亡。'"
 ____
 
@@ -1593,7 +1857,7 @@ ____
 乃使百工营求之野，得傅说于傅险。傅说本刑徒，筑于傅险。武丁与之语，
 果圣人，举以为相，殷国大治。
 
-**殷道复兴**：武丁修政行德，天下咸驩，殷道复兴。武丁在位五十九年，
+**殷道复兴**：武丁修政行德，天下咸驩（huān），殷道复兴。武丁在位五十九年，
 商朝中兴，国势极盛。
 
 .原文
@@ -1638,7 +1902,7 @@ ____
 
 ==== 契
 
-商之始祖。帝喾之子，母曰简狄。
+商之始祖。帝喾（kù）之子，母曰简狄。
 
 * 简狄行浴，见玄鸟堕其卵，简狄取吞之，因孕生契
 * 契长而佐禹治水有功
@@ -1648,7 +1912,7 @@ ____
 .原文
 [quote]
 ____
-殷契，母曰简狄，有娀（sōng）氏之女，为帝喾次妃。三人行浴，见玄鸟
+殷契，母曰简狄，有娀（sōng）氏之女，为帝喾（kù）次妃。三人行浴，见玄鸟
 堕其卵，简狄取吞之，因孕生契。契长而佐禹治水有功。帝舜乃命契曰：
 "百姓不亲，五品不训，汝为司徒而敬敷五教，五教在宽。"封于商，
 赐姓子氏。
@@ -1663,7 +1927,7 @@ ____
 * 汤征诸侯，葛伯不祀，汤始伐之
 * 十一征而无敌于天下
 * 汤自把钺以伐昆吾，遂伐桀
-* 汤曰："格女众庶，来，女悉听朕言。非台小子敢行称乱，有夏多罪，天命殛之。"
+* 汤曰："格女众庶，来，女悉听朕言。非台小子敢行称乱，有夏多罪，天命殛（jí）之。"
 * 桀败于有娀之虚，奔于鸣条，遂放而死
 * 於是诸侯毕服，汤乃践天子位，平定海内
 
@@ -1672,14 +1936,14 @@ ____
 ____
 当是时，夏桀为虐政淫荒，而诸侯昆吾氏为乱。汤乃兴师率诸侯，伊尹从
 汤，汤自把钺（yuè，大斧）以伐昆吾，遂伐桀。汤曰："格女众庶，来，
-女悉听朕言。匪（非）台（yí，我）小子敢行称乱，有夏多罪，天命殛之。"
+女悉听朕言。匪（非）台（yí，我）小子敢行称乱，有夏多罪，天命殛（jí）之。"
 ____
 
 [quote]
 ____
 汤曰："予有言：人视水见形，视民知治不。"伊尹曰："明哉！言能听，
 道乃进。君国子民，为善者皆在王官。勉哉，勉哉！"汤曰："汝不能敬命，
-予大罚殛之，无有攸赦。"
+予大罚殛（jí）之，无有攸赦。"
 ____
 
 [quote]
@@ -1987,7 +2251,7 @@ digraph zhou_benji {
         style="rounded,filled";
         fillcolor="#fff8dc";
 
-        姜原 [label="姜原\n(帝喾元妃)\n履大人迹孕", fillcolor="#ffb6c1"];
+        姜原 [label="姜原\n(帝喾（kù）元妃)\n履大人迹孕", fillcolor="#ffb6c1"];
         后稷_zhou [label="后稷（弃）\n好耕农\n号农师\n封于邰", fillcolor="#f0e68c", style="rounded,filled,bold"];
         不窋 [label="不窋\n失官\n奔戎狄间", fillcolor="#ffe4b5"];
         公刘 [label="公刘\n复修后稷之业\n迁于豳", fillcolor="#f0e68c"];
@@ -2244,7 +2508,7 @@ digraph 西周人物关系 {
     subgraph cluster_consorts {
         label="后妃"
         node [fillcolor=mistyrose]
-        姜原 [label="姜原\n帝喾元妃"]
+        姜原 [label="姜原\n帝喾（kù）元妃"]
         太姜 [label="太姜"]
         太任 [label="太任"]
         褒姒 [label="褒姒\n幽王宠妃"]
@@ -2678,7 +2942,7 @@ ____
 
 ===== 后稷（弃）
 
-周之始祖。帝喾元妃姜原之子。
+周之始祖。帝喾（kù）元妃姜原之子。
 
 * 姜原出野，见巨人迹，心忻然悦，欲践之，践之而身动如孕者
 * 居期而生子，以为不祥，弃之隘巷，马牛过者皆辟不践
@@ -2695,7 +2959,7 @@ ____
 .原文
 [quote]
 ____
-周后稷，名弃。其母有邰氏女，曰姜原。姜原为帝喾元妃。姜原出野，
+周后稷，名弃。其母有邰氏女，曰姜原。姜原为帝喾（kù）元妃。姜原出野，
 见巨人迹，心忻然悦，欲践之，践之而身动如孕者。居期而生子，以为
 不祥，弃之隘（ài，狭窄）巷，马牛过者皆辟不践；徙置之林中，适会
 山林多人，迁之；而弃渠中冰上，飞鸟以其翼覆荐（jiàn，垫）之。
@@ -3213,7 +3477,7 @@ ____
 
 **蹇叔哭师**：蹇叔哭之曰："孟子！吾见师之出而不见其入也！"穆公使人辱之曰：
 "尔何知！中寿，尔墓之木拱矣！"蹇叔之子与师，哭而送之曰："晋人御师必于崤。
-崤有二陵焉：其南陵，夏后皋之墓也；其北陵，文王之所辟风雨也。必死是间，余收
+崤有二陵焉：其南陵，夏后皋（gāo）之墓也；其北陵，文王之所辟风雨也。必死是间，余收
 尔骨焉。"
 
 **晋师设伏**：秦师过周北门，王孙满尚幼，见之曰："秦师轻而无礼，必败。轻则
@@ -3297,7 +3561,7 @@ ____
 **骊姬得宠**：晋献公伐骊戎，得骊姬，生子奚齐。骊姬有宠，欲立奚齐为
 太子，乃谮太子申生及公子重耳、夷吾。
 
-**蒲城之难**：献公使申生将兵伐东山皋落氏。里克谏曰："太子奉冢祀社稷
+**蒲城之难**：献公使申生将兵伐东山皋（gāo）落氏。里克谏曰："太子奉冢祀社稷
 之粢盛，以朝夕视君膳者也，故曰冢子。君行则守，有守则从，从曰抚军，
 守曰监国，古之制也。"献公不听。
 
@@ -4837,7 +5101,7 @@ ____
 * 相如曰："夫以秦王之威，而相如廷叱之，辱其群臣。相如虽驽，独畏廉将军哉？顾吾念之，强秦之所以不敢加兵于赵者，徒以吾两人在也。今两虎共斗，其势不俱生。吾所以为此者，以先国家之急而后私雠也。"
 * 廉颇闻之，肉袒负荆，因宾客至蔺相如门谢罪
 * 曰："鄙贱之人，不知将军宽之至此也！"
-* 卒相与驩，为刎颈之交
+* 卒相与驩（huān），为刎颈之交
 
 .原文
 [quote]
@@ -5630,7 +5894,7 @@ ____
 
 《秦本纪》《秦始皇本纪》记秦之兴起与统一天下，凡十五年而亡。
 
-**秦之起源**：秦之先，帝颛顼之苗裔，伯益之后。非子居犬丘，好马及畜，善养
+**秦之起源**：秦之先，帝颛（zhuān）顼（xū）之苗裔，伯益之后。非子居犬丘，好马及畜，善养
 息之，周孝王封之于秦，使续嬴氏祀，号曰秦嬴。
 
 **襄公立国**：周幽王为犬戎所杀，秦襄公将兵救周，护送平王东迁洛邑。平王封
@@ -5702,7 +5966,7 @@ digraph 秦本纪人物全图 {
             style=filled
             fillcolor="#f5f5f5"
             node [fillcolor=lightgray]
-            颛顼 [label="颛顼"]
+            颛（zhuān）顼（xū） [label="颛（zhuān）顼（xū）"]
             伯益 [label="伯益\n（佐禹治水）", style="rounded,filled,bold"]
             蜚廉 [label="蜚廉"]
             恶来 [label="恶来"]
@@ -5710,7 +5974,7 @@ digraph 秦本纪人物全图 {
             非子 [label="非子\n（封秦邑）", style="rounded,filled,bold"]
         }
 
-        颛顼 -> 伯益 [label="后裔", color="#8b4513"]
+        颛（zhuān）顼（xū） -> 伯益 [label="后裔", color="#8b4513"]
         伯益 -> 蜚廉 [label="后裔", color="#8b4513"]
         蜚廉 -> 恶来 [label="子", color="#8b4513"]
         蜚廉 -> 造父 [label="后裔", color="#8b4513"]
@@ -6867,7 +7131,7 @@ ____
 
 ==== 荥阳对峙（前204-前203年）
 
-楚汉相持于荥阳、成皋一线，刘邦多次危急，终凭敖仓之粮与楚军周旋。
+楚汉相持于荥阳、成皋（gāo）一线，刘邦多次危急，终凭敖仓之粮与楚军周旋。
 
 **敖仓粮道**：刘邦退守荥阳，据敖仓。敖仓为秦之官仓，积粟甚多。刘邦
 凭敖仓之粮与楚军对峙，使楚不得西进。
@@ -6879,10 +7143,10 @@ ____
 
 **纪信代死**：楚军围荥阳急，刘邦无计可脱。将军纪信曰："事急矣，臣
 请诳楚。"乃乘王车，黄屋左纛，曰："城中食尽，汉王降。"楚军皆呼万岁。
-刘邦乘机从西门出，走成皋。项羽见纪信，问汉王安在。信曰："汉王已出。"
+刘邦乘机从西门出，走成皋（gāo）。项羽见纪信，问汉王安在。信曰："汉王已出。"
 羽怒，烧杀纪信。
 
-**反复争夺**：荥阳、成皋反复争夺，刘邦数次陷入绝境。终凭坚守、反间、
+**反复争夺**：荥阳、成皋（gāo）反复争夺，刘邦数次陷入绝境。终凭坚守、反间、
 游击等策，消耗楚军力量，待韩信平定齐赵，遂成合围之势。
 
 .原文
@@ -8206,7 +8470,7 @@ ____
 [quote]
 ____
 登兹楼以四望兮，聊暇日以销忧。览斯宇之所处兮，实显敞而寡仇。
-挟清漳之通浦兮，倚曲沮之长洲。背坟衍之广陆兮，临皋隰之沃流。
+挟清漳之通浦兮，倚曲沮之长洲。背坟衍之广陆兮，临皋（gāo）隰之沃流。
 ____
 
 
@@ -13466,7 +13730,7 @@ ____
 * 557年 陈霸先称帝，建陈，都建康
 * 559年 陈武帝卒，侄陈蒨即位，是为文帝
 * 566年 陈文帝卒，子陈伯宗即位
-* 568年 陈顼废陈伯宗，是为宣帝
+* 568年 陈顼（xū）废陈伯宗，是为宣帝
 * 582年 陈宣帝卒，子陈叔宝即位
 * 589年 隋军渡江，陈叔宝被俘，陈亡
 
@@ -13546,7 +13810,7 @@ digraph 南朝人物图 {
         fillcolor="#dda0dd"
         陈霸先 [label="陈霸先\n（武帝·平侯景）", style="rounded,filled,bold", fillcolor="#da70d6"]
         陈蒨 [label="陈蒨\n（文帝）"]
-        陈顼 [label="陈顼\n（宣帝）"]
+        陈顼（xū） [label="陈顼（xū）\n（宣帝）"]
         陈叔宝 [label="陈叔宝\n（后主·玉树后庭花）", style="rounded,filled,bold", fillcolor="#da70d6"]
     }
 
@@ -13583,8 +13847,8 @@ digraph 南朝人物图 {
     陈霸先 -> 侯景 [label="平乱", color=red]
     陈霸先 -> 萧方智 [label="代梁建陈", color=purple]
     陈霸先 -> 陈蒨 [label="侄"]
-    陈蒨 -> 陈顼 [label="弟"]
-    陈顼 -> 陈叔宝 [label="子"]
+    陈蒨 -> 陈顼（xū） [label="弟"]
+    陈顼（xū） -> 陈叔宝 [label="子"]
 }
 ....
 
@@ -19561,7 +19825,7 @@ ____
  ├─真宗（赵恒）
  │  └─仁宗（赵祯）
  │     └─英宗（赵曙，濮王之子，过继）
- │        └─神宗（赵顼）
+ │        └─神宗（赵顼（xū））
  │           ├─哲宗（赵煦）
  │           └─徽宗（赵佶）
  │              └─钦宗（赵桓）
@@ -19634,7 +19898,7 @@ digraph 宋史北宋人物 {
         真宗 [label="真宗赵恒\n997-1022\n澶渊之盟"]
         仁宗 [label="仁宗赵祯\n1022-1063\n庆历新政", style="rounded,filled,bold", fillcolor="#dda0dd"]
         英宗 [label="英宗赵曙\n1063-1067"]
-        神宗 [label="神宗赵顼\n1067-1085\n熙宁变法"]
+        神宗 [label="神宗赵顼（xū）\n1067-1085\n熙宁变法"]
         哲宗 [label="哲宗赵煦\n1085-1100"]
         徽宗 [label="徽宗赵佶\n1100-1126\n靖康被俘"]
         钦宗 [label="钦宗赵桓\n1126-1127\n靖康被俘"]
@@ -19798,7 +20062,7 @@ digraph song {
         赵光义 [label="赵光义\n(太宗)", fillcolor="#dda0dd", style="rounded,filled,bold"];
         赵恒 [label="赵恒\n(真宗)"];
         赵祯 [label="赵祯\n(仁宗)", fillcolor="#dda0dd", style="rounded,filled,bold"];
-        赵顼 [label="赵顼\n(神宗)"];
+        赵顼（xū） [label="赵顼（xū）\n(神宗)"];
         赵佶 [label="赵佶\n(徽宗)"];
         赵桓 [label="赵桓\n(钦宗)"];
     }
@@ -19843,8 +20107,8 @@ digraph song {
     赵匡胤 -> 赵光义 [label="弟"];
     赵光义 -> 赵恒 [label="子"];
     赵恒 -> 赵祯 [label="子"];
-    赵祯 -> 赵顼 [label="侄孙"];
-    赵顼 -> 赵佶 [label="子"];
+    赵祯 -> 赵顼（xū） [label="侄孙"];
+    赵顼（xū） -> 赵佶 [label="子"];
     赵佶 -> 赵桓 [label="子"];
 
     // 南宋帝系
@@ -19856,8 +20120,8 @@ digraph song {
     赵匡胤 -> 赵普 [label="谋臣", style=dashed];
     赵恒 -> 寇准 [label="澶渊之盟", style=dashed];
     赵祯 -> 范仲淹宋 [label="庆历新政", style=dashed];
-    赵顼 -> 王安石 [label="变法", style=dashed];
-    赵顼 -> 司马光 [label="对立", color=orange];
+    赵顼（xū） -> 王安石 [label="变法", style=dashed];
+    赵顼（xū） -> 司马光 [label="对立", color=orange];
     王安石 -> 司马光 [label="党争", color=orange, style=bold];
     赵佶 -> 蔡京 [label="重用", style=dashed, color=red];
 
@@ -21074,7 +21338,7 @@ ____
 ____
 凌波不过横塘路，但目送、芳尘去。
 锦瑟华年谁与度？月桥花院，琐窗朱户，只有春知处。
-飞云冉冉蘅皋暮，彩笔新题断肠句。
+飞云冉冉蘅皋（gāo）暮，彩笔新题断肠句。
 试问闲情都几许？一川烟草，满城风絮，梅子黄时雨。
 ____
 
@@ -21380,7 +21644,7 @@ ____
 .《后赤壁赋》（节选）
 [quote]
 ____
-是岁十月之望，步自雪堂，将归于临皋。二客从予过黄泥之坂。霜露既降，
+是岁十月之望，步自雪堂，将归于临皋（gāo）。二客从予过黄泥之坂。霜露既降，
 木叶尽脱，人影在地，仰见明月，顾而乐之，行歌相答。……适有孤鹤，
 横江东来。翅如车轮，玄裳缟衣，戛然长鸣，掠予舟而西也。
 ____
@@ -26387,7 +26651,7 @@ ____
 * 扞（hàn）：保护
 * 盍（hé）：何不
 * 闳（hóng）：宏大
-* 驩/欢（huān）：欢
+* 驩（huān）/欢（huān）：欢
 * 诲（huì）：教导
 * 麾（huī）：指挥
 
