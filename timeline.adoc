@@ -18141,6 +18141,65 @@ digraph 唐朝人物关系 {
 辅政之功居首。玄龄在相位十五年，任贤使能，知人善任。如晦早卒，太宗每言
 及辄流涕。
 
+[graphviz]
+....
+digraph fangdu_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    subgraph cluster_fangdu {
+        label="房谋杜断";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        房玄龄 [label="房玄龄\n字乔\n善谋", fillcolor="#ffd700", style="rounded,filled,bold"];
+        杜如晦 [label="杜如晦\n字克明\n善断", fillcolor="#ffd700", style="rounded,filled,bold"];
+    }
+
+    // 皇帝
+    太宗 [label="太宗\n李世民", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 秦府旧人
+    subgraph cluster_qinfu {
+        label="秦府十八学士";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        长孙无忌 [label="长孙无忌\n外戚功臣", fillcolor="#228b22", fontcolor=white];
+        褚遂良 [label="褚遂良\n书法家", fillcolor="#90ee90"];
+        虞世南 [label="虞世南\n书法家", fillcolor="#90ee90"];
+    }
+
+    // 玄武门之变
+    subgraph cluster_xuanwu {
+        label="玄武门之变";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        尉迟敬德 [label="尉迟敬德\n玄武门功臣", fillcolor="#ff6347"];
+        太子建成 [label="太子建成\n(被杀)", fillcolor="#808080"];
+        齐王元吉 [label="齐王元吉\n(被杀)", fillcolor="#808080"];
+    }
+
+    // 贞观之治
+    贞观之治 [label="贞观之治\n二人辅政\n居首功", shape=ellipse, fillcolor="#87ceeb"];
+
+    // 关系
+    房玄龄 -> 杜如晦 [label="房谋杜断", dir=both, color=blue, style=bold];
+    太宗 -> 房玄龄 [label="重用\n相位十五年", color=blue];
+    太宗 -> 杜如晦 [label="重用\n早卒流涕", color=blue];
+    房玄龄 -> 太宗 [label="秦府旧人"];
+    杜如晦 -> 太宗 [label="秦府旧人"];
+    尉迟敬德 -> 太子建成 [label="杀", color=red];
+    尉迟敬德 -> 齐王元吉 [label="杀", color=red];
+    房玄龄 -> 贞观之治 [label="辅政"];
+    杜如晦 -> 贞观之治 [label="辅政"];
+    长孙无忌 -> 太宗 [label="妻兄"];
+    房玄龄 -> 长孙无忌 [label="同僚", dir=both];
+}
+....
+
 ==== 魏征传
 
 魏征，字玄成，巨鹿曲城人。初事太子建成，太宗素器之。即位后拜谏议大夫，
@@ -18148,17 +18207,192 @@ digraph 唐朝人物关系 {
 可以正衣冠；以古为镜，可以知兴替；以人为镜，可以明得失。魏征殂，朕亡一镜矣。"
 贞观之治，魏征谏诤之功甚伟。
 
+[graphviz]
+....
+digraph weizheng_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    魏征 [label="魏征\n字玄成\n以人为镜", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    太宗 [label="太宗\n李世民\n虚怀纳谏", fillcolor="#ffd700", style="rounded,filled,bold"];
+
+    // 前主
+    subgraph cluster_qianzhu {
+        label="前主";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        太子建成 [label="太子建成\n魏征旧主", fillcolor="#ff6347"];
+    }
+
+    // 贞观名臣
+    subgraph cluster_zhenguan {
+        label="贞观名臣";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        房玄龄 [label="房玄龄\n宰相", fillcolor="#90ee90"];
+        杜如晦 [label="杜如晦\n宰相", fillcolor="#90ee90"];
+        王珪 [label="王珪\n同僚", fillcolor="#98fb98"];
+    }
+
+    // 长孙皇后
+    长孙皇后 [label="长孙皇后\n劝谏太宗\n容纳魏征", fillcolor="#ffb6c1"];
+
+    // 三镜
+    三镜 [label="太宗三镜\n铜镜正衣冠\n古镜知兴替\n人镜明得失", shape=ellipse, fillcolor="#87ceeb"];
+
+    // 关系
+    魏征 -> 太子建成 [label="旧臣", style=dashed];
+    太宗 -> 太子建成 [label="玄武门之变\n杀", color=red];
+    太宗 -> 魏征 [label="不计前嫌\n重用", color=blue, style=bold];
+    魏征 -> 太宗 [label="犯颜直谏\n二百余事", color=blue, style=bold];
+    长孙皇后 -> 太宗 [label="劝容魏征"];
+    魏征 -> 房玄龄 [label="同僚", dir=both];
+    魏征 -> 杜如晦 [label="同僚"];
+    魏征 -> 王珪 [label="同僚", dir=both];
+    太宗 -> 三镜 [label="魏征殂\n亡一镜", color=purple];
+}
+....
+
 ==== 李靖传
 
 李靖，字药师，雍州三原人。善兵法，有文武全才。太宗时为尚书右仆射，
 灭东突厥，擒颉利可汗。后破吐谷浑，平定西域。靖用兵神速，出奇制胜，
 兵法著作为后世所重。卒赠司徒，陪葬昭陵。
 
+[graphviz]
+....
+digraph lijing_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    李靖 [label="李靖\n字药师\n军神", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    太宗 [label="太宗\n李世民", fillcolor="#ffd700", style="rounded,filled,bold"];
+
+    // 突厥
+    subgraph cluster_tujue {
+        label="东突厥";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        颉利可汗 [label="颉利可汗\n被擒", fillcolor="#8b0000", fontcolor=white];
+        突利可汗 [label="突利可汗\n降唐", fillcolor="#a52a2a", fontcolor=white];
+    }
+
+    // 吐谷浑
+    subgraph cluster_tuyuhun {
+        label="吐谷浑";
+        style="rounded,filled";
+        fillcolor="#dda0dd";
+        伏允 [label="伏允\n吐谷浑可汗", fillcolor="#9932cc", fontcolor=white];
+    }
+
+    // 名将
+    subgraph cluster_mingjiang {
+        label="同僚名将";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        李勣 [label="李勣\n(徐世勣)\n平突厥同僚", fillcolor="#90ee90"];
+        侯君集 [label="侯君集\n灭高昌", fillcolor="#90ee90"];
+    }
+
+    // 兵法
+    兵法 [label="《李卫公兵法》\n用兵神速\n出奇制胜", shape=ellipse, fillcolor="#87ceeb"];
+
+    // 战役
+    灭东突厥 [label="灭东突厥\n阴山夜袭\n擒颉利", shape=ellipse, fillcolor="#ffd700"];
+
+    // 关系
+    太宗 -> 李靖 [label="重用", color=blue];
+    李靖 -> 灭东突厥 [label="统帅", color=blue, style=bold];
+    灭东突厥 -> 颉利可汗 [label="擒获", color=red];
+    突利可汗 -> 太宗 [label="降唐"];
+    李靖 -> 伏允 [label="破吐谷浑", color=red];
+    李靖 -> 李勣 [label="同僚", dir=both];
+    李靖 -> 侯君集 [label="同僚"];
+    李靖 -> 兵法 [label="著", color=green];
+}
+....
+
 ==== 狄仁杰传
 
 狄仁杰，字怀英，并州太原人。武周时为宰相，以刚正著称。仁杰荐贤任能，
 先后举荐张柬之、姚崇等数十人，时称"桃李满天下"。力劝武后立庐陵王为嗣，
 为唐室复辟奠定基础。神龙元年张柬之等发动政变，复唐祚，皆仁杰所荐之人。
+
+[graphviz]
+....
+digraph direnjie_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    狄仁杰 [label="狄仁杰\n字怀英\n桃李满天下", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 武则天
+    武则天 [label="武则天\n武周皇帝", fillcolor="#ffd700", style="rounded,filled,bold"];
+
+    // 唐室
+    subgraph cluster_tang {
+        label="唐室";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        庐陵王 [label="庐陵王\n李显\n(中宗)", fillcolor="#228b22", fontcolor=white];
+        睿宗 [label="睿宗\n李旦", fillcolor="#90ee90"];
+    }
+
+    // 狄仁杰举荐之人
+    subgraph cluster_taoli {
+        label="桃李满天下";
+        style="rounded,filled";
+        fillcolor="#e6f3ff";
+        张柬之 [label="张柬之\n神龙政变\n主谋", fillcolor="#87ceeb"];
+        姚崇 [label="姚崇\n开元名相", fillcolor="#87ceeb"];
+        桓彦范 [label="桓彦范\n神龙功臣", fillcolor="#add8e6"];
+        敬晖 [label="敬晖\n神龙功臣", fillcolor="#add8e6"];
+    }
+
+    // 武氏
+    subgraph cluster_wu {
+        label="武氏";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        武三思 [label="武三思\n武后侄", fillcolor="#ff6347"];
+        武承嗣 [label="武承嗣\n欲为太子", fillcolor="#ff6347"];
+    }
+
+    // 神龙政变
+    神龙政变 [label="神龙政变\n复唐祚", shape=ellipse, fillcolor="#ffd700"];
+
+    // 关系
+    狄仁杰 -> 武则天 [label="宰相\n刚正不阿", color=blue];
+    狄仁杰 -> 庐陵王 [label="力劝立嗣", color=blue, style=bold];
+    武则天 -> 庐陵王 [label="立为太子"];
+    狄仁杰 -> 张柬之 [label="举荐", color=green];
+    狄仁杰 -> 姚崇 [label="举荐", color=green];
+    狄仁杰 -> 桓彦范 [label="举荐", color=green];
+    狄仁杰 -> 敬晖 [label="举荐", color=green];
+    张柬之 -> 神龙政变 [label="主谋"];
+    桓彦范 -> 神龙政变 [label="参与"];
+    敬晖 -> 神龙政变 [label="参与"];
+    神龙政变 -> 武三思 [label="废黜", color=red];
+    武承嗣 -> 武则天 [label="欲夺嗣"];
+    狄仁杰 -> 武承嗣 [label="阻止", color=red];
+}
+....
 
 ==== 郭子仪传
 
@@ -18167,6 +18401,69 @@ digraph 唐朝人物关系 {
 再造王室。年八十五薨，赠太师，谥忠武。子仪宽厚待人，功高不傲，为后世
 名将之楷模。
 
+[graphviz]
+....
+digraph guoziyi_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    郭子仪 [label="郭子仪\n再造王室\n功高不傲", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 四朝皇帝
+    subgraph cluster_emperor {
+        label="历事四朝";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        玄宗 [label="玄宗\n李隆基", fillcolor="#ffd700"];
+        肃宗 [label="肃宗\n李亨", fillcolor="#ffd700"];
+        代宗 [label="代宗\n李豫", fillcolor="#ffd700"];
+        德宗 [label="德宗\n李适", fillcolor="#ffd700"];
+    }
+
+    // 平乱功臣
+    subgraph cluster_pingluan {
+        label="平乱功臣";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        李光弼 [label="李光弼\n平乱名将", fillcolor="#228b22", fontcolor=white];
+        仆固怀恩 [label="仆固怀恩\n后叛乱", fillcolor="#90ee90"];
+    }
+
+    // 叛军
+    subgraph cluster_panjun {
+        label="安史叛军";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        安禄山 [label="安禄山\n起兵叛乱", fillcolor="#8b0000", fontcolor=white];
+        史思明 [label="史思明\n安史之乱", fillcolor="#a52a2a", fontcolor=white];
+    }
+
+    // 外敌
+    回纥 [label="回纥\n借兵助战", fillcolor="#daa520"];
+    吐蕃 [label="吐蕃\n犯京师\n子仪退敌", fillcolor="#808080"];
+
+    // 战役
+    两京 [label="收复两京\n长安洛阳", shape=ellipse, fillcolor="#87ceeb"];
+
+    // 关系
+    郭子仪 -> 玄宗 [label="勤王"];
+    郭子仪 -> 肃宗 [label="平乱"];
+    郭子仪 -> 代宗 [label="退吐蕃"];
+    郭子仪 -> 德宗 [label="四朝元老"];
+    郭子仪 -> 李光弼 [label="并肩作战", dir=both, color=blue];
+    郭子仪 -> 仆固怀恩 [label="统帅"];
+    郭子仪 -> 安禄山 [label="平叛", color=red, style=bold];
+    郭子仪 -> 史思明 [label="平叛", color=red];
+    郭子仪 -> 两京 [label="收复", color=blue, style=bold];
+    郭子仪 -> 回纥 [label="借兵"];
+    郭子仪 -> 吐蕃 [label="单骑退敌", color=blue];
+}
+....
+
 ==== 颜真卿传
 
 颜真卿，字清臣，京兆万年人。开元进士，安史乱起，起兵抗贼于平原，为河北
@@ -18174,11 +18471,131 @@ digraph 唐朝人物关系 {
 希烈逼降，真卿正色拒之，骂贼不绝。被害时年七十七，赠司徒，谥文忠。真卿
 书法冠绝一代，后世称"颜筋柳骨"。
 
+[graphviz]
+....
+digraph yanzhenqing_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    颜真卿 [label="颜真卿\n字清臣\n书法忠烈", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    subgraph cluster_emperor {
+        label="皇帝";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        玄宗 [label="玄宗\n安史乱前", fillcolor="#ffd700"];
+        肃宗 [label="肃宗\n平乱", fillcolor="#ffd700"];
+        德宗 [label="德宗\n遣使喻贼", fillcolor="#ffd700"];
+    }
+
+    // 安史之乱
+    subgraph cluster_anshi {
+        label="安史之乱";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        安禄山 [label="安禄山\n起兵叛乱", fillcolor="#8b0000", fontcolor=white];
+        颜杲卿 [label="颜杲卿\n从兄\n常山太守\n殉国", fillcolor="#ff6347"];
+    }
+
+    // 李希烈之乱
+    subgraph cluster_lixilie {
+        label="李希烈之乱";
+        style="rounded,filled";
+        fillcolor="#dda0dd";
+        李希烈 [label="李希烈\n淮西节度使\n叛乱", fillcolor="#9932cc", fontcolor=white];
+        卢杞 [label="卢杞\n奸相\n欲害真卿", fillcolor="#808080"];
+    }
+
+    // 书法
+    subgraph cluster_shufa {
+        label="书法";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        柳公权 [label="柳公权\n颜筋柳骨", fillcolor="#90ee90"];
+    }
+
+    // 关系
+    颜真卿 -> 安禄山 [label="起兵抗贼\n河北唯一", color=blue, style=bold];
+    颜杲卿 -> 颜真卿 [label="从兄\n同抗贼"];
+    安禄山 -> 颜杲卿 [label="杀害", color=red];
+    卢杞 -> 颜真卿 [label="欲借刀杀", color=red, style=dashed];
+    德宗 -> 颜真卿 [label="遣使喻贼"];
+    颜真卿 -> 李希烈 [label="正色拒降\n骂贼不绝", color=blue, style=bold];
+    李希烈 -> 颜真卿 [label="杀害\n年七十七", color=red, style=bold];
+    颜真卿 -> 柳公权 [label="颜筋柳骨", style=dashed, color=green];
+}
+....
+
 ==== 韩愈传
 
 韩愈，字退之，河阳人。贞元进士，累官至吏部侍郎。愈文章雄健，力排佛老，
 倡导古文运动，为唐宋八大家之首。《原道》《师说》诸篇，振起文风。谏迎佛骨，
 忤宪宗意，贬潮州刺史。愈诗亦雄奇，与柳宗元并称"韩柳"。
+
+[graphviz]
+....
+digraph hanyu_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    韩愈 [label="韩愈\n字退之\n古文运动", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    宪宗 [label="宪宗\n李纯\n迎佛骨", fillcolor="#ffd700"];
+
+    // 古文同道
+    subgraph cluster_guwen {
+        label="古文运动";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        柳宗元 [label="柳宗元\n字子厚\n韩柳", fillcolor="#228b22", fontcolor=white];
+        欧阳修 [label="欧阳修\n(宋)\n继承发展", fillcolor="#90ee90"];
+    }
+
+    // 韩门弟子
+    subgraph cluster_dizi {
+        label="韩门弟子";
+        style="rounded,filled";
+        fillcolor="#e6f3ff";
+        李翱 [label="李翱\n复性书", fillcolor="#87ceeb"];
+        皇甫湜 [label="皇甫湜\n韩门高弟", fillcolor="#87ceeb"];
+    }
+
+    // 著作
+    subgraph cluster_work {
+        label="名篇";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        原道 [label="《原道》\n力排佛老", fillcolor="#f0e68c"];
+        师说 [label="《师说》\n尊师重道", fillcolor="#f0e68c"];
+        谏佛骨表 [label="《谏佛骨表》\n贬潮州", fillcolor="#ffa07a"];
+    }
+
+    // 贬谪
+    潮州 [label="潮州\n贬谪之地\n驱鳄鱼", shape=ellipse, fillcolor="#ff6347"];
+
+    // 关系
+    韩愈 -> 柳宗元 [label="韩柳\n古文双璧", dir=both, color=blue, style=bold];
+    韩愈 -> 李翱 [label="授业"];
+    韩愈 -> 皇甫湜 [label="授业"];
+    韩愈 -> 原道 [label="作"];
+    韩愈 -> 师说 [label="作"];
+    韩愈 -> 谏佛骨表 [label="上疏"];
+    谏佛骨表 -> 宪宗 [label="忤旨"];
+    宪宗 -> 韩愈 [label="贬谪", color=red];
+    韩愈 -> 潮州 [label="刺史"];
+    韩愈 -> 欧阳修 [label="文统传承", style=dashed];
+}
+....
 
 ==== 文艺传
 
@@ -18186,74 +18603,55 @@ digraph 唐朝人物关系 {
 号"诗仙"。杜甫字子美，自号少陵野老，诗风沉郁顿挫，号"诗圣"。白居易字
 乐天，倡新乐府运动，诗通俗易懂。李商隐、杜牧晚唐双璧。唐诗之盛，前无古人。
 
-
-==== 唐书列传人物关系图
-
 [graphviz]
 ....
-digraph tangshu_liezhuan {
+digraph wenyi_zhuan {
     rankdir=TB;
-    ranksep=1.0;
+    ranksep=0.8;
     nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
     edge [fontname="Heiti SC", fontsize=9];
 
-    // 贞观名臣
-    subgraph cluster_zhenguan {
-        label="贞观名臣";
+    // 盛唐双璧
+    subgraph cluster_shengtang {
+        label="盛唐双璧";
         style="rounded,filled";
         fillcolor="#fff8dc";
-
-        房玄龄 [label="房玄龄\n房谋", fillcolor="#ffd700", style="rounded,filled,bold"];
-        杜如晦 [label="杜如晦\n杜断", fillcolor="#ffd700", style="rounded,filled,bold"];
-        魏征 [label="魏征\n以人为镜", fillcolor="#ffd700", style="rounded,filled,bold"];
-        李靖 [label="李靖\n灭东突厥", fillcolor="#f0e68c"];
+        李白 [label="李白\n字太白\n诗仙", fillcolor="#ffd700", style="rounded,filled,bold"];
+        杜甫 [label="杜甫\n字子美\n诗圣", fillcolor="#ffd700", style="rounded,filled,bold"];
     }
 
-    // 武周复唐
-    subgraph cluster_wuzhou {
-        label="武周复唐";
-        style="rounded,filled";
-        fillcolor="#e6e6fa";
-
-        狄仁杰 [label="狄仁杰\n桃李满天下\n复唐功臣", fillcolor="#dda0dd", style="rounded,filled,bold"];
-    }
-
-    // 平叛功臣
-    subgraph cluster_pingpan {
-        label="安史平叛";
-        style="rounded,filled";
-        fillcolor="#e0ffff";
-
-        郭子仪 [label="郭子仪\n再造王室\n功高不傲", fillcolor="#87ceeb", style="rounded,filled,bold"];
-    }
-
-    // 忠义
-    subgraph cluster_zhongyi {
-        label="忠义之臣";
-        style="rounded,filled";
-        fillcolor="#ffe4e1";
-
-        颜真卿 [label="颜真卿\n书法大家\n慷慨殉节", fillcolor="#ffb6c1", style="rounded,filled,bold"];
-    }
-
-    // 文学
-    subgraph cluster_wenxue {
-        label="文学";
+    // 中唐
+    subgraph cluster_zhongtang {
+        label="中唐诗人";
         style="rounded,filled";
         fillcolor="#f0fff0";
-
-        韩愈 [label="韩愈\n唐宋八大家", fillcolor="#98fb98", style="rounded,filled,bold"];
-        李白 [label="李白\n诗仙", fillcolor="#98fb98", style="rounded,filled,bold"];
-        杜甫 [label="杜甫\n诗圣", fillcolor="#98fb98", style="rounded,filled,bold"];
-        白居易 [label="白居易\n新乐府", fillcolor="#90ee90"];
+        白居易 [label="白居易\n字乐天\n新乐府", fillcolor="#90ee90"];
+        元稹 [label="元稹\n元白唱和", fillcolor="#98fb98"];
+        刘禹锡 [label="刘禹锡\n诗豪", fillcolor="#98fb98"];
     }
 
+    // 晚唐
+    subgraph cluster_wantang {
+        label="晚唐双璧";
+        style="rounded,filled";
+        fillcolor="#e6f3ff";
+        李商隐 [label="李商隐\n义山\n无题诗", fillcolor="#87ceeb"];
+        杜牧 [label="杜牧\n小杜\n怀古诗", fillcolor="#87ceeb"];
+    }
+
+    // 皇帝
+    玄宗 [label="玄宗\n李隆基\n爱诗文", fillcolor="#ffb6c1"];
+
     // 关系
-    房玄龄 -> 杜如晦 [label="房谋杜断"];
-    李白 -> 杜甫 [label="诗坛双璧"];
-    韩愈 -> 柳宗元 [label="韩柳", style=dashed];
-    柳宗元 [label="柳宗元", fillcolor="#90ee90"];
+    李白 -> 杜甫 [label="诗坛双璧\n李杜", dir=both, color=blue, style=bold];
+    玄宗 -> 李白 [label="翰林供奉"];
+    李白 -> 贺知章 [label="谪仙人"];
+    贺知章 [label="贺知章\n四明狂客", fillcolor="#daa520"];
+    白居易 -> 元稹 [label="元白\n唱和", dir=both, color=green];
+    刘禹锡 -> 白居易 [label="刘白唱和", dir=both];
+    李商隐 -> 杜牧 [label="小李杜", dir=both, color=purple];
+    杜甫 -> 杜牧 [label="大杜小杜", style=dashed];
 }
 ....
 
@@ -22758,17 +23156,188 @@ digraph song {
 不过《论语》。"及退老，著《论语解》，时称"半部论语治天下"。普三度为相，
 佐太祖太宗平定天下，制定基本国策。
 
+[graphviz]
+....
+digraph zhaopu_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    赵普 [label="赵普\n字则平\n半部论语治天下", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    subgraph cluster_emperor {
+        label="皇帝";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        太祖 [label="太祖\n赵匡胤", fillcolor="#ffd700", style="rounded,filled,bold"];
+        太宗 [label="太宗\n赵光义", fillcolor="#ffd700"];
+    }
+
+    // 开国功臣
+    subgraph cluster_kaiguo {
+        label="开国功臣";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        石守信 [label="石守信\n义社兄弟\n杯酒释兵权", fillcolor="#90ee90"];
+        高怀德 [label="高怀德\n禁军将领", fillcolor="#90ee90"];
+        王审琦 [label="王审琦\n禁军将领", fillcolor="#90ee90"];
+    }
+
+    // 政敌
+    subgraph cluster_zhengdi {
+        label="政敌";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        卢多逊 [label="卢多逊\n政敌\n互相倾轧", fillcolor="#ff6347"];
+    }
+
+    // 事件
+    陈桥兵变 [label="陈桥兵变\n黄袍加身\n普实主谋", shape=ellipse, fillcolor="#ffd700"];
+    杯酒释兵权 [label="杯酒释兵权\n收禁军\n普献策", shape=ellipse, fillcolor="#87ceeb"];
+    论语 [label="《论语》\n半部治天下", shape=ellipse, fillcolor="#98fb98"];
+
+    // 关系
+    赵普 -> 太祖 [label="主谋兵变\n三度为相", color=blue, style=bold];
+    赵普 -> 太宗 [label="辅佐"];
+    太祖 -> 太宗 [label="兄弟"];
+    赵普 -> 陈桥兵变 [label="主谋", color=blue];
+    陈桥兵变 -> 太祖 [label="即位"];
+    赵普 -> 杯酒释兵权 [label="献策"];
+    杯酒释兵权 -> 石守信 [label="罢兵权"];
+    杯酒释兵权 -> 高怀德 [label="罢兵权"];
+    杯酒释兵权 -> 王审琦 [label="罢兵权"];
+    赵普 -> 卢多逊 [label="政争", dir=both, color=red];
+    赵普 -> 论语 [label="半部治天下"];
+}
+....
+
 ==== 寇准传
 
 寇准，字平仲，华州下邽人。少年登第，以刚直著称。真宗景德元年，契丹南侵，
 准力主亲征，帝至澶州，军心大振。辽军败退，遂议和。准欲乘胜北伐，帝不从，
 遂有澶渊之盟。准忠直敢言，数遭贬谪，然不改其志。
 
+[graphviz]
+....
+digraph kouzhun_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    寇准 [label="寇准\n字平仲\n刚直敢言", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    subgraph cluster_emperor {
+        label="皇帝";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        太宗 [label="太宗\n赵光义", fillcolor="#ffd700"];
+        真宗 [label="真宗\n赵恒\n澶渊亲征", fillcolor="#ffd700"];
+    }
+
+    // 契丹
+    subgraph cluster_qidan {
+        label="契丹";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        萧太后 [label="萧太后\n承天太后", fillcolor="#8b0000", fontcolor=white];
+        辽圣宗 [label="辽圣宗\n耶律隆绪", fillcolor="#a52a2a", fontcolor=white];
+    }
+
+    // 政敌
+    subgraph cluster_zhengdi {
+        label="政敌";
+        style="rounded,filled";
+        fillcolor="#dda0dd";
+        丁谓 [label="丁谓\n权奸\n陷害寇准", fillcolor="#9932cc", fontcolor=white];
+        王钦若 [label="王钦若\n谄媚\n诋毁寇准", fillcolor="#9932cc", fontcolor=white];
+    }
+
+    // 战役
+    澶渊之盟 [label="澶渊之盟\n景德元年\n宋辽和议", shape=ellipse, fillcolor="#87ceeb"];
+    澶州 [label="澶州亲征\n军心大振\n辽军败退", shape=ellipse, fillcolor="#90ee90"];
+
+    // 关系
+    太宗 -> 真宗 [label="父子"];
+    寇准 -> 真宗 [label="力主亲征", color=blue, style=bold];
+    真宗 -> 澶州 [label="亲征"];
+    寇准 -> 澶州 [label="扈从"];
+    萧太后 -> 澶州 [label="南侵", color=red];
+    辽圣宗 -> 萧太后 [label="母子"];
+    澶州 -> 澶渊之盟 [label="议和"];
+    王钦若 -> 寇准 [label="诋毁", color=red];
+    丁谓 -> 寇准 [label="陷害\n贬死雷州", color=red, style=bold];
+}
+....
+
 ==== 范仲淹传
 
 范仲淹，字希文，苏州吴县人。进士出身，累官参知政事。庆历三年，与富弼等
 推行新政，史称"庆历新政"，然旋遭罢免。仲淹守边，西夏畏之。《岳阳楼记》
 云"先天下之忧而忧，后天下之乐而乐"，为千古名句，亦其平生写照。
+
+[graphviz]
+....
+digraph fanzhongyan_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    范仲淹 [label="范仲淹\n字希文\n先忧后乐", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    仁宗 [label="仁宗\n赵祯\n支持新政", fillcolor="#ffd700", style="rounded,filled,bold"];
+
+    // 新政同僚
+    subgraph cluster_xinzheng {
+        label="庆历新政";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        富弼 [label="富弼\n新政同僚", fillcolor="#90ee90"];
+        韩琦 [label="韩琦\n新政同僚", fillcolor="#90ee90"];
+        欧阳修 [label="欧阳修\n文坛领袖\n支持新政", fillcolor="#228b22", fontcolor=white];
+    }
+
+    // 反对派
+    subgraph cluster_fandui {
+        label="反对派";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        吕夷简 [label="吕夷简\n宰相\n政敌", fillcolor="#ff6347"];
+    }
+
+    // 边防
+    subgraph cluster_bianfang {
+        label="边防";
+        style="rounded,filled";
+        fillcolor="#e6f3ff";
+        李元昊 [label="李元昊\n西夏\n畏范公", fillcolor="#8b0000", fontcolor=white];
+        韩琦边 [label="韩琦\n(同守边)", fillcolor="#87ceeb"];
+    }
+
+    // 著作
+    岳阳楼记 [label="《岳阳楼记》\n先忧后乐\n千古名篇", shape=ellipse, fillcolor="#ffd700"];
+
+    // 关系
+    仁宗 -> 范仲淹 [label="信任\n推行新政", color=blue];
+    范仲淹 -> 富弼 [label="同僚", dir=both, color=green];
+    范仲淹 -> 韩琦 [label="同僚", dir=both, color=green];
+    欧阳修 -> 范仲淹 [label="支持", color=blue];
+    吕夷简 -> 范仲淹 [label="攻击\n新政失败", color=red];
+    范仲淹 -> 李元昊 [label="守边\n西夏畏之", color=blue, style=bold];
+    范仲淹 -> 岳阳楼记 [label="作", color=green];
+}
+....
 
 ==== 王安石传
 
@@ -22777,12 +23346,142 @@ digraph song {
 遂有新旧党争。安石罢相后，新法屡兴屡废，终成祸乱之源。安石诗文亦佳，
 为唐宋八大家之一。
 
+[graphviz]
+....
+digraph wanganshi_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    王安石 [label="王安石\n字介甫\n熙宁变法", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    神宗 [label="神宗\n赵顼\n锐意变法", fillcolor="#ffd700", style="rounded,filled,bold"];
+
+    // 新法派
+    subgraph cluster_xinfa {
+        label="新法派";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        吕惠卿 [label="吕惠卿\n变法干将\n后背叛安石", fillcolor="#90ee90"];
+        曾布 [label="曾布\n新法推手", fillcolor="#90ee90"];
+        章惇 [label="章惇\n变法后继", fillcolor="#90ee90"];
+    }
+
+    // 旧法派
+    subgraph cluster_jiufa {
+        label="旧法派";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        司马光 [label="司马光\n资治通鉴\n政敌", fillcolor="#ff6347"];
+        韩琦 [label="韩琦\n三朝元老", fillcolor="#ffa07a"];
+        富弼 [label="富弼\n反对新法", fillcolor="#ffa07a"];
+    }
+
+    // 变法内容
+    subgraph cluster_bianfa {
+        label="熙宁新法";
+        style="rounded,filled";
+        fillcolor="#e6f3ff";
+        青苗法 [label="青苗法\n官贷于民", fillcolor="#87ceeb"];
+        免役法 [label="免役法\n出钱免役", fillcolor="#87ceeb"];
+        保甲法 [label="保甲法\n寓兵于农", fillcolor="#87ceeb"];
+        市易法 [label="市易法\n平抑物价", fillcolor="#87ceeb"];
+    }
+
+    // 关系
+    神宗 -> 王安石 [label="信任\n支持变法", color=blue, style=bold];
+    王安石 -> 吕惠卿 [label="重用"];
+    吕惠卿 -> 王安石 [label="后背叛", color=red, style=dashed];
+    王安石 -> 曾布 [label="重用"];
+    王安石 -> 章惇 [label="重用"];
+    王安石 -> 司马光 [label="新旧党争", dir=both, color=red, style=bold];
+    韩琦 -> 王安石 [label="反对", color=red];
+    富弼 -> 王安石 [label="反对", color=red];
+    王安石 -> 青苗法 [label="推行"];
+    王安石 -> 免役法 [label="推行"];
+    王安石 -> 保甲法 [label="推行"];
+    王安石 -> 市易法 [label="推行"];
+}
+....
+
 ==== 司马光传
 
 司马光，字君实，陕州夏县人。反对王安石变法，与安石政见不合，退居洛阳
 十五年，专修《资治通鉴》。哲宗即位，光复相，尽废新法。光为人谦退醇厚，
 修史之功垂于后世。《资治通鉴》上起战国，下终五代，为中国第一部编年体
 通史。
+
+[graphviz]
+....
+digraph simaguang_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    司马光 [label="司马光\n字君实\n资治通鉴", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    subgraph cluster_emperor {
+        label="皇帝";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        神宗 [label="神宗\n支持新法", fillcolor="#ffd700"];
+        哲宗 [label="哲宗\n光复为相", fillcolor="#ffd700"];
+        高太后 [label="高太后\n信任司马光", fillcolor="#ffb6c1"];
+    }
+
+    // 新法派
+    subgraph cluster_xinfa {
+        label="新法派";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        王安石 [label="王安石\n熙宁变法", fillcolor="#ff6347"];
+        吕惠卿 [label="吕惠卿\n新法干将", fillcolor="#ffa07a"];
+    }
+
+    // 旧法派
+    subgraph cluster_jiufa {
+        label="旧法派";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        富弼 [label="富弼\n元老重臣", fillcolor="#90ee90"];
+        韩琦 [label="韩琦\n三朝元老", fillcolor="#90ee90"];
+    }
+
+    // 修史助手
+    subgraph cluster_xiushi {
+        label="修史";
+        style="rounded,filled";
+        fillcolor="#e6f3ff";
+        刘攽 [label="刘攽\n助修通鉴", fillcolor="#87ceeb"];
+        刘恕 [label="刘恕\n助修通鉴", fillcolor="#87ceeb"];
+        范祖禹 [label="范祖禹\n助修通鉴", fillcolor="#87ceeb"];
+    }
+
+    // 著作
+    资治通鉴 [label="《资治通鉴》\n编年体通史\n战国至五代", shape=ellipse, fillcolor="#ffd700"];
+
+    // 关系
+    司马光 -> 王安石 [label="政见对立\n新旧党争", dir=both, color=red, style=bold];
+    神宗 -> 王安石 [label="支持"];
+    司马光 -> 神宗 [label="反对新法"];
+    高太后 -> 司马光 [label="信任\n起复"];
+    哲宗 -> 司马光 [label="拜相"];
+    司马光 -> 资治通鉴 [label="主编\n十五年", color=blue, style=bold];
+    刘攽 -> 资治通鉴 [label="助修"];
+    刘恕 -> 资治通鉴 [label="助修"];
+    范祖禹 -> 资治通鉴 [label="助修"];
+    司马光 -> 富弼 [label="同道"];
+    司马光 -> 韩琦 [label="同道"];
+}
+....
 
 ==== 苏轼传
 
@@ -22791,12 +23490,135 @@ digraph song {
 皆有其迹。苏轼旷达超迈，逆境中愈显其才。词开豪放一派，与辛弃疾并称
 "苏辛"。
 
+[graphviz]
+....
+digraph sushi_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    苏轼 [label="苏轼\n字子瞻\n东坡居士", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 三苏
+    subgraph cluster_sansu {
+        label="三苏";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        苏洵 [label="苏洵\n老苏\n父", fillcolor="#228b22", fontcolor=white];
+        苏辙 [label="苏辙\n小苏\n弟", fillcolor="#90ee90"];
+    }
+
+    // 政治人物
+    subgraph cluster_politics {
+        label="政坛";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        王安石 [label="王安石\n新法派", fillcolor="#daa520"];
+        司马光 [label="司马光\n旧法派", fillcolor="#f0e68c"];
+        章惇 [label="章惇\n贬谪苏轼", fillcolor="#808080"];
+    }
+
+    // 文坛
+    subgraph cluster_wentan {
+        label="苏门四学士";
+        style="rounded,filled";
+        fillcolor="#e6f3ff";
+        黄庭坚 [label="黄庭坚\n山谷道人", fillcolor="#87ceeb"];
+        秦观 [label="秦观\n少游", fillcolor="#87ceeb"];
+        晁补之 [label="晁补之", fillcolor="#add8e6"];
+        张耒 [label="张耒", fillcolor="#add8e6"];
+    }
+
+    // 贬谪地
+    黄州 [label="黄州\n赤壁赋\n东坡肉", shape=ellipse, fillcolor="#ffd700"];
+    惠州 [label="惠州\n日啖荔枝", shape=ellipse, fillcolor="#ffb6c1"];
+    儋州 [label="儋州\n海南\n最远贬地", shape=ellipse, fillcolor="#ff6347"];
+
+    // 关系
+    苏洵 -> 苏轼 [label="父子"];
+    苏轼 -> 苏辙 [label="兄弟", dir=both, color=blue];
+    苏轼 -> 王安石 [label="反对新法", color=orange];
+    苏轼 -> 司马光 [label="亦有异议", style=dashed];
+    章惇 -> 苏轼 [label="政敌\n数度贬谪", color=red];
+    苏轼 -> 黄庭坚 [label="师生"];
+    苏轼 -> 秦观 [label="师生"];
+    苏轼 -> 晁补之 [label="师生"];
+    苏轼 -> 张耒 [label="师生"];
+    苏轼 -> 黄州 [label="乌台诗案"];
+    苏轼 -> 惠州 [label="再贬"];
+    苏轼 -> 儋州 [label="远谪"];
+}
+....
+
 ==== 岳飞传
 
 岳飞，字鹏举，相州汤阴人。少负气节，家贫力学。靖康乱起，投军抗金，
 屡立战功。绍兴十年，岳飞北伐，连战连捷，进至朱仙镇，距汴京仅四十五里。
 秦桧主和，十二金牌召回岳飞。绍兴十一年，以"莫须有"罪杀飞于大理寺。
 飞背刺"精忠报国"，忠义之名，千古流芳。
+
+[graphviz]
+....
+digraph yuefei_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    岳飞 [label="岳飞\n字鹏举\n精忠报国", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 南宋朝廷
+    subgraph cluster_song {
+        label="南宋朝廷";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        高宗 [label="高宗\n赵构", fillcolor="#ffd700"];
+        秦桧 [label="秦桧\n主和派\n陷害岳飞", fillcolor="#808080"];
+        张俊 [label="张俊\n中兴四将\n附和秦桧", fillcolor="#daa520"];
+    }
+
+    // 岳家军
+    subgraph cluster_yuejia {
+        label="岳家军";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        岳云 [label="岳云\n岳飞之子\n同死", fillcolor="#228b22", fontcolor=white];
+        张宪 [label="张宪\n爱将\n同死", fillcolor="#90ee90"];
+        牛皋 [label="牛皋\n猛将", fillcolor="#90ee90"];
+    }
+
+    // 金国
+    subgraph cluster_jin {
+        label="金国";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        金兀术 [label="金兀术\n完颜宗弼\n岳飞劲敌", fillcolor="#8b0000", fontcolor=white];
+    }
+
+    // 战役
+    朱仙镇 [label="朱仙镇大捷\n距汴京四十五里\n十二金牌召回", shape=ellipse, fillcolor="#87ceeb"];
+    郾城 [label="郾城大捷\n破拐子马", shape=ellipse, fillcolor="#90ee90"];
+
+    // 关系
+    岳飞 -> 高宗 [label="效忠"];
+    高宗 -> 秦桧 [label="信任"];
+    秦桧 -> 岳飞 [label="陷害\n莫须有", color=red, style=bold];
+    岳飞 -> 岳云 [label="父子"];
+    岳飞 -> 张宪 [label="统帅"];
+    岳飞 -> 牛皋 [label="统帅"];
+    秦桧 -> 岳云 [label="杀害", color=red];
+    秦桧 -> 张宪 [label="杀害", color=red];
+    岳飞 -> 金兀术 [label="大破", color=blue, style=bold];
+    岳飞 -> 郾城 [label="大捷"];
+    岳飞 -> 朱仙镇 [label="北伐"];
+    张俊 -> 秦桧 [label="附和"];
+}
+....
 
 ==== 文天祥传
 
@@ -22805,63 +23627,53 @@ digraph song {
 《正气歌》。至元十九年就义，年四十七。"人生自古谁无死，留取丹心照汗青"，
 为其绝笔，忠义之气，彪炳青史。
 
-
-==== 宋史列传人物关系图
-
 [graphviz]
 ....
-digraph songshi_liezhuan {
+digraph wentianxiang_zhuan {
     rankdir=TB;
-    ranksep=1.0;
+    ranksep=0.8;
     nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
     edge [fontname="Heiti SC", fontsize=9];
 
-    // 开国功臣
-    subgraph cluster_kaiguo {
-        label="开国名相";
+    // 核心人物
+    文天祥 [label="文天祥\n字宋瑞 号文山\n状元及第", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 南宋朝廷
+    subgraph cluster_song {
+        label="南宋朝廷";
         style="rounded,filled";
         fillcolor="#fff8dc";
-
-        赵普 [label="赵普\n半部论语\n治天下", fillcolor="#ffd700", style="rounded,filled,bold"];
-        寇准 [label="寇准\n澶渊之盟", fillcolor="#f0e68c"];
+        恭帝 [label="恭帝\n赵㬎", fillcolor="#ffd700"];
+        端宗 [label="端宗\n赵昰", fillcolor="#ffd700"];
+        帝昺 [label="帝昺\n赵昺\n崖山覆灭", fillcolor="#ffd700"];
+        陆秀夫 [label="陆秀夫\n负帝投海", fillcolor="#f0e68c"];
+        张世杰 [label="张世杰\n抗元将领", fillcolor="#f0e68c"];
     }
 
-    // 变法派
-    subgraph cluster_bianfa {
-        label="新法旧法";
-        style="rounded,filled";
-        fillcolor="#e6e6fa";
-
-        范仲淹 [label="范仲淹\n先忧后乐", fillcolor="#dda0dd", style="rounded,filled,bold"];
-        王安石 [label="王安石\n熙宁变法", fillcolor="#dda0dd", style="rounded,filled,bold"];
-        司马光 [label="司马光\n资治通鉴", fillcolor="#d8bfd8", style="rounded,filled,bold"];
-    }
-
-    // 文学
-    subgraph cluster_wenxue {
-        label="文学大家";
-        style="rounded,filled";
-        fillcolor="#f0fff0";
-
-        苏轼 [label="苏轼\n东坡居士\n豪放词", fillcolor="#98fb98", style="rounded,filled,bold"];
-    }
-
-    // 忠义
-    subgraph cluster_zhongyi {
-        label="忠义之臣";
+    // 元朝
+    subgraph cluster_yuan {
+        label="元朝";
         style="rounded,filled";
         fillcolor="#ffe4e1";
-
-        岳飞 [label="岳飞\n精忠报国\n莫须有", fillcolor="#ff6347", style="rounded,filled,bold"];
-        文天祥 [label="文天祥\n正气歌\n留取丹心", fillcolor="#ff6347", style="rounded,filled,bold"];
+        忽必烈 [label="忽必烈\n元世祖\n欲用天祥", fillcolor="#8b0000", fontcolor=white];
+        伯颜 [label="伯颜\n元军统帅", fillcolor="#a52a2a", fontcolor=white];
     }
 
+    // 事件
+    正气歌 [label="《正气歌》\n囚燕京四年\n不屈而作", shape=ellipse, fillcolor="#90ee90"];
+    崖山 [label="崖山之战\n宋室覆灭", shape=ellipse, fillcolor="#ff6347"];
+
     // 关系
-    王安石 -> 司马光 [label="新旧党争", color=red];
-    范仲淹 -> 王安石 [label="变法先驱", style=dashed];
-    苏轼 -> 王安石 [label="政见不同", style=dashed];
-    苏轼 -> 司马光 [label="政见不同", style=dashed];
+    文天祥 -> 恭帝 [label="起兵勤王"];
+    文天祥 -> 端宗 [label="效忠"];
+    伯颜 -> 文天祥 [label="俘获", color=red];
+    文天祥 -> 忽必烈 [label="坚拒招降", color=blue, style=bold];
+    忽必烈 -> 文天祥 [label="杀害", color=red];
+    文天祥 -> 正气歌 [label="囚中赋作", color=green];
+    陆秀夫 -> 帝昺 [label="负帝投海", color=red];
+    张世杰 -> 崖山 [label="殉国"];
+    文天祥 -> 陆秀夫 [label="同为忠臣", dir=both, style=dashed];
 }
 ....
 
@@ -25842,11 +26654,119 @@ digraph ming {
 运筹帷幄，功比子房。然太祖猜忌功臣，基请归老乡里。洪武八年卒，或云为
 胡惟庸所害。民间传其神机妙算，有《烧饼歌》等谶言附会之说。
 
+[graphviz]
+....
+digraph liuji_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    刘基 [label="刘基\n字伯温\n开国谋主", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 朱元璋
+    太祖 [label="太祖\n朱元璋\n开国皇帝", fillcolor="#ffd700", style="rounded,filled,bold"];
+
+    // 文臣集团
+    subgraph cluster_wenchen {
+        label="淮西集团 vs 浙东集团";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        李善长 [label="李善长\n淮西集团首领\n功臣第一", fillcolor="#228b22", fontcolor=white];
+        胡惟庸 [label="胡惟庸\n丞相\n后被诛", fillcolor="#ff6347"];
+        宋濂 [label="宋濂\n浙东文人\n太子师", fillcolor="#90ee90"];
+    }
+
+    // 武将
+    subgraph cluster_wujiang {
+        label="开国名将";
+        style="rounded,filled";
+        fillcolor="#e6f3ff";
+        徐达 [label="徐达\n北伐统帅", fillcolor="#87ceeb"];
+        常遇春 [label="常遇春\n勇冠三军", fillcolor="#87ceeb"];
+    }
+
+    // 历史类比
+    subgraph cluster_compare {
+        label="历史类比";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        张良 [label="张良\n汉初三杰\n运筹帷幄", fillcolor="#daa520"];
+    }
+
+    // 关系
+    刘基 -> 太祖 [label="辅佐\n运筹帷幄", color=blue, style=bold];
+    太祖 -> 刘基 [label="猜忌\n功臣难善终", color=orange, style=dashed];
+    刘基 -> 李善长 [label="浙东vs淮西\n集团对立", dir=both, color=red];
+    胡惟庸 -> 刘基 [label="或云毒杀", color=red, style=dashed];
+    李善长 -> 胡惟庸 [label="提拔"];
+    刘基 -> 宋濂 [label="浙东同僚", dir=both, color=green];
+    刘基 -> 徐达 [label="文武配合", dir=both, style=dashed];
+    刘基 -> 常遇春 [label="军事参谋", style=dashed];
+    刘基 -> 张良 [label="功比子房", style=dotted, color=purple];
+}
+....
+
 ==== 徐达传
 
 徐达，字天德，濠州人。与太祖同里，从起兵。达谨慎持重，用兵如神，
 北伐中原，克大都，功冠诸将。太祖称其"万里长城"。达为人谦退，功高不矜。
 洪武十八年卒，赠中山王，配享太庙，位列开国功臣第一。
+
+[graphviz]
+....
+digraph xuda_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    徐达 [label="徐达\n字天德\n开国第一功臣", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 朱元璋
+    太祖 [label="太祖\n朱元璋\n开国皇帝", fillcolor="#ffd700", style="rounded,filled,bold"];
+
+    // 开国功臣
+    subgraph cluster_kaiguo {
+        label="开国名将";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        常遇春 [label="常遇春\n副将\n勇冠三军", fillcolor="#228b22", fontcolor=white];
+        李文忠 [label="李文忠\n太祖外甥\n骁勇善战", fillcolor="#90ee90"];
+        汤和 [label="汤和\n同乡\n善终", fillcolor="#90ee90"];
+        傅友德 [label="傅友德\n北伐名将", fillcolor="#90ee90"];
+    }
+
+    // 敌人
+    subgraph cluster_enemy {
+        label="对手";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        陈友谅 [label="陈友谅\n汉王\n鄱阳湖败亡", fillcolor="#8b0000", fontcolor=white];
+        张士诚 [label="张士诚\n吴王\n平江被俘", fillcolor="#a52a2a", fontcolor=white];
+        元顺帝 [label="元顺帝\n北逃\n元朝覆灭", fillcolor="#808080"];
+    }
+
+    // 战役
+    北伐 [label="北伐中原\n克大都\n驱逐元朝", shape=ellipse, fillcolor="#87ceeb"];
+
+    // 关系
+    徐达 -> 太祖 [label="同乡起兵\n效忠", color=blue];
+    太祖 -> 徐达 [label="万里长城\n功臣第一", color=blue];
+    徐达 -> 常遇春 [label="并肩作战", dir=both, color=green];
+    徐达 -> 李文忠 [label="统帅"];
+    徐达 -> 汤和 [label="同僚"];
+    徐达 -> 傅友德 [label="统帅"];
+    徐达 -> 陈友谅 [label="击败\n鄱阳湖", color=red];
+    徐达 -> 张士诚 [label="攻克平江", color=red];
+    徐达 -> 北伐 [label="统帅", style=bold];
+    北伐 -> 元顺帝 [label="驱逐", color=red];
+}
+....
 
 ==== 于谦传
 
@@ -25855,6 +26775,64 @@ digraph ming {
 英宗复辟，石亨、徐有贞等诬谦谋反，斩于市。成化初复官赐祭，弘治中谥
 "忠肃"。谦诗云"粉身碎骨浑不怕，要留清白在人间"，为其生平写照。
 
+[graphviz]
+....
+digraph yuqian_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    于谦 [label="于谦\n字廷益\n兵部尚书", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    subgraph cluster_emperor {
+        label="皇帝";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        英宗 [label="英宗\n朱祁镇\n土木堡被俘\n后复辟", fillcolor="#ffd700"];
+        景帝 [label="景帝\n朱祁钰\n(郕王)", fillcolor="#ffd700"];
+        王振 [label="王振\n宦官\n怂恿亲征", fillcolor="#808080"];
+    }
+
+    // 瓦剌
+    subgraph cluster_wala {
+        label="瓦剌";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        也先 [label="也先\n瓦剌太师\n土木堡大胜", fillcolor="#8b0000", fontcolor=white];
+    }
+
+    // 政敌
+    subgraph cluster_enemy {
+        label="夺门之变";
+        style="rounded,filled";
+        fillcolor="#dda0dd";
+        石亨 [label="石亨\n武将\n反戈迎复", fillcolor="#9932cc", fontcolor=white];
+        徐有贞 [label="徐有贞\n文臣\n迎复首功", fillcolor="#9932cc", fontcolor=white];
+    }
+
+    // 战役
+    北京保卫战 [label="北京保卫战\n列阵九门\n大破瓦剌", shape=ellipse, fillcolor="#90ee90"];
+    土木堡 [label="土木堡之变\n英宗被俘\n王振误国", shape=ellipse, fillcolor="#ff6347"];
+
+    // 关系
+    王振 -> 英宗 [label="怂恿亲征"];
+    英宗 -> 土木堡 [label="亲征"];
+    也先 -> 土木堡 [label="大败明军", color=red];
+    土木堡 -> 英宗 [label="被俘", color=red];
+    于谦 -> 景帝 [label="拥立", color=blue, style=bold];
+    于谦 -> 北京保卫战 [label="指挥", color=blue, style=bold];
+    也先 -> 北京保卫战 [label="围城"];
+    英宗 -> 于谦 [label="复辟后冤杀", color=red, style=bold];
+    石亨 -> 于谦 [label="诬陷", color=red];
+    徐有贞 -> 于谦 [label="诬陷", color=red];
+    石亨 -> 英宗 [label="迎复"];
+}
+....
+
 ==== 王守仁传
 
 王守仁，字伯安，号阳明，余姚人。弘治进士，官至南京兵部尚书。守仁
@@ -25862,11 +26840,122 @@ digraph ming {
 用兵四十三日而定。嘉靖中，平思田之乱。守仁文武兼资，立德立功立言，
 后世称"阳明先生"，心学影响东亚。
 
+[graphviz]
+....
+digraph wangshouren_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    王守仁 [label="王守仁\n字伯安 号阳明\n心学宗师", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝与朝廷
+    subgraph cluster_court {
+        label="朝廷";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        正德帝 [label="正德帝\n武宗", fillcolor="#ffd700"];
+        刘瑾 [label="刘瑾\n权宦\n迫害守仁", fillcolor="#808080"];
+    }
+
+    // 叛乱
+    subgraph cluster_rebel {
+        label="叛乱";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        朱宸濠 [label="朱宸濠\n宁王\n起兵叛乱", fillcolor="#8b0000", fontcolor=white];
+    }
+
+    // 学术
+    subgraph cluster_xuexue {
+        label="学术传承";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        朱熹 [label="朱熹\n理学宗师\n格物致知", fillcolor="#228b22", fontcolor=white];
+        心学 [label="阳明心学\n知行合一\n致良知", shape=ellipse, fillcolor="#90ee90"];
+    }
+
+    // 弟子
+    subgraph cluster_dizi {
+        label="门人弟子";
+        style="rounded,filled";
+        fillcolor="#e6f3ff";
+        王畿 [label="王畿\n龙溪先生", fillcolor="#87ceeb"];
+        王艮 [label="王艮\n泰州学派", fillcolor="#87ceeb"];
+    }
+
+    // 关系
+    王守仁 -> 正德帝 [label="效忠"];
+    刘瑾 -> 王守仁 [label="廷杖\n贬谪龙场", color=red];
+    王守仁 -> 朱宸濠 [label="平叛\n四十三日定", color=blue, style=bold];
+    朱熹 -> 王守仁 [label="学术继承\n批判发展", style=dashed];
+    王守仁 -> 心学 [label="创立", color=green, style=bold];
+    王守仁 -> 王畿 [label="授业"];
+    王守仁 -> 王艮 [label="授业"];
+}
+....
+
 ==== 张居正传
 
 张居正，字叔大，江陵人。嘉靖进士，穆宗时入阁。神宗即位，居正以帝师
 辅政十年。行一条鞭法，清丈田亩，整顿吏治，国用充裕。居正专权过甚，
 身后被抄家夺谥。然万历初年之治，实居正之功。崇祯中复官，谥"文忠"。
+
+[graphviz]
+....
+digraph zhangjuzheng_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    张居正 [label="张居正\n字叔大\n万历首辅", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    subgraph cluster_emperor {
+        label="皇帝";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        穆宗 [label="穆宗\n隆庆帝", fillcolor="#ffd700"];
+        神宗 [label="神宗\n万历帝\n(幼年即位)", fillcolor="#ffd700"];
+        李太后 [label="李太后\n慈圣太后", fillcolor="#ffb6c1"];
+    }
+
+    // 政治盟友
+    subgraph cluster_ally {
+        label="政治盟友";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        冯保 [label="冯保\n司礼监太监\n与居正联合", fillcolor="#90ee90"];
+    }
+
+    // 政敌
+    subgraph cluster_enemy {
+        label="政敌";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        高拱 [label="高拱\n前任首辅\n被逐", fillcolor="#ff6347"];
+    }
+
+    // 改革措施
+    改革 [label="改革功绩\n一条鞭法\n清丈田亩\n整顿吏治", shape=ellipse, fillcolor="#87ceeb"];
+
+    // 关系
+    穆宗 -> 神宗 [label="父子"];
+    张居正 -> 穆宗 [label="入阁"];
+    张居正 -> 神宗 [label="帝师\n辅政十年", color=blue, style=bold];
+    李太后 -> 张居正 [label="信任\n托付幼帝"];
+    张居正 -> 冯保 [label="联合执政", dir=both, color=green];
+    张居正 -> 高拱 [label="政争\n逐出朝廷", color=red];
+    张居正 -> 改革 [label="推行"];
+    神宗 -> 张居正 [label="身后清算\n抄家夺谥", color=red, style=dashed];
+}
+....
 
 ==== 袁崇焕传
 
@@ -25875,6 +26964,54 @@ digraph ming {
 屡挫其锋。己巳之变，崇焕入援京师，战于广渠门外。皇太极用反间计，
 崇祯中计，磔崇焕于市。清乾隆中为之昭雪。
 
+[graphviz]
+....
+digraph yuanchonghuan_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    袁崇焕 [label="袁崇焕\n字元素\n督师辽东", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 明朝
+    subgraph cluster_ming {
+        label="明朝";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        崇祯帝 [label="崇祯帝\n朱由检", fillcolor="#ffd700"];
+        毛文龙 [label="毛文龙\n东江镇总兵\n被袁斩杀", fillcolor="#daa520"];
+        祖大寿 [label="祖大寿\n辽东将领", fillcolor="#f0e68c"];
+    }
+
+    // 后金
+    subgraph cluster_houjin {
+        label="后金";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        努尔哈赤 [label="努尔哈赤\n后金创立者\n宁远城下受挫", fillcolor="#8b0000", fontcolor=white];
+        皇太极 [label="皇太极\n继承汗位\n用反间计", fillcolor="#a52a2a", fontcolor=white];
+    }
+
+    // 战役
+    宁远 [label="宁远大捷\n红夷大炮\n击退后金", shape=ellipse, fillcolor="#90ee90"];
+    己巳之变 [label="己巳之变\n入援京师\n广渠门之战", shape=ellipse, fillcolor="#87ceeb"];
+
+    // 关系
+    袁崇焕 -> 崇祯帝 [label="效忠"];
+    崇祯帝 -> 袁崇焕 [label="中反间计\n磔杀", color=red, style=bold];
+    袁崇焕 -> 毛文龙 [label="矛杀", color=red];
+    袁崇焕 -> 祖大寿 [label="部将"];
+    袁崇焕 -> 宁远 [label="守御"];
+    袁崇焕 -> 努尔哈赤 [label="击退", color=blue, style=bold];
+    努尔哈赤 -> 皇太极 [label="父子"];
+    皇太极 -> 袁崇焕 [label="反间计", color=purple, style=dashed];
+    袁崇焕 -> 己巳之变 [label="入援"];
+}
+....
+
 ==== 史可法传
 
 史可法，字宪之，祥符人。崇祯进士，南明弘光时督师扬州。清兵南下，
@@ -25882,66 +27019,107 @@ digraph ming {
 不得其尸，衣冠葬于梅花岭。可法绝笔书云"城存与存，城亡与亡"，
 忠义之气，与文天祥并称。
 
+[graphviz]
+....
+digraph shikefa_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    史可法 [label="史可法\n字宪之\n南明督师", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 师友
+    subgraph cluster_shiyu {
+        label="师友";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        左光斗 [label="左光斗\n恩师\n东林党人", fillcolor="#228b22", fontcolor=white];
+    }
+
+    // 南明朝廷
+    subgraph cluster_nanming {
+        label="南明朝廷";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        弘光帝 [label="弘光帝\n朱由崧", fillcolor="#ffd700"];
+        马士英 [label="马士英\n南明权臣", fillcolor="#daa520"];
+    }
+
+    // 清军
+    subgraph cluster_qing {
+        label="清军";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        多铎 [label="多铎\n豫亲王\n率军南下", fillcolor="#8b0000", fontcolor=white];
+        多尔衮 [label="多尔衮\n摄政王", fillcolor="#a52a2a", fontcolor=white];
+    }
+
+    // 关系
+    左光斗 -> 史可法 [label="师生\n狱中激励", color=blue, style=bold];
+    史可法 -> 弘光帝 [label="效忠"];
+    马士英 -> 史可法 [label="排挤", color=orange, style=dashed];
+    史可法 -> 多铎 [label="抗击\n城破殉国", color=red, style=bold];
+    多尔衮 -> 多铎 [label="统帅"];
+    多铎 -> 扬州 [label="屠城十日", color=red];
+    扬州 [label="扬州\n城存与存\n城亡与亡", shape=ellipse, fillcolor="#87ceeb"];
+}
+....
+
 ==== 忠义传
 
 《明史·忠义传》收录殉国死节之臣。方孝孺拒草诏，灭十族不屈。杨继盛
 劾严嵩，备受酷刑不改词。左光斗狱中激励史可法，慷慨就义。明末诸臣，
 多有死节者，忠义之风，至明尤盛。
 
-==== 明史列传人物关系图
-
 [graphviz]
 ....
-digraph mingshi_liezhuan {
-    rankdir=TB;
-    ranksep=1.0;
-    nodesep=0.5;
+digraph zhongyi_zhuan {
+    rankdir=LR;
+    ranksep=0.8;
+    nodesep=0.4;
     node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
     edge [fontname="Heiti SC", fontsize=9];
 
-    subgraph cluster_kaiguo {
-        label="开国功臣";
-        style="rounded,filled";
-        fillcolor="#fff8dc";
-        刘基 [label="刘基\n运筹帷幄\n开国谋主", fillcolor="#ffd700", style="rounded,filled,bold"];
-        徐达 [label="徐达\n北伐元朝\n开国第一功臣", fillcolor="#ffd700", style="rounded,filled,bold"];
-    }
-
-    subgraph cluster_zhongyi {
-        label="忠义名臣";
-        style="rounded,filled";
-        fillcolor="#e6f3ff";
-        于谦 [label="于谦\n北京保卫战\n力挽狂澜", fillcolor="#87ceeb", style="rounded,filled,bold"];
-        史可法 [label="史可法\n扬州殉难\n明末忠臣", fillcolor="#87ceeb", style="rounded,filled,bold"];
-    }
-
-    subgraph cluster_xinxue {
-        label="心学宗师";
-        style="rounded,filled";
-        fillcolor="#f0fff0";
-        王守仁 [label="王守仁\n知行合一\n平宁王乱", fillcolor="#90ee90", style="rounded,filled,bold"];
-    }
-
-    subgraph cluster_gaige {
-        label="改革重臣";
-        style="rounded,filled";
-        fillcolor="#fff0f5";
-        张居正 [label="张居正\n万历首辅\n一条鞭法", fillcolor="#ffb6c1", style="rounded,filled,bold"];
-    }
-
-    subgraph cluster_shouliao {
-        label="守辽名将";
+    // 靖难之变
+    subgraph cluster_jingnan {
+        label="靖难忠臣";
         style="rounded,filled";
         fillcolor="#ffe4e1";
-        袁崇焕 [label="袁崇焕\n宁远大捷\n冤死磔刑", fillcolor="#ffa07a", style="rounded,filled,bold"];
+        方孝孺 [label="方孝孺\n拒草即位诏\n灭十族不屈", fillcolor="#ff6347"];
+        建文帝 [label="建文帝\n朱允炆", fillcolor="#ffd700"];
+        燕王 [label="燕王\n朱棣", fillcolor="#808080"];
     }
 
-    // 人物关系
-    刘基 -> 徐达 [label="开国同僚\n文武配合", dir=both, style=dashed];
-    于谦 -> 史可法 [label="前后相映\n忠义相承", style=dashed, color=blue];
-    王守仁 -> 张居正 [label="心学影响", style=dotted];
-    袁崇焕 -> 史可法 [label="抗敌精神", style=dotted, color=red];
-    于谦 -> 袁崇焕 [label="忠而见疑", style=dotted, color=gray];
+    // 嘉靖朝
+    subgraph cluster_jiajing {
+        label="嘉靖忠臣";
+        style="rounded,filled";
+        fillcolor="#e6f3ff";
+        杨继盛 [label="杨继盛\n劾严嵩十罪\n备受酷刑不改", fillcolor="#4169e1"];
+        严嵩 [label="严嵩\n权奸", fillcolor="#808080"];
+    }
+
+    // 天启朝
+    subgraph cluster_tianqi {
+        label="天启忠臣";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        左光斗 [label="左光斗\n东林党人\n狱中激励史可法", fillcolor="#228b22"];
+        魏忠贤 [label="魏忠贤\n阉党", fillcolor="#808080"];
+        史可法b [label="史可法\n(弟子)", fillcolor="#90ee90"];
+    }
+
+    // 关系
+    方孝孺 -> 建文帝 [label="效忠"];
+    燕王 -> 方孝孺 [label="逼草诏\n诛十族", color=red];
+    杨继盛 -> 严嵩 [label="弹劾", color=red];
+    严嵩 -> 杨继盛 [label="迫害", color=red];
+    左光斗 -> 魏忠贤 [label="抗争", color=red];
+    魏忠贤 -> 左光斗 [label="迫害", color=red];
+    左光斗 -> 史可法b [label="师生\n激励", color=blue];
 }
 ....
 
