@@ -1,5 +1,9 @@
 = 中国历史纪要 (v4.0)
 // vim:set ft=asciidoc syntax=ON tw=80:
+// 生成HTML: asciidoctor -r asciidoctor-diagram timeline.adoc
+// 生成PDF:  asciidoctor-pdf -r asciidoctor-diagram -a pdf-theme=chinese-theme.yml timeline.adoc
+// 生成PDF:  asciidoctor -r asciidoctor-pdf -r asciidoctor-diagram -b pdf -a pdf-theme=chinese-theme.yml timeline.adoc
+// 在线预览: https://htmlpreview.github.io/?https://github.com/pinggit/china-history/blob/main/timeline.html
 :toc: right
 :toclevels: 5
 //:toc-placement: preamble
@@ -9,6 +13,9 @@
 :highlightjs-theme: googlecode
 :coderay-linenums-mode: table
 :coderay-linenums-mode: inline
+:data-uri:
+:imagesdir: images
+:imagesoutdir: images
 // 依据：西汉及以前以《史记》为主要依据
 
 == 传疑时代（无确切纪年）
@@ -3099,6 +3106,75 @@ digraph 战国人物关系 {
 勾践卧薪尝胆，十年生聚，十年教训。夫差北会诸侯于黄池，争长于晋。
 越乘虚入吴，吴大败。后三年，勾践遂灭吴，夫差自杀，吴亡。
 
+[graphviz]
+....
+digraph wutaibo_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_rang {
+        label="太伯让国";
+        style=filled;
+        fillcolor="#fff8dc";
+        周太王 [label="周太王\n欲立季历", fillcolor="#ffd700"];
+        太伯 [label="太伯\n至德\n三让天下", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        仲雍 [label="仲雍\n奔荆蛮", fillcolor="#87ceeb"];
+        季历 [label="季历\n(王季)", fillcolor="#ffd700"];
+        周文王 [label="周文王\n(昌)", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_wu {
+        label="吴之传承";
+        style=filled;
+        fillcolor="#e6e6fa";
+        寿梦 [label="寿梦\n吴始大", fillcolor="#dda0dd"];
+        季札 [label="季札\n贤\n让国", fillcolor="#98fb98"];
+        王僚 [label="王僚", fillcolor="#d3d3d3"];
+        专诸 [label="专诸\n刺王僚", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_helu {
+        label="阖闾称霸";
+        style=filled;
+        fillcolor="#f0fff0";
+        阖闾 [label="阖闾\n(公子光)\n称霸", fillcolor="#90ee90", style="rounded,filled,bold"];
+        伍子胥 [label="伍子胥\n谋国事", fillcolor="#98fb98", style="rounded,filled,bold"];
+        孙武 [label="孙武\n兵法", fillcolor="#98fb98", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_fuchai {
+        label="夫差亡国";
+        style=filled;
+        fillcolor="#ffe4e1";
+        夫差 [label="夫差\n誓报父仇\n黄池争长", fillcolor="#ffa07a"];
+        勾践 [label="勾践\n卧薪尝胆\n灭吴", fillcolor="#ff6347", style="rounded,filled,bold"];
+        范蠡 [label="范蠡\n谏杀勾践", fillcolor="#98fb98"];
+    }
+
+    周太王 -> 太伯 [label="子"];
+    周太王 -> 仲雍 [label="子"];
+    周太王 -> 季历 [label="子"];
+    太伯 -> 季历 [label="让", color="#228b22", style=bold];
+    仲雍 -> 太伯 [label="从奔", style=dotted];
+    季历 -> 周文王 [label="子"];
+    太伯 -> 寿梦 [label="后代", style=dashed];
+    寿梦 -> 季札 [label="子"];
+    寿梦 -> 王僚 [label="后代", style=dashed];
+    专诸 -> 王僚 [label="刺", color=red, style=bold];
+    阖闾 -> 专诸 [label="使", style=dotted];
+    阖闾 -> 伍子胥 [label="用", style=dotted];
+    阖闾 -> 孙武 [label="用", style=dotted];
+    阖闾 -> 夫差 [label="子"];
+    勾践 -> 阖闾 [label="伤死", color=red];
+    夫差 -> 勾践 [label="败于夫椒", color="#228b22"];
+    勾践 -> 夫差 [label="灭吴", color=red, style=bold];
+    范蠡 -> 夫差 [label="谏杀勾践", style=dotted];
+}
+....
+
 ==== 齐太公世家
 
 《齐太公世家》记姜齐自太公望至康公，凡三十世，六百余年。
@@ -3122,6 +3198,58 @@ digraph 战国人物关系 {
 **田氏代齐**：齐自桓公后，公室衰微，大夫专政。田氏世有齐国，至田和，
 遂迁齐康公于海上，自立为齐侯，是为田齐。姜齐遂亡。
 
+[graphviz]
+....
+digraph qitaigong_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_origin {
+        label="太公起于渔钓";
+        style=filled;
+        fillcolor="#fff8dc";
+        太公望 [label="太公望\n(吕尚)\n渭水垂钓", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        周文王 [label="周文王\n(西伯)\n太公望子久矣", fillcolor="#ffd700", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_fa {
+        label="灭商封齐";
+        style=filled;
+        fillcolor="#e6e6fa";
+        周武王 [label="周武王\n东伐纣", fillcolor="#ffd700"];
+        纣王 [label="纣王\n鹿台自焚", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_huan {
+        label="齐桓公霸业";
+        style=filled;
+        fillcolor="#f0fff0";
+        齐桓公 [label="齐桓公\n九合诸侯\n春秋首霸", fillcolor="#90ee90", style="rounded,filled,bold"];
+        管仲 [label="管仲\n相齐\n尊王攘夷", fillcolor="#98fb98", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_fall {
+        label="田氏代齐";
+        style=filled;
+        fillcolor="#ffe4e1";
+        田和 [label="田和\n代齐", fillcolor="#dda0dd"];
+        齐康公 [label="齐康公\n姜齐末代\n迁海上", fillcolor="#ff6347"];
+    }
+
+    周文王 -> 太公望 [label="遇于渭\n立为师", style=dotted];
+    太公望 -> 周武王 [label="辅佐", style=dotted];
+    周武王 -> 纣王 [label="伐", color=red, style=bold];
+    周武王 -> 太公望 [label="封于齐", color="#228b22"];
+    太公望 -> 齐桓公 [label="后代", style=dashed];
+    齐桓公 -> 管仲 [label="相", style=dotted];
+    齐桓公 -> 齐康公 [label="后代", style=dashed];
+    田和 -> 齐康公 [label="迁", color=red, style=bold];
+}
+....
+
 ==== 鲁周公世家
 
 《鲁周公世家》记周公旦及鲁国之事。周公为周武王之弟，文王第四子，名旦。
@@ -3136,6 +3264,57 @@ digraph 战国人物关系 {
 **鲁之兴衰**：周公子伯禽代就封于鲁，伯禽之政严。三年报政，周公曰：
 "鲁后世其北面事齐矣。"鲁至隐公，隐公让国于弟桓公，桓公杀隐公。
 此后公室衰，三桓（季氏、叔氏、孟氏）专政。至顷公，楚灭鲁，鲁亡。
+
+[graphviz]
+....
+digraph luzhougong_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_zhou {
+        label="周公辅成王";
+        style=filled;
+        fillcolor="#fff8dc";
+        周文王 [label="周文王", fillcolor="#ffd700"];
+        周武王 [label="周武王", fillcolor="#ffd700"];
+        周公旦 [label="周公旦\n摄政\n制礼作乐", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        周成王 [label="周成王\n年少", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_lu {
+        label="鲁国传承";
+        style=filled;
+        fillcolor="#f0fff0";
+        伯禽 [label="伯禽\n代封于鲁\n政严", fillcolor="#98fb98", style="rounded,filled,bold"];
+        鲁隐公 [label="鲁隐公\n让国", fillcolor="#98fb98"];
+        鲁桓公 [label="鲁桓公\n杀兄", fillcolor="#ffa07a"];
+    }
+
+    subgraph cluster_sanhuan {
+        label="三桓专政";
+        style=filled;
+        fillcolor="#ffe4e1";
+        季氏 [label="季氏\n(三桓)", fillcolor="#ffa07a"];
+        叔氏 [label="叔氏\n(三桓)", fillcolor="#ffa07a"];
+        孟氏 [label="孟氏\n(三桓)", fillcolor="#ffa07a"];
+        鲁顷公 [label="鲁顷公\n末代", fillcolor="#ff6347"];
+    }
+
+    周文王 -> 周公旦 [label="子"];
+    周武王 -> 周公旦 [label="弟"];
+    周公旦 -> 周成王 [label="摄政", style=dotted];
+    周公旦 -> 伯禽 [label="子"];
+    伯禽 -> 鲁隐公 [label="后代", style=dashed];
+    鲁隐公 -> 鲁桓公 [label="弟杀兄", color=red, style=bold];
+    鲁桓公 -> 季氏 [label="后代专政", style=dashed];
+    鲁桓公 -> 叔氏 [label="后代专政", style=dashed];
+    鲁桓公 -> 孟氏 [label="后代专政", style=dashed];
+    季氏 -> 鲁顷公 [label="衰亡", style=dashed];
+}
+....
 
 ==== 燕召公世家
 
@@ -3155,6 +3334,60 @@ digraph 战国人物关系 {
 不中。秦王拔剑击荆轲，断其左股。荆轲倚柱笑曰："事所以不成者，以欲
 生劫之也。"秦遂伐燕，燕亡。
 
+[graphviz]
+....
+digraph yanzhao_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_origin {
+        label="召公受封";
+        style=filled;
+        fillcolor="#fff8dc";
+        周武王 [label="周武王", fillcolor="#ffd700"];
+        召公奭 [label="召公奭\n与周同姓\n封北燕", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        周公旦 [label="周公旦", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_peak {
+        label="燕昭王招贤";
+        style=filled;
+        fillcolor="#f0fff0";
+        燕昭王 [label="燕昭王\n卑身厚币\n招贤", fillcolor="#90ee90", style="rounded,filled,bold"];
+        乐毅 [label="乐毅\n自魏往\n上将军", fillcolor="#98fb98", style="rounded,filled,bold"];
+        邹衍 [label="邹衍\n自齐往", fillcolor="#98fb98"];
+        剧辛 [label="剧辛\n自赵往", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_fall {
+        label="荆轲刺秦";
+        style=filled;
+        fillcolor="#ffe4e1";
+        太子丹 [label="太子丹\n使刺秦", fillcolor="#ffa07a"];
+        荆轲 [label="荆轲\n图穷匕首见\n刺秦失败", fillcolor="#ff6347", style="rounded,filled,bold"];
+        樊於期 [label="樊於期\n献首级", fillcolor="#ff6347"];
+        秦王 [label="秦王\n绕柱走", fillcolor="#ffd700"];
+        燕王喜 [label="燕王喜\n末代", fillcolor="#ff6347"];
+    }
+
+    周武王 -> 召公奭 [label="封", style=dotted];
+    召公奭 -> 周公旦 [label="左右成王", style=dotted];
+    召公奭 -> 燕昭王 [label="后代", style=dashed];
+    燕昭王 -> 乐毅 [label="用", style=dotted];
+    燕昭王 -> 邹衍 [label="用", style=dotted];
+    燕昭王 -> 剧辛 [label="用", style=dotted];
+    乐毅 -> 燕昭王 [label="伐齐下七十城", color="#228b22", style=bold];
+    燕昭王 -> 太子丹 [label="后代", style=dashed];
+    太子丹 -> 荆轲 [label="使刺秦", style=dotted];
+    樊於期 -> 荆轲 [label="献首", style=dotted];
+    荆轲 -> 秦王 [label="刺", color=red, style=bold];
+    秦王 -> 燕王喜 [label="伐灭", color=red, style=bold];
+}
+....
+
 ==== 管蔡世家
 
 《管蔡世家》记管叔鲜、蔡叔度及其后人之事。
@@ -3167,6 +3400,61 @@ digraph 战国人物关系 {
 **蔡国传续**：周公以蔡叔之子胡改行率德，乃复封胡于蔡，是为蔡仲。蔡国
 传至蔡昭侯，楚灭蔡，蔡亡。曹叔振铎者，亦文王子。武王封之于曹。曹传
 至曹伯阳，宋灭曹，曹亡。
+
+[graphviz]
+....
+digraph guancai_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_zhou {
+        label="周王室";
+        style=filled;
+        fillcolor="#fff8dc";
+        周文王 [label="周文王", fillcolor="#ffd700"];
+        周武王 [label="周武王", fillcolor="#ffd700"];
+        周公旦 [label="周公旦\n摄政", fillcolor="#ffd700", style="rounded,filled,bold"];
+        周成王 [label="周成王\n年少", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_guancai {
+        label="管蔡之乱";
+        style=filled;
+        fillcolor="#ffe4e1";
+        管叔鲜 [label="管叔鲜\n封管\n三监", fillcolor="#ff6347"];
+        蔡叔度 [label="蔡叔度\n封蔡\n三监", fillcolor="#ffa07a"];
+        武庚 [label="武庚\n殷商后\n叛乱", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_cai {
+        label="蔡曹传续";
+        style=filled;
+        fillcolor="#f0fff0";
+        蔡仲 [label="蔡仲\n(胡)\n蔡叔子\n改行率德", fillcolor="#98fb98"];
+        蔡昭侯 [label="蔡昭侯\n蔡末代", fillcolor="#d3d3d3"];
+        曹叔振铎 [label="曹叔振铎\n封曹", fillcolor="#87ceeb"];
+        曹伯阳 [label="曹伯阳\n曹末代", fillcolor="#d3d3d3"];
+    }
+
+    周文王 -> 管叔鲜 [label="子"];
+    周文王 -> 蔡叔度 [label="子"];
+    周文王 -> 周公旦 [label="子"];
+    周文王 -> 曹叔振铎 [label="子"];
+    周武王 -> 管叔鲜 [label="封", style=dotted];
+    周武王 -> 蔡叔度 [label="封", style=dotted];
+    管叔鲜 -> 武庚 [label="监殷叛", color=red, style=bold];
+    蔡叔度 -> 武庚 [label="监殷叛", color=red, style=bold];
+    周公旦 -> 管叔鲜 [label="诛", color=red, style=bold];
+    周公旦 -> 蔡叔度 [label="放", color=red];
+    蔡叔度 -> 蔡仲 [label="子"];
+    周公旦 -> 蔡仲 [label="复封", color="#228b22"];
+    蔡仲 -> 蔡昭侯 [label="后代", style=dashed];
+    曹叔振铎 -> 曹伯阳 [label="后代", style=dashed];
+}
+....
 
 ==== 陈杞世家
 
@@ -3181,6 +3469,57 @@ digraph 战国人物关系 {
 **杞国**：杞东楼公者，夏后禹之后苗裔也。周武王克商，求禹之后，得
 东楼公，封之于杞，以奉夏后祀。杞小微，其事不足称述。
 
+[graphviz]
+....
+digraph chenqi_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_chen {
+        label="陈国";
+        style=filled;
+        fillcolor="#fff8dc";
+        舜 [label="舜\n虞帝", fillcolor="#ffd700"];
+        胡公满 [label="胡公满\n(妫满)\n封于陈", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        陈厉公 [label="陈厉公", fillcolor="#87ceeb"];
+        陈完 [label="陈完\n(敬仲)\n奔齐", fillcolor="#dda0dd", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_tianqi {
+        label="田齐";
+        style=filled;
+        fillcolor="#f0fff0";
+        田和 [label="田和\n有齐国", fillcolor="#90ee90", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_qi {
+        label="杞国";
+        style=filled;
+        fillcolor="#e6e6fa";
+        禹 [label="禹\n夏后", fillcolor="#ffd700"];
+        东楼公 [label="东楼公\n封于杞", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_zhou {
+        label="周";
+        style=filled;
+        fillcolor="#ffe4e1";
+        周武王 [label="周武王\n求先代后", fillcolor="#ffd700"];
+    }
+
+    舜 -> 胡公满 [label="后代", style=dashed];
+    周武王 -> 胡公满 [label="封陈", style=dotted];
+    胡公满 -> 陈厉公 [label="后代", style=dashed];
+    陈厉公 -> 陈完 [label="子"];
+    陈完 -> 田和 [label="后代", style=dashed];
+    禹 -> 东楼公 [label="后代", style=dashed];
+    周武王 -> 东楼公 [label="封杞", style=dotted];
+}
+....
+
 ==== 卫康叔世家
 
 《卫康叔世家》记卫国自康叔至卫君角，凡四十世，八百余年。
@@ -3193,6 +3532,51 @@ digraph 战国人物关系 {
 国人曰："使鹤，鹤有禄位。"遂不战，狄入卫，杀懿公，啖其肉，独余其肝。
 卫遗民渡河，得七百三十人。立戴公，戴公卒，弟文公立。文公勤政爱民，
 卫复强。后卫数亡数存，最后为秦所灭。
+
+[graphviz]
+....
+digraph weikang_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_zhou {
+        label="周王室";
+        style=filled;
+        fillcolor="#fff8dc";
+        周文王 [label="周文王", fillcolor="#ffd700"];
+        周公 [label="周公旦", fillcolor="#ffd700"];
+        康叔 [label="康叔封\n周公同母弟\n封于卫", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_wei {
+        label="卫国兴替";
+        style=filled;
+        fillcolor="#f0fff0";
+        懿公 [label="卫懿公\n好鹤\n鹤有乘轩", fillcolor="#ffa07a"];
+        戴公 [label="卫戴公\n遗民立", fillcolor="#d3d3d3"];
+        文公 [label="卫文公\n勤政爱民\n卫复强", fillcolor="#90ee90", style="rounded,filled,bold"];
+        卫君角 [label="卫君角\n末代", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_di {
+        label="外敌";
+        style=filled;
+        fillcolor="#ffe4e1";
+        狄 [label="狄\n伐卫杀懿公", fillcolor="#ff6347"];
+    }
+
+    周文王 -> 康叔 [label="子"];
+    周公 -> 康叔 [label="同母弟\n作康诰"];
+    康叔 -> 懿公 [label="后代", style=dashed];
+    狄 -> 懿公 [label="杀", color=red, style=bold];
+    懿公 -> 戴公 [label="遗民立", style=dashed];
+    戴公 -> 文公 [label="弟"];
+    文公 -> 卫君角 [label="后代", style=dashed];
+}
+....
 
 ==== 宋微子世家
 
@@ -3207,6 +3591,54 @@ digraph 战国人物关系 {
 先祀，作《微子之命》以申之。微子故能仁贤，乃代武庚受封于宋。微子卒，
 立其弟衍，是为微仲。宋传至宋襄公，襄公图霸，与楚战于泓水，宋师败绩。
 后宋为齐、魏、楚所灭。
+
+[graphviz]
+....
+digraph songweizi_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_yin {
+        label="殷商王室";
+        style=filled;
+        fillcolor="#fff8dc";
+        帝乙 [label="帝乙", fillcolor="#ffd700"];
+        纣王 [label="纣王\n不务德", fillcolor="#ff6347"];
+        微子 [label="微子开\n纣庶兄\n数谏不听", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_zhou {
+        label="周王室";
+        style=filled;
+        fillcolor="#e6e6fa";
+        周武王 [label="周武王\n伐纣克殷", fillcolor="#ffd700"];
+        周公 [label="周公\n命代殷后", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_song {
+        label="宋国传续";
+        style=filled;
+        fillcolor="#f0fff0";
+        微仲 [label="微仲\n(衍)\n微子弟", fillcolor="#98fb98"];
+        宋襄公 [label="宋襄公\n图霸\n泓水败", fillcolor="#ffa07a"];
+        宋王偃 [label="宋王偃\n末代", fillcolor="#ff6347"];
+    }
+
+    帝乙 -> 纣王 [label="子"];
+    帝乙 -> 微子 [label="首子"];
+    微子 -> 纣王 [label="庶兄谏", style=dotted];
+    周武王 -> 纣王 [label="伐", color=red, style=bold];
+    微子 -> 周武王 [label="肉袒降", style=dashed];
+    周武王 -> 微子 [label="复位", color="#228b22"];
+    周公 -> 微子 [label="封于宋", style=dotted];
+    微子 -> 微仲 [label="弟继"];
+    微仲 -> 宋襄公 [label="后代", style=dashed];
+    宋襄公 -> 宋王偃 [label="后代", style=dashed];
+}
+....
 
 ==== 晋世家
 
@@ -3230,6 +3662,71 @@ digraph 战国人物关系 {
 
 **三家分晋**：晋后公室衰，六卿专政。韩、赵、魏三家日益强大。三家灭
 智氏，尽分晋地。周威烈王命韩、赵、魏为诸侯，晋亡。
+
+[graphviz]
+....
+digraph jin_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_origin {
+        label="唐叔受封";
+        style=filled;
+        fillcolor="#fff8dc";
+        周武王 [label="周武王", fillcolor="#ffd700"];
+        周成王 [label="周成王", fillcolor="#ffd700"];
+        唐叔虞 [label="唐叔虞\n桐叶封弟", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        燮父 [label="燮父\n徙晋水\n改号晋", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_quwo {
+        label="曲沃代翼";
+        style=filled;
+        fillcolor="#e6e6fa";
+        成师 [label="成师\n(曲沃桓叔)", fillcolor="#dda0dd"];
+        晋武公 [label="晋武公\n灭翼\n列诸侯", fillcolor="#dda0dd", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_peak {
+        label="晋文公霸业";
+        style=filled;
+        fillcolor="#f0fff0";
+        晋献公 [label="晋献公\n宠骊姬", fillcolor="#ffa07a"];
+        骊姬 [label="骊姬\n谮杀太子", fillcolor="#ff6347"];
+        太子申生 [label="太子申生\n被杀", fillcolor="#ff6347"];
+        重耳 [label="重耳\n(晋文公)\n流亡十九年\n城濮败楚\n称霸", fillcolor="#90ee90", style="rounded,filled,bold"];
+        狐偃 [label="狐偃\n从亡", fillcolor="#98fb98"];
+        赵衰 [label="赵衰\n从亡", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_fall {
+        label="三家分晋";
+        style=filled;
+        fillcolor="#ffe4e1";
+        六卿 [label="六卿\n专政", fillcolor="#d3d3d3"];
+        韩赵魏 [label="韩、赵、魏\n三家分晋", fillcolor="#dda0dd"];
+        晋静公 [label="晋静公\n末代", fillcolor="#ff6347"];
+    }
+
+    周武王 -> 唐叔虞 [label="子"];
+    周成王 -> 唐叔虞 [label="弟\n桐叶封"];
+    唐叔虞 -> 燮父 [label="子"];
+    燮父 -> 成师 [label="后代", style=dashed];
+    成师 -> 晋武公 [label="后代"];
+    晋武公 -> 晋献公 [label="后代", style=dashed];
+    晋献公 -> 骊姬 [label="宠"];
+    骊姬 -> 太子申生 [label="谮杀", color=red, style=bold];
+    晋献公 -> 重耳 [label="子"];
+    重耳 -> 狐偃 [label="臣", style=dotted];
+    重耳 -> 赵衰 [label="臣", style=dotted];
+    重耳 -> 六卿 [label="后代", style=dashed];
+    六卿 -> 韩赵魏 [label="演变", style=dashed];
+    韩赵魏 -> 晋静公 [label="废", color=red, style=bold];
+}
+....
 
 ==== 楚世家
 
@@ -3255,6 +3752,69 @@ digraph 战国人物关系 {
 后楚虽复国，终不如前。战国时楚怀王为秦所骗，客死秦国。顷襄王时，
 白起拔郢，楚迁都于陈。后秦灭楚，楚亡。
 
+[graphviz]
+....
+digraph chu_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_origin {
+        label="楚之起源";
+        style=filled;
+        fillcolor="#fff8dc";
+        颛顼 [label="颛顼\n(高阳)", fillcolor="#ffd700"];
+        重黎 [label="重黎\n(祝融)", fillcolor="#ffe4b5"];
+        鬻熊 [label="鬻熊\n子事文王", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        熊绎 [label="熊绎\n封楚蛮\n子男之田", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_wang {
+        label="楚之称王";
+        style=filled;
+        fillcolor="#e6e6fa";
+        熊渠 [label="熊渠\n自称蛮夷\n立三子为王", fillcolor="#dda0dd", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_peak {
+        label="楚庄王霸业";
+        style=filled;
+        fillcolor="#f0fff0";
+        楚庄王 [label="楚庄王\n一鸣惊人\n问鼎中原", fillcolor="#90ee90", style="rounded,filled,bold"];
+        伍举 [label="伍举\n进谏", fillcolor="#98fb98"];
+        苏从 [label="苏从", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_fall {
+        label="楚之衰亡";
+        style=filled;
+        fillcolor="#ffe4e1";
+        阖闾 [label="阖闾\n五战入郢", fillcolor="#ff6347"];
+        伍子胥 [label="伍子胥\n鞭尸", fillcolor="#ff6347"];
+        孙武 [label="孙武", fillcolor="#ff6347"];
+        楚怀王 [label="楚怀王\n客死秦国", fillcolor="#ffa07a"];
+        白起 [label="白起\n拔郢", fillcolor="#ff6347"];
+        负刍 [label="负刍\n末代\n亡于秦", fillcolor="#ff6347"];
+    }
+
+    颛顼 -> 重黎 [label="后代", style=dashed];
+    重黎 -> 鬻熊 [label="后代", style=dashed];
+    鬻熊 -> 熊绎 [label="子"];
+    熊绎 -> 熊渠 [label="后代", style=dashed];
+    熊渠 -> 楚庄王 [label="后代", style=dashed];
+    楚庄王 -> 伍举 [label="纳谏", style=dotted];
+    楚庄王 -> 苏从 [label="用", style=dotted];
+    楚庄王 -> 楚怀王 [label="后代", style=dashed];
+    阖闾 -> 楚庄王 [label="后入郢", color=red, style=bold];
+    伍子胥 -> 阖闾 [label="臣", style=dotted];
+    孙武 -> 阖闾 [label="臣", style=dotted];
+    楚怀王 -> 负刍 [label="后代", style=dashed];
+    白起 -> 楚怀王 [label="后拔郢", color=red, style=bold];
+}
+....
+
 ==== 越王勾践世家
 
 《越王勾践世家》记越国自无余至无疆，凡二十余世。
@@ -3278,6 +3838,65 @@ digraph 战国人物关系 {
 伯。勾践已霸，范蠡乘舟浮海而去，变名易姓，至齐为陶朱公，以善治生终
 老于陶。
 
+[graphviz]
+....
+digraph goujian_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_origin {
+        label="越之起源";
+        style=filled;
+        fillcolor="#fff8dc";
+        禹 [label="禹\n葬会稽", fillcolor="#ffd700"];
+        少康子 [label="少康庶子\n封会稽", fillcolor="#ffe4b5"];
+        允常 [label="允常\n与吴争雄", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_wu {
+        label="吴越争霸";
+        style=filled;
+        fillcolor="#e6e6fa";
+        阖闾 [label="阖闾\n伐越\n槜李伤死", fillcolor="#ff6347"];
+        夫差 [label="夫差\n败越夫椒\n黄池争长", fillcolor="#ffa07a"];
+    }
+
+    subgraph cluster_goujian {
+        label="勾践复仇";
+        style=filled;
+        fillcolor="#f0fff0";
+        勾践 [label="勾践\n卧薪尝胆\n灭吴称霸", fillcolor="#90ee90", style="rounded,filled,bold"];
+        勾践夫人 [label="勾践夫人\n质于吴\n自织", fillcolor="#98fb98"];
+        范蠡 [label="范蠡\n兵甲之事\n功成身退\n陶朱公", fillcolor="#98fb98", style="rounded,filled,bold"];
+        文种 [label="文种\n治国政\n抚百姓", fillcolor="#98fb98", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_end {
+        label="越之后世";
+        style=filled;
+        fillcolor="#ffe4e1";
+        无疆 [label="无疆\n末代", fillcolor="#d3d3d3"];
+    }
+
+    禹 -> 少康子 [label="后代", style=dashed];
+    少康子 -> 允常 [label="二十余世", style=dashed];
+    允常 -> 勾践 [label="子"];
+    允常 -> 阖闾 [label="争雄", color=red, style=bold];
+    阖闾 -> 勾践 [label="槜李败", color=red];
+    夫差 -> 勾践 [label="夫椒败", color=red, style=bold];
+    勾践 -> 夫差 [label="为质", style=dashed];
+    勾践 -> 勾践夫人 [label="夫妻"];
+    勾践 -> 范蠡 [label="臣", style=dotted];
+    勾践 -> 文种 [label="用治国", style=dotted];
+    勾践 -> 夫差 [label="灭吴", color="#228b22", style=bold];
+    范蠡 -> 勾践 [label="功成去", style=dashed];
+    勾践 -> 无疆 [label="后代", style=dashed];
+}
+....
+
 ==== 郑世家
 
 《郑世家》记郑国自桓公至康公，凡十四世，四百三十余年。
@@ -3292,6 +3911,54 @@ digraph 战国人物关系 {
 与周天子争，射伤天子，周室益衰。郑庄公小霸于诸侯。
 
 **郑之衰亡**：郑介于晋、楚之间，朝秦暮楚，终不能自立。战国时为韩所灭。
+
+[graphviz]
+....
+digraph zheng_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_origin {
+        label="郑之受封";
+        style=filled;
+        fillcolor="#fff8dc";
+        周宣王 [label="周宣王", fillcolor="#ffd700"];
+        郑桓公 [label="郑桓公\n(友)\n宣王庶弟", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        周幽王 [label="周幽王\n无道", fillcolor="#ffa07a"];
+    }
+
+    subgraph cluster_peak {
+        label="郑庄公小霸";
+        style=filled;
+        fillcolor="#f0fff0";
+        郑庄公 [label="郑庄公\n小霸诸侯", fillcolor="#90ee90", style="rounded,filled,bold"];
+        武姜 [label="武姜\n母\n爱叔段", fillcolor="#ffa07a"];
+        叔段 [label="叔段\n弟叛\n奔共", fillcolor="#ff6347"];
+        周桓王 [label="周桓王\n被射伤", fillcolor="#ffa07a"];
+    }
+
+    subgraph cluster_fall {
+        label="郑之衰亡";
+        style=filled;
+        fillcolor="#ffe4e1";
+        郑康公 [label="郑康公\n末代", fillcolor="#d3d3d3"];
+        韩 [label="韩\n灭郑", fillcolor="#ff6347"];
+    }
+
+    周宣王 -> 郑桓公 [label="封", style=dotted];
+    郑桓公 -> 周幽王 [label="卿士", style=dotted];
+    郑桓公 -> 郑庄公 [label="孙"];
+    武姜 -> 郑庄公 [label="母"];
+    武姜 -> 叔段 [label="爱", color="#228b22"];
+    郑庄公 -> 叔段 [label="伐逐", color=red, style=bold];
+    郑庄公 -> 周桓王 [label="射伤", color=red, style=bold];
+    郑庄公 -> 郑康公 [label="后代", style=dashed];
+    韩 -> 郑康公 [label="灭", color=red, style=bold];
+}
+....
 
 ==== 赵世家
 
@@ -3316,6 +3983,67 @@ digraph 战国人物关系 {
 佯败诱之，断其粮道，围之四十六日，赵卒四十余万人降，白起坑杀之。
 赵自是不振，后为秦所灭。
 
+[graphviz]
+....
+digraph zhao_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_origin {
+        label="赵氏起源";
+        style=filled;
+        fillcolor="#fff8dc";
+        伯益 [label="伯益\n与秦共祖", fillcolor="#ffe4b5"];
+        造父 [label="造父\n善御\n封赵城", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        赵衰 [label="赵衰\n晋卿", fillcolor="#87ceeb"];
+        赵盾 [label="赵盾\n晋卿", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_fenjin {
+        label="三家分晋";
+        style=filled;
+        fillcolor="#e6e6fa";
+        赵襄子 [label="赵襄子\n不予地\n晋阳之围", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        张孟谈 [label="张孟谈\n说韩魏", fillcolor="#98fb98"];
+        智伯 [label="智伯\n围晋阳\n被灭", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_peak {
+        label="赵武灵王";
+        style=filled;
+        fillcolor="#f0fff0";
+        赵武灵王 [label="赵武灵王\n胡服骑射\n灭中山", fillcolor="#90ee90", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_fall {
+        label="长平之战";
+        style=filled;
+        fillcolor="#ffe4e1";
+        廉颇 [label="廉颇\n坚壁不战", fillcolor="#98fb98", style="rounded,filled,bold"];
+        赵括 [label="赵括\n纸上谈兵\n四十万卒亡", fillcolor="#ff6347"];
+        白起 [label="白起\n秦将\n坑杀降卒", fillcolor="#ff6347", style="rounded,filled,bold"];
+        冯亭 [label="冯亭\n降上党", fillcolor="#ffa07a"];
+        赵王迁 [label="赵王迁\n末代\n亡于秦", fillcolor="#ff6347"];
+    }
+
+    伯益 -> 造父 [label="后代", style=dashed];
+    造父 -> 赵衰 [label="后代", style=dashed];
+    赵衰 -> 赵盾 [label="子"];
+    赵盾 -> 赵襄子 [label="后代", style=dashed];
+    赵襄子 -> 张孟谈 [label="遣说", style=dotted];
+    张孟谈 -> 智伯 [label="反间灭", color=red, style=bold];
+    赵襄子 -> 赵武灵王 [label="后代", style=dashed];
+    赵武灵王 -> 廉颇 [label="后代用", style=dashed];
+    冯亭 -> 赵括 [label="致战", style=dotted];
+    廉颇 -> 赵括 [label="被替", color=red];
+    白起 -> 赵括 [label="围杀", color=red, style=bold];
+    赵括 -> 赵王迁 [label="后代", style=dashed];
+}
+....
+
 ==== 魏世家
 
 《魏世家》记魏国自文侯至王假，凡七世，一百七十余年。
@@ -3332,6 +4060,60 @@ digraph 战国人物关系 {
 孙膑乃佯狂，齐使者载之去。桂陵之战、马陵之战，魏两败于齐，庞涓死，
 太子申被俘。魏遂衰。后为秦所灭。
 
+[graphviz]
+....
+digraph wei_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_origin {
+        label="魏氏起源";
+        style=filled;
+        fillcolor="#fff8dc";
+        毕公高 [label="毕公高\n与周同姓", fillcolor="#ffe4b5"];
+        毕万 [label="毕万\n事晋献公\n得魏地", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        魏绛 [label="魏绛\n晋卿", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_peak {
+        label="魏文侯霸业";
+        style=filled;
+        fillcolor="#f0fff0";
+        魏文侯 [label="魏文侯\n独强诸侯", fillcolor="#90ee90", style="rounded,filled,bold"];
+        李悝 [label="李悝\n变法富国", fillcolor="#98fb98", style="rounded,filled,bold"];
+        吴起 [label="吴起\n守西河", fillcolor="#98fb98", style="rounded,filled,bold"];
+        乐羊 [label="乐羊\n伐中山", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_fall {
+        label="魏之衰亡";
+        style=filled;
+        fillcolor="#ffe4e1";
+        魏惠王 [label="魏惠王\n不用贤", fillcolor="#ffa07a"];
+        庞涓 [label="庞涓\n害孙膑\n马陵死", fillcolor="#ff6347"];
+        孙膑 [label="孙膑\n佯狂奔齐", fillcolor="#98fb98"];
+        太子申 [label="太子申\n马陵被俘", fillcolor="#ffa07a"];
+        魏王假 [label="魏王假\n末代\n亡于秦", fillcolor="#ff6347"];
+    }
+
+    毕公高 -> 毕万 [label="后代", style=dashed];
+    毕万 -> 魏绛 [label="后代", style=dashed];
+    魏绛 -> 魏文侯 [label="后代", style=dashed];
+    魏文侯 -> 李悝 [label="用", style=dotted];
+    魏文侯 -> 吴起 [label="用", style=dotted];
+    魏文侯 -> 乐羊 [label="用", style=dotted];
+    魏文侯 -> 魏惠王 [label="后代", style=dashed];
+    魏惠王 -> 庞涓 [label="用", style=dotted];
+    庞涓 -> 孙膑 [label="害", color=red, style=bold];
+    孙膑 -> 庞涓 [label="马陵杀", color="#228b22", style=bold];
+    魏惠王 -> 太子申 [label="子"];
+    魏惠王 -> 魏王假 [label="后代", style=dashed];
+}
+....
+
 ==== 韩世家
 
 《韩世家》记韩国自武子至王安，凡八世，一百七十余年。
@@ -3345,6 +4127,63 @@ digraph 战国人物关系 {
 
 **韩之衰亡**：韩地小民寡，介于秦、楚、魏之间，四战之地，无山河之险。
 秦东出，韩首当其冲。秦灭韩，韩亡。
+
+[graphviz]
+....
+digraph han_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_origin {
+        label="韩氏起源";
+        style=filled;
+        fillcolor="#fff8dc";
+        韩武子 [label="韩武子\n事晋\n封韩原", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        韩厥 [label="韩厥\n晋卿", fillcolor="#87ceeb"];
+        韩宣子 [label="韩宣子\n晋卿", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_fenjin {
+        label="三家分晋";
+        style=filled;
+        fillcolor="#e6e6fa";
+        韩虔 [label="韩虔\n(韩景侯)\n列为诸侯", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        赵襄子 [label="赵襄子", fillcolor="#d3d3d3"];
+        魏文侯 [label="魏文侯", fillcolor="#d3d3d3"];
+        智伯 [label="智伯\n被灭", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_peak {
+        label="申不害变法";
+        style=filled;
+        fillcolor="#f0fff0";
+        韩昭侯 [label="韩昭侯\n用申不害", fillcolor="#90ee90", style="rounded,filled,bold"];
+        申不害 [label="申不害\n法术治国\n相韩十五年", fillcolor="#98fb98", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_fall {
+        label="韩之衰亡";
+        style=filled;
+        fillcolor="#ffe4e1";
+        韩王安 [label="韩王安\n末代\n亡于秦", fillcolor="#ff6347"];
+        秦王 [label="秦\n灭韩", fillcolor="#ff6347"];
+    }
+
+    韩武子 -> 韩厥 [label="后代", style=dashed];
+    韩厥 -> 韩宣子 [label="后代", style=dashed];
+    韩宣子 -> 韩虔 [label="后代", style=dashed];
+    韩虔 -> 赵襄子 [label="联合", style=dotted];
+    韩虔 -> 魏文侯 [label="联合", style=dotted];
+    韩虔 -> 智伯 [label="灭", color=red, style=bold];
+    韩虔 -> 韩昭侯 [label="数世", style=dashed];
+    韩昭侯 -> 申不害 [label="用为相", style=dotted];
+    韩昭侯 -> 韩王安 [label="数世", style=dashed];
+    秦王 -> 韩王安 [label="灭", color=red, style=bold];
+}
+....
 
 ==== 田敬仲完世家
 
@@ -3365,6 +4204,73 @@ digraph 战国人物关系 {
 **齐之衰亡**：齐湣王骄傲，数伐宋，宋灭。燕昭王使乐毅合五国伐齐，
 下齐七十余城，唯莒、即墨不下。田单以火牛阵复国，然齐大衰。后为秦
 所灭。
+
+[graphviz]
+....
+digraph tianqi_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_origin {
+        label="田氏入齐";
+        style=filled;
+        fillcolor="#fff8dc";
+        陈厉公 [label="陈厉公\n陈国君", fillcolor="#ffd700"];
+        田完 [label="田完\n(陈完)\n奔齐", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        齐桓公_j [label="齐桓公\n(姜齐)\n用为工正", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_rise {
+        label="田氏专政";
+        style=filled;
+        fillcolor="#e6e6fa";
+        田常 [label="田常\n(田成子)\n弑简公专政", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        齐简公 [label="齐简公\n被弑", fillcolor="#ff6347"];
+        田和 [label="田和\n列为诸侯\n田齐代姜齐", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        齐康公 [label="齐康公\n(姜齐末代)\n迁海上", fillcolor="#ffa07a"];
+    }
+
+    subgraph cluster_peak {
+        label="齐威王称霸";
+        style=filled;
+        fillcolor="#f0fff0";
+        齐威王 [label="齐威王\n一鸣惊人", fillcolor="#90ee90", style="rounded,filled,bold"];
+        淳于髡 [label="淳于髡\n隐语谏君", fillcolor="#98fb98"];
+        邹忌 [label="邹忌\n相齐", fillcolor="#98fb98", style="rounded,filled,bold"];
+        田忌 [label="田忌\n将军", fillcolor="#98fb98"];
+        孙膑 [label="孙膑\n军师\n围魏救赵", fillcolor="#98fb98", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_fall {
+        label="齐之衰亡";
+        style=filled;
+        fillcolor="#ffe4e1";
+        齐湣王 [label="齐湣王\n骄傲亡国", fillcolor="#ffa07a"];
+        乐毅 [label="乐毅\n合五国伐齐", fillcolor="#ff6347"];
+        田单 [label="田单\n火牛阵复国", fillcolor="#98fb98", style="rounded,filled,bold"];
+        齐王建 [label="齐王建\n末代\n亡于秦", fillcolor="#ff6347"];
+    }
+
+    陈厉公 -> 田完 [label="子"];
+    田完 -> 齐桓公_j [label="奔齐仕", style=dotted];
+    田完 -> 田常 [label="数世", style=dashed];
+    田常 -> 齐简公 [label="弑", color=red, style=bold];
+    田常 -> 田和 [label="后代"];
+    田和 -> 齐康公 [label="迁", color=red];
+    田和 -> 齐威王 [label="数世", style=dashed];
+    齐威王 -> 淳于髡 [label="纳谏", style=dotted];
+    齐威王 -> 邹忌 [label="相", style=dotted];
+    齐威王 -> 田忌 [label="将", style=dotted];
+    齐威王 -> 孙膑 [label="军师", style=dotted];
+    齐威王 -> 齐湣王 [label="数世", style=dashed];
+    乐毅 -> 齐湣王 [label="伐", color=red, style=bold];
+    田单 -> 乐毅 [label="破", color="#228b22", style=bold];
+    齐湣王 -> 齐王建 [label="数世", style=dashed];
+}
+....
 
 ==== 孔子世家
 
@@ -3388,281 +4294,74 @@ digraph 战国人物关系 {
 三年心丧毕，相诀而去，则哭，各复尽哀；或复留。唯子贡庐于冢上，凡六年，
 然后去。孔子卒后，门人弟子相与收孔子遗言，编为《论语》。
 
-==== 世家人物关系图（姬姓诸侯）
-
 [graphviz]
 ....
-digraph shijia_jixing {
+digraph kongzi_shijia {
     rankdir=TB;
     ranksep=0.8;
-    nodesep=0.4;
+    nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
     edge [fontname="Heiti SC", fontsize=9];
 
-    // 周王室
-    subgraph cluster_zhou {
-        label="周王室";
-        style="rounded,filled";
+    // 孔子
+    孔子 [label="孔子\n(孔丘)\n布衣列世家", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_family {
+        label="孔子家世";
+        style=filled;
         fillcolor="#fff8dc";
-
-        文王 [label="文王\n(姬昌)", fillcolor="#ffd700", style="rounded,filled,bold"];
-        武王 [label="武王\n(姬发)", fillcolor="#ffd700", style="rounded,filled,bold"];
-        周公旦 [label="周公旦\n封鲁", fillcolor="#87ceeb", style="rounded,filled,bold"];
-        召公奭 [label="召公奭\n封燕", fillcolor="#87ceeb"];
-        管叔鲜 [label="管叔鲜\n封管", fillcolor="#ffa07a"];
-        蔡叔度 [label="蔡叔度\n封蔡", fillcolor="#ffa07a"];
-        康叔封 [label="康叔封\n封卫", fillcolor="#90ee90"];
-        唐叔虞 [label="唐叔虞\n封唐→晋", fillcolor="#90ee90"];
-        太伯 [label="太伯\n让位奔吴", fillcolor="#d8bfd8"];
-        仲雍 [label="仲雍", fillcolor="#d8bfd8"];
+        叔梁纥 [label="叔梁纥\n父", fillcolor="#ffe4b5"];
+        颜氏 [label="颜氏\n母", fillcolor="#ffe4b5"];
     }
 
-    // 鲁国
-    subgraph cluster_lu {
-        label="鲁国世系";
-        style="rounded,filled";
+    subgraph cluster_rulers {
+        label="所事诸君";
+        style=filled;
         fillcolor="#e6e6fa";
-
-        伯禽 [label="伯禽\n(周公子)", fillcolor="#d8bfd8"];
-        鲁隐公 [label="鲁隐公", fillcolor="#d3d3d3"];
-        鲁桓公 [label="鲁桓公", fillcolor="#d3d3d3"];
-        鲁庄公 [label="鲁庄公", fillcolor="#d3d3d3"];
-        季孙氏 [label="季孙氏\n(三桓)", fillcolor="#ffa07a"];
+        齐景公 [label="齐景公\n悦而欲封", fillcolor="#ffd700"];
+        鲁定公 [label="鲁定公\n任司寇", fillcolor="#ffd700"];
+        季桓子 [label="季桓子\n受女乐怠政", fillcolor="#ffa07a"];
+        季康子 [label="季康子\n迎孔子归", fillcolor="#ffd700"];
     }
 
-    // 晋国
-    subgraph cluster_jin {
-        label="晋国世系";
-        style="rounded,filled";
+    subgraph cluster_disciples {
+        label="弟子三千";
+        style=filled;
         fillcolor="#f0fff0";
-
-        晋燮父 [label="燮父\n(叔虞子)", fillcolor="#98fb98"];
-        晋献公 [label="晋献公", fillcolor="#98fb98"];
-        晋文公 [label="晋文公\n(重耳)\n霸主", fillcolor="#90ee90", style="rounded,filled,bold"];
-        赵衰 [label="赵衰\n随重耳", fillcolor="#87ceeb"];
-        狐偃 [label="狐偃\n随重耳", fillcolor="#87ceeb"];
+        颜回 [label="颜回\n最贤", fillcolor="#98fb98", style="rounded,filled,bold"];
+        子贡 [label="子贡\n善辩\n庐墓六年", fillcolor="#98fb98", style="rounded,filled,bold"];
+        子路 [label="子路\n勇", fillcolor="#98fb98"];
+        曾参 [label="曾参\n传道", fillcolor="#98fb98"];
+        子夏 [label="子夏\n文学", fillcolor="#90ee90"];
+        子游 [label="子游\n文学", fillcolor="#90ee90"];
+        冉有 [label="冉有\n政事", fillcolor="#90ee90"];
     }
 
-    // 吴国
-    subgraph cluster_wu {
-        label="吴国世系";
-        style="rounded,filled";
+    subgraph cluster_others {
+        label="相关人物";
+        style=filled;
         fillcolor="#ffe4e1";
-
-        吴太伯 [label="吴太伯", fillcolor="#ffb6c1"];
-        寿梦 [label="寿梦\n吴始大", fillcolor="#ffb6c1"];
-        阖闾 [label="阖闾\n霸主", fillcolor="#ff6347", style="rounded,filled,bold"];
-        夫差 [label="夫差\n亡国", fillcolor="#ff6347"];
-        伍子胥 [label="伍子胥", fillcolor="#87ceeb"];
-        孙武 [label="孙武", fillcolor="#87ceeb"];
+        晏婴 [label="晏婴\n阻齐封孔子", fillcolor="#ffa07a"];
+        鲁哀公 [label="鲁哀公\n孔子卒", fillcolor="#d3d3d3"];
     }
 
-    // 燕国
-    subgraph cluster_yan {
-        label="燕国世系";
-        style="rounded,filled";
-        fillcolor="#e0ffff";
-
-        燕召公 [label="燕召公\n(奭子)", fillcolor="#87ceeb"];
-        燕昭王 [label="燕昭王\n用乐毅伐齐", fillcolor="#87ceeb"];
-        乐毅 [label="乐毅", fillcolor="#add8e6"];
-        荆轲 [label="荆轲\n刺秦", fillcolor="#ff6347"];
-    }
-
-    // 卫国
-    subgraph cluster_wei_state {
-        label="卫国世系";
-        style="rounded,filled";
-        fillcolor="#f5f5dc";
-
-        卫康叔 [label="卫康叔", fillcolor="#ffe4b5"];
-        卫懿公 [label="卫懿公\n好鹤亡国", fillcolor="#ffa07a"];
-        卫文公 [label="卫文公\n复兴", fillcolor="#ffe4b5"];
-    }
-
-    // 关系连接
-    文王 -> 武王 [label="子"];
-    文王 -> 周公旦 [label="子"];
-    文王 -> 召公奭 [label="子"];
-    文王 -> 管叔鲜 [label="子"];
-    文王 -> 蔡叔度 [label="子"];
-    武王 -> 康叔封 [label="弟"];
-    武王 -> 唐叔虞 [label="子"];
-    文王 -> 太伯 [label="伯父", style=dashed];
-    太伯 -> 仲雍 [label="弟"];
-
-    // 鲁国
-    周公旦 -> 伯禽 [label="子"];
-    伯禽 -> 鲁隐公 [label="数世", style=dashed];
-    鲁隐公 -> 鲁桓公 [label="弟杀兄", color=red];
-    鲁桓公 -> 鲁庄公 [label="子"];
-    鲁庄公 -> 季孙氏 [label="三桓专政", style=dashed];
-
-    // 晋国
-    唐叔虞 -> 晋燮父 [label="子"];
-    晋燮父 -> 晋献公 [label="数世", style=dashed];
-    晋献公 -> 晋文公 [label="子"];
-    晋文公 -> 赵衰 [label="臣", style=dotted];
-    晋文公 -> 狐偃 [label="臣", style=dotted];
-
-    // 吴国
-    太伯 -> 吴太伯 [label="同"];
-    仲雍 -> 寿梦 [label="数世", style=dashed];
-    寿梦 -> 阖闾 [label="孙"];
-    阖闾 -> 夫差 [label="子"];
-    阖闾 -> 伍子胥 [label="臣", style=dotted];
-    阖闾 -> 孙武 [label="臣", style=dotted];
-
-    // 燕国
-    召公奭 -> 燕召公 [label="子"];
-    燕召公 -> 燕昭王 [label="数世", style=dashed];
-    燕昭王 -> 乐毅 [label="臣", style=dotted];
-    燕昭王 -> 荆轲 [label="后用", style=dashed];
-
-    // 卫国
-    康叔封 -> 卫康叔 [label="同"];
-    卫康叔 -> 卫懿公 [label="数世", style=dashed];
-    卫懿公 -> 卫文公 [label="弟"];
-
-    // 管蔡之乱
-    管叔鲜 -> 武庚 [label="监殷叛乱", color=red, style=bold];
-    蔡叔度 -> 武庚 [label="监殷叛乱", color=red, style=bold];
+    叔梁纥 -> 孔子 [label="父"];
+    颜氏 -> 孔子 [label="母"];
+    孔子 -> 齐景公 [label="问政", style=dotted];
+    晏婴 -> 齐景公 [label="止封", color="#ff6347"];
+    孔子 -> 鲁定公 [label="仕鲁", style=dotted];
+    季桓子 -> 孔子 [label="致去鲁", color="#ff6347"];
+    季康子 -> 孔子 [label="迎归", color="#228b22"];
+    孔子 -> 颜回 [label="弟子", style=dotted];
+    孔子 -> 子贡 [label="弟子", style=dotted];
+    孔子 -> 子路 [label="弟子", style=dotted];
+    孔子 -> 曾参 [label="弟子", style=dotted];
+    孔子 -> 子夏 [label="弟子", style=dotted];
+    孔子 -> 子游 [label="弟子", style=dotted];
+    孔子 -> 冉有 [label="弟子", style=dotted];
+    子贡 -> 孔子 [label="庐墓六年", color="#228b22", style=bold];
 }
 ....
-
-==== 世家人物关系图（异姓诸侯）
-
-[graphviz]
-....
-digraph shijia_yixing {
-    rankdir=TB;
-    ranksep=0.8;
-    nodesep=0.4;
-    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
-    edge [fontname="Heiti SC", fontsize=9];
-
-    // 齐国（姜齐→田齐）
-    subgraph cluster_qi {
-        label="齐国世系";
-        style="rounded,filled";
-        fillcolor="#fffacd";
-
-        太公望 [label="太公望\n(姜尚)\n封齐", fillcolor="#ffd700", style="rounded,filled,bold"];
-        齐桓公 [label="齐桓公\n(姜小白)\n首霸", fillcolor="#ffd700", style="rounded,filled,bold"];
-        管仲 [label="管仲\n贤相", fillcolor="#87ceeb", style="rounded,filled,bold"];
-        鲍叔牙 [label="鲍叔牙\n荐管仲", fillcolor="#87ceeb"];
-        田完 [label="田完\n(陈完)\n田氏入齐", fillcolor="#dda0dd"];
-        田和 [label="田和\n田氏代齐", fillcolor="#dda0dd"];
-        齐威王 [label="齐威王\n一鸣惊人", fillcolor="#dda0dd", style="rounded,filled,bold"];
-        邹忌 [label="邹忌", fillcolor="#d8bfd8"];
-        孙膑 [label="孙膑", fillcolor="#d8bfd8"];
-    }
-
-    // 楚国
-    subgraph cluster_chu {
-        label="楚国世系";
-        style="rounded,filled";
-        fillcolor="#e6e6fa";
-
-        鬻熊 [label="鬻熊\n(子事文王)", fillcolor="#d8bfd8"];
-        熊绎 [label="熊绎\n封于楚蛮", fillcolor="#d8bfd8"];
-        楚庄王 [label="楚庄王\n(一鸣惊人)\n霸主", fillcolor="#dda0dd", style="rounded,filled,bold"];
-        伍举 [label="伍举", fillcolor="#87ceeb"];
-        楚怀王 [label="楚怀王\n客死秦国", fillcolor="#ffa07a"];
-        屈原 [label="屈原\n投汨罗", fillcolor="#87ceeb"];
-    }
-
-    // 越国
-    subgraph cluster_yue {
-        label="越国世系";
-        style="rounded,filled";
-        fillcolor="#f0fff0";
-
-        无余 [label="无余\n(禹后)", fillcolor="#98fb98"];
-        勾践 [label="勾践\n卧薪尝胆\n霸主", fillcolor="#90ee90", style="rounded,filled,bold"];
-        范蠡 [label="范蠡\n(陶朱公)", fillcolor="#87ceeb", style="rounded,filled,bold"];
-        文种 [label="文种", fillcolor="#87ceeb"];
-    }
-
-    // 宋国
-    subgraph cluster_song {
-        label="宋国世系";
-        style="rounded,filled";
-        fillcolor="#ffe4e1";
-
-        微子 [label="微子\n(纣庶兄)\n封宋", fillcolor="#ffb6c1"];
-        宋襄公 [label="宋襄公\n图霸失败", fillcolor="#ffa07a"];
-    }
-
-    // 陈国→田齐
-    subgraph cluster_chen {
-        label="陈国世系";
-        style="rounded,filled";
-        fillcolor="#f5f5dc";
-
-        胡公满 [label="胡公满\n(舜后)\n封陈", fillcolor="#ffe4b5"];
-        陈完_c [label="陈完\n奔齐为田", fillcolor="#dda0dd"];
-    }
-
-    // 三晋（赵、魏、韩）
-    subgraph cluster_sanjin {
-        label="三晋";
-        style="rounded,filled";
-        fillcolor="#e0ffff";
-
-        赵襄子 [label="赵襄子\n三家分晋", fillcolor="#add8e6"];
-        赵武灵王 [label="赵武灵王\n胡服骑射", fillcolor="#add8e6", style="rounded,filled,bold"];
-        廉颇 [label="廉颇", fillcolor="#87ceeb"];
-        蔺相如 [label="蔺相如", fillcolor="#87ceeb"];
-        赵括 [label="赵括\n长平败", fillcolor="#ffa07a"];
-
-        魏文侯 [label="魏文侯\n霸业", fillcolor="#98fb98", style="rounded,filled,bold"];
-        李悝 [label="李悝\n变法", fillcolor="#87ceeb"];
-        吴起_w [label="吴起\n守西河", fillcolor="#87ceeb"];
-
-        韩昭侯 [label="韩昭侯", fillcolor="#d3d3d3"];
-        申不害 [label="申不害\n法术", fillcolor="#87ceeb"];
-    }
-
-    // 关系
-    太公望 -> 齐桓公 [label="数世", style=dashed];
-    齐桓公 -> 管仲 [label="用为相", style=dotted];
-    管仲 -> 鲍叔牙 [label="知己", style=dotted];
-    鲍叔牙 -> 齐桓公 [label="荐管仲", style=dotted];
-
-    田完 -> 田和 [label="数世", style=dashed];
-    田和 -> 齐威王 [label="子"];
-    齐威王 -> 邹忌 [label="相", style=dotted];
-    齐威王 -> 孙膑 [label="用", style=dotted];
-
-    胡公满 -> 陈完_c [label="数世", style=dashed];
-    陈完_c -> 田完 [label="同"];
-
-    鬻熊 -> 熊绎 [label="子"];
-    熊绎 -> 楚庄王 [label="数世", style=dashed];
-    楚庄王 -> 伍举 [label="臣", style=dotted];
-    楚庄王 -> 楚怀王 [label="数世", style=dashed];
-    楚怀王 -> 屈原 [label="臣", style=dotted];
-
-    无余 -> 勾践 [label="数世", style=dashed];
-    勾践 -> 范蠡 [label="臣", style=dotted];
-    勾践 -> 文种 [label="臣", style=dotted];
-    勾践 -> 夫差 [label="灭", color=red, style=bold];
-
-    微子 -> 宋襄公 [label="数世", style=dashed];
-
-    赵襄子 -> 赵武灵王 [label="数世", style=dashed];
-    赵武灵王 -> 廉颇 [label="将", style=dotted];
-    赵武灵王 -> 蔺相如 [label="相", style=dotted];
-    蔺相如 -> 赵括 [label="后代将", style=dashed];
-
-    魏文侯 -> 李悝 [label="用", style=dotted];
-    魏文侯 -> 吴起_w [label="用", style=dotted];
-
-    韩昭侯 -> 申不害 [label="用", style=dotted];
-}
-....
-
 
 === 列传概述
 
@@ -3683,6 +4382,76 @@ digraph shijia_yixing {
 邪？积仁洁行如此而饿死！盗跖日杀不辜，暴戾恣睢，竟以寿终，是遵何德哉？
 余甚惑焉，倘所谓天道，是邪非邪？
 
+[graphviz]
+....
+digraph boyi_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    伯夷 [label="伯夷\n孤竹君长子\n让国守义", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    叔齐 [label="叔齐\n孤竹君幼子\n采薇饿死", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_guzhu {
+        label="孤竹国";
+        style=filled;
+        fillcolor="#fff8dc";
+        孤竹君 [label="孤竹君\n欲立叔齐", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_zhou {
+        label="周朝";
+        style=filled;
+        fillcolor="#f0f8ff";
+        西伯 [label="西伯（文王）\n善养老", fillcolor="#87ceeb"];
+        武王 [label="武王\n伐纣", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_shang {
+        label="商朝";
+        style=filled;
+        fillcolor="#ffe4e1";
+        纣王 [label="纣王\n暴虐", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_shouyang {
+        label="首阳山";
+        style=filled;
+        fillcolor="#f0fff0";
+        采薇 [label="采薇而食\n不食周粟", fillcolor="#98fb98"];
+        饿死 [label="饿死\n守义", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_tiandao {
+        label="太史公论";
+        style=filled;
+        fillcolor="#e6e6fa";
+        天道 [label="天道无亲\n常与善人？", fillcolor="#dda0dd"];
+        盗跖 [label="盗跖\n日杀不辜\n竟以寿终", fillcolor="#ff6347"];
+    }
+
+    // 关系
+    孤竹君 -> 伯夷 [label="长子"];
+    孤竹君 -> 叔齐 [label="欲立"];
+    叔齐 -> 伯夷 [label="让之"];
+    伯夷 -> 叔齐 [label="父命也\n遂逃"];
+    伯夷 -> 西伯 [label="往归"];
+    叔齐 -> 西伯 [label="往归"];
+    武王 -> 纣王 [label="伐之"];
+    伯夷 -> 武王 [label="叩马谏"];
+    叔齐 -> 武王 [label="叩马谏"];
+    伯夷 -> 采薇 [label="不食周粟"];
+    叔齐 -> 采薇 [label="不食周粟"];
+    伯夷 -> 饿死 [label="遂"];
+    叔齐 -> 饿死 [label="遂"];
+    伯夷 -> 天道 [label="积仁洁行"];
+    盗跖 -> 天道 [label="对比", style=dashed, color=red];
+}
+....
+
 ==== 管晏列传
 
 《管晏列传》记管仲、晏婴二贤相之事，皆齐国名相。
@@ -3695,6 +4464,74 @@ digraph shijia_yixing {
 **晏婴**：晏婴字平仲，莱之夷维人也。事齐灵公、庄公、景公，以节俭力行
 重于齐。既相齐，食不重肉，妾不衣帛。其在朝，君语及之，即危言；语不及
 之，即危行。国有道，即顺命；无道，即衡命。以此三世显名于诸侯。
+
+[graphviz]
+....
+digraph guanyan_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    管仲 [label="管仲（夷吾）\n颍上人\n齐之名相", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    晏婴 [label="晏婴（平仲）\n莱之夷维人\n三世名相", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_guanzhong {
+        label="管仲时代";
+        style=filled;
+        fillcolor="#fff8dc";
+        鲍叔牙 [label="鲍叔牙\n知管仲贤\n荐之", fillcolor="#98fb98", style="rounded,filled,bold"];
+        齐桓公 [label="齐桓公（小白）\n九合诸侯", fillcolor="#ffd700"];
+        公子纠 [label="公子纠\n管仲故主", fillcolor="#ffa07a"];
+    }
+
+    subgraph cluster_yanying {
+        label="晏婴时代";
+        style=filled;
+        fillcolor="#f0f8ff";
+        齐灵公 [label="齐灵公", fillcolor="#87ceeb"];
+        齐庄公 [label="齐庄公", fillcolor="#87ceeb"];
+        齐景公 [label="齐景公", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_gongye {
+        label="功业";
+        style=filled;
+        fillcolor="#f0fff0";
+        九合 [label="九合诸侯\n一匡天下", fillcolor="#98fb98", style="rounded,filled,bold"];
+        节俭 [label="食不重肉\n妾不衣帛", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_pinzhi {
+        label="品质";
+        style=filled;
+        fillcolor="#e6e6fa";
+        管鲍 [label="管鲍之交\n知己难得", fillcolor="#dda0dd"];
+        危言危行 [label="危言危行\n衡命顺命", fillcolor="#dda0dd"];
+    }
+
+    // 管仲
+    鲍叔牙 -> 管仲 [label="少时常游"];
+    管仲 -> 鲍叔牙 [label="常欺之"];
+    鲍叔牙 -> 管仲 [label="终善遇之"];
+    管仲 -> 公子纠 [label="事之"];
+    鲍叔牙 -> 齐桓公 [label="事之"];
+    齐桓公 -> 管仲 [label="囚之"];
+    鲍叔牙 -> 齐桓公 [label="进管仲"];
+    齐桓公 -> 管仲 [label="任政"];
+    管仲 -> 九合 [label="谋划"];
+    管仲 -> 鲍叔牙 [label="管鲍之交"];
+
+    // 晏婴
+    晏婴 -> 齐灵公 [label="事之"];
+    晏婴 -> 齐庄公 [label="事之"];
+    晏婴 -> 齐景公 [label="事之"];
+    晏婴 -> 节俭 [label="践行"];
+    晏婴 -> 危言危行 [label="品德"];
+}
+....
 
 ==== 老子韩非列传
 
@@ -3710,6 +4547,70 @@ digraph shijia_yixing {
 数以书谏韩王，韩王不能用。于是韩非疾治国不务修明其法制，以法术驭臣下，
 著《孤愤》《五蠹》《说难》等数十万言。秦王见其书，叹曰："寡人得见此人，
 与之游，死不恨矣！"后韩非使秦，李斯害其能，使人遗非药，令自杀。
+
+[graphviz]
+....
+digraph laozi_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    老子 [label="老子（李耳）\n楚人\n道家创始人", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    韩非 [label="韩非\n韩之公子\n法家集大成者", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_laozi {
+        label="老子";
+        style=filled;
+        fillcolor="#f0f8ff";
+        周 [label="周守藏室之史", fillcolor="#87ceeb"];
+        关令尹喜 [label="关令尹喜\n强请著书", fillcolor="#87ceeb"];
+        道德经 [label="《道德经》\n五千余言", fillcolor="#87ceeb", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_hanfei {
+        label="韩非";
+        style=filled;
+        fillcolor="#f0fff0";
+        荀卿 [label="荀卿\n师", fillcolor="#98fb98"];
+        李斯 [label="李斯\n同学\n害韩非", fillcolor="#ff6347"];
+        著作 [label="《孤愤》《五蠹》\n《说难》", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_qin {
+        label="秦国";
+        style=filled;
+        fillcolor="#fff8dc";
+        秦王 [label="秦王\n慕韩非之才", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_han {
+        label="韩国";
+        style=filled;
+        fillcolor="#ffe4e1";
+        韩王 [label="韩王\n不能用韩非", fillcolor="#ffa07a"];
+    }
+
+    // 老子
+    老子 -> 周 [label="为史"];
+    老子 -> 关令尹喜 [label="至关"];
+    关令尹喜 -> 老子 [label="强请著书"];
+    老子 -> 道德经 [label="著"];
+
+    // 韩非
+    韩非 -> 荀卿 [label="事之"];
+    李斯 -> 荀卿 [label="事之"];
+    韩非 -> 李斯 [label="同学", style=dashed];
+    李斯 -> 韩非 [label="自以不如"];
+    韩非 -> 著作 [label="著"];
+    韩非 -> 韩王 [label="数以书谏"];
+    韩王 -> 韩非 [label="不能用", style=dashed];
+    秦王 -> 韩非 [label="慕其才"];
+    李斯 -> 韩非 [label="害之遗药", color=red, style=bold];
+}
+....
 
 ==== 孙子吴起列传
 
@@ -3727,6 +4628,69 @@ digraph shijia_yixing {
 文侯，文侯以为将，击秦，拔五城。起之为将，与士卒最下者同衣食，卧不设席，
 行不骑乘，亲裹赢粮，与士卒分劳苦。后入楚，楚悼王用起，明法审令，捐不急
 之官，以奉战士，于是南平百越，北并陈蔡，却三晋，西伐秦，诸侯患楚之强。
+
+[graphviz]
+....
+digraph sunwu_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    孙武 [label="孙武\n齐人\n兵圣\n《孙子兵法》", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    吴起 [label="吴起\n卫人\n兵家亚圣\n杀妻求将", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_wu {
+        label="吴国";
+        style=filled;
+        fillcolor="#fff8dc";
+        阖闾 [label="阖闘\n用孙武", fillcolor="#ffd700"];
+        宫女 [label="宫中美女\n三令五申", fillcolor="#dda0dd"];
+    }
+
+    subgraph cluster_sunwu {
+        label="孙武功业";
+        style=filled;
+        fillcolor="#f0f8ff";
+        十三篇 [label="《孙子兵法》\n十三篇", fillcolor="#87ceeb", style="rounded,filled,bold"];
+        入郢 [label="西破强楚\n入郢都", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_wuqi {
+        label="吴起经历";
+        style=filled;
+        fillcolor="#f0fff0";
+        鲁 [label="事鲁\n杀妻求将", fillcolor="#98fb98"];
+        魏 [label="事魏文侯\n拔秦五城", fillcolor="#98fb98"];
+        楚 [label="入楚\n明法审令", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_gongji {
+        label="吴起功业";
+        style=filled;
+        fillcolor="#e6e6fa";
+        分劳 [label="与士卒\n分劳苦", fillcolor="#dda0dd"];
+        强楚 [label="南平百越\n北并陈蔡", fillcolor="#dda0dd"];
+    }
+
+    // 孙武
+    孙武 -> 阖闾 [label="以兵法见"];
+    孙武 -> 十三篇 [label="著"];
+    阖闾 -> 宫女 [label="试之"];
+    孙武 -> 宫女 [label="斩队长"];
+    阖闾 -> 孙武 [label="以为将"];
+    孙武 -> 入郢 [label="西破楚"];
+
+    // 吴起
+    吴起 -> 鲁 [label="杀妻求将"];
+    吴起 -> 魏 [label="为将"];
+    吴起 -> 楚 [label="入之"];
+    吴起 -> 分劳 [label="践行"];
+    吴起 -> 强楚 [label="成就"];
+}
+....
 
 ==== 伍子胥列传
 
@@ -3747,6 +4711,71 @@ digraph shijia_yixing {
 不听，反赐子胥属镂之剑令自杀。子胥仰天叹曰："抉吾眼县吴东门之上，以观
 越寇之入灭吴也！"乃自刭死。
 
+[graphviz]
+....
+digraph wuzixu_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    伍子胥 [label="伍子胥（伍员）\n楚人\n鞭尸复仇", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_jiazu {
+        label="伍氏家族";
+        style=filled;
+        fillcolor="#ffe4e1";
+        伍奢 [label="伍奢\n父\n被杀", fillcolor="#ff6347"];
+        伍尚 [label="伍尚\n兄\n被杀", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_chu {
+        label="楚国";
+        style=filled;
+        fillcolor="#fff8dc";
+        楚平王 [label="楚平王\n杀伍氏父兄", fillcolor="#ff6347"];
+        费无忌 [label="费无忌\n谗臣", fillcolor="#ff6347"];
+        昭关 [label="昭关\n一夜白头", fillcolor="#ffa07a"];
+        郢都 [label="郢都\n入之鞭尸", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_wu {
+        label="吴国";
+        style=filled;
+        fillcolor="#f0f8ff";
+        公子光 [label="公子光（阖闘）\n用伍子胥", fillcolor="#87ceeb"];
+        专诸 [label="专诸\n伍子胥所荐", fillcolor="#87ceeb"];
+        孙武 [label="孙武\n共谋破楚", fillcolor="#87ceeb"];
+        夫差 [label="夫差\n赐死子胥", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_yue {
+        label="越国";
+        style=filled;
+        fillcolor="#f0fff0";
+        越王 [label="越王勾践\n子胥劝灭之", fillcolor="#98fb98"];
+    }
+
+    // 关系
+    楚平王 -> 费无忌 [label="信谗"];
+    费无忌 -> 伍奢 [label="谗害"];
+    楚平王 -> 伍奢 [label="杀之", color=red];
+    楚平王 -> 伍尚 [label="杀之", color=red];
+    伍子胥 -> 昭关 [label="出奔"];
+    伍子胥 -> 公子光 [label="入吴"];
+    伍子胥 -> 专诸 [label="荐之"];
+    专诸 -> 公子光 [label="刺王僚"];
+    公子光 -> 伍子胥 [label="用为行人"];
+    伍子胥 -> 孙武 [label="共谋"];
+    伍子胥 -> 郢都 [label="入之"];
+    伍子胥 -> 楚平王 [label="鞭尸三百", color=red, style=bold];
+    伍子胥 -> 夫差 [label="谏灭越"];
+    夫差 -> 伍子胥 [label="赐剑令死", color=red];
+}
+....
+
 ==== 仲尼弟子列传
 
 《仲尼弟子列传》记孔门七十二贤之事。
@@ -3764,6 +4793,64 @@ digraph shijia_yixing {
 何人也？"孔子曰："汝器也。"曰："何器也？"曰："瑚琏也。"子贡善
 居积，与时转货赀。孔子卒，门人皆服丧三年，唯子贡庐于冢上，凡六年，然后去。
 
+[graphviz]
+....
+digraph dizi_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    孔子 [label="孔子\n仲尼\n至圣先师", fillcolor="#ffd700", style="rounded,filled,bold"];
+
+    subgraph cluster_dizi {
+        label="孔门贤弟子";
+        style=filled;
+        fillcolor="#f0fff0";
+        颜回 [label="颜回（子渊）\n一箪食一瓢饮\n不改其乐", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        子路 [label="子路（仲由）\n好勇力\n死于卫乱", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        子贡 [label="子贡（端木赐）\n利口巧辞\n善居积", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_yanlu {
+        label="颜回之道";
+        style=filled;
+        fillcolor="#f0f8ff";
+        克己复礼 [label="克己复礼\n为仁", fillcolor="#87ceeb"];
+        安贫乐道 [label="陋巷箪瓢\n不改其乐", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_zilu {
+        label="子路之勇";
+        style=filled;
+        fillcolor="#ffe4e1";
+        勇义 [label="君子尚勇\n义以为上", fillcolor="#ffa07a"];
+        卫乱 [label="卫乱死之\n孔子恸哭", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_zigong {
+        label="子贡之能";
+        style=filled;
+        fillcolor="#e6e6fa";
+        瑚琏 [label="瑚琏之器\n国之重宝", fillcolor="#dda0dd"];
+        守丧 [label="庐冢六年\n最久守丧", fillcolor="#dda0dd"];
+    }
+
+    // 关系
+    孔子 -> 颜回 [label="最爱弟子"];
+    颜回 -> 克己复礼 [label="问仁"];
+    颜回 -> 安贫乐道 [label="践行"];
+    孔子 -> 子路 [label="设礼诱之"];
+    子路 -> 勇义 [label="问勇"];
+    子路 -> 卫乱 [label="死之", color=red];
+    孔子 -> 子贡 [label="常黜其辩"];
+    子贡 -> 瑚琏 [label="喻为"];
+    子贡 -> 守丧 [label="孔子卒后"];
+}
+....
+
 ==== 商君列传
 
 《商君列传》记秦国变法图强之关键人物。
@@ -3780,6 +4867,65 @@ digraph shijia_yixing {
 亡走，欲舍客舍，客舍人不知其是商君也，曰："商君之法，舍人无验者坐之。"
 商君喟然叹曰："嗟乎！为法之弊一至此哉！"遂车裂商君，灭其家。
 
+[graphviz]
+....
+digraph shangjun_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    商鞅 [label="商鞅（公孙鞅）\n卫之公子\n变法图强", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_wei {
+        label="魏国";
+        style=filled;
+        fillcolor="#f0f8ff";
+        公叔座 [label="公叔座\n魏相\n商鞅事之", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_qin {
+        label="秦国";
+        style=filled;
+        fillcolor="#fff8dc";
+        秦孝公 [label="秦孝公\n求贤用鞅", fillcolor="#ffd700"];
+        太子 [label="太子\n即位后车裂商君", fillcolor="#ff6347"];
+        太子傅 [label="太子傅\n被商鞅刑", fillcolor="#ffa07a"];
+    }
+
+    subgraph cluster_bianfa {
+        label="变法内容";
+        style=filled;
+        fillcolor="#f0fff0";
+        废井田 [label="废井田\n开阡陌", fillcolor="#98fb98"];
+        立郡县 [label="立郡县\n徙都咸阳", fillcolor="#98fb98"];
+        奖耕战 [label="奖耕战\n行连坐", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_jieguo {
+        label="变法成果";
+        style=filled;
+        fillcolor="#e6e6fa";
+        富强 [label="秦人富强\n卒并诸侯", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        大治 [label="道不拾遗\n乡邑大治", fillcolor="#dda0dd"];
+    }
+
+    // 关系
+    商鞅 -> 公叔座 [label="事为中庶子"];
+    商鞅 -> 秦孝公 [label="西入秦"];
+    秦孝公 -> 商鞅 [label="善之用其法"];
+    商鞅 -> 废井田 [label="推行"];
+    商鞅 -> 立郡县 [label="推行"];
+    商鞅 -> 奖耕战 [label="推行"];
+    商鞅 -> 大治 [label="十年"];
+    商鞅 -> 富强 [label="成就"];
+    商鞅 -> 太子傅 [label="刑之", color=red];
+    太子 -> 商鞅 [label="车裂灭家", color=red, style=bold];
+}
+....
+
 ==== 苏秦列传
 
 《苏秦列传》记战国纵横家之代表。
@@ -3792,6 +4938,61 @@ digraph shijia_yixing {
 **配六国相印**：苏秦说赵王曰："天下之卿相人臣，乃至布衣之士，莫不高贤
 大王之行义。今秦之心，非尽亡天下之国而臣海内，必不休矣。"赵王于是遣苏秦
 约从诸侯。苏秦并相六国，佩六国相印，使秦不敢东出函谷关十五年。
+
+[graphviz]
+....
+digraph suqin_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    苏秦 [label="苏秦\n东周洛阳人\n合纵抗秦", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_xue {
+        label="师承";
+        style=filled;
+        fillcolor="#f0f8ff";
+        鬼谷先生 [label="鬼谷先生\n纵横术", fillcolor="#87ceeb"];
+        阴符 [label="《阴符》\n揣摩成术", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_jiazu {
+        label="家族";
+        style=filled;
+        fillcolor="#ffe4e1";
+        家人 [label="兄弟嫂妹妻妾\n皆笑之", fillcolor="#ffa07a"];
+    }
+
+    subgraph cluster_liuguo {
+        label="六国合纵";
+        style=filled;
+        fillcolor="#f0fff0";
+        赵王 [label="赵王\n遣苏秦约从", fillcolor="#98fb98"];
+        六国 [label="六国相印\n佩之", fillcolor="#98fb98", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_qin {
+        label="秦国";
+        style=filled;
+        fillcolor="#fff8dc";
+        秦 [label="秦\n欲尽亡天下", fillcolor="#ff6347"];
+        函谷关 [label="函谷关\n十五年不敢出", fillcolor="#ffd700"];
+    }
+
+    // 关系
+    苏秦 -> 鬼谷先生 [label="习之"];
+    苏秦 -> 阴符 [label="伏读期年"];
+    家人 -> 苏秦 [label="皆笑之", color=red];
+    苏秦 -> 赵王 [label="说之"];
+    赵王 -> 苏秦 [label="遣约从"];
+    苏秦 -> 六国 [label="并相之"];
+    苏秦 -> 秦 [label="合纵抗之"];
+    苏秦 -> 函谷关 [label="使秦不敢东出", color=green, style=bold];
+}
+....
 
 ==== 张仪列传
 
@@ -3809,6 +5010,73 @@ digraph shijia_yixing {
 高主之节，言其利害，卒不可信。"魏王听之，背纵约而事秦。诸侯效之，秦遂
 霸西戎。
 
+[graphviz]
+....
+digraph zhangyi_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    张仪 [label="张仪\n魏人\n连横破纵", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_xue {
+        label="师承";
+        style=filled;
+        fillcolor="#f0f8ff";
+        鬼谷先生 [label="鬼谷先生\n纵横术", fillcolor="#87ceeb"];
+        苏秦 [label="苏秦\n同学\n合纵", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_chu {
+        label="楚国遭遇";
+        style=filled;
+        fillcolor="#ffe4e1";
+        楚相 [label="楚相\n亡璧", fillcolor="#ff6347"];
+        掠笞 [label="掠笞数百\n不服释之", fillcolor="#ffa07a"];
+    }
+
+    subgraph cluster_qin {
+        label="秦国";
+        style=filled;
+        fillcolor="#fff8dc";
+        秦惠王 [label="秦惠王\n以为客卿", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_celue {
+        label="连横策略";
+        style=filled;
+        fillcolor="#f0fff0";
+        连横 [label="连横\n事秦破纵", fillcolor="#98fb98", style="rounded,filled,bold"];
+        魏王 [label="魏王\n背纵约事秦", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_jiaren {
+        label="家人";
+        style=filled;
+        fillcolor="#ffe4c4";
+        妻 [label="张仪妻\n舌在足矣", fillcolor="#dda0dd"];
+    }
+
+    // 关系
+    鬼谷先生 -> 张仪 [label="学术"];
+    鬼谷先生 -> 苏秦 [label="学术"];
+    张仪 -> 苏秦 [label="同学", style=dashed];
+    苏秦 -> 张仪 [label="自以不及"];
+    楚相 -> 张仪 [label="疑盗璧", color=red];
+    张仪 -> 掠笞 [label="遭受"];
+    妻 -> 张仪 [label="怨读书"];
+    张仪 -> 妻 [label="舌在足矣"];
+    张仪 -> 秦惠王 [label="入秦"];
+    秦惠王 -> 张仪 [label="拜客卿"];
+    张仪 -> 连横 [label="献策"];
+    张仪 -> 魏王 [label="说之"];
+    魏王 -> 连横 [label="背纵事秦"];
+}
+....
+
 ==== 孟尝君列传
 
 《孟尝君列传》记战国四公子之一。
@@ -3820,6 +5088,66 @@ digraph shijia_yixing {
 狐白裘，值千金，已献秦王，更无他裘。客有能为狗盗者，入秦宫藏中，取狐
 白裘以献秦王姬。姬言于王，孟尝君得出。即驰去，变姓名，夜半至函谷关。
 秦法，鸡鸣乃出客。客有能为鸡鸣者，而鸡齐鸣，遂得出。
+
+[graphviz]
+....
+digraph mengchang_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    孟尝君 [label="孟尝君（田文）\n齐之宗室\n战国四君之一", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_qi {
+        label="齐国";
+        style=filled;
+        fillcolor="#fff8dc";
+        薛 [label="薛\n门客六万家", fillcolor="#98fb98"];
+        食客 [label="食客三千", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_qin {
+        label="秦国";
+        style=filled;
+        fillcolor="#ffe4e1";
+        秦昭王 [label="秦昭王\n囚孟尝君", fillcolor="#ff6347"];
+        幸姬 [label="秦王幸姬\n求狐白裘", fillcolor="#dda0dd"];
+        函谷关 [label="函谷关\n鸡鸣乃出", fillcolor="#ffa07a"];
+    }
+
+    subgraph cluster_menke {
+        label="特殊门客";
+        style=filled;
+        fillcolor="#f0f8ff";
+        狗盗 [label="狗盗客\n入宫取裘", fillcolor="#87ceeb"];
+        鸡鸣 [label="鸡鸣客\n骗开关门", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_baowu {
+        label="宝物";
+        style=filled;
+        fillcolor="#f0fff0";
+        狐白裘 [label="狐白裘\n值千金", fillcolor="#98fb98"];
+    }
+
+    // 关系
+    孟尝君 -> 薛 [label="招致任侠"];
+    孟尝君 -> 食客 [label="养门客"];
+    秦昭王 -> 孟尝君 [label="迎入秦"];
+    秦昭王 -> 孟尝君 [label="拜为相"];
+    秦昭王 -> 孟尝君 [label="囚之欲杀", color=red];
+    幸姬 -> 狐白裘 [label="求之"];
+    孟尝君 -> 秦昭王 [label="已献狐白裘"];
+    狗盗 -> 狐白裘 [label="入宫取之"];
+    狗盗 -> 幸姬 [label="献裘"];
+    幸姬 -> 秦昭王 [label="言于王"];
+    孟尝君 -> 函谷关 [label="夜半至"];
+    鸡鸣 -> 函谷关 [label="鸡齐鸣得出", color=green];
+}
+....
 
 ==== 平原君虞卿列传
 
@@ -3833,6 +5161,63 @@ digraph shijia_yixing {
 无所有也。先生不能，先生留。"毛遂曰："臣乃今日请处囊中耳。使遂蚤得
 处囊中，乃颖脱而出，非特其末见而已。"平原君竟与毛遂偕。既至楚，毛遂
 按剑历阶而上，定从于殿上。平原君曰："毛先生三寸之舌，强于百万之师。"
+
+[graphviz]
+....
+digraph pingyuan_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    平原君 [label="平原君（赵胜）\n赵之公子\n战国四君之一", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    毛遂 [label="毛遂\n门客\n自荐成功", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_zhao {
+        label="赵国";
+        style=filled;
+        fillcolor="#fff8dc";
+        邯郸 [label="邯郸\n被秦围", fillcolor="#ff6347"];
+        门客 [label="门客数千", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_chu {
+        label="楚国";
+        style=filled;
+        fillcolor="#f0f8ff";
+        楚王 [label="楚王\n定从", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_qin {
+        label="秦国";
+        style=filled;
+        fillcolor="#ffe4e1";
+        秦 [label="秦\n围邯郸", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_biyu {
+        label="名言";
+        style=filled;
+        fillcolor="#f0fff0";
+        锥处囊中 [label="锥处囊中\n其末立见", fillcolor="#98fb98"];
+        三寸之舌 [label="三寸之舌\n强于百万之师", fillcolor="#98fb98", style="rounded,filled,bold"];
+    }
+
+    // 关系
+    平原君 -> 门客 [label="好客"];
+    秦 -> 邯郸 [label="围之"];
+    平原君 -> 楚王 [label="求救于楚"];
+    毛遂 -> 平原君 [label="自荐"];
+    平原君 -> 毛遂 [label="嫌其无名", style=dashed];
+    毛遂 -> 锥处囊中 [label="自比"];
+    平原君 -> 毛遂 [label="竟与偕"];
+    毛遂 -> 楚王 [label="按剑历阶"];
+    毛遂 -> 楚王 [label="定从于殿上", color=green];
+    平原君 -> 三寸之舌 [label="赞毛遂"];
+}
+....
 
 ==== 魏公子列传
 
@@ -3848,6 +5233,73 @@ digraph shijia_yixing {
 肉投饿虎，何功之有？"乃教公子窃虎符，矫魏王令以代晋鄙。公子从其计，
 遂得虎符，将晋鄙军，大破秦军，存赵。
 
+[graphviz]
+....
+digraph xinling_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    信陵君 [label="信陵君（魏无忌）\n魏公子\n战国四君之一", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_wei {
+        label="魏国";
+        style=filled;
+        fillcolor="#fff8dc";
+        魏昭王 [label="魏昭王\n公子之父", fillcolor="#ffd700"];
+        魏安釐王 [label="魏安釐王\n公子异母兄", fillcolor="#ffd700"];
+        晋鄙 [label="晋鄙\n魏将\n畏秦不进", fillcolor="#ffa07a"];
+    }
+
+    subgraph cluster_zhao {
+        label="赵国";
+        style=filled;
+        fillcolor="#f0f8ff";
+        邯郸 [label="邯郸\n被秦围", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_qin {
+        label="秦国";
+        style=filled;
+        fillcolor="#ffe4e1";
+        秦军 [label="秦军\n围邯郸", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_menke {
+        label="门客";
+        style=filled;
+        fillcolor="#f0fff0";
+        侯嬴 [label="侯嬴\n夷门监者\n献窃符计", fillcolor="#98fb98", style="rounded,filled,bold"];
+        食客 [label="食客三千", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_jiguan {
+        label="窃符救赵";
+        style=filled;
+        fillcolor="#e6e6fa";
+        虎符 [label="虎符\n矫王令", fillcolor="#dda0dd"];
+        救赵 [label="大破秦军\n存赵", fillcolor="#dda0dd", style="rounded,filled,bold"];
+    }
+
+    // 关系
+    魏昭王 -> 信陵君 [label="少子"];
+    魏安釐王 -> 信陵君 [label="异母弟"];
+    信陵君 -> 食客 [label="礼贤下士"];
+    秦军 -> 邯郸 [label="围之"];
+    魏安釐王 -> 晋鄙 [label="使救赵"];
+    晋鄙 -> 秦军 [label="畏不敢进", style=dashed];
+    信陵君 -> 魏安釐王 [label="数请", style=dashed];
+    信陵君 -> 侯嬴 [label="见于夷门"];
+    侯嬴 -> 信陵君 [label="教窃符"];
+    信陵君 -> 虎符 [label="窃得"];
+    信陵君 -> 晋鄙 [label="矫令代之"];
+    信陵君 -> 救赵 [label="大破秦军", color=green, style=bold];
+}
+....
+
 ==== 春申君列传
 
 《春申君列传》记楚之贤相。
@@ -3859,6 +5311,58 @@ digraph shijia_yixing {
 **为楚令尹**：楚考烈王立，以黄歇为相，封为春申君。春申君相楚八年，
 为楚北伐灭鲁。春申君相楚二十五年，门下食客三千人。
 
+[graphviz]
+....
+digraph chunshen_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    春申君 [label="春申君（黄歇）\n楚相·令尹\n战国四君之一", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_chu {
+        label="楚国";
+        style=filled;
+        fillcolor="#fff8dc";
+        楚顷襄王 [label="楚顷襄王\n初事之君", fillcolor="#ffd700"];
+        楚考烈王 [label="楚考烈王\n以为相", fillcolor="#ffd700"];
+        郢都 [label="郢都\n被秦取", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_qin {
+        label="秦国";
+        style=filled;
+        fillcolor="#ffe4e1";
+        秦昭王 [label="秦昭王", fillcolor="#ff6347"];
+        白起 [label="白起\n攻楚取郢", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_gongji {
+        label="功绩";
+        style=filled;
+        fillcolor="#f0fff0";
+        辩才 [label="辩才无双\n上书秦王", fillcolor="#98fb98"];
+        灭鲁 [label="北伐灭鲁", fillcolor="#98fb98"];
+        门客 [label="门下食客\n三千人", fillcolor="#98fb98"];
+    }
+
+    // 关系
+    春申君 -> 楚顷襄王 [label="事之"];
+    楚顷襄王 -> 春申君 [label="以为辩使秦"];
+    秦昭王 -> 白起 [label="使攻楚"];
+    白起 -> 郢都 [label="取之"];
+    秦昭王 -> 春申君 [label="留之"];
+    春申君 -> 辩才 [label="上书论利害"];
+    秦昭王 -> 春申君 [label="归之"];
+    楚考烈王 -> 春申君 [label="以为相"];
+    春申君 -> 灭鲁 [label="为楚北伐"];
+    春申君 -> 门客 [label="养食客"];
+}
+....
+
 ==== 范雎蔡泽列传
 
 《范雎蔡泽列传》记秦之谋臣。
@@ -3869,6 +5373,72 @@ digraph shijia_yixing {
 雎从厕中谓守者曰："公能出我，我必厚谢公。"守者乃载之以归。后范雎间入秦，
 见秦昭王。昭王拜为客卿，范雎遂言："王不如远交而近攻，得寸则王之寸，
 得尺亦王之尺也。"秦昭王用之为相，号应侯。
+
+[graphviz]
+....
+digraph fanju_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    范雎 [label="范雎（字叔）\n应侯\n远交近攻", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_wei {
+        label="魏国";
+        style=filled;
+        fillcolor="#ffe4e1";
+        须贾 [label="须贾\n魏中大夫\n诬告范雎", fillcolor="#ff6347"];
+        魏齐 [label="魏齐\n魏相\n笞击范雎", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_qi {
+        label="齐国";
+        style=filled;
+        fillcolor="#f0f8ff";
+        齐襄王 [label="齐襄王\n私赐金酒", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_qin {
+        label="秦国";
+        style=filled;
+        fillcolor="#fff8dc";
+        秦昭王 [label="秦昭王\n拜为客卿", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_celue {
+        label="策略";
+        style=filled;
+        fillcolor="#f0fff0";
+        远交近攻 [label="远交近攻\n得寸王之寸\n得尺王之尺", fillcolor="#98fb98", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_zaoyu {
+        label="遭遇";
+        style=filled;
+        fillcolor="#ffe4c4";
+        被笞 [label="笞击\n折胁摺齿", fillcolor="#ffa07a"];
+        厕中 [label="置厕中\n宾客溺之", fillcolor="#ffa07a"];
+        守者 [label="守者\n载之出", fillcolor="#98fb98"];
+    }
+
+    // 关系
+    范雎 -> 须贾 [label="事之"];
+    须贾 -> 齐襄王 [label="使齐"];
+    齐襄王 -> 范雎 [label="私赐金酒"];
+    须贾 -> 魏齐 [label="诬告卖魏", color=red];
+    魏齐 -> 范雎 [label="使舍人笞击", color=red];
+    范雎 -> 被笞 [label="遭受"];
+    范雎 -> 厕中 [label="详死置之"];
+    守者 -> 范雎 [label="载之归"];
+    范雎 -> 秦昭王 [label="间入秦见"];
+    秦昭王 -> 范雎 [label="拜为客卿"];
+    范雎 -> 远交近攻 [label="献策"];
+    秦昭王 -> 范雎 [label="用为相"];
+}
+....
 
 ==== 廉颇蔺相如列传
 
@@ -3886,6 +5456,67 @@ digraph shijia_yixing {
 不欲与廉颇争列。相如谓其舍人曰："吾所以为此者，以先国家之急而后私仇也。"
 廉颇闻之，肉袒负荆至蔺相如门谢罪，卒相与驩，为刎颈之交。
 
+[graphviz]
+....
+digraph lianpo_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    廉颇 [label="廉颇\n赵将\n攻城野战", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    蔺相如 [label="蔺相如\n上卿\n完璧归赵", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_zhao {
+        label="赵国";
+        style=filled;
+        fillcolor="#fff8dc";
+        赵惠文王 [label="赵惠文王\n得和氏璧", fillcolor="#ffd700"];
+        缪贤 [label="缪贤\n宦者令", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_qin {
+        label="秦国";
+        style=filled;
+        fillcolor="#ffe4e1";
+        秦昭王 [label="秦昭王\n欲以城易璧", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_baowu {
+        label="宝物";
+        style=filled;
+        fillcolor="#f0f8ff";
+        和氏璧 [label="和氏璧\n楚国至宝", fillcolor="#87ceeb"];
+        十五城 [label="十五城\n秦诈许", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_jingshen {
+        label="精神";
+        style=filled;
+        fillcolor="#f0fff0";
+        刎颈之交 [label="刎颈之交\n将相和", fillcolor="#98fb98", style="rounded,filled,bold"];
+        负荆请罪 [label="负荆请罪\n肉袒谢罪", fillcolor="#98fb98"];
+    }
+
+    // 关系
+    缪贤 -> 蔺相如 [label="为舍人"];
+    赵惠文王 -> 和氏璧 [label="得之"];
+    秦昭王 -> 赵惠文王 [label="请易璧"];
+    赵惠文王 -> 蔺相如 [label="使奉璧"];
+    蔺相如 -> 秦昭王 [label="持璧抗之"];
+    蔺相如 -> 和氏璧 [label="怀璧归赵"];
+    赵惠文王 -> 蔺相如 [label="拜上卿"];
+    廉颇 -> 蔺相如 [label="欲辱之", style=dashed, color=red];
+    蔺相如 -> 廉颇 [label="先国后私", style=dashed];
+    廉颇 -> 负荆请罪 [label="肉袒"];
+    廉颇 -> 蔺相如 [label="至门谢罪"];
+    廉颇 -> 刎颈之交 [label="结为"];
+    蔺相如 -> 刎颈之交 [label="结为"];
+}
+....
+
 ==== 乐毅列传
 
 《乐毅列传》记燕之名将。
@@ -3900,6 +5531,71 @@ digraph shijia_yixing {
 魏、韩、赵之兵以伐齐，破之济西。遂入临淄，下齐七十余城，皆为郡县以属燕，
 唯莒、即墨不下。
 
+[graphviz]
+....
+digraph yueyi_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    乐毅 [label="乐毅\n上将军\n下齐七十城", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_yan {
+        label="燕国";
+        style=filled;
+        fillcolor="#fff8dc";
+        燕昭王 [label="燕昭王\n卑身招贤\n欲报齐仇", fillcolor="#ffd700"];
+        子之 [label="子之\n乱燕", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_qi {
+        label="齐国";
+        style=filled;
+        fillcolor="#ffe4e1";
+        齐 [label="齐\n霸国余业", fillcolor="#ff6347"];
+        临淄 [label="临淄\n齐都沦陷", fillcolor="#ff6347"];
+        莒 [label="莒\n未下", fillcolor="#98fb98"];
+        即墨 [label="即墨\n未下", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_lianmeng {
+        label="五国伐齐";
+        style=filled;
+        fillcolor="#f0f8ff";
+        赵 [label="赵", fillcolor="#87ceeb"];
+        楚 [label="楚", fillcolor="#87ceeb"];
+        魏 [label="魏", fillcolor="#87ceeb"];
+        韩 [label="韩", fillcolor="#87ceeb"];
+        秦 [label="秦", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_xianzu {
+        label="先祖";
+        style=filled;
+        fillcolor="#f0fff0";
+        乐羊 [label="乐羊\n乐毅先祖", fillcolor="#98fb98"];
+    }
+
+    // 关系
+    乐羊 -> 乐毅 [label="先祖"];
+    乐毅 -> 赵 [label="赵人举之"];
+    乐毅 -> 魏 [label="去赵适魏"];
+    乐毅 -> 燕昭王 [label="为魏使于燕"];
+    燕昭王 -> 乐毅 [label="客礼待之"];
+    乐毅 -> 燕昭王 [label="委质为臣"];
+    燕昭王 -> 齐 [label="欲报仇"];
+    乐毅 -> 赵 [label="约之"];
+    乐毅 -> 楚 [label="约之"];
+    乐毅 -> 魏 [label="约之"];
+    燕昭王 -> 乐毅 [label="拜上将军"];
+    乐毅 -> 临淄 [label="入之", color=red];
+    乐毅 -> 齐 [label="下七十城", color=red, style=bold];
+}
+....
+
 ==== 田单列传
 
 《田单列传》记齐之复国功臣。
@@ -3913,6 +5609,65 @@ digraph shijia_yixing {
 皆击铜器为声，声动天地。燕军大骇，败走。遂杀骑劫，追亡逐北，复齐七十
 余城。
 
+[graphviz]
+....
+digraph tiandan_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    田单 [label="田单\n齐诸田疏属\n复国功臣", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_qi {
+        label="齐国";
+        style=filled;
+        fillcolor="#fff8dc";
+        齐王 [label="齐王\n避难莒城", fillcolor="#ffd700"];
+        法章 [label="法章\n莒人共立", fillcolor="#ffd700"];
+        即墨大夫 [label="即墨大夫\n出战死", fillcolor="#ff6347"];
+        即墨人 [label="即墨人\n立田单为将", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_yan {
+        label="燕国";
+        style=filled;
+        fillcolor="#ffe4e1";
+        燕军 [label="燕军\n攻齐", fillcolor="#ff6347"];
+        骑劫 [label="骑劫\n燕将\n被杀", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_zhanfa {
+        label="火牛阵";
+        style=filled;
+        fillcolor="#f0f8ff";
+        火牛 [label="千余牛\n绛缯衣\n五采龙文", fillcolor="#87ceeb"];
+        壮士 [label="壮士五千\n随后突击", fillcolor="#87ceeb"];
+        铜器 [label="老弱击铜器\n声动天地", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_result {
+        label="战果";
+        style=filled;
+        fillcolor="#f0fff0";
+        复国 [label="复齐七十余城", fillcolor="#98fb98", style="rounded,filled,bold"];
+    }
+
+    // 关系
+    燕军 -> 齐王 [label="入齐伐莒"];
+    即墨大夫 -> 燕军 [label="出战死", color=red];
+    即墨人 -> 田单 [label="立为将军"];
+    田单 -> 火牛 [label="收牛布阵"];
+    田单 -> 壮士 [label="率领突击"];
+    火牛 -> 燕军 [label="夜袭", color=red];
+    燕军 -> 骑劫 [label="被杀"];
+    田单 -> 骑劫 [label="杀之", color=red];
+    田单 -> 复国 [label="追亡逐北"];
+}
+....
+
 ==== 屈原贾生列传
 
 《屈原贾生列传》记楚之忠臣及汉之天才。
@@ -3922,6 +5677,64 @@ digraph shijia_yixing {
 王怒而疏屈平。屈平既绌，忧愁幽思而作《离骚》。屈原至于江滨，被发行吟
 泽畔，颜色憔悴，形容枯槁。渔父见而问之，屈原曰："举世皆浊我独清，众人
 皆醉我独醒。"乃作《怀沙》之赋，于是怀石，遂自投汨罗以死。
+
+[graphviz]
+....
+digraph quyuan_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    屈原 [label="屈原（屈平）\n左徒\n楚之同姓", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_chu {
+        label="楚国";
+        style=filled;
+        fillcolor="#fff8dc";
+        楚怀王 [label="楚怀王\n甚任屈原", fillcolor="#ffd700"];
+        上官大夫 [label="上官大夫\n谗害屈原", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_zuopin {
+        label="文学作品";
+        style=filled;
+        fillcolor="#f0f8ff";
+        离骚 [label="《离骚》\n忧愁幽思", fillcolor="#87ceeb"];
+        怀沙 [label="《怀沙》\n绝命之作", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_jingshen {
+        label="精神境界";
+        style=filled;
+        fillcolor="#f0fff0";
+        独清 [label="举世皆浊\n我独清", fillcolor="#98fb98"];
+        独醒 [label="众人皆醉\n我独醒", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_other {
+        label="其他";
+        style=filled;
+        fillcolor="#ffe4e1";
+        渔父 [label="渔父\n问屈原", fillcolor="#ffa07a"];
+        汨罗江 [label="汨罗江\n投江自尽", fillcolor="#ff6347"];
+    }
+
+    // 关系
+    楚怀王 -> 屈原 [label="任为左徒"];
+    上官大夫 -> 屈原 [label="争宠谗害", color=red];
+    上官大夫 -> 楚怀王 [label="谗之"];
+    楚怀王 -> 屈原 [label="怒而疏之", color=red];
+    屈原 -> 离骚 [label="作"];
+    屈原 -> 独清 [label="自况"];
+    屈原 -> 独醒 [label="自况"];
+    渔父 -> 屈原 [label="见而问之"];
+    屈原 -> 怀沙 [label="作绝命赋"];
+    屈原 -> 汨罗江 [label="怀石投江", color=red, style=bold];
+}
+....
 
 ==== 刺客列传
 
@@ -3950,6 +5763,79 @@ digraph shijia_yixing {
 匕首揕之。秦王绕柱走，荆轲逐之，不中。秦王拔剑击荆轲，断其左股。荆轲
 倚柱笑曰："事所以不成者，乃欲生劫之也。"
 
+[graphviz]
+....
+digraph cike_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 五大刺客
+    曹沫 [label="曹沫\n鲁人\n劫齐桓公", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    专诸 [label="专诸\n吴堂邑人\n鱼腹藏剑", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    豫让 [label="豫让\n晋人\n漆身吞炭", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    聂政 [label="聂政\n轵深井里人\n皮面决眼", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    荆轲 [label="荆轲\n卫人\n刺秦王", fillcolor="#ff6347", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_target {
+        label="刺杀目标";
+        style=filled;
+        fillcolor="#ffe4e1";
+        齐桓公 [label="齐桓公\n归鲁侵地", fillcolor="#ffd700"];
+        王僚 [label="吴王僚", fillcolor="#ff6347"];
+        赵襄子 [label="赵襄子\n灭智伯", fillcolor="#ff6347"];
+        韩傀 [label="韩傀（侠累）\n韩相", fillcolor="#ff6347"];
+        秦王 [label="秦王\n始皇帝", fillcolor="#ffd700", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_zhishi {
+        label="知己/主君";
+        style=filled;
+        fillcolor="#f0fff0";
+        鲁庄公 [label="鲁庄公", fillcolor="#98fb98"];
+        公子光 [label="公子光（阖闘）", fillcolor="#98fb98"];
+        智伯 [label="智伯\n尊宠豫让", fillcolor="#98fb98"];
+        严仲子 [label="严仲子\n求聂政", fillcolor="#98fb98"];
+        燕太子丹 [label="燕太子丹\n使荆轲", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_other {
+        label="相关人物";
+        style=filled;
+        fillcolor="#f0f8ff";
+        管仲 [label="管仲\n劝桓公守信", fillcolor="#87ceeb"];
+        伍子胥 [label="伍子胥\n荐专诸", fillcolor="#87ceeb"];
+        樊於期 [label="樊於期\n献首级", fillcolor="#87ceeb"];
+    }
+
+    // 曹沫
+    鲁庄公 -> 曹沫 [label="以勇力事"];
+    曹沫 -> 齐桓公 [label="执匕首劫", color=red];
+    管仲 -> 齐桓公 [label="劝守信"];
+
+    // 专诸
+    伍子胥 -> 专诸 [label="知其能"];
+    公子光 -> 专诸 [label="用之"];
+    专诸 -> 王僚 [label="鱼腹刺杀", color=red, style=bold];
+
+    // 豫让
+    智伯 -> 豫让 [label="尊宠"];
+    赵襄子 -> 智伯 [label="灭之", color=red];
+    豫让 -> 赵襄子 [label="漆身刺之", style=dashed, color=red];
+
+    // 聂政
+    严仲子 -> 聂政 [label="百金寿母"];
+    聂政 -> 韩傀 [label="刺杀", color=red, style=bold];
+
+    // 荆轲
+    燕太子丹 -> 荆轲 [label="使刺秦"];
+    樊於期 -> 荆轲 [label="献首"];
+    荆轲 -> 秦王 [label="图穷匕见", color=red, style=bold];
+}
+....
+
 ==== 吕不韦列传
 
 《吕不韦列传》记秦之奇商及相国。
@@ -3964,6 +5850,59 @@ digraph shijia_yixing {
 之徒，著书布天下。吕不韦乃使其客人人著所闻，集论以为八览、六论、十二纪，
 二十余万言，以为备天地万物古今之事，号曰《吕氏春秋》。后秦王免其相，
 迁蜀，不韦饮鸩而死。
+
+[graphviz]
+....
+digraph lvbuwei_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    吕不韦 [label="吕不韦\n相国·仲父\n阳翟大贾", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_qin {
+        label="秦王室";
+        style=filled;
+        fillcolor="#fff8dc";
+        昭王 [label="秦昭王", fillcolor="#ffd700"];
+        异人 [label="异人（子楚）\n庄襄王\n质于赵", fillcolor="#ffd700"];
+        秦王政 [label="秦王政\n始皇帝", fillcolor="#ffd700", style="rounded,filled,bold"];
+        华阳夫人 [label="华阳夫人\n无子", fillcolor="#dda0dd"];
+    }
+
+    subgraph cluster_zhushu {
+        label="著述";
+        style=filled;
+        fillcolor="#f0f8ff";
+        吕氏春秋 [label="《吕氏春秋》\n八览六论十二纪\n二十余万言", fillcolor="#87ceeb"];
+        门客 [label="门客\n著所闻", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_jia {
+        label="商贾";
+        style=filled;
+        fillcolor="#f0fff0";
+        阳翟 [label="阳翟\n大贾", fillcolor="#98fb98"];
+        邯郸 [label="邯郸\n遇异人", fillcolor="#98fb98"];
+    }
+
+    // 关系
+    阳翟 -> 吕不韦 [label="家累千金"];
+    吕不韦 -> 邯郸 [label="贾于此"];
+    吕不韦 -> 异人 [label="奇货可居"];
+    吕不韦 -> 华阳夫人 [label="说立异人"];
+    华阳夫人 -> 异人 [label="立为嫡嗣"];
+    异人 -> 吕不韦 [label="以为相"];
+    异人 -> 秦王政 [label="父"];
+    秦王政 -> 吕不韦 [label="尊为仲父"];
+    吕不韦 -> 门客 [label="使著书"];
+    门客 -> 吕氏春秋 [label="集论"];
+    秦王政 -> 吕不韦 [label="免相迁蜀", color=red];
+}
+....
 
 ==== 李斯列传
 
@@ -3984,113 +5923,63 @@ digraph shijia_yixing {
 具斯五刑，论腰斩咸阳市。斯出狱，与其中子俱执。顾谓其子曰："吾欲与若
 复牵黄犬俱出上蔡东门逐狡兔，岂可得乎！"遂父子相哭，而夷三族。
 
-
-==== 先秦列传人物关系图
-
 [graphviz]
 ....
-digraph xianqin_liezhuan {
+digraph lisi_zhuan {
     rankdir=TB;
-    ranksep=1.0;
+    ranksep=0.8;
     nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
     edge [fontname="Heiti SC", fontsize=9];
 
-    // 隐士与贤者
-    subgraph cluster_yinshi {
-        label="隐士贤者";
-        style="rounded,filled";
-        fillcolor="#f5f5dc";
+    // 核心人物
+    李斯 [label="李斯\n丞相\n楚上蔡人", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
 
-        伯夷 [label="伯夷\n让国守义", fillcolor="#d2b48c"];
-        叔齐 [label="叔齐\n采薇首阳", fillcolor="#d2b48c"];
-        老子 [label="老子\n道德经", fillcolor="#deb887", style="rounded,filled,bold"];
-    }
-
-    // 名相
-    subgraph cluster_mingxiang {
-        label="名相谋士";
-        style="rounded,filled";
-        fillcolor="#e6e6fa";
-
-        管仲 [label="管仲\n齐桓公霸业", fillcolor="#dda0dd", style="rounded,filled,bold"];
-        晏婴 [label="晏婴\n景公贤相", fillcolor="#d8bfd8"];
-        商鞅 [label="商鞅\n变法强秦", fillcolor="#dda0dd", style="rounded,filled,bold"];
-        范雎 [label="范雎\n远交近攻", fillcolor="#d8bfd8"];
-        吕不韦 [label="吕不韦\n奇货可居", fillcolor="#d8bfd8"];
-        李斯 [label="李斯\n佐秦统一", fillcolor="#dda0dd", style="rounded,filled,bold"];
-    }
-
-    // 名将
-    subgraph cluster_mingjiang {
-        label="名将";
-        style="rounded,filled";
-        fillcolor="#e0ffff";
-
-        孙武 [label="孙武\n孙子兵法", fillcolor="#87ceeb", style="rounded,filled,bold"];
-        吴起 [label="吴起\n兵家亚圣", fillcolor="#87ceeb", style="rounded,filled,bold"];
-        廉颇 [label="廉颇\n赵之名将", fillcolor="#add8e6"];
-        乐毅 [label="乐毅\n下齐七十城", fillcolor="#add8e6"];
-        田单 [label="田单\n火牛阵复齐", fillcolor="#add8e6"];
-    }
-
-    // 刺客
-    subgraph cluster_cike {
-        label="刺客";
-        style="rounded,filled";
-        fillcolor="#ffe4e1";
-
-        专诸 [label="专诸\n刺王僚", fillcolor="#ffb6c1"];
-        聂政 [label="聂政\n刺侠累", fillcolor="#ffb6c1"];
-        荆轲 [label="荆轲\n刺秦王", fillcolor="#ff6347", style="rounded,filled,bold"];
-    }
-
-    // 辩士与谋臣
-    subgraph cluster_bianshi {
-        label="纵横家";
-        style="rounded,filled";
-        fillcolor="#f0fff0";
-
-        苏秦 [label="苏秦\n合纵六国", fillcolor="#98fb98", style="rounded,filled,bold"];
-        张仪 [label="张仪\n连横破纵", fillcolor="#98fb98", style="rounded,filled,bold"];
-    }
-
-    // 贤相与门客
-    subgraph cluster_sijun {
-        label="战国四君";
-        style="rounded,filled";
+    subgraph cluster_qin {
+        label="秦朝";
+        style=filled;
         fillcolor="#fff8dc";
-
-        孟尝君 [label="孟尝君\n齐·门客三千", fillcolor="#f0e68c"];
-        平原君 [label="平原君\n赵·毛遂自荐", fillcolor="#f0e68c"];
-        信陵君 [label="信陵君\n魏·窃符救赵", fillcolor="#ffd700", style="rounded,filled,bold"];
-        春申君 [label="春申君\n楚·相楚廿五年", fillcolor="#f0e68c"];
+        始皇帝 [label="秦始皇\n用李斯谋", fillcolor="#ffd700"];
+        二世 [label="秦二世\n胡亥", fillcolor="#ffd700"];
+        赵高 [label="赵高\n诬陷李斯", fillcolor="#ff6347"];
     }
 
-    // 名臣
-    subgraph cluster_mingchen {
-        label="忠臣名士";
-        style="rounded,filled";
-        fillcolor="#ffe4c4";
+    subgraph cluster_xue {
+        label="师承";
+        style=filled;
+        fillcolor="#f0f8ff";
+        荀卿 [label="荀卿（荀子）\n帝王之术", fillcolor="#87ceeb"];
+        韩非 [label="韩非\n同学", fillcolor="#87ceeb"];
+    }
 
-        伍子胥 [label="伍子胥\n助吴破楚", fillcolor="#ffdab9", style="rounded,filled,bold"];
-        蔺相如 [label="蔺相如\n完璧归赵", fillcolor="#ffdab9", style="rounded,filled,bold"];
-        屈原 [label="屈原\n投汨罗江", fillcolor="#ffa07a", style="rounded,filled,bold"];
+    subgraph cluster_gongji {
+        label="功业";
+        style=filled;
+        fillcolor="#f0fff0";
+        统一 [label="佐秦统一\n并诸侯", fillcolor="#98fb98"];
+        焚书 [label="焚书坑儒\n烧百家语", fillcolor="#ffa07a"];
+    }
+
+    subgraph cluster_jiazu {
+        label="家族";
+        style=filled;
+        fillcolor="#ffe4e1";
+        李由 [label="李斯子由\n被诬谋反", fillcolor="#ffb6c1"];
     }
 
     // 关系
-    伯夷 -> 叔齐 [label="兄弟"];
-    管仲 -> 晏婴 [label="齐相传承", style=dashed];
-    孙武 -> 吴起 [label="兵家", style=dashed];
-    苏秦 -> 张仪 [label="同学\n对立", color=red];
-    廉颇 -> 蔺相如 [label="刎颈之交", color=blue];
-    伍子胥 -> 孙武 [label="共事吴", style=dotted];
-    商鞅 -> 李斯 [label="秦法传承", style=dashed];
-    吕不韦 -> 李斯 [label="秦相", style=dashed];
-    荆轲 -> 秦王 [label="刺", color=red, style=bold];
-
-    // 隐藏节点
-    秦王 [label="秦始皇", fillcolor="#ffd700", style="rounded,filled,bold"];
+    荀卿 -> 李斯 [label="学帝王术"];
+    荀卿 -> 韩非 [label="学"];
+    韩非 -> 李斯 [label="同学", style=dashed];
+    李斯 -> 始皇帝 [label="说以并诸侯"];
+    始皇帝 -> 李斯 [label="拜为丞相"];
+    李斯 -> 统一 [label="谋划"];
+    李斯 -> 焚书 [label="建议"];
+    始皇帝 -> 焚书 [label="可其议"];
+    二世 -> 赵高 [label="宠信"];
+    赵高 -> 李斯 [label="恶之陷害", color=red];
+    赵高 -> 李由 [label="诬告谋反", color=red];
+    李斯 -> 李由 [label="父子相哭"];
 }
 ....
 
@@ -9302,6 +11191,53 @@ digraph 西汉人物关系 {
 **败亡**：诸将为陈胜徇地，多以苛察相责，不信人。陈胜信用朱房，胡武，
 以督责为务。诸将以此皆畔。陈胜遂败，为其御庄贾所杀。
 
+[graphviz]
+....
+digraph chenshe_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_early {
+        label="燕雀鸿鹄";
+        style=filled;
+        fillcolor="#fff8dc";
+        陈胜 [label="陈胜\n(涉)\n阳城人", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        佣者 [label="佣者\n若为佣耕\n何富贵也", fillcolor="#d3d3d3"];
+    }
+
+    subgraph cluster_qiyi {
+        label="大泽乡起义";
+        style=filled;
+        fillcolor="#f0fff0";
+        吴广 [label="吴广\n都尉", fillcolor="#98fb98"];
+        秦二世 [label="秦二世\n天下苦秦久矣", fillcolor="#ff6347"];
+        扶苏 [label="扶苏\n诈称", fillcolor="#d3d3d3"];
+        项燕 [label="项燕\n诈称", fillcolor="#d3d3d3"];
+    }
+
+    subgraph cluster_wang {
+        label="称王败亡";
+        style=filled;
+        fillcolor="#ffe4e1";
+        张楚 [label="张楚\n自立为王", fillcolor="#ffa07a"];
+        庄贾 [label="庄贾\n御者\n弑主", fillcolor="#ff6347"];
+        高祖 [label="高祖刘邦\n由涉首事", fillcolor="#ffd700"];
+    }
+
+    陈胜 -> 佣者 [label="燕雀安知\n鸿鹄之志", style=dotted];
+    陈胜 -> 吴广 [label="同谋", style=dotted];
+    秦二世 -> 陈胜 [label="失期法斩", color=red];
+    陈胜 -> 扶苏 [label="诈称", style=dashed];
+    陈胜 -> 项燕 [label="诈称", style=dashed];
+    陈胜 -> 张楚 [label="自立", color="#228b22"];
+    庄贾 -> 陈胜 [label="杀", color=red, style=bold];
+    陈胜 -> 高祖 [label="首事\n天下响应", style=dashed];
+}
+....
+
 ==== 外戚世家
 
 《外戚世家》记汉代皇后、太后家族之事，自高祖吕后至武帝卫皇后、
@@ -9330,6 +11266,56 @@ digraph 西汉人物关系 {
 平阳主金千斤。主因奏子夫送入宫。子夫上车，平阳主拊其背曰："行矣，
 强饭，勉之！即贵，无相忘。"
 
+[graphviz]
+....
+digraph waiqi_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_gaozu {
+        label="高祖朝";
+        style=filled;
+        fillcolor="#fff8dc";
+        高祖 [label="高祖刘邦", fillcolor="#ffd700"];
+        吕后 [label="吕后\n称制专权", fillcolor="#ffa07a", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_wendi {
+        label="文帝朝";
+        style=filled;
+        fillcolor="#e6e6fa";
+        薄太后 [label="薄太后\n生文帝", fillcolor="#dda0dd"];
+        文帝 [label="文帝", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_jingdi {
+        label="景帝朝";
+        style=filled;
+        fillcolor="#f0fff0";
+        窦太后 [label="窦太后\n误置代伍", fillcolor="#98fb98"];
+        景帝 [label="景帝", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_wudi {
+        label="武帝朝";
+        style=filled;
+        fillcolor="#ffe4e1";
+        王太后 [label="王太后\n臧荼孙女", fillcolor="#d3d3d3"];
+        武帝 [label="武帝", fillcolor="#ffd700"];
+        卫子夫 [label="卫子夫\n皇后\n出平阳侯邑", fillcolor="#87ceeb", style="rounded,filled,bold"];
+    }
+
+    高祖 -> 吕后 [label="后", color="#c71585"];
+    薄太后 -> 文帝 [label="子"];
+    窦太后 -> 景帝 [label="子"];
+    王太后 -> 武帝 [label="子"];
+    武帝 -> 卫子夫 [label="后", color="#c71585"];
+}
+....
+
 ==== 萧相国世家
 
 《萧相国世家》记萧何辅佐高祖定天下、相汉国之事。萧何，沛丰人，以文无害
@@ -9352,6 +11338,48 @@ digraph 西汉人物关系 {
 而发踪指示兽处者人也。今诸君徒能得走兽耳，功狗也。至如萧何，发踪指示，
 功人也。且诸君独以身随我，多者两三人。今萧何举宗数十人皆随我，功不可忘也。"
 
+[graphviz]
+....
+digraph xiaohe_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_early {
+        label="萧何出身";
+        style=filled;
+        fillcolor="#fff8dc";
+        萧何 [label="萧何\n沛主吏掾\n酂侯", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        高祖 [label="高祖刘邦\n布衣→亭长", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_hanxin {
+        label="月下追韩信";
+        style=filled;
+        fillcolor="#f0fff0";
+        韩信 [label="韩信\n数间说上\n上不用", fillcolor="#98fb98", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_gong {
+        label="镇国抚民";
+        style=filled;
+        fillcolor="#e6e6fa";
+        项羽 [label="项羽\n相距荥阳", fillcolor="#ff6347"];
+        功第一 [label="功第一\n功人非功狗", fillcolor="#ffd700"];
+    }
+
+    萧何 -> 高祖 [label="护佐", style=dotted];
+    高祖 -> 萧何 [label="相国", style=dotted];
+    萧何 -> 韩信 [label="月下追\n荐大将", color="#228b22", style=bold];
+    韩信 -> 高祖 [label="拜大将", style=dashed];
+    高祖 -> 项羽 [label="相距", color=red, style=bold];
+    萧何 -> 项羽 [label="给馈饷\n不绝粮道", style=dotted];
+    高祖 -> 功第一 [label="封萧何", color="#228b22"];
+}
+....
+
 ==== 曹相国世家
 
 《曹相国世家》记曹参从高祖定天下、继萧何为相之事。曹参，沛人也，
@@ -9373,6 +11401,49 @@ digraph 西汉人物关系 {
 上曰："朕安敢望先帝！"参曰："陛下观臣能孰与萧何？"上曰："君似不及也。"
 参曰："陛下言之是也。高帝与萧何定天下，法令既明，今陛下垂拱，参等守职，
 遵而勿失，不亦可乎？"
+
+[graphviz]
+....
+digraph caocan_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_early {
+        label="曹参出身";
+        style=filled;
+        fillcolor="#fff8dc";
+        曹参 [label="曹参\n沛狱掾", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        高祖 [label="高祖刘邦\n亭长", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_war {
+        label="身经百战";
+        style=filled;
+        fillcolor="#f0fff0";
+        战功 [label="下二国\n县一百二十二\n得王二人", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_xiang {
+        label="萧规曹随";
+        style=filled;
+        fillcolor="#e6e6fa";
+        萧何 [label="萧何\n相国", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        惠帝 [label="惠帝", fillcolor="#ffd700"];
+        曹窋 [label="曹窋\n参子\n中大夫", fillcolor="#87ceeb"];
+    }
+
+    曹参 -> 高祖 [label="从起沛", style=dotted];
+    高祖 -> 曹参 [label="用", style=dotted];
+    曹参 -> 战功 [label="功", color="#228b22"];
+    萧何 -> 曹参 [label="继任", style=dashed];
+    曹参 -> 惠帝 [label="相\n日饮醇酒", style=dotted];
+    惠帝 -> 曹窋 [label="问父", style=dotted];
+    曹窋 -> 曹参 [label="子问", style=dotted];
+}
+....
 
 ==== 留侯世家
 
@@ -9400,6 +11471,58 @@ digraph 西汉人物关系 {
 镇国家，抚百姓，给馈饷，不绝粮道，吾不如萧何。连百万之军，战必胜，
 攻必取，吾不如韩信。此三者，皆人杰也，吾能用之，此吾所以取天下也。"
 
+[graphviz]
+....
+digraph liuhou_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_han {
+        label="韩相之后";
+        style=filled;
+        fillcolor="#fff8dc";
+        张良父 [label="张平\n相韩", fillcolor="#ffe4b5"];
+        张良 [label="张良\n(子房)\n留侯", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_ciqin {
+        label="刺秦复仇";
+        style=filled;
+        fillcolor="#ffe4e1";
+        秦始皇 [label="秦始皇\n灭韩", fillcolor="#ff6347"];
+        力士 [label="力士\n铁椎百二十斤", fillcolor="#ffa07a"];
+    }
+
+    subgraph cluster_shu {
+        label="圯上受书";
+        style=filled;
+        fillcolor="#e6e6fa";
+        黄石公 [label="黄石公\n老父\n太公兵法", fillcolor="#dda0dd", style="rounded,filled,bold"];
+    }
+
+    subgraph cluster_gaozu {
+        label="运筹帷幄";
+        style=filled;
+        fillcolor="#f0fff0";
+        高祖 [label="高祖刘邦\n吾不如子房", fillcolor="#ffd700", style="rounded,filled,bold"];
+        萧何 [label="萧何\n镇国家", fillcolor="#98fb98"];
+        韩信 [label="韩信\n战必胜", fillcolor="#98fb98"];
+    }
+
+    张良父 -> 张良 [label="子"];
+    秦始皇 -> 张良父 [label="灭韩", color=red, style=bold];
+    张良 -> 力士 [label="求刺秦", style=dotted];
+    力士 -> 秦始皇 [label="博浪沙刺\n误中副车", color=red, style=dashed];
+    黄石公 -> 张良 [label="授太公兵法", color="#228b22", style=bold];
+    张良 -> 高祖 [label="运筹帷幄", style=dotted];
+    高祖 -> 萧何 [label="用", style=dotted];
+    高祖 -> 韩信 [label="用", style=dotted];
+}
+....
+
 ==== 陈丞相世家
 
 《陈丞相世家》记陈平辅佐高祖、惠帝、吕后、文帝之事。陈平，阳武户牖乡人也。
@@ -9417,6 +11540,54 @@ digraph 西汉人物关系 {
 陈平乃谋诛诸吕。勃入北军，令军中曰："为吕氏右袒，为刘氏左袒。"军皆
 左袒。勃遂将北军。平召朱虚侯，使监军门。以郦商子寄告其父阴令吕禄交
 出军印。遂诛诸吕，迎立代王恒，是为文帝。
+
+[graphviz]
+....
+digraph chenping_shijia {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    subgraph cluster_early {
+        label="陈平出身";
+        style=filled;
+        fillcolor="#fff8dc";
+        陈平 [label="陈平\n阳武人\n好读书", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        陈伯 [label="陈伯\n兄\n常耕田", fillcolor="#ffe4b5"];
+    }
+
+    subgraph cluster_liuji {
+        label="六出奇计";
+        style=filled;
+        fillcolor="#f0fff0";
+        高祖 [label="高祖刘邦", fillcolor="#ffd700", style="rounded,filled,bold"];
+        项羽 [label="项羽\n离间君臣", fillcolor="#ff6347"];
+        范增 [label="范增\n反间计杀", fillcolor="#ff6347"];
+        韩信 [label="韩信\n封齐王", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_zhulv {
+        label="诛诸吕";
+        style=filled;
+        fillcolor="#ffe4e1";
+        吕后 [label="吕后", fillcolor="#ffa07a"];
+        周勃 [label="周勃\n太尉", fillcolor="#98fb98"];
+        文帝 [label="文帝刘恒", fillcolor="#ffd700"];
+    }
+
+    陈伯 -> 陈平 [label="纵使游学"];
+    陈平 -> 高祖 [label="谋臣", style=dotted];
+    陈平 -> 项羽 [label="离间", color=red, style=bold];
+    陈平 -> 范增 [label="反间杀", color=red, style=bold];
+    陈平 -> 韩信 [label="蹑足请封", style=dotted];
+    陈平 -> 周勃 [label="谋", style=dotted];
+    陈平 -> 吕后 [label="诛诸吕", color=red, style=bold];
+    周勃 -> 吕后 [label="诛诸吕", color=red, style=bold];
+    陈平 -> 文帝 [label="迎立", color="#228b22"];
+}
+....
 
 ==== 绛侯周勃世家
 
@@ -9438,91 +11609,51 @@ digraph 西汉人物关系 {
 将军矣！曩者霸上、棘门军，若儿戏耳，其将固可袭而虏也。至於亚夫，可得
 而犯邪！"称善者久之。
 
-==== 西汉世家人物关系图
-
 [graphviz]
 ....
-digraph xihan_shijia {
+digraph zhoubo_shijia {
     rankdir=TB;
     ranksep=0.8;
-    nodesep=0.4;
+    nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
     edge [fontname="Heiti SC", fontsize=9];
 
-    // 高祖与功臣
-    subgraph cluster_gaozu {
-        label="高祖与开国功臣";
-        style="rounded,filled";
-        fillcolor="#fffacd";
-
-        高祖 [label="高祖刘邦\n开国皇帝", fillcolor="#ffd700", style="rounded,filled,bold"];
-        萧何 [label="萧何\n相国\n功第一", fillcolor="#87ceeb", style="rounded,filled,bold"];
-        张良 [label="张良\n留侯\n运筹帷幄", fillcolor="#87ceeb", style="rounded,filled,bold"];
-        韩信_g [label="韩信\n淮阴侯\n战必胜", fillcolor="#87ceeb", style="rounded,filled,bold"];
-        曹参 [label="曹参\n萧规曹随", fillcolor="#87ceeb"];
-        陈平 [label="陈平\n六出奇计", fillcolor="#87ceeb"];
-        周勃 [label="周勃\n安刘必勃", fillcolor="#87ceeb"];
+    subgraph cluster_zhoubo {
+        label="周勃";
+        style=filled;
+        fillcolor="#fff8dc";
+        周勃 [label="周勃\n绛侯\n安刘必勃", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        高祖 [label="高祖刘邦", fillcolor="#ffd700"];
     }
 
-    // 陈涉
-    subgraph cluster_chenshe {
-        label="首义";
-        style="rounded,filled";
+    subgraph cluster_zhulv {
+        label="诛诸吕";
+        style=filled;
         fillcolor="#ffe4e1";
-
-        陈胜 [label="陈胜\n王侯将相\n宁有种乎", fillcolor="#ff6347", style="rounded,filled,bold"];
-        吴广 [label="吴广", fillcolor="#ffa07a"];
+        吕后 [label="吕后\n称制", fillcolor="#ffa07a"];
+        陈平 [label="陈平\n丞相", fillcolor="#98fb98"];
+        文帝 [label="文帝刘恒\n代王入立", fillcolor="#ffd700"];
     }
 
-    // 外戚
-    subgraph cluster_waiqi {
-        label="外戚";
-        style="rounded,filled";
-        fillcolor="#e6e6fa";
-
-        吕后 [label="吕后\n称制", fillcolor="#dda0dd", style="rounded,filled,bold"];
-        薄太后 [label="薄太后\n文帝母", fillcolor="#d8bfd8"];
-        窦太后 [label="窦太后\n景帝母", fillcolor="#d8bfd8"];
-        王太后 [label="王太后\n武帝母", fillcolor="#d8bfd8"];
-        卫子夫 [label="卫子夫\n武帝后", fillcolor="#d8bfd8"];
-    }
-
-    // 文景功臣
-    subgraph cluster_wenjing {
-        label="文景功臣";
-        style="rounded,filled";
+    subgraph cluster_yafu {
+        label="周亚夫";
+        style=filled;
         fillcolor="#f0fff0";
-
-        周亚夫 [label="周亚夫\n细柳营\n平七国乱", fillcolor="#90ee90", style="rounded,filled,bold"];
-        晁错 [label="晁错\n削藩", fillcolor="#98fb98"];
+        周亚夫 [label="周亚夫\n细柳将军\n真将军", fillcolor="#90ee90", style="rounded,filled,bold"];
+        文帝_l [label="文帝\n劳军", fillcolor="#ffd700"];
+        景帝 [label="景帝", fillcolor="#ffd700"];
     }
 
-    // 关系
-    陈胜 -> 吴广 [label="同起", style=dotted];
-    陈胜 -> 高祖 [label="首义\n天下响应", style=dashed];
-
-    高祖 -> 萧何 [label="相国", style=dotted];
-    高祖 -> 张良 [label="谋臣", style=dotted];
-    高祖 -> 韩信_g [label="大将", style=dotted];
-    萧何 -> 韩信_g [label="月下追", color=blue];
-    萧何 -> 曹参 [label="继任", style=dashed];
-    高祖 -> 陈平 [label="谋臣", style=dotted];
     高祖 -> 周勃 [label="太尉", style=dotted];
-
-    高祖 -> 吕后 [label="妻", color="#c71585"];
-    薄太后 -> 文帝 [label="子"];
-    窦太后 -> 景帝 [label="子"];
-    王太后 -> 武帝 [label="子"];
-    武帝 -> 卫子夫 [label="后", color="#c71585"];
-
-    周勃 -> 吕后 [label="诛诸吕", color=red];
-    陈平 -> 吕后 [label="诛诸吕", color=red];
+    周勃 -> 陈平 [label="谋", style=dotted];
+    周勃 -> 吕后 [label="诛诸吕", color=red, style=bold];
+    陈平 -> 吕后 [label="诛诸吕", color=red, style=bold];
+    周勃 -> 文帝 [label="迎立", color="#228b22", style=bold];
     周勃 -> 周亚夫 [label="子"];
-    周亚夫 -> 景帝 [label="平乱", style=dashed];
-    晁错 -> 景帝 [label="削藩", style=dashed];
+    文帝_l -> 周亚夫 [label="劳军\n真将军", style=dotted];
+    周亚夫 -> 景帝 [label="平七国乱", color="#228b22", style=bold];
 }
 ....
-
 
 ==== 宗室世家
 
@@ -9618,94 +11749,68 @@ digraph xihan_shijia {
 霍光以胥失德，不得立。宣帝即位，待胥甚厚。后胥复使巫祠诅咒，事发觉，
 自杀。
 
-
-==== 宗室世家人物关系图
-
 [graphviz]
 ....
 digraph zongshi_shijia {
     rankdir=TB;
-    ranksep=1.0;
+    ranksep=0.8;
     nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
     edge [fontname="Heiti SC", fontsize=9];
 
-    // 高祖系
     subgraph cluster_gaozu {
-        label="高祖刘邦系";
-        style="rounded,filled";
+        label="高祖宗室";
+        style=filled;
         fillcolor="#fff8dc";
-
         高祖 [label="高祖刘邦", fillcolor="#ffd700", style="rounded,filled,bold"];
-        刘交 [label="刘交\n（楚元王）\n好《诗》", fillcolor="#f0e68c"];
-        刘肥 [label="刘肥\n（齐悼惠王）\n长庶子", fillcolor="#f0e68c"];
-        刘贾 [label="刘贾\n（荆王）\n从父兄", fillcolor="#deb887"];
-        刘泽 [label="刘泽\n（燕王）\n从祖弟", fillcolor="#deb887"];
+        刘交 [label="刘交\n楚元王\n好诗", fillcolor="#87ceeb"];
+        刘肥 [label="刘肥\n齐悼惠王\n长庶子", fillcolor="#87ceeb"];
+        刘贾 [label="刘贾\n荆王", fillcolor="#d3d3d3"];
+        刘泽 [label="刘泽\n燕王", fillcolor="#d3d3d3"];
     }
 
-    // 文帝系
     subgraph cluster_wendi {
-        label="文帝刘恒系";
-        style="rounded,filled";
+        label="文帝系";
+        style=filled;
         fillcolor="#e6e6fa";
-
         文帝 [label="文帝刘恒", fillcolor="#dda0dd", style="rounded,filled,bold"];
-        刘武 [label="刘武\n（梁孝王）\n七国之乱功臣", fillcolor="#d8bfd8", style="rounded,filled,bold"];
+        刘武 [label="刘武\n梁孝王\n七国之乱功臣", fillcolor="#98fb98", style="rounded,filled,bold"];
     }
 
-    // 景帝系（五宗）
     subgraph cluster_jingdi {
-        label="景帝十三子（五宗世家）";
-        style="rounded,filled";
-        fillcolor="#e0ffff";
-
-        景帝 [label="景帝刘启", fillcolor="#87ceeb", style="rounded,filled,bold"];
-        刘德 [label="刘德\n（河间献王）\n修学好古", fillcolor="#add8e6", style="rounded,filled,bold"];
-        刘余 [label="刘余\n（鲁共王）", fillcolor="#b0e0e6"];
-        刘胜 [label="刘胜\n（中山靖王）\n子百二十余", fillcolor="#add8e6"];
-        刘发 [label="刘发\n（长沙定王）", fillcolor="#b0e0e6"];
-        刘彭祖 [label="刘彭祖\n（赵敬肃王）", fillcolor="#b0e0e6"];
-    }
-
-    // 武帝系（三王）
-    subgraph cluster_wudi {
-        label="武帝三子（三王世家）";
-        style="rounded,filled";
+        label="景帝十三子";
+        style=filled;
         fillcolor="#f0fff0";
-
-        武帝 [label="武帝刘彻", fillcolor="#90ee90", style="rounded,filled,bold"];
-        刘闳 [label="刘闳\n（齐怀王）\n好文辞", fillcolor="#98fb98"];
-        刘旦 [label="刘旦\n（燕剌王）\n谋反自杀", fillcolor="#ffa07a"];
-        刘胥 [label="刘胥\n（广陵厉王）\n巫蛊自杀", fillcolor="#ffa07a"];
+        景帝 [label="景帝刘启", fillcolor="#90ee90", style="rounded,filled,bold"];
+        刘德 [label="刘德\n河间献王\n修学好古", fillcolor="#98fb98", style="rounded,filled,bold"];
+        刘胜 [label="刘胜\n中山靖王\n子百二十余", fillcolor="#98fb98"];
     }
 
-    // 世系关系
-    高祖 -> 刘交 [label="少弟"];
+    subgraph cluster_wudi {
+        label="武帝三子";
+        style=filled;
+        fillcolor="#ffe4e1";
+        武帝 [label="武帝刘彻", fillcolor="#ffa07a", style="rounded,filled,bold"];
+        刘旦 [label="刘旦\n燕剌王\n谋反自杀", fillcolor="#ff6347"];
+        刘胥 [label="刘胥\n广陵厉王\n巫蛊自杀", fillcolor="#ff6347"];
+    }
+
+    高祖 -> 刘交 [label="弟"];
     高祖 -> 刘肥 [label="长庶子"];
     高祖 -> 刘贾 [label="从父兄", style=dashed];
     高祖 -> 刘泽 [label="从祖弟", style=dashed];
     高祖 -> 文帝 [label="子"];
-
     文帝 -> 刘武 [label="子"];
     文帝 -> 景帝 [label="子"];
-
+    刘武 -> 景帝 [label="七国乱助守", color="#228b22", style=bold];
     景帝 -> 刘德 [label="子"];
-    景帝 -> 刘余 [label="子"];
     景帝 -> 刘胜 [label="子"];
-    景帝 -> 刘发 [label="子"];
-    景帝 -> 刘彭祖 [label="子"];
     景帝 -> 武帝 [label="子"];
-
-    武帝 -> 刘闳 [label="子"];
     武帝 -> 刘旦 [label="子"];
     武帝 -> 刘胥 [label="子"];
-
-    // 特殊事件
-    刘武 -> 景帝 [label="七国之乱\n助守", color=blue, style=bold];
     刘旦 -> 武帝 [label="谋反", color=red, style=dashed];
 }
 ....
-
 
 === 列传概述（汉代）
 
@@ -9738,6 +11843,79 @@ digraph zongshi_shijia {
 斩之长乐钟室。信临死叹曰："吾悔不用蒯通之计，乃为儿女子所诈，岂非
 天哉！"遂夷信三族。
 
+[graphviz]
+....
+digraph hanxin_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    韩信 [label="韩信\n大将军→楚王→淮阴侯\n国士无双\n兵仙", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_han {
+        label="汉室";
+        style=filled;
+        fillcolor="#fff8dc";
+        高祖 [label="汉高祖\n刘邦", fillcolor="#ffd700"];
+        吕后 [label="吕后\n诱杀韩信", fillcolor="#dda0dd"];
+        萧何 [label="萧何\n月下追韩信\n设计诱杀", fillcolor="#90ee90"];
+    }
+
+    subgraph cluster_chu {
+        label="楚阵营";
+        style=filled;
+        fillcolor="#ffe4e1";
+        项梁 [label="项梁", fillcolor="#ff6347"];
+        项羽 [label="项羽\n不用韩信", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_zhanyi {
+        label="名战";
+        style=filled;
+        fillcolor="#f0f8ff";
+        井陉 [label="井陉之战\n背水一战", fillcolor="#87ceeb"];
+        垓下 [label="垓下之战\n十面埋伏", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_qita {
+        label="其他人物";
+        style=filled;
+        fillcolor="#f0fff0";
+        屠少年 [label="淮阴屠少年\n胯下之辱", fillcolor="#ffa07a"];
+        张耳 [label="张耳\n赵相", fillcolor="#98fb98"];
+        蒯通 [label="蒯通\n劝韩信自立", fillcolor="#98fb98"];
+        陈豨 [label="陈豨\n反于代", fillcolor="#ff6347"];
+    }
+
+    // 早年
+    屠少年 -> 韩信 [label="辱之出袴下", color=red];
+    韩信 -> 项梁 [label="仗剑从之"];
+    项梁 -> 项羽 [label="败后属之"];
+    韩信 -> 项羽 [label="数策不用", style=dashed];
+    韩信 -> 高祖 [label="亡楚归汉"];
+
+    // 萧何荐将
+    萧何 -> 韩信 [label="月下追之"];
+    萧何 -> 高祖 [label="国士无双"];
+    高祖 -> 韩信 [label="拜大将军"];
+
+    // 战功
+    韩信 -> 井陉 [label="破赵"];
+    韩信 -> 张耳 [label="共击赵"];
+    韩信 -> 垓下 [label="围项羽"];
+
+    // 悲剧
+    高祖 -> 韩信 [label="伪游云梦执之", color=red];
+    蒯通 -> 韩信 [label="劝三分天下", style=dashed];
+    韩信 -> 陈豨 [label="通谋", style=dashed, color=red];
+    吕后 -> 韩信 [label="诱斩钟室", color=red, style=bold];
+    萧何 -> 吕后 [label="献计诱杀", color=red];
+}
+....
+
 ==== 樊郦滕灌列传
 
 《樊郦滕灌列传》记高祖功臣四人之事。
@@ -9758,6 +11936,66 @@ digraph zongshi_shijia {
 **灌婴**：灌婴者，睢阳人也。以贩缯为事。高祖起沛，婴从。骑兵战功第一，
 追项羽至东城，破之。项羽走，婴追斩之。
 
+[graphviz]
+....
+digraph fanli_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 四大功臣
+    樊哙 [label="樊哙\n舍人→左丞相\n屠狗出身\n鸿门壮士", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    郦商 [label="郦商\n信成君\n功最多", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    夏侯婴 [label="夏侯婴（滕公）\n太仆\n救太子惠帝", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    灌婴 [label="灌婴\n骑兵统帅\n贩缯出身", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_han {
+        label="汉室";
+        style=filled;
+        fillcolor="#fff8dc";
+        高祖 [label="汉高祖\n沛公", fillcolor="#ffd700"];
+        吕后 [label="吕后", fillcolor="#dda0dd"];
+        太子 [label="太子（惠帝）\n鲁元公主", fillcolor="#98fb98"];
+        张良 [label="张良\n谋臣", fillcolor="#90ee90"];
+    }
+
+    subgraph cluster_chu {
+        label="楚汉争霸";
+        style=filled;
+        fillcolor="#ffe4e1";
+        项羽 [label="项羽\n西楚霸王", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_hongmen {
+        label="鸿门宴";
+        style=filled;
+        fillcolor="#f0f8ff";
+        卮酒 [label="斗卮酒\n立饮之", fillcolor="#87ceeb"];
+        彘肩 [label="生彘肩\n拔剑啖之", fillcolor="#87ceeb"];
+    }
+
+    // 关系
+    高祖 -> 樊哙 [label="以为舍人"];
+    樊哙 -> 高祖 [label="俱隐沛中"];
+    张良 -> 项羽 [label="介绍樊哙"];
+    项羽 -> 樊哙 [label="赐酒赐肉"];
+    樊哙 -> 卮酒 [label="豪饮"];
+    樊哙 -> 彘肩 [label="豪食"];
+
+    高祖 -> 郦商 [label="从起沛"];
+    郦商 -> 吕后 [label="不从诸吕", style=dashed];
+    郦商 -> 吕后 [label="谋诛诸吕", color=red];
+
+    高祖 -> 夏侯婴 [label="常为驾"];
+    夏侯婴 -> 太子 [label="载之保全", color=green];
+
+    高祖 -> 灌婴 [label="骑兵统帅"];
+    灌婴 -> 项羽 [label="追斩", color=red, style=bold];
+}
+....
+
 ==== 张丞相列传
 
 《张丞相列传》记张苍、申屠嘉等名相之事。
@@ -9765,6 +12003,56 @@ digraph zongshi_shijia {
 **张苍**：张苍者，阳武人也，好书律历。秦时为御史。及沛公拔咸阳，苍以客
 从入秦。明习天下图书计籍。立汉家历法，以十月为岁首，色上赤，音尚宫，
 以为汉得水德。苍之免相后，老，口中无齿，食乳，女子为乳母。苍年百有余岁而卒。
+
+[graphviz]
+....
+digraph zhangcang_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    张苍 [label="张苍\n丞相\n律历大家\n寿百余岁", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    申屠嘉 [label="申屠嘉\n丞相\n刚直不阿", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_emperor {
+        label="皇帝";
+        style=filled;
+        fillcolor="#fff8dc";
+        高祖 [label="汉高祖", fillcolor="#ffd700"];
+        文帝 [label="汉文帝", fillcolor="#ffd700"];
+        景帝 [label="汉景帝", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_gongji {
+        label="功绩";
+        style=filled;
+        fillcolor="#f0f8ff";
+        历法 [label="定汉历法\n十月为岁首", fillcolor="#87ceeb"];
+        图籍 [label="掌天下图书\n计籍律令", fillcolor="#87ceeb"];
+        水德 [label="定汉为水德\n色赤音宫", fillcolor="#87ceeb"];
+    }
+
+    subgraph cluster_qin {
+        label="前朝";
+        style=filled;
+        fillcolor="#ffe4e1";
+        秦朝 [label="秦朝御史", fillcolor="#dda0dd"];
+    }
+
+    // 关系
+    秦朝 -> 张苍 [label="为御史"];
+    高祖 -> 张苍 [label="从入咸阳"];
+    张苍 -> 历法 [label="创立"];
+    张苍 -> 图籍 [label="明习"];
+    张苍 -> 水德 [label="推定"];
+    文帝 -> 张苍 [label="拜丞相"];
+    文帝 -> 申屠嘉 [label="任御史大夫"];
+    景帝 -> 申屠嘉 [label="继任丞相"];
+}
+....
 
 ==== 季布栾布列传
 
@@ -9774,6 +12062,53 @@ digraph zongshi_shijia {
 及项羽灭，高祖购求布千金，敢有舍匿，罪及三族。布匿濮阳周氏。周氏窃出布，
 卖给朱家。朱家心知是季布，上谒滕公。滕公言于上，上赦布，拜为郎中。楚人
 谚曰："得黄金百斤，不如得季布一诺。"
+
+[graphviz]
+....
+digraph jibu_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    季布 [label="季布\n楚将→汉郎中\n一诺千金", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_emperor {
+        label="汉室";
+        style=filled;
+        fillcolor="#fff8dc";
+        高祖 [label="汉高祖\n购求季布", fillcolor="#ffd700"];
+        滕公 [label="滕公（夏侯婴）\n为季布说情", fillcolor="#98fb98"];
+    }
+
+    subgraph cluster_chu {
+        label="楚汉战争";
+        style=filled;
+        fillcolor="#f0f8ff";
+        项羽 [label="项羽\n季布故主", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_yishi {
+        label="义士相助";
+        style=filled;
+        fillcolor="#f0fff0";
+        周氏 [label="濮阳周氏\n藏匿季布", fillcolor="#98fb98"];
+        朱家 [label="朱家\n侠客\n代为求情", fillcolor="#98fb98"];
+    }
+
+    // 关系
+    项羽 -> 季布 [label="使将兵"];
+    季布 -> 高祖 [label="数窘汉王", style=dashed, color=red];
+    高祖 -> 季布 [label="购千金", color=red];
+    周氏 -> 季布 [label="藏匿"];
+    周氏 -> 朱家 [label="托付"];
+    朱家 -> 滕公 [label="上谒求情"];
+    滕公 -> 高祖 [label="进言赦免"];
+    高祖 -> 季布 [label="赦拜郎中", color=green];
+}
+....
 
 ==== 酷吏列传
 
@@ -9787,6 +12122,61 @@ digraph zongshi_shijia {
 **张汤**：张汤者，杜人也。治陈皇后巫蛊事，其事少反者，及治淮南、衡山、
 江都反事，穷根本。武帝以为能，稍迁至御史大夫。汤虽文深意忌不专平，然
 得此声誉，而刻深吏多为爪牙，以此亦贤于时。
+
+[graphviz]
+....
+digraph kuli_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心酷吏
+    郅都 [label="郅都\n中郎将→中尉\n苍鹰", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    张汤 [label="张汤\n御史大夫\n治狱深文", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    subgraph cluster_emperor {
+        label="皇帝";
+        style=filled;
+        fillcolor="#fff8dc";
+        汉文帝 [label="汉文帝\n赏识郅都", fillcolor="#ffd700"];
+        汉景帝 [label="汉景帝\n用郅都守边", fillcolor="#ffd700"];
+        汉武帝 [label="汉武帝\n重用张汤", fillcolor="#ffd700"];
+    }
+
+    subgraph cluster_case {
+        label="治狱大案";
+        style=filled;
+        fillcolor="#f0f8ff";
+        贾姬 [label="贾姬\n上林野彘事件", fillcolor="#dda0dd"];
+        陈皇后 [label="陈皇后\n巫蛊之狱", fillcolor="#dda0dd"];
+        淮南王 [label="淮南王\n谋反案", fillcolor="#ff6347"];
+        衡山王 [label="衡山王\n谋反案", fillcolor="#ff6347"];
+    }
+
+    subgraph cluster_enemy {
+        label="权贵对立";
+        style=filled;
+        fillcolor="#ffe4e1";
+        窦太后 [label="窦太后\n害死郅都", fillcolor="#dda0dd"];
+        临江王 [label="临江王\n自杀狱中", fillcolor="#ff6347"];
+    }
+
+    // 关系
+    汉文帝 -> 郅都 [label="擢为中郎将"];
+    郅都 -> 贾姬 [label="阻帝救之"];
+    郅都 -> 窦太后 [label="构怨", style=dashed, color=red];
+    窦太后 -> 郅都 [label="诛杀", color=red];
+    汉景帝 -> 郅都 [label="迁中尉"];
+    郅都 -> 临江王 [label="逼死", color=red];
+
+    汉武帝 -> 张汤 [label="拜御史大夫"];
+    张汤 -> 陈皇后 [label="治巫蛊狱"];
+    张汤 -> 淮南王 [label="穷究谋反"];
+    张汤 -> 衡山王 [label="追查同谋"];
+}
+....
 
 ==== 卫将军骠骑列传
 
@@ -9808,6 +12198,66 @@ digraph zongshi_shijia {
 **封狼居胥**：元狩四年春，上令大将军青、骠骑将军去病将各五万骑。去病
 出代郡二千余里，封狼居胥山，禅于姑衍，登临瀚海。军还，上以二千户益封去病。
 
+[graphviz]
+....
+digraph weihuo_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    卫青 [label="卫青\n大将军\n七击匈奴", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    霍去病 [label="霍去病\n冠军侯\n封狼居胥", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝皇后
+    subgraph cluster_huangshi {
+        label="皇室";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        武帝 [label="汉武帝", fillcolor="#ffd700", style="rounded,filled,bold"];
+        卫子夫 [label="卫子夫\n皇后\n卫青姊", fillcolor="#ff69b4"];
+    }
+
+    // 家族
+    subgraph cluster_family {
+        label="卫氏家族";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        卫媪 [label="卫媪\n卫青母", fillcolor="#98fb98"];
+        少儿 [label="少儿\n卫青姊\n去病母", fillcolor="#98fb98"];
+    }
+
+    // 战役
+    subgraph cluster_zhanyi {
+        label="辉煌战绩";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        龙城 [label="龙城之战\n首胜匈奴", fillcolor="#dda0dd"];
+        河西 [label="河西之战\n匈奴失河西", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        狼居胥 [label="封狼居胥\n禅于姑衍\n登临瀚海", fillcolor="#ff4500", fontcolor=white, style="rounded,filled,bold"];
+    }
+
+    // 匈奴
+    匈奴 [label="匈奴\n失河西\n为汉所断", fillcolor="#ff6347", fontcolor=white];
+
+    // 关系
+    卫媪 -> 卫青 [label="母子", color=brown];
+    少儿 -> 霍去病 [label="母子", color=brown, style=bold];
+    卫青 -> 少儿 [label="姊弟", color=brown];
+    卫青 -> 卫子夫 [label="姊弟", color=brown];
+    卫子夫 -> 武帝 [label="皇后", color=red, style=bold];
+    武帝 -> 卫青 [label="拜大将军", color=gold, style=bold];
+    武帝 -> 霍去病 [label="年十八侍中\n封冠军侯", color=gold, style=bold];
+    卫青 -> 龙城 [label="七击匈奴\n首战", color=blue, style=bold];
+    霍去病 -> 河西 [label="斩首虏三万\n获五王", color=red, style=bold];
+    霍去病 -> 狼居胥 [label="出代郡\n二千余里", color=red, style=bold];
+    河西 -> 匈奴 [label="失河西地", color=red, style=bold];
+    卫青 -> 霍去病 [label="甥舅\n共击匈奴", color=blue, style=bold];
+}
+....
+
 ==== 大宛列传
 
 《大宛列传》记张骞凿空西域之事。
@@ -9825,6 +12275,68 @@ digraph zongshi_shijia {
 **封博望侯**：骞还，拜为大中大夫。其后骞为卫尉，与大将军击匈奴，知水草
 处，军得以不乏，封为博望侯。
 
+[graphviz]
+....
+digraph zhangqian_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    张骞 [label="张骞\n汉中人\n博望侯", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    武帝 [label="汉武帝\n建元中", fillcolor="#ffd700", style="rounded,filled,bold"];
+
+    // 西域诸国
+    subgraph cluster_xiyu {
+        label="西域诸国";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        大宛 [label="大宛\n为发导译", fillcolor="#98fb98"];
+        康居 [label="康居\n传致月氏", fillcolor="#98fb98"];
+        大月氏 [label="大月氏\n不欲报匈奴", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
+    }
+
+    // 匈奴
+    subgraph cluster_xiongnu {
+        label="匈奴";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        匈奴 [label="匈奴\n留骞十余岁", fillcolor="#ff6347", fontcolor=white, style="rounded,filled,bold"];
+        单于 [label="单于\n死后乱", fillcolor="#cd853f"];
+    }
+
+    // 同伴
+    甘父 [label="甘父\n堂邑氏胡奴", fillcolor="#dda0dd"];
+
+    // 关键事件
+    subgraph cluster_events {
+        label="出使历程";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        持节 [label="持汉节不失\n十三岁", fillcolor="#87ceeb", style="rounded,filled,bold"];
+        亡归 [label="与妻子俱亡归\n唯二人得还", fillcolor="#dda0dd"];
+    }
+
+    // 关系
+    武帝 -> 张骞 [label="以郎应募\n使西域", color=gold, style=bold];
+    张骞 -> 甘父 [label="俱出陇西", color=blue, style=bold];
+    张骞 -> 匈奴 [label="被留十余岁", color=red, style=bold];
+    匈奴 -> 张骞 [label="与妻有子", color=red];
+    张骞 -> 持节 [label="持节不失", color=purple, style=bold];
+    张骞 -> 大宛 [label="因亡抵达", color=blue];
+    大宛 -> 康居 [label="为发导译", color=green];
+    康居 -> 大月氏 [label="传致", color=green];
+    大月氏 -> 张骞 [label="安乐\n不欲报匈奴", color=orange, style=dashed];
+    单于 -> 匈奴 [label="死后乱", color=red, style=dashed];
+    张骞 -> 亡归 [label="乘乱亡归", color=green, style=bold];
+    武帝 -> 张骞 [label="封博望侯", color=gold, style=bold];
+}
+....
+
 ==== 太史公自序
 
 《太史公自序》为司马迁自述《史记》著述之旨。
@@ -9839,85 +12351,59 @@ digraph zongshi_shijia {
 
 **藏之名山**：藏之名山，副在京师，俟后世圣人君子。
 
-
-==== 汉代列传人物关系图
-
 [graphviz]
 ....
-digraph handa_liezhuan {
+digraph simaqian_zhuan {
     rankdir=TB;
-    ranksep=1.0;
+    ranksep=0.8;
     nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
     edge [fontname="Heiti SC", fontsize=9];
 
-    // 开国功臣（淮阴侯、樊郦滕灌）
-    subgraph cluster_kaiguo {
-        label="开国功臣";
-        style="rounded,filled";
-        fillcolor="#fff8dc";
+    // 核心人物
+    司马迁 [label="司马迁\n太史公\n史圣", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
 
-        韩信 [label="韩信\n国士无双\n背水一战", fillcolor="#ffd700", style="rounded,filled,bold"];
-        樊哙 [label="樊哙\n鸿门壮士", fillcolor="#f0e68c"];
-        灌婴 [label="灌婴\n追斩项羽", fillcolor="#f0e68c"];
-        夏侯婴 [label="夏侯婴\n保全帝子", fillcolor="#f0e68c"];
-    }
+    // 家族
+    司马谈 [label="司马谈\n父\n太史令", fillcolor="#f5deb3"];
 
-    // 名相（张丞相）
-    subgraph cluster_mingxiang {
-        label="名相";
-        style="rounded,filled";
-        fillcolor="#e6e6fa";
+    // 皇帝
+    武帝 [label="汉武帝\n李陵之祸", fillcolor="#ffd700", style="rounded,filled,bold"];
 
-        张苍 [label="张苍\n制历法", fillcolor="#d8bfd8"];
-        申屠嘉 [label="申屠嘉\n刚直", fillcolor="#d8bfd8"];
-    }
-
-    // 酷吏
-    subgraph cluster_kuli {
-        label="酷吏";
-        style="rounded,filled";
-        fillcolor="#ffe4e1";
-
-        郅都 [label="郅都\n苍鹰", fillcolor="#ffa07a"];
-        张汤 [label="张汤\n治狱深刻", fillcolor="#ffa07a"];
-    }
-
-    // 名将（卫霍）
-    subgraph cluster_mingjiang {
-        label="名将";
-        style="rounded,filled";
-        fillcolor="#e0ffff";
-
-        卫青 [label="卫青\n七击匈奴\n大将军", fillcolor="#87ceeb", style="rounded,filled,bold"];
-        霍去病 [label="霍去病\n封狼居胥\n冠军侯", fillcolor="#87ceeb", style="rounded,filled,bold"];
-    }
-
-    // 外交使节
-    subgraph cluster_waijiao {
-        label="外交使节";
+    // 史记
+    subgraph cluster_shiji {
+        label="《史记》";
         style="rounded,filled";
         fillcolor="#f0fff0";
-
-        张骞 [label="张骞\n凿空西域\n博望侯", fillcolor="#98fb98", style="rounded,filled,bold"];
+        本纪 [label="本纪十二", fillcolor="#98fb98"];
+        表 [label="十表", fillcolor="#98fb98"];
+        书 [label="书八章", fillcolor="#98fb98"];
+        世家 [label="世家三十", fillcolor="#98fb98"];
+        列传 [label="列传七十", fillcolor="#98fb98"];
     }
 
-    // 史家
-    subgraph cluster_shijia {
-        label="史家";
+    // 名言
+    subgraph cluster_mingyan {
+        label="著史精神";
         style="rounded,filled";
-        fillcolor="#f5f5dc";
-
-        司马迁 [label="司马迁\n史记\n究天人之际", fillcolor="#deb887", style="rounded,filled,bold"];
+        fillcolor="#e6e6fa";
+        究天人 [label="究天人之际\n通古今之变\n成一家之言", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        藏名山 [label="藏之名山\n副在京师", fillcolor="#dda0dd"];
     }
+
+    // 先贤
+    周公 [label="周公", fillcolor="#f5deb3"];
+    孔子 [label="孔子\n《春秋》", fillcolor="#ffd700", style="rounded,filled,bold"];
 
     // 关系
-    卫青 -> 霍去病 [label="甥舅"];
-    卫青 -> 霍去病 [label="共击匈奴", style=dotted];
-    张骞 -> 卫青 [label="从击匈奴", style=dotted];
-    韩信 -> 樊哙 [label="同事高祖", style=dashed];
-    韩信 -> 灌婴 [label="同事高祖", style=dashed];
-    郅都 -> 张汤 [label="酷吏传承", style=dashed];
+    司马谈 -> 司马迁 [label="父子\n继承太史", color=brown, style=bold];
+    司马迁 -> 武帝 [label="李陵案\n受宫刑", color=red, style=bold];
+    司马迁 -> 本纪 [label="记帝王", color=blue];
+    司马迁 -> 世家 [label="记诸侯", color=blue];
+    司马迁 -> 列传 [label="记名臣名将", color=blue];
+    司马迁 -> 究天人 [label="著史宗旨", color=gold, style=bold];
+    司马迁 -> 藏名山 [label="传之后世", color=purple, style=bold];
+    周公 -> 孔子 [label="五百岁", color=gray, style=dashed];
+    孔子 -> 司马迁 [label="五百岁\n继《春秋》", color=purple, style=bold];
 }
 ....
 
@@ -11536,6 +14022,57 @@ ____
 行与诸将相逢，辄引车避道。进止皆有表识，军中号为整齐。每所止舍，诸将
 并坐论功，异常独屏树下，军中号曰"大树将军"。
 
+[graphviz]
+....
+digraph yuntai_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心 - 光武帝
+    光武帝 [label="光武帝\n刘秀\n中兴之主", fillcolor="#ffd700", style="rounded,filled,bold"];
+
+    // 云台二十八将核心
+    subgraph cluster_yuntai {
+        label="云台二十八将";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        邓禹 [label="邓禹\n字仲华\n首功\n元勋第一", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        吴汉 [label="吴汉\n字子颜\n差强人意\n隐若敌国", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
+        冯异 [label="冯异\n字公孙\n大树将军", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
+    }
+
+    // 邓禹献策
+    subgraph cluster_dengyu {
+        label="邓禹献策";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        北渡 [label="杖策北渡\n追至邺", fillcolor="#dda0dd"];
+        献策 [label="延揽英雄\n务悦民心\n入关抚西京", fillcolor="#dda0dd", style="rounded,filled,bold"];
+    }
+
+    // 吴汉特点
+    吴汉特点 [label="质厚少文\n意气自若\n整厉器械", fillcolor="#87ceeb"];
+
+    // 冯异特点
+    冯异特点 [label="谦退不伐\n引车避道\n独屏树下", fillcolor="#98fb98", style="rounded,filled,bold"];
+
+    // 关系
+    光武帝 -> 邓禹 [label="游学京师\n相亲附", color=blue, style=bold];
+    邓禹 -> 光武帝 [label="知非常人\n潜有兴复志", color=purple, style=bold];
+    邓禹 -> 北渡 [label="闻安集河北", color=blue];
+    北渡 -> 献策 [label="进说", color=purple, style=bold];
+    光武帝 -> 献策 [label="善之从之", color=gold, style=bold];
+    光武帝 -> 吴汉 [label="差强人意\n隐若敌国", color=gold, style=bold];
+    吴汉 -> 吴汉特点 [label="为人", color=blue];
+    光武帝 -> 冯异 [label="始归光武", color=blue];
+    冯异 -> 冯异特点 [label="为人", color=green, style=bold];
+    冯异特点 -> 光武帝 [label="军中号\n大树将军", color=gold, style=bold];
+}
+....
+
 ==== 班超传
 
 《班超传》记班超投笔从戎、经营西域三十年之事。
@@ -11559,6 +14096,73 @@ ____
 封超定远侯。超年老思归，上疏曰："臣不敢望到酒泉郡，但愿生入玉门关。"
 帝感其言，征还。超至洛阳，拜为射声校尉。月余，病卒，年七十一。
 
+[graphviz]
+....
+digraph banchao_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    班超 [label="班超\n字仲升\n定远侯", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 家族
+    subgraph cluster_family {
+        label="班氏家族";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        班彪 [label="班彪\n父\n徐令", fillcolor="#f5deb3"];
+        班固 [label="班固\n兄\n《汉书》作者", fillcolor="#ffd700", style="rounded,filled,bold"];
+    }
+
+    // 皇帝
+    subgraph cluster_emperor {
+        label="东汉君主";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        明帝 [label="明帝\n遣击匈奴", fillcolor="#ffd700"];
+        和帝 [label="和帝\n永元七年\n封定远侯", fillcolor="#ffd700", style="rounded,filled,bold"];
+    }
+
+    // 西域
+    subgraph cluster_xiyu {
+        label="西域诸国";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        鄯善 [label="鄯善国\n首个归服", fillcolor="#98fb98", style="rounded,filled,bold"];
+        五十国 [label="五十余国\n皆称臣奉贡", fillcolor="#228b22", fontcolor=white];
+    }
+
+    // 匈奴
+    匈奴使 [label="匈奴使\n被火攻殄灭", fillcolor="#ff6347", fontcolor=white];
+
+    // 名言与事件
+    投笔从戎 [label="投笔从戎\n大丈夫无它志略\n当立功异域", fillcolor="#ff69b4", style="rounded,filled,bold"];
+    虎穴虎子 [label="不入虎穴\n不得虎子", fillcolor="#87ceeb", style="rounded,filled,bold"];
+    玉门关 [label="但愿生入\n玉门关", fillcolor="#dda0dd", style="rounded,filled,bold"];
+
+    // 窦固
+    窦固 [label="窦固\n出击匈奴\n用超为假司马", fillcolor="#dda0dd"];
+
+    // 关系
+    班彪 -> 班超 [label="父子", color=brown, style=bold];
+    班固 -> 班超 [label="兄弟", color=brown, style=bold];
+    班超 -> 投笔从戎 [label="辍业投笔叹", color=purple, style=bold];
+    明帝 -> 窦固 [label="遣击匈奴", color=blue];
+    窦固 -> 班超 [label="以超为假司马\n使西域", color=gold, style=bold];
+    班超 -> 鄯善 [label="使至", color=blue];
+    班超 -> 匈奴使 [label="夜袭火攻", color=red, style=bold];
+    班超 -> 虎穴虎子 [label="谓官属曰", color=purple, style=bold];
+    虎穴虎子 -> 匈奴使 [label="殄尽", color=red];
+    班超 -> 五十国 [label="经营三十一年\n遣使通", color=green, style=bold];
+    和帝 -> 班超 [label="封定远侯", color=gold, style=bold];
+    班超 -> 玉门关 [label="年老思归\n上疏", color=blue, style=bold];
+    和帝 -> 玉门关 [label="感其言\n征还", color=gold];
+}
+....
+
 ==== 党锢传
 
 《党锢传》记东汉党锢之祸中清流士人之事。
@@ -11574,6 +14178,72 @@ ____
 "大丈夫处世，当扫除天下，安事一室乎！"勤知其有清世志，甚奇之。为太尉，
 与大将军窦武共定诛宦官之策，事泄，武见杀，蕃亦死之。
 
+[graphviz]
+....
+digraph danggu_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    李膺 [label="李膺\n字元礼\n天下楷模", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+    陈蕃 [label="陈蕃\n字仲举\n扫除天下", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 师友
+    subgraph cluster_shiyou {
+        label="师友";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        荀淑 [label="荀淑\n同郡", fillcolor="#98fb98"];
+        陈寔 [label="陈寔\n同郡", fillcolor="#98fb98"];
+    }
+
+    // 仕途
+    subgraph cluster_shitu {
+        label="李膺仕途";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        护乌桓校尉 [label="护乌桓校尉\n破鲜卑", fillcolor="#dda0dd"];
+        度辽将军 [label="度辽将军", fillcolor="#dda0dd"];
+    }
+
+    // 窦武
+    窦武 [label="窦武\n大将军\n外戚", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
+
+    // 宦官
+    subgraph cluster_huanguan {
+        label="宦官势力";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        宦官 [label="宦官\n专权乱政", fillcolor="#ff6347", fontcolor=white, style="rounded,filled,bold"];
+    }
+
+    // 党锢之祸
+    党锢 [label="党锢之祸\n清流遭难", fillcolor="#ff4500", fontcolor=white, style="rounded,filled,bold"];
+
+    // 名言
+    扫除天下 [label="大丈夫处世\n当扫除天下\n安事一室乎", fillcolor="#87ceeb", style="rounded,filled,bold"];
+    登龙门 [label="登龙门\n被容接者\n名满天下", fillcolor="#ff69b4", style="rounded,filled,bold"];
+
+    // 关系
+    李膺 -> 荀淑 [label="以为师友", color=green, style=bold];
+    李膺 -> 陈寔 [label="以为师友", color=green, style=bold];
+    李膺 -> 护乌桓校尉 [label="任", color=blue];
+    李膺 -> 度辽将军 [label="拜", color=blue];
+    李膺 -> 登龙门 [label="士被容接", color=gold, style=bold];
+    陈蕃 -> 扫除天下 [label="年十五言", color=purple, style=bold];
+    陈蕃 -> 窦武 [label="共定诛宦官策", color=blue, style=bold];
+    窦武 -> 宦官 [label="谋诛", color=red, style=bold];
+    宦官 -> 窦武 [label="事泄\n武见杀", color=red, style=bold];
+    宦官 -> 陈蕃 [label="蕃亦死之", color=red, style=bold];
+    宦官 -> 党锢 [label="禁锢清流", color=red, style=bold];
+    李膺 -> 党锢 [label="遭难", color=red, style=dashed];
+    陈蕃 -> 党锢 [label="遭难", color=red, style=dashed];
+}
+....
+
 ==== 列女传
 
 《列女传》记东汉贞烈之女。
@@ -11582,6 +14252,69 @@ ____
 夫亡无子，归宁于家。兴平中，天下丧乱，文姬为胡骑所获，没于南匈奴左贤王，
 在胡中十二年，生二子。曹操素与邕善，痛其无嗣，乃遣使者以金璧赎之，而
 重嫁于祀。文姬归汉，作《悲愤诗》二章及《胡笳十八拍》，辞旨悲切，传诵于世。
+
+[graphviz]
+....
+digraph caiyan_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    蔡琰 [label="蔡琰\n字文姬\n博学才辩", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 家族
+    subgraph cluster_family {
+        label="蔡氏家族";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        蔡邕 [label="蔡邕\n父\n大儒", fillcolor="#ffd700", style="rounded,filled,bold"];
+    }
+
+    // 婚姻
+    subgraph cluster_hunyin {
+        label="婚姻经历";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        卫仲道 [label="卫仲道\n河东人\n初夫", fillcolor="#cd853f"];
+        左贤王 [label="左贤王\n匈奴\n胡中十二年", fillcolor="#ff6347", fontcolor=white];
+        董祀 [label="董祀\n重嫁", fillcolor="#98fb98"];
+    }
+
+    // 曹操
+    曹操 [label="曹操\n与邕善\n金璧赎归", fillcolor="#ffd700", style="rounded,filled,bold"];
+
+    // 子嗣
+    二子 [label="二子\n胡中所生", fillcolor="#f5deb3"];
+
+    // 著作
+    subgraph cluster_works {
+        label="不朽诗篇";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        悲愤诗 [label="《悲愤诗》\n二章", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
+        胡笳十八拍 [label="《胡笳十八拍》\n辞旨悲切", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
+    }
+
+    // 才艺
+    才艺 [label="博学有才辩\n妙于音律", fillcolor="#87ceeb", style="rounded,filled,bold"];
+
+    // 关系
+    蔡邕 -> 蔡琰 [label="父女", color=brown, style=bold];
+    蔡琰 -> 卫仲道 [label="初适", color=blue];
+    卫仲道 -> 蔡琰 [label="夫亡无子\n归宁于家", color=red, style=dashed];
+    蔡琰 -> 左贤王 [label="兴平中\n为胡骑所获", color=red, style=bold];
+    左贤王 -> 二子 [label="生二子", color=brown];
+    曹操 -> 蔡邕 [label="素与善\n痛其无嗣", color=purple];
+    曹操 -> 蔡琰 [label="遣使\n金璧赎之", color=gold, style=bold];
+    蔡琰 -> 董祀 [label="归汉重嫁", color=green];
+    蔡琰 -> 才艺 [label="多才多艺", color=blue, style=bold];
+    蔡琰 -> 悲愤诗 [label="作", color=green, style=bold];
+    蔡琰 -> 胡笳十八拍 [label="作", color=green, style=bold];
+}
+....
 
 ==== 循吏传
 
@@ -11593,6 +14326,63 @@ ____
 或云："鸡鸣失晨，以警行人，何故盗之？"告者惭而去。茂之政绩，为天下
 第一。
 
+[graphviz]
+....
+digraph zhuomao_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    卓茂 [label="卓茂\n字子康\n循吏之首", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 性格品质
+    品德 [label="性宽仁恭爱\n口无恶言", fillcolor="#98fb98", style="rounded,filled,bold"];
+
+    // 仕途
+    subgraph cluster_shitu {
+        label="仕途经历";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        丞相府 [label="丞相府史\n事孔光", fillcolor="#f5deb3"];
+        密令 [label="密令\n举善而教", fillcolor="#ffd700", style="rounded,filled,bold"];
+    }
+
+    // 孔光
+    孔光 [label="孔光\n丞相\n称茂长者", fillcolor="#dda0dd"];
+
+    // 盗鸡事件
+    subgraph cluster_daoji {
+        label="盗鸡之事";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        告者 [label="告者\n告邻盗鸡", fillcolor="#cd853f"];
+        疑问 [label="鸡鸣失晨\n以警行人\n何故盗之", fillcolor="#f5deb3"];
+    }
+
+    // 百姓
+    百姓 [label="吏人\n亲爱不忍欺", fillcolor="#87ceeb", style="rounded,filled,bold"];
+
+    // 政绩
+    政绩 [label="政绩\n天下第一", fillcolor="#ff69b4", style="rounded,filled,bold"];
+
+    // 关系
+    卓茂 -> 品德 [label="为人", color=blue, style=bold];
+    卓茂 -> 丞相府 [label="初辟", color=gray];
+    丞相府 -> 孔光 [label="事之", color=gray];
+    孔光 -> 卓茂 [label="称为长者", color=gold, style=bold];
+    卓茂 -> 密令 [label="迁任", color=blue];
+    卓茂 -> 百姓 [label="举善而教\n口无恶言", color=green, style=bold];
+    百姓 -> 卓茂 [label="亲爱\n不忍欺之", color=red, style=bold];
+    告者 -> 卓茂 [label="告邻盗鸡", color=orange];
+    卓茂 -> 疑问 [label="宁可信其有邪", color=purple, style=bold];
+    疑问 -> 告者 [label="惭而去", color=red, style=dashed];
+    卓茂 -> 政绩 [label="治绩卓著", color=gold, style=bold];
+}
+....
+
 ==== 宦者传
 
 《宦者传》记东汉宦官专权之祸。
@@ -11603,6 +14393,68 @@ ____
 缣贵而简重，并不便于人。伦乃造意，用树肤、麻头及敝布、鱼网以为纸。元兴
 元年奏上之，帝善其能，自是莫不从用焉，故天下咸称"蔡侯纸"。
 
+[graphviz]
+....
+digraph cailun_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    蔡伦 [label="蔡伦\n字敬仲\n造纸术发明者", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    subgraph cluster_emperor {
+        label="东汉君主";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        和帝 [label="和帝\n中常侍", fillcolor="#ffd700", style="rounded,filled,bold"];
+    }
+
+    // 造纸材料
+    subgraph cluster_cailiao {
+        label="造纸原料";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        树肤 [label="树肤\n树皮", fillcolor="#98fb98"];
+        麻头 [label="麻头", fillcolor="#98fb98"];
+        敝布 [label="敝布\n破布", fillcolor="#98fb98"];
+        鱼网 [label="鱼网", fillcolor="#98fb98"];
+    }
+
+    // 旧书写材料
+    subgraph cluster_jiu {
+        label="旧书写材料";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        竹简 [label="竹简\n重", fillcolor="#cd853f"];
+        缣帛 [label="缣帛\n贵", fillcolor="#cd853f"];
+    }
+
+    // 发明成果
+    蔡侯纸 [label="蔡侯纸\n天下咸称", fillcolor="#ff69b4", style="rounded,filled,bold"];
+
+    // 品格
+    品格 [label="有才学\n尽心敦慎\n匡弼得失", fillcolor="#87ceeb"];
+
+    // 关系
+    蔡伦 -> 和帝 [label="永平末入宫\n为中常侍", color=blue, style=bold];
+    和帝 -> 蔡伦 [label="豫参帷幄", color=gold];
+    蔡伦 -> 品格 [label="数犯严颜", color=green];
+    竹简 -> 蔡伦 [label="不便于人", color=red, style=dashed];
+    缣帛 -> 蔡伦 [label="贵且不便", color=red, style=dashed];
+    蔡伦 -> 树肤 [label="造意取材", color=purple];
+    蔡伦 -> 麻头 [label="造意取材", color=purple];
+    蔡伦 -> 敝布 [label="造意取材", color=purple];
+    蔡伦 -> 鱼网 [label="造意取材", color=purple];
+    树肤 -> 蔡侯纸 [label="制成", color=green, style=bold];
+    蔡伦 -> 蔡侯纸 [label="元兴元年\n奏上", color=gold, style=bold];
+    和帝 -> 蔡侯纸 [label="善其能\n莫不从用", color=gold, style=bold];
+}
+....
+
 ==== 独行传
 
 《独行传》记东汉高行义士。
@@ -11612,6 +14464,57 @@ ____
 乃共克期日。后期方至，元伯具以白母，请设馔以候之。母曰："二年之别，
 千里结言，尔何相信之审邪？"元伯曰："巨卿信士，必不乖违。"母曰："若然，
 当为尔酝酒。"至其日，巨卿果至，升堂拜饮，尽欢而别。
+
+[graphviz]
+....
+digraph fanshi_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    范式 [label="范式\n字巨卿\n信义之士", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 太学
+    太学 [label="太学\n游学问道", fillcolor="#f5deb3"];
+
+    // 挚友
+    subgraph cluster_friend {
+        label="至交好友";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        张劭 [label="张劭\n字元伯\n汝南人", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
+        张母 [label="张劭之母\n初不信", fillcolor="#98fb98"];
+    }
+
+    // 约期
+    subgraph cluster_yueqi {
+        label="千里践约";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        告归 [label="告归乡里\n二年之约", fillcolor="#dda0dd"];
+        克期 [label="共克期日\n千里结言", fillcolor="#dda0dd"];
+        设馔 [label="设馔以候\n酝酒相待", fillcolor="#dda0dd"];
+    }
+
+    // 结果
+    果至 [label="巨卿果至\n升堂拜饮", fillcolor="#ff69b4", style="rounded,filled,bold"];
+
+    // 关系
+    范式 -> 太学 [label="少游太学", color=blue];
+    范式 -> 张劭 [label="太学为友", color=green, style=bold];
+    范式 -> 告归 [label="并告归乡里", color=gray];
+    范式 -> 克期 [label="约后二年还\n过拜尊亲", color=purple, style=bold];
+    张劭 -> 张母 [label="具白\n请设馔", color=brown];
+    张母 -> 张劭 [label="尔何相信\n之审邪", color=orange, style=dashed];
+    张劭 -> 张母 [label="巨卿信士\n必不乖违", color=blue, style=bold];
+    张母 -> 设馔 [label="若然\n当为尔酝酒", color=green];
+    范式 -> 果至 [label="至其日\n果至", color=gold, style=bold];
+    果至 -> 张劭 [label="尽欢而别", color=red, style=bold];
+}
+....
 
 ==== 方术传
 
@@ -11628,76 +14531,68 @@ ____
 如有地动，尊则振龙，机发吐丸，而蟾蜍衔之。振声激扬，伺者因此觉知。
 验之以事，合契若神。自书典所记，未之有也。
 
-
-==== 后汉书列传人物关系图
-
 [graphviz]
 ....
-digraph houhan_liezhuan {
+digraph zhangheng_zhuan {
     rankdir=TB;
-    ranksep=1.0;
+    ranksep=0.8;
     nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
     edge [fontname="Heiti SC", fontsize=9];
 
-    // 云台二十八将
-    subgraph cluster_yuntai {
-        label="云台二十八将";
+    // 核心人物
+    张衡 [label="张衡\n字平子\n科圣", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    subgraph cluster_emperor {
+        label="东汉君主";
         style="rounded,filled";
         fillcolor="#fff8dc";
-
-        邓禹 [label="邓禹\n首功", fillcolor="#ffd700", style="rounded,filled,bold"];
-        吴汉 [label="吴汉\n灭公孙述", fillcolor="#f0e68c"];
-        冯异 [label="冯异\n大树将军", fillcolor="#f0e68c"];
-        耿弇 [label="耿弇\n平齐有功", fillcolor="#f0e68c"];
+        和帝 [label="和帝\n永元中", fillcolor="#ffd700"];
+        顺帝 [label="顺帝\n阳嘉年间", fillcolor="#ffd700", style="rounded,filled,bold"];
     }
 
-    // 西域英雄
-    subgraph cluster_xiyu {
-        label="西域英雄";
-        style="rounded,filled";
-        fillcolor="#e0ffff";
-
-        班超 [label="班超\n投笔从戎\n定西域", fillcolor="#87ceeb", style="rounded,filled,bold"];
-        班固 [label="班固\n汉书", fillcolor="#add8e6"];
-    }
-
-    // 党锢名士
-    subgraph cluster_danggu {
-        label="党锢名士";
-        style="rounded,filled";
-        fillcolor="#ffe4e1";
-
-        李膺 [label="李膺\n天下楷模", fillcolor="#ffb6c1", style="rounded,filled,bold"];
-        陈蕃 [label="陈蕃\n不畏强权", fillcolor="#ffb6c1"];
-        范滂 [label="范滂\n慷慨就义", fillcolor="#ffa07a"];
-    }
-
-    // 列女与文学
-    subgraph cluster_lienv {
-        label="列女文学";
+    // 学术成就
+    subgraph cluster_xueshi {
+        label="学术成就";
         style="rounded,filled";
         fillcolor="#f0fff0";
-
-        蔡文姬 [label="蔡文姬\n悲愤诗\n胡笳十八拍", fillcolor="#98fb98", style="rounded,filled,bold"];
-        蔡邕 [label="蔡邕\n大儒", fillcolor="#90ee90"];
+        五经 [label="通五经\n贯六艺", fillcolor="#98fb98"];
+        二京赋 [label="《二京赋》\n精思十年", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
     }
 
-    // 科技
+    // 科技发明
     subgraph cluster_keji {
         label="科技发明";
         style="rounded,filled";
         fillcolor="#e6e6fa";
-
-        蔡伦 [label="蔡伦\n造纸术", fillcolor="#dda0dd", style="rounded,filled,bold"];
-        张衡 [label="张衡\n地动仪\n二京赋", fillcolor="#dda0dd", style="rounded,filled,bold"];
+        地动仪 [label="候风地动仪\n精铜铸成\n员径八尺", fillcolor="#9370db", fontcolor=white, style="rounded,filled,bold"];
+        浑天仪 [label="浑天仪", fillcolor="#dda0dd"];
     }
 
+    // 地动仪构造
+    subgraph cluster_gouzao {
+        label="地动仪构造";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        都柱 [label="都柱\n傍行八道", fillcolor="#f5deb3"];
+        八龙 [label="八龙衔丸", fillcolor="#f5deb3"];
+        蟾蜍 [label="蟾蜍承丸", fillcolor="#f5deb3"];
+    }
+
+    // 前辈
+    班固 [label="班固\n《两都赋》", fillcolor="#dda0dd"];
+
     // 关系
-    班超 -> 班固 [label="兄弟"];
-    蔡邕 -> 蔡文姬 [label="父女"];
-    李膺 -> 陈蕃 [label="同党"];
-    李膺 -> 范滂 [label="同党"];
+    张衡 -> 五经 [label="游学太学\n博学多才", color=blue, style=bold];
+    张衡 -> 班固 [label="拟《两都》", color=purple];
+    张衡 -> 二京赋 [label="因以讽谏", color=green, style=bold];
+    顺帝 -> 张衡 [label="阳嘉元年\n造地动仪", color=gold];
+    张衡 -> 地动仪 [label="发明创造", color=red, style=bold];
+    地动仪 -> 都柱 [label="内部构造", color=gray];
+    地动仪 -> 八龙 [label="外部设计", color=gray];
+    八龙 -> 蟾蜍 [label="机发吐丸", color=orange, style=bold];
+    张衡 -> 浑天仪 [label="天文仪器", color=blue];
 }
 ....
 
@@ -12725,6 +15620,70 @@ ____
 益州疲弊，此诚危急存亡之秋也。"十二年春，亮悉大众由斜谷出，据武功五丈原，
 与司马懿对于渭南。相持百余日，其年八月，亮疾病，卒于军，时年五十四。
 
+[graphviz]
+....
+digraph zhugeliang_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    诸葛亮 [label="诸葛亮\n字孔明\n鞠躬尽瘁", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 蜀汉君主
+    subgraph cluster_shu {
+        label="蜀汉君主";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        刘备 [label="刘备\n昭烈帝\n三顾茅庐", fillcolor="#ffd700", style="rounded,filled,bold"];
+        刘禅 [label="刘禅\n后主\n托孤之重", fillcolor="#ffd700"];
+    }
+
+    // 挚友
+    subgraph cluster_friends {
+        label="知己";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        崔州平 [label="崔州平\n博陵", fillcolor="#98fb98"];
+        徐庶 [label="徐庶\n推荐卧龙", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
+    }
+
+    // 隆中对
+    隆中对 [label="隆中对\n三分天下", fillcolor="#ff69b4", style="rounded,filled,bold"];
+
+    // 北伐
+    subgraph cluster_beifa {
+        label="北伐";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        司马懿 [label="司马懿\n五丈原对峙", fillcolor="#ff6347", fontcolor=white, style="rounded,filled,bold"];
+        五丈原 [label="五丈原\n星落秋风", fillcolor="#dda0dd"];
+    }
+
+    // 出师表
+    出师表 [label="《出师表》\n鞠躬尽瘁\n死而后已", fillcolor="#90ee90", style="rounded,filled,bold"];
+
+    // 白帝托孤
+    白帝城 [label="白帝城\n托孤之重", fillcolor="#87ceeb", style="rounded,filled,bold"];
+
+    // 关系
+    徐庶 -> 刘备 [label="推荐卧龙\n此人可就见", color=blue, style=bold];
+    刘备 -> 诸葛亮 [label="三顾茅庐", color=gold, style=bold];
+    诸葛亮 -> 隆中对 [label="献策\n先取荆益\n成鼎足之势", color=purple, style=bold];
+    刘备 -> 白帝城 [label="病笃托孤", color=blue];
+    白帝城 -> 诸葛亮 [label="君可自取\n如其不才", color=gold, style=bold];
+    诸葛亮 -> 刘禅 [label="辅佐后主", color=blue, style=bold];
+    诸葛亮 -> 出师表 [label="临发上疏", color=green, style=bold];
+    诸葛亮 -> 司马懿 [label="六出祁山\n北伐中原", color=red, style=bold];
+    诸葛亮 -> 五丈原 [label="相持百日\n星落秋风", color=red, style=bold];
+    司马懿 -> 五丈原 [label="相持对峙", color=red];
+    崔州平 -> 诸葛亮 [label="友善", color=green];
+    徐庶 -> 诸葛亮 [label="友善", color=green];
+}
+....
+
 ==== 关羽传
 
 **义绝**：关羽字云长，本字长生，河东解人也。亡命奔涿郡，先主于乡里合徒众，
@@ -12741,6 +15700,77 @@ ____
 威震华夏。曹公议徙许都以避其锐，司马宣王、蒋济以为可劝孙权蹑其后。
 权遣吕蒙白衣渡江，袭取荆州。羽还救，兵败走麦城，权遣将逆击羽，斩羽及子平。
 
+[graphviz]
+....
+digraph guanyu_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    关羽 [label="关羽\n字云长\n义绝武圣", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 桃园三结义
+    subgraph cluster_taoyuan {
+        label="桃园三结义";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        刘备 [label="刘备\n先主", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
+        张飞 [label="张飞\n三弟", fillcolor="#228b22", fontcolor=white];
+    }
+
+    // 曹操
+    subgraph cluster_cao {
+        label="曹操集团";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        曹操 [label="曹操", fillcolor="#ffd700", style="rounded,filled,bold"];
+        颜良 [label="颜良\n袁绍大将", fillcolor="#ff6347", fontcolor=white];
+    }
+
+    // 东吴
+    subgraph cluster_wu {
+        label="东吴";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        孙权 [label="孙权", fillcolor="#dda0dd"];
+        吕蒙 [label="吕蒙\n白衣渡江", fillcolor="#ff6347", fontcolor=white, style="rounded,filled,bold"];
+    }
+
+    // 襄樊之战
+    subgraph cluster_xiangfan {
+        label="襄樊之战";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        曹仁 [label="曹仁\n守樊城", fillcolor="#cd853f"];
+        于禁 [label="于禁\n七军皆没", fillcolor="#cd853f"];
+        庞德 [label="庞德\n被斩", fillcolor="#cd853f"];
+    }
+
+    // 关键事件
+    白马 [label="白马之围\n斩颜良", fillcolor="#ff69b4", style="rounded,filled,bold"];
+    汉寿亭侯 [label="汉寿亭侯", fillcolor="#ffd700"];
+    麦城 [label="麦城\n败走被斩", fillcolor="#ff4500", fontcolor=white, style="rounded,filled,bold"];
+
+    // 关系
+    关羽 -> 刘备 [label="寝则同床\n恩若兄弟", color=blue, style=bold];
+    关羽 -> 张飞 [label="结义兄弟", color=blue, style=bold];
+    曹操 -> 关羽 [label="擒羽以归\n礼之甚厚", color=purple];
+    关羽 -> 白马 [label="策马刺良\n万众之中", color=red, style=bold];
+    白马 -> 颜良 [label="斩首", color=red, style=bold];
+    曹操 -> 汉寿亭侯 [label="表封", color=gold];
+    关羽 -> 曹操 [label="封金挂印\n拜书告辞", color=orange, style=bold];
+    关羽 -> 曹仁 [label="攻樊城", color=red];
+    关羽 -> 于禁 [label="水淹七军\n禁降", color=red, style=bold];
+    关羽 -> 庞德 [label="斩杀", color=red];
+    吕蒙 -> 关羽 [label="袭取荆州\n断其后路", color=red, style=bold];
+    关羽 -> 麦城 [label="兵败走麦城", color=red, style=bold];
+    孙权 -> 麦城 [label="遣将斩羽", color=red];
+}
+....
+
 ==== 张飞传
 
 **万人敌**：张飞字益德，涿郡人也，少与关羽俱事先主。羽年长数岁，飞兄事之。
@@ -12748,6 +15778,57 @@ ____
 表卒，曹公入荆州，先主奔江南。曹公追之，一日一夜，及于当阳长阪。先主闻
 曹公卒至，弃妻子走，使飞将二十骑拒后。飞据水断桥，瞋目横矛曰："身是
 张益德也，可来共决死！"敌皆无敢近者，故遂得免。
+
+[graphviz]
+....
+digraph zhangfei_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    张飞 [label="张飞\n字益德\n万人敌", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 桃园三结义
+    subgraph cluster_taoyuan {
+        label="桃园三结义";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        刘备 [label="刘备\n先主\n大哥", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
+        关羽 [label="关羽\n二哥\n义绝", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
+    }
+
+    // 曹操
+    曹操 [label="曹操", fillcolor="#ffd700", style="rounded,filled,bold"];
+
+    // 长坂坡
+    subgraph cluster_changban {
+        label="长坂坡";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        曹军 [label="曹军\n追兵", fillcolor="#ff6347", fontcolor=white];
+        断桥 [label="据水断桥\n瞋目横矛", fillcolor="#87ceeb", style="rounded,filled,bold"];
+    }
+
+    // 官职
+    中郎将 [label="中郎将\n曹公拜", fillcolor="#dda0dd"];
+    车骑将军 [label="车骑将军\n阆中侯", fillcolor="#dda0dd"];
+
+    // 关系
+    张飞 -> 刘备 [label="少事先主\n恩若兄弟", color=blue, style=bold];
+    张飞 -> 关羽 [label="兄事之", color=blue, style=bold];
+    刘备 -> 张飞 [label="同床而寝", color=green];
+    关羽 -> 张飞 [label="结义兄弟", color=green, style=bold];
+    曹操 -> 中郎将 [label="拜飞", color=gold];
+    张飞 -> 断桥 [label="二十骑拒后\n大喝退敌", color=red, style=bold];
+    曹军 -> 张飞 [label="追至当阳", color=red];
+    断桥 -> 曹军 [label="敌皆无敢近", color=red, style=bold];
+    刘备 -> 张飞 [label="先主得免", color=green, style=dashed];
+    刘备 -> 车骑将军 [label="拜飞", color=gold];
+}
+....
 
 ==== 周瑜传
 
@@ -12765,6 +15846,69 @@ ____
 中江举帆，去北军二里余，同时发火。火烈风猛，往船如箭，飞埃绝烂，烧尽北船。
 延及岸上营落。顷之，烟炎张天，人马烧溺死者甚众。
 
+[graphviz]
+....
+digraph zhouyu_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    周瑜 [label="周瑜\n字公瑾\n赤壁之战", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 孙吴
+    subgraph cluster_wu {
+        label="孙吴君臣";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        孙坚 [label="孙坚", fillcolor="#f5deb3"];
+        孙策 [label="孙策\n同年挚友", fillcolor="#ffd700", style="rounded,filled,bold"];
+        孙权 [label="孙权\n吴大帝", fillcolor="#ffd700", style="rounded,filled,bold"];
+        程普 [label="程普\n右督", fillcolor="#dda0dd"];
+    }
+
+    // 赤壁之战
+    subgraph cluster_chibi {
+        label="赤壁之战";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        曹操 [label="曹操\n数十万众", fillcolor="#ff6347", fontcolor=white, style="rounded,filled,bold"];
+        曹军 [label="曹军\n首尾相接\n疾病流行", fillcolor="#cd853f"];
+    }
+
+    // 蜀汉
+    subgraph cluster_shu {
+        label="联盟";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        刘备 [label="刘备", fillcolor="#dda0dd"];
+        诸葛亮 [label="诸葛亮\n说孙权抗曹", fillcolor="#dda0dd"];
+    }
+
+    // 部将
+    黄盖 [label="黄盖\n献火攻计", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
+
+    // 火攻
+    火攻 [label="火攻\n烟炎张天", fillcolor="#ff4500", fontcolor=white, style="rounded,filled,bold"];
+
+    // 关系
+    孙策 -> 周瑜 [label="同年挚友\n独相友善", color=blue, style=bold];
+    周瑜 -> 孙策 [label="将宾客迎策", color=blue, style=bold];
+    孙权 -> 周瑜 [label="拜左督", color=gold, style=bold];
+    周瑜 -> 孙权 [label="力主抗曹\n操自送死", color=blue, style=bold];
+    诸葛亮 -> 孙权 [label="说权联刘", color=purple];
+    周瑜 -> 程普 [label="共督联军", color=blue];
+    周瑜 -> 刘备 [label="并力抗曹", color=green];
+    周瑜 -> 曹操 [label="赤壁决战", color=red, style=bold];
+    黄盖 -> 周瑜 [label="献火攻计", color=green, style=bold];
+    黄盖 -> 火攻 [label="十舰先行\n诈降火攻", color=red, style=bold];
+    火攻 -> 曹军 [label="烧尽北船\n烟炎张天", color=red, style=bold];
+    曹操 -> 曹军 [label="败退", color=red, style=dashed];
+}
+....
+
 ==== 陆逊传
 
 **夷陵之战**：陆逊字伯言，吴郡吴人也。本名议。建安八年，入孙权幕府。
@@ -12774,6 +15918,69 @@ ____
 兵疲意沮，计不复生，犄角此寇，正在今日。"乃敕各持一把茅，以火攻拔之。
 一尔势成，通率诸军同时俱攻，斩张南、冯习及胡王沙摩柯等首，破其四十余营。
 备升马鞍山，陈兵自绑。逊督促诸军四面蹙之，土崩瓦解，死者万数。备夜遁。
+
+[graphviz]
+....
+digraph luxun_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    陆逊 [label="陆逊\n字伯言\n夷陵之战", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 孙吴君主
+    subgraph cluster_emperor {
+        label="孙吴君主";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        孙权 [label="孙权\n吴大帝", fillcolor="#ffd700", style="rounded,filled,bold"];
+    }
+
+    // 蜀汉
+    subgraph cluster_shu {
+        label="蜀汉";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        刘备 [label="刘备\n昭烈帝\n伐吴", fillcolor="#ff6347", fontcolor=white, style="rounded,filled,bold"];
+        张南 [label="张南\n蜀将", fillcolor="#cd853f"];
+        冯习 [label="冯习\n蜀将", fillcolor="#cd853f"];
+    }
+
+    // 吴将
+    subgraph cluster_wujiang {
+        label="东吴诸将";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        朱然 [label="朱然", fillcolor="#dda0dd"];
+        潘璋 [label="潘璋", fillcolor="#dda0dd"];
+    }
+
+    // 夷陵之战
+    subgraph cluster_yiling {
+        label="夷陵之战";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        火攻 [label="火攻\n破四十余营", fillcolor="#ff4500", fontcolor=white, style="rounded,filled,bold"];
+        马鞍山 [label="马鞍山\n备升陈兵", fillcolor="#98fb98"];
+    }
+
+    // 关系
+    孙权 -> 陆逊 [label="拜大都督\n假节", color=gold, style=bold];
+    陆逊 -> 朱然 [label="统领", color=blue];
+    陆逊 -> 潘璋 [label="统领", color=blue];
+    刘备 -> 陆逊 [label="连营数百里\n伐吴复仇", color=red, style=bold];
+    陆逊 -> 刘备 [label="按兵不动\n待敌疲沮", color=purple, style=bold];
+    陆逊 -> 火攻 [label="火烧连营", color=red, style=bold];
+    火攻 -> 刘备 [label="土崩瓦解\n夜遁白帝", color=red, style=bold];
+    火攻 -> 张南 [label="斩杀", color=red];
+    火攻 -> 冯习 [label="斩杀", color=red];
+    刘备 -> 马鞍山 [label="升山陈兵", color=gray, style=dashed];
+    陆逊 -> 马鞍山 [label="四面蹙之", color=red];
+}
+....
 
 ==== 司马懿传
 
@@ -12786,55 +15993,68 @@ ____
 懿称疾不从。爽出城，懿闭城门起兵，据洛水浮桥。遣人奏爽罪状，免爽官，诛之，
 夷三族。
 
-
-==== 三国志列传人物关系图
-
 [graphviz]
 ....
-digraph sanguo_liezhuan {
+digraph simayi_zhuan {
     rankdir=TB;
-    ranksep=1.0;
+    ranksep=0.8;
     nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
     edge [fontname="Heiti SC", fontsize=9];
 
-    // 蜀汉
-    subgraph cluster_shu {
-        label="蜀汉名臣";
-        style="rounded,filled";
-        fillcolor="#90ee90";
+    // 核心人物
+    司马懿 [label="司马懿\n字仲达\n晋室奠基", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
 
-        诸葛亮 [label="诸葛亮\n鞠躬尽瘁\n六出祁山", fillcolor="#32cd32", style="rounded,filled,bold"];
-        关羽 [label="关羽\n义绝\n武圣", fillcolor="#98fb98", style="rounded,filled,bold"];
-        张飞 [label="张飞\n猛将", fillcolor="#98fb98"];
+    // 曹魏帝王
+    subgraph cluster_emperor {
+        label="曹魏帝王";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        曹操 [label="曹操\n魏武帝", fillcolor="#ffd700", style="rounded,filled,bold"];
+        曹丕 [label="曹丕\n魏文帝", fillcolor="#ffd700"];
+        明帝 [label="曹叡\n魏明帝", fillcolor="#ffd700"];
+        曹芳 [label="曹芳\n少帝", fillcolor="#f5deb3"];
     }
 
-    // 东吴
-    subgraph cluster_wu {
-        label="东吴名臣";
+    // 曹爽集团
+    subgraph cluster_caoshuang {
+        label="曹爽集团";
         style="rounded,filled";
-        fillcolor="#87ceeb";
-
-        周瑜 [label="周瑜\n赤壁之战", fillcolor="#4169e1", style="rounded,filled,bold"];
-        陆逊 [label="陆逊\n夷陵之战", fillcolor="#6495ed", style="rounded,filled,bold"];
+        fillcolor="#ffe4e1";
+        曹爽 [label="曹爽\n大将军\n专权", fillcolor="#ff6347", fontcolor=white, style="rounded,filled,bold"];
+        何晏 [label="何晏\n曹爽党羽", fillcolor="#cd853f"];
     }
 
-    // 曹魏
-    subgraph cluster_wei {
-        label="曹魏名臣";
-        style="rounded,filled";
-        fillcolor="#ffd700";
+    // 诸葛亮
+    诸葛亮 [label="诸葛亮\n六出祁山", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
 
-        司马懿 [label="司马懿\n高平陵政变\n晋之奠基", fillcolor="#ffa500", style="rounded,filled,bold"];
+    // 司马家族
+    subgraph cluster_sima {
+        label="司马家族";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        司马师 [label="司马师\n长子\n继掌魏政", fillcolor="#98fb98"];
+        司马昭 [label="司马昭\n次子\n昭之心", fillcolor="#98fb98"];
+        司马炎 [label="司马炎\n孙\n晋武帝", fillcolor="#ffd700", style="rounded,filled,bold"];
     }
+
+    // 高平陵
+    高平陵 [label="高平陵之变\n正始十年", fillcolor="#ff69b4", style="rounded,filled,bold"];
 
     // 关系
-    关羽 -> 张飞 [label="结义兄弟"];
-    诸葛亮 -> 关羽 [label="君臣", style=dotted];
-    诸葛亮 -> 张飞 [label="君臣", style=dotted];
-    周瑜 -> 诸葛亮 [label="赤壁联盟", color=blue];
-    陆逊 -> 诸葛亮 [label="夷陵对战", color=red];
-    司马懿 -> 诸葛亮 [label="五丈原对峙", color=red, style=bold];
+    曹操 -> 司马懿 [label="辟为文学掾", color=blue];
+    司马懿 -> 曹操 [label="称病不仕\n被迫就职", color=orange, style=dashed];
+    曹丕 -> 司马懿 [label="封河津亭侯", color=gold];
+    明帝 -> 司马懿 [label="托孤重臣", color=blue, style=bold];
+    司马懿 -> 诸葛亮 [label="五丈原对峙\n相持百日", color=red, style=bold];
+    诸葛亮 -> 司马懿 [label="亮薨\n懿追之", color=red, style=dashed];
+    曹爽 -> 曹芳 [label="专权", color=red];
+    司马懿 -> 高平陵 [label="称病起兵\n夺取政权", color=red, style=bold];
+    高平陵 -> 曹爽 [label="诛杀\n夷三族", color=red, style=bold];
+    司马懿 -> 司马师 [label="父子", color=brown, style=bold];
+    司马懿 -> 司马昭 [label="父子", color=brown];
+    司马昭 -> 司马炎 [label="父子", color=brown];
+    司马炎 -> 曹芳 [label="受禅代魏\n建立晋朝", color=gold, style=bold];
 }
 ....
 
@@ -14395,6 +17615,57 @@ ____
 咨祭酒。帝即位，进骠骑大将军，开府仪同三司。导尽忠匡辅，弼成王业。
 每正色直言，帝敛容听之。时人为之语曰："王与马，共天下。"
 
+[graphviz]
+....
+digraph wangdao_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    王导 [label="王导\n字茂弘\n王与马共天下", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 琅邪王氏
+    subgraph cluster_wangshi {
+        label="琅邪王氏";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        王览 [label="王览\n祖父", fillcolor="#f5deb3"];
+        王裁 [label="王裁\n父", fillcolor="#f5deb3"];
+        王敦 [label="王敦\n从兄\n后起兵叛", fillcolor="#ff6347", fontcolor=white, style="rounded,filled,bold"];
+        王羲之从 [label="王羲之\n从子\n书圣", fillcolor="#228b22", fontcolor=white];
+    }
+
+    // 皇帝
+    subgraph cluster_emperor {
+        label="东晋皇室";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        元帝 [label="晋元帝\n司马睿\n开国之君", fillcolor="#ffd700", style="rounded,filled,bold"];
+        明帝 [label="晋明帝", fillcolor="#ffd700"];
+        成帝 [label="晋成帝", fillcolor="#ffd700"];
+    }
+
+    // 名士
+    张公 [label="张公\n陈留高士\n识王导于少时", fillcolor="#98fb98"];
+
+    // 关系
+    王览 -> 王裁 [label="父子", color=brown];
+    王裁 -> 王导 [label="父子", color=brown, style=bold];
+    王导 -> 王敦 [label="从兄弟\n共佐王室", color=blue, style=bold];
+    王导 -> 王羲之从 [label="从伯侄", color=blue];
+    张公 -> 王导 [label="奇之\n将相之器", color=purple];
+    王导 -> 元帝 [label="倾心推奉\n契同友执", color=blue, style=bold];
+    元帝 -> 王导 [label="雅相器重\n拜骠骑将军", color=gold, style=bold];
+    王导 -> 明帝 [label="弼成王业", color=blue];
+    王导 -> 成帝 [label="辅政", color=blue];
+    王敦 -> 元帝 [label="王敦之乱", color=red, style=dashed];
+    王导 -> 王敦 [label="力劝平乱\n保全王室", color=orange];
+}
+....
+
 ==== 谢安传
 
 **淝水之战**：谢安字安石，陈郡阳夏人也。父裒，太常卿。安年四岁时，
@@ -14408,6 +17679,63 @@ ____
 看书既竟，了无喜色，棋如故。客问之，徐答曰："小儿辈遂已破贼。"
 既罢，还内，过户限，心喜甚，不觉屐齿之折。
 
+[graphviz]
+....
+digraph xiean_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    谢安 [label="谢安\n字安石\n东山再起", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 陈郡谢氏
+    subgraph cluster_xie {
+        label="陈郡谢氏";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        谢裒 [label="谢裒\n父\n太常卿", fillcolor="#f5deb3"];
+        谢玄 [label="谢玄\n侄\n北府兵统帅", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
+        谢石 [label="谢石\n弟\n淝水主将", fillcolor="#228b22", fontcolor=white];
+    }
+
+    // 淝水之战
+    subgraph cluster_feishui {
+        label="淝水之战";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        苻坚 [label="苻坚\n前秦皇帝\n百万大军", fillcolor="#ff6347", fontcolor=white, style="rounded,filled,bold"];
+        秦军 [label="秦军\n风声鹤唳\n草木皆兵", fillcolor="#cd853f"];
+    }
+
+    // 北府兵
+    北府兵 [label="北府兵\n精锐八千", fillcolor="#87ceeb", style="rounded,filled,bold"];
+
+    // 东山
+    东山 [label="东山隐居\n游放山水", fillcolor="#98fb98", style="rounded,filled,bold"];
+
+    // 桓氏
+    桓温 [label="桓温\n权臣", fillcolor="#dda0dd"];
+
+    // 捷报
+    捷报 [label="捷报至\n棋如故\n了无喜色", fillcolor="#90ee90"];
+
+    // 关系
+    谢裒 -> 谢安 [label="父子", color=brown];
+    谢安 -> 谢玄 [label="叔侄\n委以重任", color=blue, style=bold];
+    谢安 -> 谢石 [label="兄弟", color=brown];
+    谢安 -> 东山 [label="隐居四十年", color=green, style=bold];
+    桓温 -> 谢安 [label="征为司马\n东山再起", color=blue];
+    谢安 -> 苻坚 [label="淝水决战", color=red, style=bold];
+    谢玄 -> 北府兵 [label="统领精锐", color=blue, style=bold];
+    北府兵 -> 秦军 [label="大破", color=red, style=bold];
+    苻坚 -> 秦军 [label="中流矢\n单骑奔还", color=red, style=dashed];
+    谢安 -> 捷报 [label="镇定自若\n不觉屐折", color=gold, style=bold];
+}
+....
+
 ==== 祖逖传
 
 **闻鸡起舞**：祖逖字士稚，范阳遒人也。性豁荡，不修仪检，年十四五犹未
@@ -14420,6 +17748,65 @@ ____
 不给铠仗，使自募。逖将其部曲百余家渡江，中流击楫而誓曰："祖逖不能
 清中原而复济者，有如大江！"辞色壮烈，众皆慨叹。
 
+[graphviz]
+....
+digraph zuti_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    祖逖 [label="祖逖\n字士稚\n北伐英雄", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    元帝 [label="晋元帝\n司马睿\n无北伐志", fillcolor="#ffd700", style="rounded,filled,bold"];
+
+    // 闻鸡起舞
+    subgraph cluster_wenji {
+        label="闻鸡起舞";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        刘琨 [label="刘琨\n共被同寝\n并州刺史", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
+    }
+
+    // 北伐
+    subgraph cluster_beifa {
+        label="北伐中原";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        部曲 [label="部曲百余家\n渡江北伐", fillcolor="#dda0dd"];
+        豫州 [label="豫州\n收复故土", fillcolor="#98fb98"];
+    }
+
+    // 敌对势力
+    subgraph cluster_enemy {
+        label="胡羯势力";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        石勒 [label="石勒\n后赵建立者", fillcolor="#ff6347", fontcolor=white];
+    }
+
+    // 击楫中流
+    大江 [label="大江\n击楫而誓", fillcolor="#87ceeb", style="rounded,filled,bold"];
+
+    // 官职
+    奋威将军 [label="奋威将军\n豫州刺史", fillcolor="#dda0dd"];
+
+    // 关系
+    祖逖 -> 刘琨 [label="共被同寝\n闻鸡起舞", color=green, style=bold];
+    祖逖 -> 元帝 [label="请命北伐", color=blue, style=bold];
+    元帝 -> 祖逖 [label="不给铠仗\n自募士卒", color=orange, style=dashed];
+    元帝 -> 奋威将军 [label="授职", color=gray];
+    祖逖 -> 部曲 [label="率领渡江", color=blue, style=bold];
+    祖逖 -> 大江 [label="中流击楫\n誓复中原", color=red, style=bold];
+    祖逖 -> 豫州 [label="北伐收复", color=green, style=bold];
+    祖逖 -> 石勒 [label="与之对峙", color=red];
+    刘琨 -> 石勒 [label="后为所害", color=red, style=dashed];
+}
+....
+
 ==== 陶潜传
 
 **不为五斗米折腰**：陶潜字渊明，或云字深明，名元亮，浔阳柴桑人也。
@@ -14428,6 +17815,68 @@ ____
 少日自解归。州召主簿，不就。后为彭泽令。郡遣督邮至县，吏白应束带见之。
 潜叹曰："我不能为五斗米折腰向乡里小人！"即日解印绑去职，赋《归去来》。
 终身不仕。
+
+[graphviz]
+....
+digraph taoqian_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    陶潜 [label="陶潜\n字渊明\n五柳先生", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 家族
+    subgraph cluster_family {
+        label="陶氏家族";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        陶侃 [label="陶侃\n曾祖\n晋大司马", fillcolor="#ffd700", style="rounded,filled,bold"];
+    }
+
+    // 仕途
+    subgraph cluster_shitu {
+        label="仕途经历";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        州祭酒 [label="州祭酒\n不堪吏职", fillcolor="#f5deb3"];
+        主簿 [label="州主簿\n不就", fillcolor="#f5deb3"];
+        彭泽令 [label="彭泽令\n八十余日", fillcolor="#ff6347", fontcolor=white];
+    }
+
+    // 督邮事件
+    督邮 [label="督邮\n郡遣至县", fillcolor="#cd853f"];
+
+    // 著作
+    subgraph cluster_works {
+        label="不朽诗文";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        归去来兮辞 [label="《归去来兮辞》\n辞官明志", fillcolor="#98fb98", style="rounded,filled,bold"];
+        五柳先生传 [label="《五柳先生传》\n自况", fillcolor="#98fb98"];
+        桃花源记 [label="《桃花源记》\n理想世界", fillcolor="#98fb98", style="rounded,filled,bold"];
+        饮酒诗 [label="《饮酒》诗\n采菊东篱", fillcolor="#98fb98"];
+    }
+
+    // 隐居
+    田园 [label="归隐田园\n躬耕自资", fillcolor="#90ee90", style="rounded,filled,bold"];
+
+    // 关系
+    陶侃 -> 陶潜 [label="曾祖孙", color=brown, style=bold];
+    陶潜 -> 州祭酒 [label="初仕", color=gray];
+    州祭酒 -> 陶潜 [label="自解归", color=red, style=dashed];
+    陶潜 -> 彭泽令 [label="末仕", color=gray];
+    督邮 -> 彭泽令 [label="至县索贿", color=red];
+    陶潜 -> 督邮 [label="不为五斗米\n折腰", color=red, style=bold];
+    陶潜 -> 归去来兮辞 [label="辞官作", color=gold, style=bold];
+    陶潜 -> 五柳先生传 [label="自况", color=green];
+    陶潜 -> 桃花源记 [label="寄托理想", color=purple, style=bold];
+    陶潜 -> 饮酒诗 [label="以诗言志", color=blue];
+    陶潜 -> 田园 [label="终身不仕\n归隐", color=green, style=bold];
+}
+....
 
 ==== 王羲之传
 
@@ -14440,54 +17889,64 @@ ____
 九年，岁在癸丑，暮春之初，会于会稽山阴之兰亭，修禊事也。群贤毕至，
 少长咸集。羲之自为之序以申其志，即《兰亭序》，世以为书法极则。
 
-
-==== 晋书列传人物关系图
-
 [graphviz]
 ....
-digraph jinshu_liezhuan {
+digraph wangxizhi_zhuan {
     rankdir=TB;
-    ranksep=1.0;
+    ranksep=0.8;
     nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
     edge [fontname="Heiti SC", fontsize=9];
 
-    // 东晋名臣
-    subgraph cluster_dongjin {
-        label="东晋名臣";
-        style="rounded,filled";
-        fillcolor="#e6e6fa";
+    // 核心人物
+    王羲之 [label="王羲之\n字逸少\n书圣", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
 
-        王导 [label="王导\n王与马共天下", fillcolor="#dda0dd", style="rounded,filled,bold"];
-        谢安 [label="谢安\n淝水之战\n东山再起", fillcolor="#dda0dd", style="rounded,filled,bold"];
-        谢玄 [label="谢玄\n北府兵", fillcolor="#d8bfd8"];
+    // 琅邪王氏
+    subgraph cluster_wangshi {
+        label="琅邪王氏";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        王导 [label="王导\n从伯\n丞相", fillcolor="#ffd700", style="rounded,filled,bold"];
+        王敦 [label="王敦\n从伯", fillcolor="#ffd700"];
+        王正 [label="王正\n祖父\n尚书郎", fillcolor="#f5deb3"];
+        王旷 [label="王旷\n父\n淮南太守", fillcolor="#f5deb3"];
     }
 
-    // 北伐将领
-    subgraph cluster_beifa {
-        label="北伐英雄";
-        style="rounded,filled";
-        fillcolor="#e0ffff";
-
-        祖逖 [label="祖逖\n闻鸡起舞\n击楫中流", fillcolor="#87ceeb", style="rounded,filled,bold"];
-        刘琨 [label="刘琨\n共被同寝", fillcolor="#add8e6"];
-    }
-
-    // 文学隐士
-    subgraph cluster_wenren {
-        label="文学隐逸";
+    // 子嗣
+    subgraph cluster_sons {
+        label="诸子";
         style="rounded,filled";
         fillcolor="#f0fff0";
-
-        陶渊明 [label="陶渊明\n不为五斗米折腰\n归去来兮", fillcolor="#98fb98", style="rounded,filled,bold"];
-        王羲之 [label="王羲之\n书圣\n兰亭序", fillcolor="#98fb98", style="rounded,filled,bold"];
+        王献之 [label="王献之\n第七子\n小圣", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
+        王凝之 [label="王凝之\n次子\n会稽内史", fillcolor="#98fb98"];
+        王徽之 [label="王徽之\n第五子\n雪夜访戴", fillcolor="#98fb98"];
     }
 
+    // 兰亭之会
+    subgraph cluster_lanting {
+        label="兰亭之会";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        谢安 [label="谢安", fillcolor="#dda0dd"];
+        孙绰 [label="孙绰", fillcolor="#dda0dd"];
+        许迈 [label="许迈\n道士", fillcolor="#dda0dd"];
+    }
+
+    // 书法艺术
+    兰亭序 [label="《兰亭序》\n天下第一行书", fillcolor="#ff69b4", style="rounded,filled,bold"];
+
     // 关系
-    谢安 -> 谢玄 [label="叔侄"];
-    祖逖 -> 刘琨 [label="共被同寝\n闻鸡起舞"];
-    王导 -> 王羲之 [label="从伯侄"];
-    王导 -> 谢安 [label="共辅东晋", style=dashed];
+    王正 -> 王旷 [label="父子", color=brown];
+    王旷 -> 王羲之 [label="父子", color=brown, style=bold];
+    王导 -> 王羲之 [label="从伯侄\n器重提携", color=blue, style=bold];
+    王敦 -> 王羲之 [label="从伯侄", color=blue];
+    王羲之 -> 王献之 [label="父子\n传授书法", color=brown, style=bold];
+    王羲之 -> 王凝之 [label="父子", color=brown];
+    王羲之 -> 王徽之 [label="父子", color=brown];
+    王羲之 -> 兰亭序 [label="永和九年\n作序", color=gold, style=bold];
+    王羲之 -> 谢安 [label="兰亭雅集", color=purple];
+    王羲之 -> 孙绰 [label="修禊同游", color=purple];
+    王羲之 -> 许迈 [label="共修服食\n采药游山", color=green];
 }
 ....
 
@@ -17272,12 +20731,133 @@ digraph 隋朝人物关系 {
 平陈之役，高颎以元帅长史随军渡江，运筹帷幄。然后因得罪独孤后，被疏远。
 炀帝即位，征高颎为太常卿，因谏炀帝奢靡，触怒被诛。
 
+[graphviz]
+....
+digraph gaojiong_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    高颎 [label="高颎\n字昭玄\n开皇贤相", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    subgraph cluster_emperor {
+        label="隋朝君主";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        文帝 [label="隋文帝\n杨坚", fillcolor="#ffd700", style="rounded,filled,bold"];
+        炀帝 [label="隋炀帝\n杨广\n诛杀高颎", fillcolor="#ffd700", style="rounded,filled,bold"];
+    }
+
+    // 皇后
+    独孤后 [label="独孤皇后\n疏远高颎", fillcolor="#ff69b4"];
+
+    // 二相
+    subgraph cluster_erxiang {
+        label="开皇二相";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        苏威 [label="苏威\n同为宰相", fillcolor="#228b22", fontcolor=white];
+    }
+
+    // 平陈之役
+    subgraph cluster_pingchen {
+        label="平陈之役";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        杨广 [label="杨广\n元帅", fillcolor="#dda0dd"];
+        贺若弼 [label="贺若弼\n先锋", fillcolor="#dda0dd"];
+        韩擒虎 [label="韩擒虎\n先锋", fillcolor="#dda0dd"];
+        陈后主 [label="陈后主\n被俘", fillcolor="#cd853f"];
+    }
+
+    // 关系
+    高颎 -> 文帝 [label="辅政从龙\n开皇功臣", color=blue, style=bold];
+    文帝 -> 高颎 [label="尚书左仆射\n倚为股肱", color=gold, style=bold];
+    高颎 -> 苏威 [label="并称二相\n共理国政", color=green, style=bold];
+    高颎 -> 杨广 [label="元帅长史\n随军渡江", color=purple, style=bold];
+    杨广 -> 贺若弼 [label="统领", color=gray];
+    杨广 -> 韩擒虎 [label="统领", color=gray];
+    贺若弼 -> 陈后主 [label="攻灭", color=red];
+    韩擒虎 -> 陈后主 [label="生擒", color=red];
+    独孤后 -> 高颎 [label="得罪皇后\n遭疏远", color=red, style=dashed];
+    炀帝 -> 高颎 [label="征为太常", color=blue];
+    高颎 -> 炀帝 [label="谏止奢靡", color=orange, style=bold];
+    炀帝 -> 高颎 [label="触怒被诛", color=red, style=bold];
+}
+....
+
 ==== 杨素传
 
 杨素，字处道，弘农华阴人。仕周有功，入隋后为御史大夫。平陈之役，率水军
 从巴峡东下，破陈水师于采石，功冠诸将。后为尚书令，权倾朝野。杨素善于
 用兵，又工诗文。然性矜傲，晚年与太子广交通，助其夺嫡。大业初卒，赠太尉。
 子杨玄感后起兵反隋，杨素被追削官爵。
+
+[graphviz]
+....
+digraph yangsu_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    杨素 [label="杨素\n字处道\n平陈首功", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    subgraph cluster_emperor {
+        label="隋朝君主";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        文帝 [label="隋文帝\n杨坚", fillcolor="#ffd700", style="rounded,filled,bold"];
+        炀帝 [label="隋炀帝\n杨广", fillcolor="#ffd700", style="rounded,filled,bold"];
+    }
+
+    // 夺嫡相关
+    subgraph cluster_duodi {
+        label="太子之争";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        杨勇 [label="杨勇\n废太子", fillcolor="#ff6347", fontcolor=white];
+        独孤后 [label="独孤皇后\n助广夺嫡", fillcolor="#ff69b4"];
+    }
+
+    // 平陈战役
+    subgraph cluster_pingchen {
+        label="平陈之役";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        陈后主 [label="陈后主\n陈叔宝", fillcolor="#dda0dd"];
+        陈水师 [label="陈朝水师\n采石大败", fillcolor="#dda0dd"];
+    }
+
+    // 家族
+    subgraph cluster_family {
+        label="杨氏家族";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        杨玄感 [label="杨玄感\n子\n起兵反隋", fillcolor="#ff6347", fontcolor=white, style="rounded,filled,bold"];
+    }
+
+    // 关系
+    杨素 -> 文帝 [label="平陈首功\n御史大夫", color=blue, style=bold];
+    文帝 -> 杨素 [label="拜尚书令\n权倾朝野", color=gold, style=bold];
+    杨素 -> 陈水师 [label="率水军\n破于采石", color=red, style=bold];
+    陈水师 -> 陈后主 [label="灭亡", color=red];
+    杨素 -> 炀帝 [label="交通太子\n助其夺嫡", color=purple, style=bold];
+    炀帝 -> 杨素 [label="追赠太尉", color=gold];
+    独孤后 -> 杨勇 [label="厌恶废黜", color=red];
+    杨素 -> 杨勇 [label="构陷", color=red, style=dashed];
+    杨素 -> 杨玄感 [label="父子", color=brown, style=bold];
+    杨玄感 -> 炀帝 [label="起兵叛乱\n兵败被杀", color=red, style=bold];
+    炀帝 -> 杨素 [label="追削官爵", color=red, style=dashed];
+}
+....
 
 ==== 长孙晟传
 
@@ -17286,6 +20866,65 @@ digraph 隋朝人物关系 {
 使不能合力南侵。突厥人畏服其威名，不敢犯边。子长孙无忌，为唐太宗凌烟阁
 功臣第一。
 
+[graphviz]
+....
+digraph zhangsunsheng_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    长孙晟 [label="长孙晟\n字季晟\n突厥克星", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    subgraph cluster_emperor {
+        label="隋朝君主";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        文帝 [label="隋文帝\n杨坚", fillcolor="#ffd700", style="rounded,filled,bold"];
+        炀帝 [label="隋炀帝\n杨广", fillcolor="#ffd700"];
+    }
+
+    // 突厥势力
+    subgraph cluster_tujue {
+        label="突厥诸部";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        沙钵略 [label="沙钵略可汗\n东突厥", fillcolor="#ff6347", fontcolor=white];
+        达头 [label="达头可汗\n西突厥", fillcolor="#ff6347", fontcolor=white];
+        启民 [label="启民可汗\n归附隋朝", fillcolor="#dda0dd"];
+        处罗 [label="处罗可汗", fillcolor="#cd853f"];
+    }
+
+    // 家族
+    subgraph cluster_family {
+        label="长孙家族";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        长孙无忌 [label="长孙无忌\n子\n凌烟阁第一", fillcolor="#228b22", fontcolor=white, style="rounded,filled,bold"];
+        长孙皇后 [label="长孙皇后\n女\n太宗皇后", fillcolor="#ff69b4"];
+    }
+
+    // 唐太宗
+    太宗 [label="唐太宗\n李世民", fillcolor="#ffd700", style="rounded,filled,bold"];
+
+    // 关系
+    长孙晟 -> 文帝 [label="献离间策\n分化突厥", color=blue, style=bold];
+    文帝 -> 长孙晟 [label="专掌突厥\n二十余年", color=gold, style=bold];
+    长孙晟 -> 沙钵略 [label="出使突厥\n察其虚实", color=purple];
+    长孙晟 -> 达头 [label="远交近攻\n联西制东", color=red, style=bold];
+    长孙晟 -> 启民 [label="扶植亲隋\n分化瓦解", color=green, style=bold];
+    沙钵略 -> 达头 [label="东西对立", color=red, style=dashed];
+    达头 -> 沙钵略 [label="互相攻伐", color=red, style=dashed];
+    长孙晟 -> 长孙无忌 [label="父子", color=brown, style=bold];
+    长孙晟 -> 长孙皇后 [label="父女", color=brown];
+    长孙无忌 -> 太宗 [label="元勋第一\n托孤重臣", color=blue, style=bold];
+    长孙皇后 -> 太宗 [label="皇后", color=red, style=bold];
+}
+....
+
 ==== 裴矩传
 
 裴矩，字弘大，河东闻喜人。博学善文，明于世务。炀帝时掌西域交通，招徕
@@ -17293,10 +20932,112 @@ digraph 隋朝人物关系 {
 皆矩之功。然裴矩善承迎帝意，后为炀帝佞臣之首。入唐后为民部尚书，太宗
 称其"佞于隋而忠于唐"。
 
+[graphviz]
+....
+digraph peiju_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 核心人物
+    裴矩 [label="裴矩\n字弘大\n掌西域通商", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+
+    // 皇帝
+    subgraph cluster_emperor {
+        label="君主";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        炀帝 [label="隋炀帝\n杨广\n好大喜功", fillcolor="#ffd700", style="rounded,filled,bold"];
+        太宗 [label="唐太宗\n李世民\n评其忠佞", fillcolor="#ffd700", style="rounded,filled,bold"];
+    }
+
+    // 西域诸国
+    subgraph cluster_xiyu {
+        label="西域诸国";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        高昌 [label="高昌国", fillcolor="#dda0dd"];
+        焉耆 [label="焉耆国", fillcolor="#dda0dd"];
+        龟兹 [label="龟兹国", fillcolor="#dda0dd"];
+        疏勒 [label="疏勒国", fillcolor="#dda0dd"];
+        康国 [label="康国\n粟特商人", fillcolor="#dda0dd"];
+    }
+
+    // 著作
+    西域图记 [label="《西域图记》\n三卷\n详载诸国", fillcolor="#90ee90", style="rounded,filled,bold"];
+
+    // 张掖互市
+    张掖互市 [label="张掖互市\n万国来朝", fillcolor="#87ceeb"];
+
+    // 关系
+    裴矩 -> 炀帝 [label="承迎帝意\n佞臣之首", color=orange, style=bold];
+    炀帝 -> 裴矩 [label="委以西域事", color=blue];
+    裴矩 -> 西域图记 [label="撰写", color=green, style=bold];
+    裴矩 -> 张掖互市 [label="主持经营", color=blue, style=bold];
+    裴矩 -> 高昌 [label="招徕通商", color=purple];
+    裴矩 -> 康国 [label="引胡商入贡", color=purple];
+    高昌 -> 张掖互市 [label="朝贡贸易", color=gray];
+    焉耆 -> 张掖互市 [label="朝贡贸易", color=gray];
+    龟兹 -> 张掖互市 [label="朝贡贸易", color=gray];
+    疏勒 -> 张掖互市 [label="朝贡贸易", color=gray];
+    康国 -> 张掖互市 [label="商贸往来", color=gray];
+    裴矩 -> 太宗 [label="入唐为臣\n民部尚书", color=blue];
+    太宗 -> 裴矩 [label="评曰:\n佞于隋\n忠于唐", color=gold, style=bold];
+}
+....
+
 ==== 循吏传
 
 《隋书·循吏传》记隋代良吏十四人。开皇之治，吏治清明，地方官多能爱民。
 如樊叔略治河北，辛公义治岷州，皆以循良著称。然炀帝暴虐，循吏之风不复。
+
+[graphviz]
+....
+digraph xunli_zhuan {
+    rankdir=TB;
+    ranksep=0.8;
+    nodesep=0.5;
+    node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
+    edge [fontname="Heiti SC", fontsize=9];
+
+    // 皇帝
+    subgraph cluster_emperor {
+        label="隋朝君主";
+        style="rounded,filled";
+        fillcolor="#fff8dc";
+        文帝 [label="隋文帝\n杨坚\n开皇之治", fillcolor="#ffd700", style="rounded,filled,bold"];
+        炀帝 [label="隋炀帝\n杨广\n暴政亡国", fillcolor="#ffd700"];
+    }
+
+    // 循吏代表
+    subgraph cluster_xunli {
+        label="循吏代表";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        樊叔略 [label="樊叔略\n治河北\n政绩卓著", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        辛公义 [label="辛公义\n治岷州\n躬亲疫病", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
+        房恭懿 [label="房恭懿\n治甘州\n抚绥羌胡", fillcolor="#228b22", fontcolor=white];
+        公孙景茂 [label="公孙景茂\n治息州\n教化百姓", fillcolor="#228b22", fontcolor=white];
+        柳俭 [label="柳俭\n治魏州\n平反冤狱", fillcolor="#228b22", fontcolor=white];
+    }
+
+    // 百姓
+    百姓 [label="治下百姓\n安居乐业", fillcolor="#87ceeb"];
+
+    // 关系
+    文帝 -> 樊叔略 [label="简拔任用", color=blue, style=bold];
+    文帝 -> 辛公义 [label="擢为刺史", color=blue, style=bold];
+    文帝 -> 房恭懿 [label="委以边郡", color=blue];
+    樊叔略 -> 百姓 [label="劝农桑\n兴水利", color=green, style=bold];
+    辛公义 -> 百姓 [label="亲侍病人\n破除疫畏", color=green, style=bold];
+    房恭懿 -> 百姓 [label="恩威并施", color=green];
+    公孙景茂 -> 百姓 [label="设学校\n行教化", color=green];
+    柳俭 -> 百姓 [label="明察秋毫\n平冤昭雪", color=green];
+    炀帝 -> 樊叔略 [label="循吏凋零", color=red, style=dashed];
+}
+....
 
 ==== 列女传
 
@@ -17304,52 +21045,66 @@ digraph 隋朝人物关系 {
 三朝，抚绥百越，岭南赖以安定。文帝封其为谯国夫人，赐印章及车马仪仗，
 "夫人"之号自此始。
 
-
-==== 隋书列传人物关系图
-
 [graphviz]
 ....
-digraph suishu_liezhuan {
+digraph lienü_zhuan {
     rankdir=TB;
-    ranksep=1.0;
+    ranksep=0.8;
     nodesep=0.5;
     node [shape=box, style="rounded,filled", fontname="Heiti SC", fontsize=10];
     edge [fontname="Heiti SC", fontsize=9];
 
-    // 开皇名相
-    subgraph cluster_mingxiang {
-        label="开皇名相";
-        style="rounded,filled";
-        fillcolor="#e6e6fa";
+    // 核心人物
+    冼夫人 [label="冼夫人\n谯国夫人\n岭南圣母", fillcolor="#4169e1", fontcolor=white, style="rounded,filled,bold"];
 
-        高颎 [label="高颎\n开皇名相\n被炀帝诛", fillcolor="#dda0dd", style="rounded,filled,bold"];
-        杨素 [label="杨素\n灭陈主将\n权倾朝野", fillcolor="#dda0dd", style="rounded,filled,bold"];
-    }
-
-    // 外交
-    subgraph cluster_waijiao {
-        label="外交";
-        style="rounded,filled";
-        fillcolor="#e0ffff";
-
-        长孙晟 [label="长孙晟\n离间突厥\n远交近攻", fillcolor="#87ceeb", style="rounded,filled,bold"];
-        裴矩 [label="裴矩\n通西域\n西域图记", fillcolor="#add8e6"];
-    }
-
-    // 唐代后人
-    subgraph cluster_tanghou {
-        label="唐代后人";
+    // 皇帝
+    subgraph cluster_emperor {
+        label="隋朝君主";
         style="rounded,filled";
         fillcolor="#fff8dc";
+        文帝 [label="隋文帝\n杨坚", fillcolor="#ffd700", style="rounded,filled,bold"];
+        炀帝 [label="隋炀帝\n杨广", fillcolor="#ffd700"];
+    }
 
-        长孙无忌 [label="长孙无忌\n凌烟阁首功", fillcolor="#f0e68c"];
-        杨玄感 [label="杨玄感\n起兵反隋", fillcolor="#ffa07a"];
+    // 前朝关系
+    subgraph cluster_qianchao {
+        label="前朝君主";
+        style="rounded,filled";
+        fillcolor="#e6e6fa";
+        梁武帝 [label="梁武帝\n萧衍", fillcolor="#dda0dd"];
+        陈武帝 [label="陈武帝\n陈霸先", fillcolor="#dda0dd"];
+        陈后主 [label="陈后主\n陈叔宝", fillcolor="#dda0dd"];
+    }
+
+    // 家族
+    subgraph cluster_family {
+        label="高凉冯氏";
+        style="rounded,filled";
+        fillcolor="#f0fff0";
+        冯宝 [label="冯宝\n夫君\n高凉太守", fillcolor="#98fb98"];
+        冯仆 [label="冯仆\n孙\n石龙太守", fillcolor="#98fb98"];
+    }
+
+    // 岭南势力
+    subgraph cluster_lingnan {
+        label="岭南诸部";
+        style="rounded,filled";
+        fillcolor="#ffe4e1";
+        俚僚诸部 [label="俚僚诸部\n百越首领", fillcolor="#f5deb3"];
+        王仲宣 [label="王仲宣\n叛乱首领", fillcolor="#ff6347", fontcolor=white];
     }
 
     // 关系
-    长孙晟 -> 长孙无忌 [label="父子"];
-    杨素 -> 杨玄感 [label="父子"];
-    高颎 -> 杨素 [label="同朝名相", style=dashed];
+    冼夫人 -> 冯宝 [label="夫妻", color=red, style=bold];
+    冯宝 -> 冯仆 [label="祖孙", color=brown];
+    冼夫人 -> 俚僚诸部 [label="统领\n抚绥百越", color=blue, style=bold];
+    冼夫人 -> 梁武帝 [label="效忠", color=gray];
+    冼夫人 -> 陈武帝 [label="助平侯景\n保境安民", color=purple];
+    冼夫人 -> 陈后主 [label="陈亡归隋", color=gray, style=dashed];
+    冼夫人 -> 文帝 [label="归附隋朝", color=blue];
+    文帝 -> 冼夫人 [label="封谯国夫人\n赐印章车马", color=gold, style=bold];
+    冼夫人 -> 王仲宣 [label="平定叛乱", color=red];
+    冯仆 -> 冼夫人 [label="辅佐祖母", color=green];
 }
 ....
 
